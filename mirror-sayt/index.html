@@ -290,6 +290,49 @@ td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;font
 .replay{margin-top:12px;border:1.5px solid var(--ink);background:var(--surface);border-radius:6px;padding:6px 12px;font-size:13px;font-weight:650}
 @media (max-width:860px){.ofr-sec{grid-template-columns:1fr;gap:22px}.bview{aspect-ratio:4/5}}
 @media (prefers-reduced-motion:reduce){.ofr,.bview .shade{transition:none}.bframe.play .gift .lid,.bframe.play .ofr .pct,.bframe.play .conf{animation:none}.conf{display:none}}
+/* brendler */
+.bwall{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));border-top:2px solid var(--ink);border-left:1px solid var(--line);margin-bottom:28px}
+.bwall button{height:76px;border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface);display:grid;place-items:center;padding:8px;color:var(--ink);transition:background .2s,color .2s}
+.bwall button:hover{background:var(--paper)}
+.bwall button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.bwall .wm{font-family:var(--display);line-height:1;text-align:center;max-width:100%;overflow-wrap:anywhere}
+.bview2{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:18px;align-items:start}
+.bstage{position:relative;border-radius:10px;overflow:hidden;background:#cfd3df;aspect-ratio:2688/1520;user-select:none}
+.bstage>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.bface{position:absolute;left:0;top:0;transform-origin:0 0;overflow:hidden;backface-visibility:hidden}
+.cr{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:6% 7%;font-family:var(--display);overflow:hidden}
+.cr .n{font-weight:900;font-stretch:125%;line-height:.92;letter-spacing:-.02em;white-space:nowrap;width:max-content;max-width:none}
+.cr .t{font-family:var(--body);font-weight:600;margin-top:.5em;opacity:.92}
+.cr .a{position:absolute;right:6%;bottom:8%;font-family:var(--body);font-weight:700;letter-spacing:.06em;opacity:.8}
+.cr .dot{position:absolute;border-radius:50%;opacity:.9}
+.cr.port{justify-content:flex-end;padding:10% 9% 14%}
+.cr.port .a{left:9%;right:auto;top:8%;bottom:auto}
+.light{position:absolute;inset:0;pointer-events:none}
+.k-bilbord .light,.k-meqabord .light{background:linear-gradient(100deg,rgba(255,236,200,.18),rgba(0,0,0,0) 40%,rgba(0,0,0,.14));mix-blend-mode:multiply}
+.k-led .light{background:repeating-linear-gradient(0deg,rgba(0,0,0,.10) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(0,0,0,.08) 0 1px,transparent 1px 3px)}
+.k-led .bface{filter:saturate(1.25) brightness(1.08);box-shadow:0 0 30px rgba(255,255,255,.35)}
+.k-prizma .bface{background:#34363f}
+.k-prizma .light{background:repeating-linear-gradient(90deg,rgba(0,0,0,.16) 0 1px,rgba(255,255,255,.06) 1px 2px,transparent 2px 4.16%)}
+.k-laytboks .bface,.k-roller .bface{filter:brightness(1.06)}
+.k-laytboks .light,.k-roller .light{background:radial-gradient(ellipse at 50% 40%,rgba(255,255,255,.18),transparent 70%)}
+.slat{position:absolute;top:0;bottom:0;overflow:hidden;transform-origin:50% 50%}
+.slat>.cr{width:var(--fw);left:var(--off);right:auto}
+.k-led .ledin .n{animation:ledin .9s cubic-bezier(.2,1.2,.4,1) both}
+.k-led .ledin .t{animation:ledin .9s .25s cubic-bezier(.2,1.2,.4,1) both}
+@keyframes ledin{from{transform:translateY(40%);opacity:0}}
+.rolltrack{position:absolute;left:0;right:0;top:0;transition:transform 1.2s cubic-bezier(.6,0,.3,1)}
+.rolltrack>.cr{position:relative;inset:auto}
+.btypes{display:flex;flex-direction:column;border-top:2px solid var(--ink)}
+.btypes button{display:grid;grid-template-columns:72px 1fr;gap:10px;align-items:center;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:8px 4px}
+.btypes img{width:72px;height:41px;object-fit:cover;border-radius:4px;opacity:.75}
+.btypes b{display:block;font-size:14.5px}
+.btypes span{font-size:12.5px;color:var(--mute)}
+.btypes button[aria-pressed="true"]{background:var(--surface)}
+.btypes button[aria-pressed="true"] img{opacity:1;outline:2px solid var(--ink)}
+.bcap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:10px;font-size:14px;color:var(--mute)}
+.bcap b{color:var(--ink)}
+@media (max-width:860px){.bview2{grid-template-columns:1fr}.btypes{flex-direction:row;overflow-x:auto}.btypes button{grid-template-columns:1fr;min-width:118px;border-bottom:0;border-right:1px solid var(--line)}.btypes img{width:100%;height:56px}.bwall{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}.bwall button{height:62px}.bwall .wm{font-size:12.5px!important}}
+@media (prefers-reduced-motion:reduce){.rolltrack{transition:none}.k-led .ledin .n,.k-led .ledin .t{animation:none}}
 footer{padding:70px 0 50px;font-size:13px;color:var(--mute)}
 </style>
 </head>
@@ -303,6 +346,7 @@ footer{padding:70px 0 50px;font-size:13px;color:var(--mute)}
     <a class="l" href="#xerite">Xəritə</a>
     <a class="l" href="#katalog">Konstruksiyalar</a>
     <a class="l" href="#texnika">3D baxış</a>
+    <a class="l" href="#brendler">Brendlər</a>
     <a class="l" href="#panel">Müştəri paneli</a>
     <a class="l" href="#sahe">Sahə komandası</a>
     <a class="cta" href="#plan">Təqdimat planı</a>
@@ -380,6 +424,24 @@ footer{padding:70px 0 50px;font-size:13px;color:var(--mute)}
       </div>
     </div>
     <p class="note">3D modellər sadələşdirilib, ölçülər illüstrativdir. Real saytda Mirror-un öz texnikasının ölçüsü və fotosu ilə hazırlanacaq.</p>
+  </div>
+</section>
+
+<section id="brendler">
+  <div class="wrap">
+    <div class="shead">
+      <h2>Əməkdaşlıq etdiyimiz brendlər</h2>
+      <p>Bakının tanınan restoran, əyləncə və otel brendləri. Brendə basın: onun reklamı Mirror-un hər texnikasında real küçə görüntüsündə necə görünəcəyini görün.</p>
+    </div>
+    <div class="bwall" id="bwall" role="group" aria-label="Brendlər"></div>
+    <div class="bview2">
+      <div>
+        <div class="bstage" id="bstage"><img id="bimg" alt=""><div class="bface" id="bface"></div></div>
+        <div class="bcap"><span id="bcapL"></span><span id="bcapR"></span></div>
+      </div>
+      <div class="btypes" id="btypes" role="group" aria-label="Texnika növü"></div>
+    </div>
+    <p class="note">Brendlər MezMoon agentliyinin müştəriləridir. Loqolar yerinə ad yazısı göstərilir, reklam dizaynları nümunədir, real kampaniya deyil. Küçə fotoları süni intellektlə yaradılıb; real saytda Mirror-un öz konstruksiyalarının fotoları olacaq.</p>
   </div>
 </section>
 
@@ -869,6 +931,82 @@ const draw=()=>{document.getElementById("ofrM").textContent=String(Math.floor(t/
 const play=()=>{f.classList.remove("play");void f.offsetWidth;t=3599;draw();setTimeout(()=>f.classList.add("play"),250);clearInterval(iv);iv=setInterval(()=>{if(t>0)t--;draw();},1000);};
 if("IntersectionObserver" in window){const io=new IntersectionObserver(e=>{if(e[0].isIntersecting){play();io.disconnect();}},{threshold:.45});io.observe(f);}else play();
 document.getElementById("ofrReplay").onclick=play;
+})();
+</script>
+<script>
+(()=>{
+const g=id=>document.getElementById(id);if(!g("bstage"))return;
+const ex=(q,k)=>{const cx=(q[0][0]+q[1][0]+q[2][0]+q[3][0])/4,cy=(q[0][1]+q[1][1]+q[2][1]+q[3][1])/4;return q.map(([x,y])=>[x+(x-cx)*k,y+(y-cy)*k*1.6]);};
+const T=[
+ {k:"bilbord",n:"Bilbord",d:"3 × 6 m · Neftçilər pr.",ar:2,q:[[0.1783,0.0944],[0.731,0.1636],[0.731,0.6077],[0.1783,0.6077]]},
+ {k:"led",n:"LED ekran",d:"3 × 6 m · axşam",ar:1.9,q:[[0.365,0.1701],[0.8683,0.1249],[0.8683,0.5335],[0.365,0.5415]]},
+ {k:"meqabord",n:"Meqabord",d:"5 × 15 m · Hava limanı yolu",ar:3.4,q:[[0.1133,0.1167],[0.9071,0.1219],[0.9115,0.4749],[0.1133,0.475]]},
+ {k:"prizma",n:"Prizma",d:"3 × 6 m · 3 reklam növbə ilə",ar:2,q:[[0.2067,0.1278],[0.8257,0.1927],[0.8274,0.6891],[0.2067,0.6822]]},
+ {k:"laytboks",n:"Laytboks",d:"1.2 × 1.8 m · piyada küçəsi",ar:.66,q:[[0.5433,0.1246],[0.7717,0.123],[0.7716,0.7758],[0.5433,0.7758]]},
+ {k:"roller",n:"Roller",d:"1.2 × 1.8 m · metro çıxışı",ar:.66,q:[[0.237,0.1593],[0.4283,0.1593],[0.4283,0.6962],[0.239,0.6962]]},
+];
+T.forEach(t=>t.q=ex(t.q,.012));
+// MezMoon musterileri (ad yazisi; reklam metnleri numunedir)
+const B=[
+ {n:"Highlevel",t:"Yeni nəsil əyləncə",bg:"#0E0E12",fg:"#F3E7C9",ac:"#C9A44C",st:"upper",w:900,x:125},
+ {n:"Mezze Baku",t:"Yeni nəsil meyxana atmosferi",bg:"#2F3B2B",fg:"#F1E6D2",ac:"#D9A441",st:"",w:800,x:100},
+ {n:"Social Baku",t:"Şəhərin ən sosial məkanı",bg:"#FF4F79",fg:"#FFFFFF",ac:"#1B1240",st:"lower",w:900,x:112},
+ {n:"Papa Cinema",t:"Böyük ekran, böyük duyğu",bg:"#150F2E",fg:"#FFFFFF",ac:"#E8962E",st:"upper",w:900,x:118},
+ {n:"Pure Hotel",t:"Bakının mərkəzində sakitlik",bg:"#EDE7DD",fg:"#22313F",ac:"#9C7B54",st:"upper",w:500,x:125},
+ {n:"Port Marine",t:"Dənizə ən yaxın masa",bg:"#0B3D5C",fg:"#FFFFFF",ac:"#5FC3E4",st:"upper",w:800,x:118},
+ {n:"Khan Baku",t:"Şərq süfrəsi, xan qonaqlığı",bg:"#5B1420",fg:"#F6E3C4",ac:"#D9A441",st:"upper",w:900,x:100},
+ {n:"Park Wine",t:"Hər şüşənin öz hekayəsi",bg:"#4A0F25",fg:"#F7E8EC",ac:"#C78B9A",st:"",w:700,x:100},
+ {n:"Nar Cafe",t:"Hər gün təzə, hər gün nar kimi",bg:"#C3222F",fg:"#FFFFFF",ac:"#FFD7A1",st:"",w:900,x:112},
+ {n:"Köhnə Samovar",t:"Çay da, söhbət də köhnə dadında",bg:"#3A2416",fg:"#F3D9A4",ac:"#C88A3A",st:"",w:800,x:100},
+ {n:"The Gallery",t:"Dad sənətə çevriləndə",bg:"#F4F1EA",fg:"#111111",ac:"#B4552D",st:"upper",w:400,x:125},
+ {n:"Elma",t:"Milli dadlar, ailəvi süfrə",bg:"#E9F2E1",fg:"#1F5130",ac:"#D9482B",st:"",w:900,x:108},
+ {n:"Finnegans",t:"Bakıda İrlandiya axşamı",bg:"#0F4D2E",fg:"#F2E7C6",ac:"#E8962E",st:"upper",w:900,x:108},
+ {n:"Ruin",t:"Gecənin ən canlı ünvanı",bg:"#121212",fg:"#E8FF5A",ac:"#E8FF5A",st:"upper",w:900,x:125},
+ {n:"Badam",t:"Kiçik fasilə, böyük dad",bg:"#F2E2C9",fg:"#5A3A1E",ac:"#B5713A",st:"",w:800,x:100},
+ {n:"Okean",t:"Dənizdən birbaşa süfrəyə",bg:"#0A5F7A",fg:"#FFFFFF",ac:"#8FE3E0",st:"upper",w:800,x:112},
+];
+const WALL=["Highlevel","Mezze Baku","Social Baku","Papa Cinema","Pure Hotel","Port Marine","Khan Baku","Park Wine","Nar Cafe","Köhnə Samovar","The Gallery","Elma","Finnegans","Ruin","Badam","Okean","İrish","İstanbul","Black","Deluxe","Diamond","Evolution","Gold","Planet","Platinium"];
+const PAL=[["#17183A","#FFFFFF","#A9ADEA"],["#E8962E","#17183A","#FFFFFF"],["#1F8A62","#FFFFFF","#D9F2E6"],["#5C60AB","#FFFFFF","#FFD166"],["#111111","#F5F5F5","#D9482B"]];
+WALL.forEach((n,i)=>{if(!B.find(x=>x.n===n)){const [bg,fg,ac]=PAL[i%PAL.length];B.push({n,t:"Bakı",bg,fg,ac,st:"upper",w:900,x:118});}});
+let bi=0,ti=0,timer=null;
+const cs=(b,port,sz)=>{const name=b.st==="upper"?b.n.toUpperCase():b.st==="lower"?b.n.toLowerCase():b.n;
+ return `<div class="cr${port?" port":""}" style="background:${b.bg};color:${b.fg}"><span class="dot" style="background:${b.ac};width:${port?42:26}%;aspect-ratio:1;right:${port?-12:-6}%;top:${port?-8:-30}%"></span><div class="n" style="font-size:${sz}px;font-weight:${b.w};font-stretch:${b.x}%">${name}</div><div class="t" style="font-size:${sz*.32}px;color:${b.fg}">${b.t}</div><div class="a" style="font-size:${sz*.2}px;color:${b.ac}">BAKI</div></div>`;};
+function H(w,h,p){const [[x0,y0],[x1,y1],[x2,y2],[x3,y3]]=p;const dx1=x1-x2,dx2=x3-x2,dx3=x0-x1+x2-x3,dy1=y1-y2,dy2=y3-y2,dy3=y0-y1+y2-y3;let a,b,c,d,e,f,G,Hh;
+ if(Math.abs(dx3)<1e-9&&Math.abs(dy3)<1e-9){a=x1-x0;b=x2-x1;c=x0;d=y1-y0;e=y2-y1;f=y0;G=0;Hh=0;}
+ else{const den=dx1*dy2-dx2*dy1;G=(dx3*dy2-dx2*dy3)/den;Hh=(dx1*dy3-dx3*dy1)/den;a=x1-x0+G*x1;b=x3-x0+Hh*x3;c=x0;d=y1-y0+G*y1;e=y3-y0+Hh*y3;f=y0;}
+ a/=w;d/=w;G/=w;b/=h;e/=h;Hh/=h;return `matrix3d(${a},${d},0,${G},${b},${e},0,${Hh},0,0,1,0,${c},${f},0,1)`;}
+function fitIn(root){root.querySelectorAll(".cr .n").forEach(n=>{const avail=800*.8;let fs=parseFloat(n.style.fontSize),i=0;while(n.scrollWidth>avail&&i<40){fs*=.94;n.style.fontSize=fs+"px";i++;}});}
+function fit(){const face=g("bface");face.querySelectorAll(".cr .n").forEach(n=>{const cr=n.parentElement;const avail=(cr.closest(".sl")?800:cr.clientWidth)*(cr.classList.contains("port")?.8:.82);let fs=parseFloat(n.style.fontSize);let i=0;while(n.scrollWidth>avail&&i<40){fs*=.94;n.style.fontSize=fs+"px";i++;}});}
+function place(){const t=T[ti],st=g("bstage"),W=st.clientWidth,Hh=st.clientHeight,face=g("bface");const fw=t.ar>=1?800:400,fh=Math.round(fw/t.ar);
+ face.style.width=fw+"px";face.style.height=fh+"px";face.style.transform=H(fw,fh,t.q.map(([x,y])=>[x*W,y*Hh]));}
+function render(){clearInterval(timer);const t=T[ti],b=B[bi],face=g("bface"),port=t.ar<1,fw=t.ar>=1?800:400,fh=Math.round(fw/t.ar);
+ const sz=port?fw*.2:Math.min(fh*.34,fw*.13);
+ g("bstage").className="bstage k-"+t.k;g("bimg").src="brendler/"+t.k+".jpg";g("bimg").alt=t.n+" Bakı küçəsində, üzərində "+b.n+" reklamı";
+ const others=[1,2].map(i=>B[(bi+i*3)%B.length]);
+ if(t.k==="prizma"){const faces=[b,...others];let fi=0;const N=24;
+  const step=()=>{const cur=faces[fi%3],nxt=faces[(fi+1)%3];
+   face.innerHTML=Array.from({length:N},(_,i)=>`<div class="slat" style="left:${i/N*100}%;width:${100/N+.06}%"><div class="sl" style="position:absolute;top:0;bottom:0;width:${fw}px;left:${-i*fw/N}px;transition:transform .38s ${i*30}ms ease-in">${cs(cur,false,sz)}</div></div>`).join("")+`<div class="light"></div>`;
+   requestAnimationFrame(()=>requestAnimationFrame(()=>face.querySelectorAll(".sl").forEach(e=>e.style.transform="scaleX(0)")));
+   setTimeout(()=>{face.querySelectorAll(".sl").forEach((e,i)=>{e.style.transition="none";e.innerHTML=cs(nxt,false,sz);fitIn(e);e.style.transform="scaleX(0)";requestAnimationFrame(()=>{e.style.transition=`transform .38s ${i*30}ms ease-out`;e.style.transform="none";});});fi++;},380+N*30);};
+  face.innerHTML=Array.from({length:N},(_,i)=>`<div class="slat" style="left:${i/N*100}%;width:${100/N+.06}%"><div class="sl" style="position:absolute;top:0;bottom:0;width:${fw}px;left:${-i*fw/N}px">${cs(b,false,sz)}</div></div>`).join("")+`<div class="light"></div>`;
+  timer=setInterval(step,3800);
+ }else if(t.k==="roller"){const faces=[b,...others,b];let r=0;
+  face.innerHTML=`<div class="rolltrack" id="rtrack">${faces.map(x=>`<div style="height:${fh}px;position:relative">${cs(x,true,sz)}</div>`).join("")}</div><div class="light"></div>`;
+  timer=setInterval(()=>{const tr=g("rtrack");if(!tr)return;r++;tr.style.transition="transform 1.2s cubic-bezier(.6,0,.3,1)";tr.style.transform=`translateY(${-r*fh}px)`;if(r===3)setTimeout(()=>{tr.style.transition="none";tr.style.transform="none";r=0;},1300);},3600);
+ }else if(t.k==="led"){const seq=[b,...others];let li=0;const show=()=>{face.innerHTML=`<div class="ledin" style="position:absolute;inset:0">${cs(seq[li%3],false,sz)}</div><div class="light"></div>`;li++;fit();};show();timer=setInterval(show,3200);
+ }else face.innerHTML=cs(b,port,sz)+`<div class="light"></div>`;
+ place();fit();
+ g("bcapL").innerHTML=`<b>${b.n}</b> · ${t.n}`;g("bcapR").textContent=t.d+(["led","prizma","roller"].includes(t.k)?" · digər brendlərlə növbələşir":"");
+ g("bwall").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x.dataset.n===b.n));
+ g("btypes").querySelectorAll("button").forEach((x,i)=>x.setAttribute("aria-pressed",i===ti));}
+g("bwall").innerHTML=WALL.map(n=>{const b=B.find(x=>x.n===n);const st=b?`font-weight:${b.w};font-stretch:${b.x}%;${b.st==="upper"?"text-transform:uppercase;letter-spacing:.04em;":""}${b.st==="lower"?"text-transform:lowercase;":""}`:"font-weight:800;font-stretch:115%;text-transform:uppercase;letter-spacing:.05em;";
+ const lab=b&&b.st==="lower"?n.toLowerCase():(!b||b.st==="upper")?n.toUpperCase():n;return `<button type="button" data-n="${n}" aria-pressed="false"><span class="wm" style="${st.replace(/text-transform:[a-z]+;/g,"")}font-size:${n.length>11?15:18}px">${lab}</span></button>`;}).join("");
+g("bwall").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;bi=B.findIndex(x=>x.n===b.dataset.n);render();});
+g("btypes").innerHTML=T.map((t,i)=>`<button type="button" aria-pressed="false"><img src="brendler/${t.k}.jpg" alt="" loading="lazy"><span><b>${t.n}</b><span>${t.d}</span></span></button>`).join("");
+g("btypes").querySelectorAll("button").forEach((x,i)=>x.onclick=()=>{ti=i;render();});
+addEventListener("resize",place);
+render();
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>render());
 })();
 </script>
 </body>
