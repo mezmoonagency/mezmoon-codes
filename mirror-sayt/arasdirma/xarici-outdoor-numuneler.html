@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Outdoor xüsusiyyət nümunələri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEF0F5;--surface:#FFFFFF;--ink:#17183A;--mute:#5B5E7E;--line:#D3D6E2;
+  --brand:#5C60AB;--lav:#A9ADEA;--amber:#E8962E;--hot:#D9482B;--free:#1F8A62;
+  --soft:#E3E5F2;--road:#D9DCE8;--sea:#CFE0EE;--font:"Archivo","Helvetica Neue",Arial,sans-serif;color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12132A;--surface:#1B1D3B;--ink:#ECEDF7;--mute:#A6A9C8;--line:#2E3157;--brand:#A9ADEA;--lav:#5C60AB;--soft:#24274A;--road:#2B2E55;--sea:#1A2C47;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12132A;--surface:#1B1D3B;--ink:#ECEDF7;--mute:#A6A9C8;--line:#2E3157;--brand:#A9ADEA;--lav:#5C60AB;--soft:#24274A;--road:#2B2E55;--sea:#1A2C47;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.55 var(--font);-webkit-font-smoothing:antialiased}
+a{color:var(--brand)}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+h1,h2,h3,h4{margin:0;line-height:1.15;text-wrap:balance}
+p{margin:0}
+button,input,select{font:inherit;color:inherit}
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:2px;height:52px;align-items:center;overflow-x:auto;scrollbar-width:none}
+nav .wrap::-webkit-scrollbar{display:none}
+nav b{font-weight:800;font-stretch:115%;letter-spacing:.08em;margin-right:auto;padding-right:14px;white-space:nowrap}
+nav a{color:var(--mute);text-decoration:none;font-size:14px;font-weight:600;padding:8px 10px;border-radius:8px;white-space:nowrap}
+nav a:hover{color:var(--ink);background:var(--soft)}
+.cover{padding:52px 0 28px}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}
+.cover h1{font-size:clamp(30px,4.8vw,50px);font-weight:800;font-stretch:112%;margin:12px 0 14px}
+.lead{max-width:760px;font-size:18px;color:var(--mute)}
+.flag{display:inline-block;margin-top:16px;font-size:13.5px;font-weight:600;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:10px;padding:8px 14px;color:var(--mute)}
+.demo{padding:36px 0;border-top:1px solid var(--line)}
+.dh{display:grid;grid-template-columns:1fr 1.15fr;gap:28px;align-items:start}
+.txt .n{font-size:13px;font-weight:800;color:var(--brand)}
+.txt h2{font-size:clamp(22px,3vw,30px);font-weight:800;font-stretch:106%;margin:6px 0 10px}
+.txt p{color:var(--mute);margin-bottom:10px}
+.txt .src{font-size:13.5px;color:var(--ink)}
+.txt .src b{color:var(--brand)}
+.tag{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:3px 9px;border:1px solid currentColor;margin:8px 6px 0 0}
+.has{color:var(--free)}.part{color:var(--amber)}.no{color:var(--hot)}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;min-width:0}
+.ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px;font-size:14px}
+.seg{display:inline-flex;background:var(--soft);border-radius:10px;padding:3px}
+.seg button{border:0;background:none;padding:6px 11px;border-radius:8px;cursor:pointer;font-size:13.5px;font-weight:600;color:var(--mute)}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+input[type=range]{accent-color:var(--brand);flex:1;min-width:140px}
+.out{font-weight:800;font-variant-numeric:tabular-nums}
+.small{font-size:12.5px;color:var(--mute)}
+/* map */
+.map{position:relative;border-radius:12px;overflow:hidden;background:var(--soft);aspect-ratio:16/10}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.pin{position:absolute;transform:translate(-50%,-100%);background:var(--surface);border:1.5px solid var(--brand);color:var(--ink);font-size:12px;font-weight:700;padding:3px 8px;border-radius:8px;white-space:nowrap;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.15);font-variant-numeric:tabular-nums}
+.pin::after{content:"";position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--brand)}
+.pin.led{border-color:var(--amber)}.pin.led::after{border-top-color:var(--amber)}
+.pin.on{background:var(--brand);color:#fff}
+.pin.dim{opacity:.35}
+.tip{margin-top:10px;font-size:14px;min-height:44px;background:var(--soft);border-radius:10px;padding:10px 12px}
+/* planner */
+.list{display:grid;gap:6px;margin-top:4px}
+.row{display:grid;grid-template-columns:1fr auto auto;gap:12px;font-size:14px;padding:8px 10px;border-radius:9px;background:var(--soft);font-variant-numeric:tabular-nums}
+.row span:nth-child(2){color:var(--mute)}
+.tot{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;font-size:14px}
+.tot div b{display:block;font-size:22px;font-weight:800;font-variant-numeric:tabular-nums}
+/* chat */
+.chat{display:flex;flex-direction:column;gap:8px;min-height:250px}
+.msg{max-width:86%;padding:9px 13px;border-radius:14px;font-size:14.5px}
+.me{align-self:flex-end;background:var(--brand);color:#fff;border-bottom-right-radius:4px}
+.ai{align-self:flex-start;background:var(--soft);border-bottom-left-radius:4px}
+.ai ul{margin:6px 0 0;padding-left:18px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chips button{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer}
+.chips button:hover{border-color:var(--brand)}
+/* proposal */
+.doc{background:#fff;color:#17183A;border-radius:6px;padding:18px;box-shadow:0 6px 24px rgba(23,24,58,.18);font-size:12.5px;max-width:420px;margin:0 auto}
+.doc h4{font-size:16px;margin-bottom:2px}
+.doc table{width:100%;border-collapse:collapse;margin:10px 0}
+.doc td,.doc th{border-bottom:1px solid #E1E3EC;padding:5px 4px;text-align:left}
+.doc th{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:#5B5E7E}
+.doc .r{text-align:right;font-variant-numeric:tabular-nums}
+.thumbs{display:flex;gap:6px}
+.thumbs div{flex:1;height:46px;border-radius:4px;background:linear-gradient(135deg,#5C60AB,#A9ADEA)}
+.btns{display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:9px;padding:7px 12px;font-size:13px;font-weight:600}
+.btn.pri{background:var(--brand);border-color:var(--brand);color:#fff}
+/* led */
+.street{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/10;transition:background .6s}
+.board{position:absolute;left:14%;top:12%;width:72%;aspect-ratio:2.4/1;background:#0b0c1c;border:6px solid #2b2d48;border-radius:6px;display:grid;place-items:center;text-align:center;padding:10px;color:#fff;transition:all .5s}
+.board .big{font-size:clamp(18px,3.4vw,30px);font-weight:900;font-stretch:115%;line-height:1}
+.board .sm{font-size:clamp(11px,1.6vw,14px);opacity:.85;margin-top:6px}
+.pole{position:absolute;left:49%;width:2%;top:48%;bottom:0;background:#2b2d48}
+.rain{position:absolute;inset:0;background-image:repeating-linear-gradient(105deg,rgba(255,255,255,.35) 0 1px,transparent 1px 14px);opacity:0;transition:opacity .4s;animation:fall .5s linear infinite}
+@keyframes fall{to{background-position:-10px 40px}}
+.sun{position:absolute;right:6%;top:6%;width:13%;aspect-ratio:1;border-radius:50%;background:#FFD166;box-shadow:0 0 40px #FFD166;transition:opacity .4s}
+.rule{margin-top:10px;font-size:13.5px;font-family:ui-monospace,Menlo,monospace;background:var(--soft);border-radius:10px;padding:10px 12px}
+/* blip */
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}
+.kpi{background:var(--soft);border-radius:10px;padding:10px}
+.kpi b{display:block;font-size:22px;font-weight:800;font-variant-numeric:tabular-nums}
+.kpi span{font-size:12.5px;color:var(--mute)}
+.bars{display:flex;gap:3px;align-items:flex-end;height:90px;margin-top:12px}
+.bars i{flex:1;background:var(--lav);border-radius:3px 3px 0 0;transition:height .3s}
+.bars i.off{background:var(--line)}
+.hrs{display:flex;justify-content:space-between;font-size:11px;color:var(--mute);margin-top:3px}
+/* proof */
+.photo{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:16/10;background:linear-gradient(#9fb6d6,#d7dfe9 60%,#8a8f9e 60%)}
+.photo .bb{position:absolute;left:18%;top:14%;width:64%;aspect-ratio:2.6/1;background:linear-gradient(120deg,#5C60AB,#E8962E);border:5px solid #333;display:grid;place-items:center;color:#fff;font-weight:900;font-size:clamp(14px,2.6vw,24px)}
+.photo .pl{position:absolute;left:48.5%;width:3%;top:46%;bottom:22%;background:#333}
+.stamp{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,.66);color:#fff;font-size:11.5px;font-family:ui-monospace,Menlo,monospace;padding:6px 8px;border-radius:6px;line-height:1.4}
+.ok{position:absolute;right:8px;top:8px;background:var(--free);color:#fff;font-size:12px;font-weight:700;padding:4px 9px;border-radius:999px}
+.timeline{display:flex;gap:6px;margin-top:10px;font-size:13px}
+.timeline div{flex:1;background:var(--soft);border-radius:8px;padding:8px}
+.timeline b{display:block;font-size:12px;color:var(--free)}
+/* lift */
+.lift{display:grid;grid-template-columns:auto 1fr auto;gap:8px 12px;align-items:center;font-size:14px}
+.lift .bar{height:26px;border-radius:6px;background:var(--line);position:relative}
+.lift .bar i{position:absolute;inset:0 auto 0 0;border-radius:6px;background:var(--brand);transition:width .6s}
+.lift .bar.c i{background:var(--mute)}
+/* do/dont */
+.dd{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dd .bd{aspect-ratio:2.4/1;border-radius:6px;display:grid;place-items:center;text-align:center;padding:10px;border:5px solid #2b2d48}
+.dd .good{background:#17183A;color:#FFD166}
+.dd .good b{font-size:clamp(16px,2.6vw,24px);font-weight:900;font-stretch:115%}
+.dd .bad{background:linear-gradient(45deg,#c9a,#9bd,#dc8);color:#555;font-size:9px;line-height:1.25}
+.dd p{font-size:13px;margin-top:6px}
+.dd .g{color:var(--free);font-weight:700}.dd .x{color:var(--hot);font-weight:700}
+/* AR */
+.ar{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/10;background:linear-gradient(#7d8db4,#c6cbe0 55%,#6d7086 55%)}
+.bld{position:absolute;bottom:45%;background:#4d5579}
+.phone{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:30%;aspect-ratio:9/18;background:#111;border-radius:18px;padding:6px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.scr{width:100%;height:100%;border-radius:13px;overflow:hidden;position:relative;background:linear-gradient(#8fa0c8,#d0d5e8 55%,#777a90 55%)}
+.char{position:absolute;left:50%;bottom:44%;transform:translateX(-50%);font-size:clamp(28px,5vw,44px);animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translate(-50%,-8px)}}
+.scr .cap{position:absolute;left:6px;right:6px;bottom:8px;background:var(--brand);color:#fff;font-size:10px;font-weight:700;text-align:center;border-radius:6px;padding:4px}
+/* screenshots */
+.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.shots figure{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.shots img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:top}
+.shots figcaption{font-size:13px;padding:9px 11px;color:var(--mute)}
+.shots figcaption b{color:var(--ink)}
+footer{padding:32px 0 56px;color:var(--mute);font-size:14px;border-top:1px solid var(--line)}
+@media (max-width:820px){.dh{grid-template-columns:1fr;gap:16px}.shots{grid-template-columns:1fr 1fr}.kpis{grid-template-columns:1fr 1fr 1fr}}
+@media (max-width:520px){.shots{grid-template-columns:1fr}.pin{font-size:10.5px;padding:2px 5px}.dd{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><b>MIRROR</b>
+<a href="xarici-outdoor-sistemleri.html">← Hesabat</a><a href="#xerite">Xəritə</a><a href="#plan">Plan</a><a href="#kömekci">Köməkçi</a><a href="#teklif">Təklif</a><a href="#led">LED</a><a href="#gundelik">Gündəlik büdcə</a><a href="#subut">Sübut</a><a href="#netice">Nəticə</a><a href="#dizayn">Dizayn</a><a href="#ar">AR</a><a href="#saytlar">Orijinal saytlar</a></div></nav>
+
+<div class="cover"><div class="wrap">
+ <div class="eyebrow">Hesabata əlavə · 15 noyabr 2026</div>
+ <h1>Xüsusiyyətlər necə görünür</h1>
+ <p class="lead">Xarici saytlarda gördüyümüz 10 xüsusiyyətin Mirror üçün Bakı nümunəsində kiçik, işləyən maketləri. Düymələrə basmaq, sürgüləri çəkmək olar. Sonda orijinal saytlardan ekran görüntüləri var.</p>
+ <div class="flag">Bütün yerlər, qiymətlər və rəqəmlər uydurma nümunədir. Hələ Mirror-un real datası deyil.</div>
+</div></div>
+
+<!-- 1 map -->
+<section class="demo" id="xerite"><div class="wrap dh">
+ <div class="txt"><span class="n">01 · Yer seçimi</span><h2>Xəritədə qiymət və axın</h2>
+  <p>Hər konstruksiyanın qiyməti birbaşa xəritədə görünür. Müştəri bir yerin üzərinə basanda gündəlik axını, ölçüsünü və boş tarixini görür. Büdcə filtri baha yerləri soldurur.</p>
+  <p class="src">Xaricdə: <b>AdQuick</b>, <b>BillboardsIn</b>, <b>Blip</b></p>
+  <span class="tag part">Mirror-da qismən: axın var, qiymət yoxdur</span></div>
+ <div class="stage">
+  <div class="ctl"><span>Aylıq büdcə ən çox:</span><input type="range" id="mBud" min="400" max="3000" step="100" value="3000"><span class="out" id="mBudO">3 000 ₼</span></div>
+  <div class="map" id="map">
+   <svg viewBox="0 0 160 100" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 78 Q40 70 80 82 T160 76 V100 H0Z" fill="var(--sea)"/>
+    <g stroke="var(--road)" stroke-width="2.4" fill="none" stroke-linecap="round">
+     <path d="M5 66 Q60 55 155 62"/><path d="M30 5 L48 70"/><path d="M95 4 Q90 40 102 74"/><path d="M10 30 Q80 22 150 34"/><path d="M60 10 Q120 45 150 20"/>
+    </g>
+   </svg>
+  </div>
+  <div class="tip" id="mTip">Bir yerə basın.</div>
+ </div>
+</div></section>
+
+<!-- 2 planner -->
+<section class="demo" id="plan"><div class="wrap dh">
+ <div class="txt"><span class="n">02 · Planlama</span><h2>Büdcədən avtomatik plan</h2>
+  <p>Müştəri büdcəni və hədəfini seçir, sistem hər manata ən çox baxış verən yerləri yığır. Sonra plan redaktə olunur və təklifə çevrilir.</p>
+  <p class="src">Xaricdə: <b>AdQuick</b> planlayıcısı, <b>Vistar ADstruc</b></p>
+  <span class="tag has">Mirror-da var</span></div>
+ <div class="stage">
+  <div class="ctl"><span>Büdcə:</span><input type="range" id="pBud" min="500" max="6000" step="250" value="2500"><span class="out" id="pBudO"></span></div>
+  <div class="ctl"><span>Hədəf:</span><div class="seg" id="pGoal"><button aria-pressed="true" data-g="reach">Çox adam</button><button aria-pressed="false" data-g="young">Gənclər</button><button aria-pressed="false" data-g="biz">İş adamları</button></div></div>
+  <div class="list" id="pList"></div>
+  <div class="tot"><div><span class="small">Yer sayı</span><b id="pN"></b></div><div><span class="small">Aylıq baxış (təxmini)</span><b id="pV"></b></div><div><span class="small">1 000 baxış</span><b id="pC"></b></div></div>
+ </div>
+</div></section>
+
+<!-- 3 assistant -->
+<section class="demo" id="kömekci"><div class="wrap dh">
+ <div class="txt"><span class="n">03 · Köməkçi</span><h2>Süni intellekt köməkçisi</h2>
+  <p>Saytda söhbət pəncərəsi. Müştəri adi dillə soruşur, köməkçi katalogdakı real yerlərlə və qiymətlərlə cavab verir, sonra təklifə keçid verir.</p>
+  <p class="src">Xaricdə: <b>Billboards America</b> ("Billy"), <b>Billups</b> audrai</p>
+  <span class="tag no">Mirror-da yoxdur</span></div>
+ <div class="stage">
+  <div class="chat" id="chat" aria-live="polite"></div>
+  <div class="chips" id="chips"></div>
+ </div>
+</div></section>
+
+<!-- 4 proposal -->
+<section class="demo" id="teklif"><div class="wrap dh">
+ <div class="txt"><span class="n">04 · Təklif</span><h2>Seçilən yerlərdən PDF təklif</h2>
+  <p>Müştəri seçdiyi yerləri bir düymə ilə şəkilli, tarixli və qiymətli sənədə çevirir. Marketinq meneceri bunu rəhbərinə göndərir. Mirror-a sorğu da eyni anda gedir.</p>
+  <p class="src">Xaricdə: <b>BillboardsIn</b> (PDF, PPT, Excel), <b>AdQuick</b>, <b>ADstruc</b></p>
+  <span class="tag no">Mirror-da yoxdur</span></div>
+ <div class="stage">
+  <div class="doc">
+   <div style="display:flex;justify-content:space-between;align-items:baseline"><h4>Kampaniya təklifi</h4><span style="font-weight:800;letter-spacing:.1em;font-size:11px">MIRROR</span></div>
+   <div style="color:#5B5E7E">Müştəri: Nümunə MMC · 1–31 dekabr 2026</div>
+   <div class="thumbs" style="margin-top:10px"><div></div><div style="background:linear-gradient(135deg,#E8962E,#D9482B)"></div><div style="background:linear-gradient(135deg,#1F8A62,#A9ADEA)"></div></div>
+   <table><tr><th>Yer</th><th>Növ</th><th class="r">Baxış/gün</th><th class="r">Qiymət</th></tr>
+    <tr><td>28 May, metro çıxışı</td><td>LED</td><td class="r">41 000</td><td class="r">1 400 ₼</td></tr>
+    <tr><td>Nərimanov dairəsi</td><td>Bilbord 6×3</td><td class="r">27 500</td><td class="r">900 ₼</td></tr>
+    <tr><td>Gənclik, Ataturk pr.</td><td>Bilbord 6×3</td><td class="r">22 000</td><td class="r">750 ₼</td></tr>
+    <tr><td colspan="3"><b>Cəmi</b></td><td class="r"><b>3 050 ₼</b></td></tr></table>
+   <div style="color:#5B5E7E;font-size:11px">Qiymətə ƏDV daxil deyil. Təklif 7 gün qüvvədədir.</div>
+  </div>
+  <div class="btns"><span class="btn">PDF yüklə</span><span class="btn">Excel</span><span class="btn">PowerPoint</span><span class="btn pri">Mirror-a göndər</span></div>
+ </div>
+</div></section>
+
+<!-- 5 LED triggers -->
+<section class="demo" id="led"><div class="wrap dh">
+ <div class="txt"><span class="n">05 · LED</span><h2>Hava və saata görə dəyişən reklam</h2>
+  <p>Brend bir neçə variant yükləyir, ekran canlı məlumata baxıb özü seçir. Uber Braziliyada yağışda və istidə fərqli mesaj göstərib. Bakının küləyi və yay istisi bunun üçün yaxşı səbəbdir.</p>
+  <p class="src">Xaricdə: <b>JCDecaux · VIOOH</b>, <b>Lamar</b>, <b>Billups</b></p>
+  <span class="tag no">Mirror-da yoxdur</span></div>
+ <div class="stage">
+  <div class="ctl"><div class="seg" id="wx"><button aria-pressed="true" data-w="sun">☀️ İsti</button><button aria-pressed="false" data-w="rain">🌧 Yağış</button><button aria-pressed="false" data-w="wind">💨 Külək</button></div>
+   <div class="seg" id="tm"><button aria-pressed="true" data-t="day">Gündüz</button><button aria-pressed="false" data-t="night">Axşam</button></div></div>
+  <div class="street" id="street"><div class="sun" id="sun"></div><div class="rain" id="rain"></div><div class="pole"></div><div class="board" id="board"><div><div class="big" id="bBig"></div><div class="sm" id="bSm"></div></div></div></div>
+  <div class="rule" id="rule"></div>
+ </div>
+</div></section>
+
+<!-- 6 daily budget -->
+<section class="demo" id="gundelik"><div class="wrap dh">
+ <div class="txt"><span class="n">06 · Kiçik büdcə</span><h2>Gündəlik büdcə ilə LED kampaniyası</h2>
+  <p>Müqavilə yoxdur: kiçik biznes gündəlik büdcə və saatları seçir, ödənişi yalnız göstərilən 8 saniyəlik çıxışlara görə edir. Mirror üçün boş qalan LED vaxtını satmaq yoludur.</p>
+  <p class="src">Xaricdə: <b>Blip</b> (gündə 20 dollardan)</p>
+  <span class="tag no">Mirror-da yoxdur</span></div>
+ <div class="stage">
+  <div class="ctl"><span>Gündəlik büdcə:</span><input type="range" id="dBud" min="20" max="300" step="10" value="60"><span class="out" id="dBudO"></span></div>
+  <div class="ctl"><span>Saatlar:</span><div class="seg" id="dHr"><button aria-pressed="false" data-h="all">Bütün gün</button><button aria-pressed="true" data-h="peak">Pik saatlar</button><button aria-pressed="false" data-h="eve">Axşam</button></div></div>
+  <div class="kpis"><div class="kpi"><b id="dPlays"></b><span>çıxış/gün</span></div><div class="kpi"><b id="dSeen"></b><span>təxmini baxış</span></div><div class="kpi"><b id="dPer"></b><span>1 çıxış</span></div></div>
+  <div class="bars" id="bars"></div><div class="hrs"><span>00</span><span>06</span><span>12</span><span>18</span><span>23</span></div>
+ </div>
+</div></section>
+
+<!-- 7 proof -->
+<section class="demo" id="subut"><div class="wrap dh">
+ <div class="txt"><span class="n">07 · Sübut</span><h2>Montajın foto-sübutu paneldə</h2>
+  <p>Montajçı şəkli telefondan çəkir, şəkil tarix, saat və GPS ilə müştərinin panelinə düşür. LED üçün çıxış sayı gündəlik yenilənir.</p>
+  <p class="src">Xaricdə: <b>AdQuick</b>; kənar yoxlama <b>Seedooh</b>, <b>Veridooh</b></p>
+  <span class="tag has">Mirror-da var</span></div>
+ <div class="stage">
+  <div class="photo"><div class="pl"></div><div class="bb">NÜMUNƏ BREND</div><div class="ok">✓ Təsdiqləndi</div>
+   <div class="stamp">01.12.2026 · 09:42<br>40.3794° N, 49.8481° E<br>Nərimanov dairəsi · #NRM-06</div></div>
+  <div class="timeline"><div><b>✓ Çap</b>28 noyabr</div><div><b>✓ Montaj</b>1 dekabr</div><div><b>✓ Foto</b>1 dekabr</div><div style="color:var(--mute)"><b style="color:var(--mute)">Söküntü</b>1 yanvar</div></div>
+ </div>
+</div></section>
+
+<!-- 8 lift -->
+<section class="demo" id="netice"><div class="wrap dh">
+ <div class="txt"><span class="n">08 · Nəticə</span><h2>Reklamdan sonra gələnlər</h2>
+  <p>Reklamın yanından keçən telefonlarla keçməyənlər müqayisə olunur: hansı qrup sonra mağazaya daha çox gəlib. Azərbaycanda mobil data tərəfdaşı olmadan bunun sadə yolu QR kod və saytdakı artımdır.</p>
+  <p class="src">Xaricdə: <b>Clear Channel RADAR</b>, <b>AdQuick</b>, <b>Lamar</b></p>
+  <span class="tag no">Mirror-da yoxdur</span></div>
+ <div class="stage">
+  <div class="ctl"><div class="seg" id="lm"><button aria-pressed="true" data-m="visit">Mağazaya gəliş</button><button aria-pressed="false" data-m="web">Sayta giriş</button><button aria-pressed="false" data-m="qr">QR skan</button></div></div>
+  <div class="lift">
+   <span>Reklamı görən</span><div class="bar"><i id="lA"></i></div><b class="out" id="lAv"></b>
+   <span>Görməyən</span><div class="bar c"><i id="lB"></i></div><b class="out" id="lBv"></b>
+  </div>
+  <p style="margin-top:14px;font-size:15px">Artım: <b class="out" id="lUp" style="color:var(--free);font-size:20px"></b></p>
+  <p class="small" id="lNote" style="margin-top:6px"></p>
+ </div>
+</div></section>
+
+<!-- 9 design rules -->
+<section class="demo" id="dizayn"><div class="wrap dh">
+ <div class="txt"><span class="n">09 · Dizayn</span><h2>Dizayn qaydaları səhifəsi</h2>
+  <p>Sürücü bilborda 2–3 saniyə baxır. Blip yeddi sözdən az, iri şrift və güclü kontrast tövsiyə edir. Mirror-un saytında hər ölçü üçün belə yaxşı və pis nümunə və yüklənən şablon ola bilər.</p>
+  <p class="src">Xaricdə: <b>Blip</b> design guidelines</p>
+  <span class="tag no">Mirror-da yoxdur</span></div>
+ <div class="stage">
+  <div class="dd">
+   <div><div class="bd good"><div><b>SOYUQ ÇAY · 1 ₼</b><div style="font-size:12px;margin-top:4px;color:#fff">Növbəti mağazada</div></div></div><p><span class="g">✓ Yaxşı:</span> 6 söz, iri şrift, tünd fon üstündə parlaq rəng</p></div>
+   <div><div class="bd bad">Yeni təravətli soyuq çay kolleksiyamızı kəşf edin! Endirimlər, hədiyyələr və daha çoxu yalnız sizin üçün. Saytımıza daxil olun www.numune-uzun-unvan.az və ya zəng edin +994 12 000 00 00. Təkliflər məhduddur.</div><p><span class="x">✕ Pis:</span> 30-dan çox söz, zəif kontrast, telefon nömrəsi</p></div>
+  </div>
+  <div class="btns" style="justify-content:flex-start"><span class="btn">Şablon: Bilbord 6×3 (PSD)</span><span class="btn">Şablon: LED 1920×640</span></div>
+ </div>
+</div></section>
+
+<!-- 10 AR -->
+<section class="demo" id="ar"><div class="wrap dh">
+ <div class="txt"><span class="n">10 · Diqqət çəkən format</span><h2>Telefonda AR</h2>
+  <p>Ekranın yanında telefonu qaldıranda binanın üzərində personaj və ya məhsul canlanır. Gündəlik satış aləti deyil, sosial şəbəkədə yayılan böyük kampaniyalar üçündür.</p>
+  <p class="src">Xaricdə: <b>Ocean Outdoor</b> (Ocean Labs)</p>
+  <span class="tag no">Mirror-da yoxdur</span></div>
+ <div class="stage">
+  <div class="ar"><div class="bld" style="left:4%;width:16%;height:40%"></div><div class="bld" style="left:22%;width:12%;height:28%"></div><div class="bld" style="left:68%;width:14%;height:36%"></div><div class="bld" style="left:84%;width:13%;height:24%"></div>
+   <div class="phone"><div class="scr"><div class="char">🦒</div><div class="cap">Ekrana yaxınlaş, hədiyyəni tap</div></div></div></div>
+ </div>
+</div></section>
+
+<!-- screenshots -->
+<section class="demo" id="saytlar"><div class="wrap">
+ <div class="txt" style="margin-bottom:16px"><span class="n">Orijinal saytlar</span><h2>Ekran görüntüləri</h2>
+  <p>15 noyabr 2026-da çəkilib. Şəklə basanda səhifə açılır.</p></div>
+ <div class="shots">
+  <figure><a href="https://www.adquick.com/media/billboard"><img src="sekiller/adquick-bb.jpg" alt="AdQuick bilbord səhifəsi" loading="lazy"></a><figcaption><b>AdQuick</b> · plan, alış və ölçmə bir yerdə; ABŞ-ın 2 000-dən çox şəhəri</figcaption></figure>
+  <figure><a href="https://www.billboardsamerica.com/goaty"><img src="sekiller/bbamerica.jpg" alt="Billboards America Billy köməkçisi" loading="lazy"></a><figcaption><b>Billboards America</b> · "Billy" köməkçisi və axtarış</figcaption></figure>
+  <figure><a href="https://billboardsin.com/how-it-works"><img src="sekiller/bbin.jpg" alt="BillboardsIn necə işləyir" loading="lazy"></a><figcaption><b>BillboardsIn</b> · onlayn alış; Lamar, Clear Channel, Outfront yerləri bir saytda</figcaption></figure>
+  <figure><a href="https://clearchanneloutdoor.com/radarsync"><img src="sekiller/ccradar.jpg" alt="Clear Channel RADARSync" loading="lazy"></a><figcaption><b>Clear Channel</b> · RADARSync, müştəri datası ilə nəticə ölçümü</figcaption></figure>
+  <figure><a href="https://oceanoutdoor.com/labs/ocean-mobile-augmented-reality"><img src="sekiller/ocean-ar.jpg" alt="Ocean Mobile AR" loading="lazy"></a><figcaption><b>Ocean Outdoor</b> · Mobile AR kampaniyaları</figcaption></figure>
+  <figure><a href="https://blog.viooh.com/case-study/uber"><img src="sekiller/viooh-uber.jpg" alt="VIOOH Uber nümunəsi" loading="lazy"></a><figcaption><b>VIOOH · JCDecaux</b> · Uber: havaya görə dəyişən reklam, 33.7 mln göstəriş</figcaption></figure>
+ </div>
+ <p class="small" style="margin-top:12px">Blip, Lamar, Billups və Vistar səhifələri açılan pəncərələr və banner şəkillərinə görə xüsusiyyəti göstərmədi, ona görə daxil edilməyib.</p>
+</div></section>
+
+<footer><div class="wrap">MezMoon · Mirror üçün daxili araşdırma · 15.11.2026 · Maketlərdəki bütün rəqəmlər nümunədir.</div></footer>
+
+<script>
+const fmt=n=>Math.round(n).toLocaleString('az').replace(/,/g,' ');
+const $=id=>document.getElementById(id);
+function seg(id,cb){const el=$(id);el.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;el.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));cb(b.dataset)});}
+
+/* sample sites (fictional numbers) */
+const S=[
+ {id:'28M',name:'28 May, metro çıxışı',x:44,y:56,price:1400,view:41000,type:'LED',size:'6×2 m',free:'1 dekabr',young:.8,biz:.7},
+ {id:'NRM',name:'Nərimanov dairəsi',x:63,y:34,price:900,view:27500,type:'Bilbord',size:'6×3 m',free:'15 dekabr',young:.5,biz:.5},
+ {id:'GNC',name:'Gənclik, Atatürk pr.',x:28,y:30,price:750,view:22000,type:'Bilbord',size:'6×3 m',free:'boşdur',young:.9,biz:.4},
+ {id:'NZM',name:'Nizami küçəsi',x:52,y:72,price:1100,view:30500,type:'LED',size:'4×3 m',free:'boşdur',young:.85,biz:.6},
+ {id:'BUL',name:'Dənizkənarı bulvar',x:74,y:78,price:1250,view:26000,type:'LED',size:'5×3 m',free:'20 dekabr',young:.7,biz:.5},
+ {id:'HEP',name:'Heydər Əliyev pr.',x:88,y:24,price:600,view:34000,type:'Bilbord',size:'12×4 m',free:'boşdur',young:.4,biz:.6},
+ {id:'BKZ',name:'Bakı Ağ Şəhər',x:84,y:58,price:800,view:14000,type:'Bilbord',size:'6×3 m',free:'boşdur',young:.5,biz:.95},
+ {id:'XTI',name:'Xətai metro',x:70,y:50,price:550,view:19000,type:'Bilbord',size:'6×3 m',free:'5 dekabr',young:.55,biz:.45},
+ {id:'YSM',name:'Yasamal, Şərifzadə',x:16,y:58,price:450,view:12500,type:'Bilbord',size:'4×3 m',free:'boşdur',young:.6,biz:.3},
+];
+
+/* 1 map */
+const map=$('map');
+S.forEach(s=>{const p=document.createElement('button');p.className='pin'+(s.type==='LED'?' led':'');p.style.left=s.x+'%';p.style.top=s.y+'%';p.textContent=fmt(s.price)+' ₼';p.dataset.id=s.id;p.title=s.name;map.appendChild(p);
+ p.addEventListener('click',()=>{map.querySelectorAll('.pin').forEach(x=>x.classList.toggle('on',x===p));
+  $('mTip').innerHTML=`<b>${s.name}</b> · ${s.type} ${s.size}<br>Gündə ~${fmt(s.view)} nəfər · Ayda ${fmt(s.price)} ₼ · 1 000 baxış ${(s.price/(s.view*30)*1000).toFixed(2)} ₼ · Boş: ${s.free}`;});});
+$('mBud').addEventListener('input',e=>{const v=+e.target.value;$('mBudO').textContent=fmt(v)+' ₼';map.querySelectorAll('.pin').forEach(p=>{const s=S.find(x=>x.id===p.dataset.id);p.classList.toggle('dim',s.price>v)})});
+
+/* 2 planner */
+let goal='reach';
+function plan(){const b=+$('pBud').value;$('pBudO').textContent=fmt(b)+' ₼';
+ const w=s=>goal==='reach'?1:(goal==='young'?s.young:s.biz);
+ const r=[...S].sort((a,c)=>c.view*w(c)/c.price-a.view*w(a)/a.price);
+ let left=b,pick=[];r.forEach(s=>{if(s.price<=left){pick.push(s);left-=s.price}});
+ $('pList').innerHTML=pick.map(s=>`<div class="row"><span>${s.name}</span><span>${s.type}</span><span>${fmt(s.price)} ₼</span></div>`).join('')||'<div class="row"><span>Bu büdcəyə uyğun yer yoxdur</span></div>';
+ const v=pick.reduce((a,s)=>a+s.view*30,0),c=b-left;
+ $('pN').textContent=pick.length;$('pV').textContent=fmt(v);$('pC').textContent=v?(c/v*1000).toFixed(2)+' ₼':'—';}
+$('pBud').addEventListener('input',plan);seg('pGoal',d=>{goal=d.g;plan()});plan();
+
+/* 3 chat */
+const Q=[
+ {q:'Gənclərə çatmaq üçün 2 000 manata nə tövsiyə edərsən?',a:'Gənclərin çox keçdiyi və 2 000 ₼-a sığan iki yer:<ul><li><b>Nizami küçəsi</b>, LED, ayda 1 100 ₼, gündə ~30 500 nəfər</li><li><b>Gənclik, Atatürk pr.</b>, bilbord, ayda 750 ₼, gündə ~22 000 nəfər</li></ul>Cəmi 1 850 ₼. Təklifi PDF kimi hazırlayım?'},
+ {q:'Dekabrda boş LED ekran var?',a:'Dekabr üçün boş LED: <b>Nizami küçəsi</b> (bütün ay), <b>28 May</b> (1 dekabrdan), <b>Dənizkənarı bulvar</b> (20 dekabrdan). Hansı tarixlər lazımdır?'},
+ {q:'Bilbord ilə LED arasında fərq nədir?',a:'Bilbordda reklam ay boyu tək sizindir və gecə-gündüz görünür. LED-də ekran 6–8 reklam arasında növbə ilə dəyişir, amma saatları seçmək və reklamı istənilən vaxt dəyişmək olur. Qısa kampaniyalar üçün LED, brendin tanınması üçün bilbord daha uyğundur.'},
+];
+const chat=$('chat'),chips=$('chips');
+function bubble(cls,html){const d=document.createElement('div');d.className='msg '+cls;d.innerHTML=html;chat.appendChild(d);}
+bubble('ai','Salam! Mən Mirror köməkçisiyəm. Büdcənizi, rayonu və ya kimə çatmaq istədiyinizi yazın.');
+Q.forEach(x=>{const b=document.createElement('button');b.textContent=x.q;b.onclick=()=>{chat.querySelectorAll('.msg').forEach((m,i)=>{if(i>0)m.remove()});bubble('me',x.q);setTimeout(()=>bubble('ai',x.a),450)};chips.appendChild(b)});
+
+/* 5 LED */
+let W='sun',TM='day';
+const ADS={sun:{big:'40°C? SOYUQ ÇAY',sm:'Yaxın mağazada 1 ₼',bg:'linear-gradient(135deg,#E8962E,#D9482B)'},
+ rain:{big:'YAĞIŞ YAĞIR. TAKSİ 3 DƏQ.',sm:'Tətbiqdə ilk gediş −30%',bg:'linear-gradient(135deg,#17183A,#5C60AB)'},
+ wind:{big:'XƏZRİ ƏSİR. İSTİ QƏHVƏ',sm:'200 m sağda',bg:'linear-gradient(135deg,#5C3B2E,#A06A3B)'}};
+function led(){const a=ADS[W];$('bBig').textContent=TM==='night'&&W==='sun'?'AXŞAM SƏRİNLİYİ? LİMONAD':a.big;$('bSm').textContent=a.sm;$('board').style.background=a.bg;
+ const sky=TM==='night'?'linear-gradient(#141632,#2a2d55 55%,#3a3c52 55%)':(W==='rain'?'linear-gradient(#7d8394,#a9afbd 55%,#55596a 55%)':(W==='wind'?'linear-gradient(#a6b9cf,#d9e1ea 55%,#7b7f8e 55%)':'linear-gradient(#7fb2e6,#cfe3f5 55%,#8a8f9e 55%)'));
+ $('street').style.background=sky;$('rain').style.opacity=W==='rain'?1:0;$('sun').style.opacity=(W==='sun'&&TM==='day')?1:0;
+ const temp={sun:'temp ≥ 30°C',rain:'yağıntı > 0 mm',wind:'külək ≥ 12 m/s'}[W];
+ $('rule').textContent=`ƏGƏR ${temp}${TM==='night'?' VƏ saat ≥ 19:00':''} → variant "${W}${TM==='night'?'-axşam':''}" göstər`;}
+seg('wx',d=>{W=d.w;led()});seg('tm',d=>{TM=d.t;led()});led();
+
+/* 6 daily */
+const TRAF=[2,1,1,1,1,2,4,7,9,8,6,6,7,7,6,6,7,9,10,9,7,5,4,3];
+const HSET={all:[...Array(24).keys()],peak:[7,8,9,17,18,19],eve:[18,19,20,21,22]};
+let H='peak';
+function daily(){const b=+$('dBud').value;$('dBudO').textContent=fmt(b)+' ₼';const hs=HSET[H];
+ const avgT=hs.reduce((a,h)=>a+TRAF[h],0)/hs.length;const per=0.35+avgT*0.05;const plays=Math.floor(b/per);
+ $('dPlays').textContent=fmt(plays);$('dSeen').textContent=fmt(plays*avgT*14);$('dPer').textContent=per.toFixed(2)+' ₼';
+ $('bars').innerHTML=TRAF.map((t,h)=>`<i class="${hs.includes(h)?'':'off'}" style="height:${t*10}%"></i>`).join('');}
+$('dBud').addEventListener('input',daily);seg('dHr',d=>{H=d.h;daily()});daily();
+
+/* 8 lift */
+const LIFT={visit:[4.6,3.1,'Hər 100 nəfərdən mağazaya gələnlər. Mobil data tərəfdaşı lazımdır.'],web:[2.4,1.5,'Hər 100 nəfərdən sayta girənlər. Ölkə və şəhər üzrə sayt statistikası ilə müqayisə.'],qr:[0.9,0,'QR kodu skan edənlər, hər 100 nəfərdən. Müqayisə qrupu yoxdur: sadə, ucuz və bu gün mümkündür.']};
+function lift(m){const [a,b,n]=LIFT[m];const mx=5;$('lA').style.width=a/mx*100+'%';$('lB').style.width=b/mx*100+'%';$('lAv').textContent=a.toFixed(1)+'%';$('lBv').textContent=b?b.toFixed(1)+'%':'—';
+ $('lUp').textContent=b?'+'+Math.round((a/b-1)*100)+'%':'yalnız sayma';$('lNote').textContent=n;}
+seg('lm',d=>lift(d.m));lift('visit');
+</script>
+</body>
+</html>
