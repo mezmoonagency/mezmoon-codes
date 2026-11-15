@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mirror Saytı Nümunəsi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+<style>
+/* Plan: bir saat bütün səhifəni idarə edir. Küçə səhnəsi, xəritə və 3D eyni saatı göstərir.
+   Səhifə soyuq asfalt-ağ, mürəkkəb indiqo; Mirror-un lavanda loqosu brend rəngi, natrium fənər kəhrəbası diqqət rəngi.
+   Bir şrift (Archivo): başlıqlar geniş (wdth 125), mətn normal. Hər şey sola düzülür. */
+:root{
+  --paper:#EEF0F5; --surface:#FFFFFF; --ink:#17183A; --mute:#5B5E7E; --line:#D3D6E2;
+  --brand:#5C60AB; --lav:#A9ADEA; --amber:#E8962E; --hot:#D9482B; --free:#1F8A62;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif; --body:"Archivo","Helvetica Neue",Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.6 var(--body);font-stretch:100%}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;font-stretch:125%}
+h1{font-size:clamp(30px,4.4vw,58px);line-height:1.02;font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(24px,3vw,38px);line-height:1.08;font-weight:750;letter-spacing:-.015em}
+h3{font-size:17px;line-height:1.25;font-weight:700;font-stretch:112%}
+p{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:4px}
+.num{font-variant-numeric:tabular-nums}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+@media (max-width:480px){.wrap{padding:0 16px}}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:22px;height:60px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand b{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:17px;letter-spacing:.04em}
+.nav .l{font-size:14px;font-weight:500;text-decoration:none;color:var(--mute)}
+.nav .l:hover{color:var(--ink)}
+.nav .cta{margin-left:auto;text-decoration:none;font-weight:650;font-size:14px;background:var(--ink);color:var(--paper);padding:8px 16px;border-radius:6px}
+@media (max-width:860px){.nav .l{display:none}}
+
+/* hero */
+.hero{padding:44px 0 0}
+.hero-top{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:40px;align-items:end}
+.demo{font-size:13px;color:var(--mute);margin-bottom:16px}
+.demo i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--amber);margin-right:8px;vertical-align:1px}
+.live{border-bottom:3px solid var(--lav);white-space:nowrap}
+.hero-side p{color:var(--mute);font-size:17px;max-width:44ch}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;text-decoration:none;font-weight:650;font-size:15px;padding:11px 18px;border-radius:6px;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.scene{position:relative;margin-top:34px;height:clamp(320px,46vw,540px);background:#0A0F2C;overflow:hidden}
+.scene canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.clock{background:var(--ink);color:var(--paper)}
+.clock .wrap{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;padding-top:14px;padding-bottom:14px}
+.clock label{font-size:14px;color:#C9CBE6}
+.clock output{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:26px;min-width:4.2ch}
+.rangewrap{position:relative}
+.ticks{display:flex;justify-content:space-between;font-size:11px;color:#9497BF;margin-top:2px;padding:0 2px}
+input[type=range]{width:100%;accent-color:var(--amber);height:26px;margin:0}
+.clock button{background:transparent;border:1.5px solid #5A5D93;color:var(--paper);border-radius:6px;padding:8px 14px;font-size:14px;font-weight:600}
+.clock button:hover{border-color:var(--lav)}
+@media (max-width:860px){.hero-top{grid-template-columns:1fr;gap:18px}.clock .wrap{grid-template-columns:1fr auto}.clock .rangewrap{grid-column:1/-1;grid-row:2}}
+
+/* sections */
+section{padding:84px 0 0}
+.shead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end;margin-bottom:28px}
+.shead p{color:var(--mute);max-width:52ch}
+@media (max-width:860px){.shead{grid-template-columns:1fr;gap:12px}section{padding-top:64px}}
+.note{font-size:13px;color:var(--mute);margin-top:14px;max-width:80ch}
+
+/* map */
+.map-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.mapbox{position:relative;min-height:460px;background:#DDE1EE}
+.mapbox canvas{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair}
+.layers{position:absolute;left:12px;top:12px;display:flex;gap:6px;flex-wrap:wrap;z-index:2}
+.tg{background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:600;color:var(--mute)}
+.tg[aria-pressed="true"]{border-color:var(--ink);color:var(--ink)}
+.side{padding:22px;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:16px}
+.side .kind{font-size:13px;color:var(--brand);font-weight:650}
+.side .where{font-size:14px;color:var(--mute)}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:650;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.pill::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.pill.free{color:var(--free);background:color-mix(in srgb,var(--free) 12%,transparent)}
+.pill.busy{color:var(--mute);background:color-mix(in srgb,var(--mute) 12%,transparent)}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:14px 12px}
+.kv b{display:block;font-family:var(--display);font-stretch:112%;font-size:22px;font-weight:750;font-variant-numeric:tabular-nums;line-height:1.1}
+.kv span{font-size:12.5px;color:var(--mute)}
+.bars{display:flex;align-items:flex-end;gap:2px;height:80px}
+.bars i{flex:1;background:var(--lav);border-radius:2px 2px 0 0;min-height:2px;transition:height .35s ease}
+.bars i.now{background:var(--amber)}
+.bx{display:flex;justify-content:space-between;font-size:11px;color:var(--mute);margin-top:4px}
+.linkbtn{align-self:flex-start;background:none;border:0;padding:0;font-weight:650;color:var(--brand);text-decoration:underline;text-underline-offset:3px}
+@media (max-width:860px){.map-grid{grid-template-columns:1fr}.mapbox{min-height:360px}.side{border-left:0;border-top:1px solid var(--line)}}
+
+/* catalog */
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.rows{border-top:2px solid var(--ink)}
+.row{display:grid;grid-template-columns:104px minmax(0,1.4fr) minmax(0,.8fr) 150px 110px 110px;gap:18px;align-items:center;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:12px 4px}
+.row:hover{background:var(--surface)}
+.row svg.th{width:104px;height:52px}
+.row .nm b{display:block;font-weight:700;font-size:16px}
+.row .nm span,.row .ty span{font-size:13px;color:var(--mute)}
+.row .ty b{display:block;font-weight:600;font-size:14px}
+.row .dv b{font-family:var(--display);font-stretch:112%;font-weight:750;font-size:18px;font-variant-numeric:tabular-nums}
+.row .dv span{display:block;font-size:12px;color:var(--mute)}
+.row svg.mini{width:150px;height:34px}
+@media (max-width:860px){.row{grid-template-columns:80px 1fr auto;gap:6px 12px}.row svg.th{width:80px;height:40px;grid-row:span 2}.row .ty{grid-column:2}.row svg.mini,.row .dv{display:none}.row .st{grid-column:3;grid-row:1}}
+
+/* 3D */
+.three-grid{display:grid;grid-template-columns:250px minmax(0,1fr);gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface)}
+.types{display:flex;flex-direction:column;border-right:1px solid var(--line)}
+.types button{text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:14px 18px;position:relative}
+.types button b{display:block;font-size:15px;font-weight:700}
+.types button span{font-size:13px;color:var(--mute)}
+.types button[aria-pressed="true"]{background:var(--paper)}
+.types button[aria-pressed="true"]::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--amber)}
+.stage{position:relative;min-height:440px}
+#three{position:absolute;inset:0}
+.stage .info{position:absolute;left:16px;bottom:16px;display:flex;gap:8px;flex-wrap:wrap;pointer-events:none}
+.stage .info div{background:color-mix(in srgb,var(--surface) 90%,transparent);border-radius:6px;padding:8px 12px;font-size:13px}
+.stage .info b{display:block;font-size:15px}
+.fb3d{position:absolute;inset:0;display:none;place-items:center;text-align:center;padding:24px;color:var(--mute)}
+@media (max-width:860px){.three-grid{grid-template-columns:1fr}.types{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line)}.types button{border-bottom:0;border-right:1px solid var(--line);min-width:150px}.types button[aria-pressed="true"]::before{top:auto;right:0;height:4px;width:auto}.stage{min-height:340px}}
+
+/* portal */
+.portal{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.ptop{display:flex;align-items:center;gap:14px;padding:10px 16px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.ptabs{display:flex;gap:2px}
+.ptabs button{background:none;border:0;border-radius:6px;padding:7px 12px;font-size:14px;font-weight:600;color:var(--mute)}
+.ptabs button[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.ptop .who{margin-left:auto;font-size:13px;color:var(--mute)}
+.pbody{padding:20px;display:flex;flex-direction:column;gap:18px;min-height:320px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:8px}
+.tile{padding:14px 16px;border-right:1px solid var(--line)}
+.tile:last-child{border-right:0}
+.tile b{display:block;font-family:var(--display);font-stretch:112%;font-size:26px;font-weight:750;font-variant-numeric:tabular-nums}
+.tile span{font-size:13px;color:var(--mute)}
+.tile em{font-style:normal;font-size:13px;color:var(--free);font-weight:600}
+.prow{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:18px}
+.box{border:1px solid var(--line);border-radius:8px;padding:16px}
+.box h3{margin-bottom:10px}
+.alert{border-left:4px solid var(--lav);padding:8px 12px;font-size:14px;background:var(--paper);border-radius:0 6px 6px 0;margin-top:8px}
+.alert.warn{border-color:var(--amber)}
+.alert.ok{border-color:var(--free)}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:600px}
+th{text-align:left;font-size:13px;color:var(--mute);font-weight:600;padding:10px 12px;border-bottom:1.5px solid var(--ink)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;font-variant-numeric:tabular-nums}
+.tw{overflow-x:auto}
+.proofs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.proof{position:relative;aspect-ratio:4/3;border-radius:6px;overflow:hidden}
+.proof span{position:absolute;left:8px;bottom:8px;font-size:12px;background:rgba(255,255,255,.88);padding:2px 7px;border-radius:4px}
+@media (max-width:860px){.tiles{grid-template-columns:1fr 1fr}.tile:nth-child(2){border-right:0}.tile:nth-child(-n+2){border-bottom:1px solid var(--line)}.prow{grid-template-columns:1fr}.proofs{grid-template-columns:1fr 1fr}.ptop .who{margin-left:0;width:100%}}
+
+/* features */
+.feats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 40px;border-top:2px solid var(--ink)}
+.feat{padding:20px 0;border-bottom:1px solid var(--line)}
+.feat h3{margin-bottom:6px}
+.feat p{color:var(--mute);font-size:15px}
+@media (max-width:860px){.feats{grid-template-columns:1fr}}
+.srcs td:first-child{font-weight:650;white-space:nowrap}
+
+/* team */
+.team{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.person{display:flex;gap:14px;align-items:center}
+.avatar{flex:none;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-stretch:125%;font-weight:800;font-size:20px;color:var(--surface);background:var(--brand)}
+.person span{display:block;font-size:13px;color:var(--mute)}
+@media (max-width:860px){.team{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.team{grid-template-columns:1fr}}
+
+/* plan */
+.stages{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:2px solid var(--ink);counter-reset:st}
+.stagecol{padding:20px 28px 20px 0;position:relative}
+.stagecol + .stagecol{padding-left:28px;border-left:1px solid var(--line)}
+.stagecol .n{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:44px;line-height:1;color:var(--lav)}
+.stagecol h3{margin:8px 0}
+.stagecol ul,.need ul{margin:0;padding-left:18px;color:var(--mute);font-size:15px;display:flex;flex-direction:column;gap:4px}
+.need{margin-top:28px;background:var(--ink);color:var(--paper);border-radius:10px;padding:24px}
+.need ul{color:#C9CBE6}
+.need h3{margin-bottom:10px}
+@media (max-width:860px){.stages{grid-template-columns:1fr}.stagecol,.stagecol + .stagecol{padding:18px 0;border-left:0;border-bottom:1px solid var(--line)}}
+footer{padding:70px 0 50px;font-size:13px;color:var(--mute)}
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Əsas menyu">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Mirror Outdoor Advertising">
+      <svg width="28" height="28" viewBox="0 0 60 60" aria-hidden="true"><polygon points="8,26 20,38 20,56 8,44" fill="#A9ADEA"/><polygon points="24,16 36,28 36,56 24,44" fill="#8E92E0"/><polygon points="40,4 52,16 52,56 40,44" fill="#5C60AB"/></svg>
+      <b>MIRROR</b>
+    </a>
+    <a class="l" href="#xerite">Xəritə</a>
+    <a class="l" href="#katalog">Konstruksiyalar</a>
+    <a class="l" href="#texnika">3D baxış</a>
+    <a class="l" href="#panel">Müştəri paneli</a>
+    <a class="cta" href="#plan">Təqdimat planı</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-top">
+    <div>
+      <p class="demo"><i></i>Nümunə dizayn. Rəqəmlər illüstrativdir.</p>
+      <h1>Saat <span class="live num" id="h-time">18:00</span>. Heydər Əliyev prospektindəki LED ekranın qarşısından <span class="live num" id="h-count">0</span> nəfər keçir.</h1>
+    </div>
+    <div class="hero-side">
+      <p>Yeni Mirror saytında müştəri hər konstruksiyanın qarşısındakı axını saat-saat görür, yeri 3D-də yoxlayır və sifarişi elə buradan verir.</p>
+      <div class="btns"><a class="btn" href="#xerite">Xəritədə yer seç</a><a class="btn ghost" href="#panel">Müştəri panelinə bax</a></div>
+    </div>
+  </div>
+  <div class="scene" id="scene"><canvas id="street" role="img" aria-label="Bakı küçəsi: Alov Qüllələri, yol və LED ekran. Seçilən saata görə gecə və ya gündüz görünür"></canvas></div>
+  <div class="clock">
+    <div class="wrap">
+      <div><label for="hour">Saatı dəyiş</label><br><output id="hourOut" for="hour" class="num">18:00</output></div>
+      <div class="rangewrap"><input id="hour" type="range" min="0" max="23.75" step="0.25" value="18"><div class="ticks num" aria-hidden="true"><span>00</span><span>06</span><span>12</span><span>18</span><span>23</span></div></div>
+      <button id="playDay" type="button">Bir günü oynat</button>
+    </div>
+  </div>
+</header>
+
+<section id="xerite">
+  <div class="wrap">
+    <div class="shead">
+      <h2>Hansı konstruksiyanın qarşısında nə qədər insan var</h2>
+      <p>Xəritə yuxarıdakı saatı izləyir. Konstruksiyaya basın, onun 24 saatlıq qrafiki sağda açılsın.</p>
+    </div>
+    <div class="map-grid">
+      <div class="mapbox">
+        <canvas id="map" role="img" aria-label="Bakı sıxlıq xəritəsi, sxematik"></canvas>
+        <div class="layers" role="group" aria-label="Xəritə qatları">
+          <button class="tg" id="ly-heat" aria-pressed="true">Sıxlıq</button>
+          <button class="tg" id="ly-pins" aria-pressed="true">Konstruksiyalar</button>
+          <button class="tg" id="ly-free" aria-pressed="false">Yalnız boşlar</button>
+        </div>
+      </div>
+      <aside class="side" id="side" aria-live="polite"></aside>
+    </div>
+    <p class="note">Xəritə sxematikdir. Real saytda Google Maps və aşağıdakı data mənbələrindən biri işlədiləcək.</p>
+  </div>
+</section>
+
+<section id="katalog">
+  <div class="wrap">
+    <div class="shead">
+      <h2>Filtrlə, müqayisə et, sifariş ver</h2>
+      <p>Siyahı gündəlik keçidə görə sıralanıb. Sətirə basanda konstruksiya xəritədə seçilir.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Növə görə filtr" id="tfilters"></div>
+    <div class="rows" id="rows"></div>
+    <button class="linkbtn" id="more" style="margin-top:14px">Hamısını göstər</button>
+  </div>
+</section>
+
+<section id="texnika">
+  <div class="wrap">
+    <div class="shead">
+      <h2>Hər konstruksiyaya 3D baxış</h2>
+      <p>Səhnəni siçanla və ya barmaqla fırladın, yaxınlaşdırın. Fon yuxarıda seçdiyiniz saatın səmasıdır, LED ekranın gecə necə göründüyünü də yoxlaya bilərsiniz.</p>
+    </div>
+    <div class="three-grid">
+      <div class="types" role="group" aria-label="Konstruksiya növü" id="types3d"></div>
+      <div class="stage">
+        <div id="three"></div>
+        <div class="fb3d" id="fb3d">3D görüntü bu brauzerdə açılmadı. Real saytda hər konstruksiyanın fotoları da olacaq.</div>
+        <div class="info"><div><b id="t3-name">Bilbord</b><span id="t3-desc">Klassik iki tərəfli</span></div><div><span>Ölçü</span><b id="t3-size" class="num">3 × 6 m</b></div></div>
+      </div>
+    </div>
+    <p class="note">3D modellər sadələşdirilib, ölçülər illüstrativdir. Real saytda Mirror-un öz texnikasının ölçüsü və fotosu ilə hazırlanacaq.</p>
+  </div>
+</section>
+
+<section id="panel">
+  <div class="wrap">
+    <div class="shead">
+      <h2>Müştəri kampaniyasını hər gün özü izləyir</h2>
+      <p>Hər müştərinin öz girişi olur: hansı konstruksiyada reklamı var, qarşısından neçə nəfər keçib, foto-hesabat və bitmə tarixi.</p>
+    </div>
+    <div class="portal">
+      <div class="ptop">
+        <div class="ptabs" role="tablist" aria-label="Panel bölmələri">
+          <button role="tab" id="pt0" aria-selected="true" data-pt="0">İcmal</button>
+          <button role="tab" id="pt1" aria-selected="false" data-pt="1">Konstruksiyalar</button>
+          <button role="tab" id="pt2" aria-selected="false" data-pt="2">Foto-hesabat</button>
+        </div>
+        <span class="who">Nümunə müştəri «Kafe Brend», noyabr kampaniyası</span>
+      </div>
+      <div class="pbody" id="pbody" role="tabpanel"></div>
+    </div>
+  </div>
+</section>
+
+<section id="xususiyyetler">
+  <div class="wrap">
+    <div class="shead"><h2>Rəqib saytlarda olmayanlar</h2><p>Hər biri müştərinin "bu yer nəyə dəyər?" sualına cavab verir.</p></div>
+    <div class="feats">
+      <div class="feat"><h3>Sıxlığa görə qiymət</h3><p>Qiymət 1000 baxışa düşən məbləğlə müqayisə olunur. Müştəri nəyə pul verdiyini görür.</p></div>
+      <div class="feat"><h3>Büdcəyə görə plan</h3><p>Müştəri büdcəni və rayonu yazır, sistem ən çox baxış verən konstruksiya dəstini təklif edir.</p></div>
+      <div class="feat"><h3>Gündəlik foto sübutu</h3><p>Montaj və yoxlama fotosu tarix və GPS ilə panelə düşür.</p></div>
+      <div class="feat"><h3>LED üçün saat paketi</h3><p>Reklamı yalnız pik saatlarda göstərmək olar, məsələn 18:00–21:00 paketi.</p></div>
+      <div class="feat"><h3>Bitmə və boşalma bildirişi</h3><p>Kampaniyanın bitməsinə 7 gün qalanda və istədiyi yer boşalanda WhatsApp və ya e-poçt gedir.</p></div>
+      <div class="feat"><h3>Reklamı yerində gör</h3><p>Müştəri dizaynını yükləyir, sistem onu 3D konstruksiyanın üzərində göstərir.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="data">
+  <div class="wrap">
+    <div class="shead"><h2>Sıxlıq rəqəmi haradan gələcək</h2><p>Dörd yol var. Ucuzdan başlayıb ən çox satılan yerlərdə ölçməyə keçmək olar.</p></div>
+    <div class="tw"><table class="srcs">
+      <thead><tr><th>Mənbə</th><th>Nə verir</th><th>Dəqiqlik</th><th>Xərc və çətinlik</th></tr></thead>
+      <tbody>
+        <tr><td>Konstruksiyada kamera sensoru</td><td>Qarşıdan keçən maşın və piyadanın sayı, saat-saat</td><td>Ən yüksək</td><td>Avadanlıq və internet lazımdır. LED ekranlardan başlamaq məntiqlidir. Şəxsi məlumat saxlanmır</td></tr>
+        <tr><td>Mobil operator datası</td><td>Ərazidə anonim, toplu insan axını</td><td>Yüksək, böyük ərazi üzrə</td><td>Operatorla müqavilə lazımdır. Azərbaycanda bu xidmətin olub-olmadığı yoxlanmalıdır</td></tr>
+        <tr><td>Nəqliyyat sayğacları</td><td>Yollarda maşın axını</td><td>Orta, yalnız maşın</td><td>Dövlət qurumlarından əldə edilə bilərsə, ucuzdur</td></tr>
+        <tr><td>Əl ilə sayım və model</td><td>Bir neçə saatlıq sayım, qalan saatlar təxmin</td><td>Aşağı-orta</td><td>Ən ucuz başlanğıc. Təxmini olduğu saytda yazılmalıdır</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Saytda hər rəqəmin yanında "ölçülüb" və ya "təxmini" yazılacaq.</p>
+  </div>
+</section>
+
+<section id="komanda">
+  <div class="wrap">
+    <div class="shead"><h2>Mirror komandası</h2><p>Yer tutucudur. Adları, fotoları və əlaqələri Mirror verəcək.</p></div>
+    <div class="team">
+      <div class="person"><div class="avatar">R</div><div><h3>Rəhbər</h3><span>Ad və foto gələcək</span></div></div>
+      <div class="person"><div class="avatar">S</div><div><h3>Satış meneceri</h3><span>Ad və foto gələcək</span></div></div>
+      <div class="person"><div class="avatar">D</div><div><h3>Dizayner</h3><span>Ad və foto gələcək</span></div></div>
+      <div class="person"><div class="avatar">T</div><div><h3>Texniki komanda</h3><span>Montaj və xidmət</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="wrap">
+    <div class="shead"><h2>Necə quracağıq</h2><p>Üç mərhələ. Hər biri ayrıca işə düşür, növbəti mərhələni gözləmir.</p></div>
+    <div class="stages">
+      <div class="stagecol"><div class="n">1</div><h3>Yeni sayt</h3><ul><li>Mobil uyğun yeni dizayn</li><li>Xəritə və filtrli katalog</li><li>Konstruksiya səhifəsi: foto, ölçü, 3D</li><li>Sorğu və WhatsApp sifarişi</li><li>Komanda və referanslar</li></ul></div>
+      <div class="stagecol"><div class="n">2</div><h3>Müştəri paneli</h3><ul><li>Şəxsi giriş</li><li>Aktiv kampaniyalar və tarixlər</li><li>Foto-hesabat</li><li>Bitmə bildirişləri</li><li>PDF hesabat</li></ul></div>
+      <div class="stagecol"><div class="n">3</div><h3>Sıxlıq datası</h3><ul><li>Əl ilə sayım modeli</li><li>LED ekranlara sensor</li><li>Sıxlığa görə qiymət</li><li>Büdcəyə görə plan</li><li>"Ölçülüb" və "təxmini" işarəsi</li></ul></div>
+    </div>
+    <div class="need">
+      <h3>Mirror-dan lazım olanlar</h3>
+      <ul>
+        <li>Bütün konstruksiyaların siyahısı: ünvan, koordinat, növ, ölçü, foto</li>
+        <li>Komanda üzvləri: ad, vəzifə, foto</li>
+        <li>Qiymət siyasəti: açıq göstərilsin, yoxsa sorğu ilə</li>
+        <li>Mövcud saytın admin panelinə və bazasına giriş, köçürmə üçün</li>
+        <li>Sıxlıq datası üçün başlanğıc yolun seçimi</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">MezMoon tərəfindən Mirror Outdoor Advertising üçün hazırlanmış nümunə dizayn. Konstruksiyalar, sıxlıq rəqəmləri, ölçülər və müştəri məlumatları illüstrativdir. Əlaqə, mövcud saytdan: +994 50 263 55 33, commerce@mirror.az</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+"use strict";
+const REDUCE=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $=id=>document.getElementById(id);
+let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return (seed-1)/2147483646;};
+const fmt=n=>Math.round(n).toLocaleString("en-US").replace(/,/g," ");
+const pad=n=>String(n).padStart(2,"0");
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const lerp=(a,b,t)=>a+(b-a)*t;
+const hex=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
+const mix=(a,b,t)=>{const A=hex(a),B=hex(b);return "rgb("+A.map((v,i)=>Math.round(lerp(v,B[i],t))).join(",")+")";};
+const traffic=h=>Math.exp(-((h-8.5)**2)/6)*.8+Math.exp(-((h-18.5)**2)/7)+.08+(h>9&&h<17?.35:0);
+
+/* ---------- nümunə data ---------- */
+const TYPES=[
+  {k:"bilbord",n:"Bilbord",d:"Klassik iki tərəfli",size:"3 × 6 m"},
+  {k:"meqa",n:"Meqabord",d:"Magistral yollar üçün böyük format",size:"5 × 15 m"},
+  {k:"led",n:"LED ekran",d:"Video, rotasiya, saat paketi",size:"4 × 8 m"},
+  {k:"prizma",n:"Prizma",d:"Fırlanan lövhələrdə 3 reklam",size:"3 × 6 m"},
+  {k:"lightbox",n:"Laytboks",d:"İşıqlı, piyada zonası",size:"1.2 × 1.8 m"},
+  {k:"roller",n:"Roller",d:"Növbə ilə dəyişən posterlər",size:"1.2 × 1.8 m"}];
+const SPOTS=[
+  ["Heydər Əliyev pr.","Nərimanov",.66,.36,"led"],["Neftçilər pr., Bulvar","Səbail",.47,.72,"meqa"],["28 May","Nəsimi",.5,.56,"lightbox"],
+  ["Nizami küç.","Nəsimi",.45,.6,"roller"],["Azadlıq pr.","Binəqədi",.36,.42,"bilbord"],["Tbilisi pr.","Yasamal",.33,.6,"bilbord"],
+  ["Babək pr.","Xətai",.66,.58,"prizma"],["Ziya Bünyadov pr.","Nərimanov",.72,.3,"meqa"],["H. Cavid pr.","Yasamal",.31,.68,"prizma"],
+  ["Koroğlu m.","Nərimanov",.62,.44,"led"],["Gənclik m.","Nərimanov",.56,.47,"lightbox"],["Elmlər Akademiyası","Yasamal",.38,.64,"roller"],
+  ["Xətai m.","Xətai",.6,.62,"bilbord"],["Qara Qarayev pr.","Nizami",.8,.5,"meqa"],["İnşaatçılar m.","Yasamal",.28,.55,"bilbord"],
+  ["Badamdar şossesi","Səbail",.24,.78,"bilbord"],["Ağ şəhər","Xətai",.7,.68,"led"],["Mərdəkan yolu","Xəzər",.9,.24,"meqa"],
+  ["20 Yanvar","Binəqədi",.3,.47,"prizma"],["Sahil m.","Səbail",.5,.66,"lightbox"],["Nəriman Nərimanov m.","Nərimanov",.6,.4,"roller"],
+  ["Hava limanı yolu","Xəzər",.86,.34,"meqa"],["Ağ Şəhər bulvarı","Xətai",.66,.74,"lightbox"],["Moskva pr.","Nərimanov",.58,.5,"bilbord"]];
+const CONS=SPOTS.map((s,i)=>{const base=.35+rnd()*.65;const type=TYPES.find(t=>t.k===s[4]);
+  const hours=[...Array(24)].map((_,h)=>Math.round(base*traffic(h)*4200*(.85+rnd()*.3)));
+  return {id:i+1,name:s[0],district:s[1],x:s[2],y:s[3],type,free:rnd()>.55,hours,daily:hours.reduce((a,b)=>a+b,0)};});
+CONS[0].hours=CONS[0].hours.map(v=>Math.round(v*1.6));CONS[0].daily=CONS[0].hours.reduce((a,b)=>a+b,0);
+const at=(c,h)=>{const a=Math.floor(h)%24,b=(a+1)%24;return lerp(c.hours[a],c.hours[b],h-Math.floor(h));};
+
+/* ---------- bir saat: bütün səhifə ---------- */
+const S={h:18,heat:true,pins:true,onlyFree:false,sel:CONS[0]};
+const listeners=[];
+function setHour(h,fromInput){S.h=((h%24)+24)%24;const t=pad(Math.floor(S.h))+":"+pad(Math.round((S.h%1)*60)%60);
+  $("h-time").textContent=t;$("hourOut").textContent=t;if(!fromInput)$("hour").value=S.h;
+  $("h-count").textContent=fmt(Math.round(at(CONS[0],S.h)/10)*10);listeners.forEach(f=>f());}
+$("hour").addEventListener("input",e=>{stopPlay();setHour(+e.target.value,true);});
+
+/* ---------- küçə səhnəsi ---------- */
+const sc=$("street"),g=sc.getContext("2d");let W=0,H=0;
+const SKY=[[0,"#070B26","#1A1C47"],[5,"#121641","#3B3468"],[6.5,"#5A64B8","#F0A982"],[8.5,"#79A9E6","#D6E6F6"],[13,"#5C99E3","#C4DCF5"],[17,"#7895D6","#F2C59A"],[19,"#3A3C86","#E2785A"],[20.5,"#191B55","#4F4282"],[24,"#070B26","#1A1C47"]];
+function sky(h){for(let i=0;i<SKY.length-1;i++){const a=SKY[i],b=SKY[i+1];if(h>=a[0]&&h<=b[0]){const t=(h-a[0])/(b[0]-a[0]);return [mix(a[1],b[1],t),mix(a[2],b[2],t)];}}return [SKY[0][1],SKY[0][2]];}
+const night=h=>h<5.5||h>=20.5?1:h<7.5?(7.5-h)/2:h>18.5?(h-18.5)/2:0;
+let BLD=[],STARS=[],WIN=[];
+function buildCity(){seed=42;BLD=[];let x=-.02;while(x<1.02){const w=.03+rnd()*.05,hh=.1+rnd()*.17;BLD.push({x,w,h:hh});x+=w+.004;}
+  STARS=[...Array(70)].map(()=>[rnd(),rnd()*.5,rnd()]);
+  WIN=BLD.map(b=>{const cols=Math.max(2,Math.round(b.w*90)),rows=Math.max(3,Math.round(b.h*40));return [...Array(cols*rows)].map(()=>rnd());});}
+buildCity();
+function fitScene(){const r=sc.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;sc.width=W*d;sc.height=H*d;g.setTransform(d,0,0,d,0,0);}
+/* LED reklamları */
+const ADS=[["#5C60AB","#FFFFFF","Sizin reklam burada"],["#E8962E","#17183A","18:00–21:00 LED paketi"],["#EEF0F5","#5C60AB","mirror.az"]];
+let adCv=[];
+function makeAds(){adCv=ADS.map(a=>{const c=document.createElement("canvas");c.width=640;c.height=320;const x=c.getContext("2d");x.fillStyle=a[0];x.fillRect(0,0,640,320);
+  x.fillStyle=a[1];x.textBaseline="middle";x.font='800 '+(a[2].length>14?52:84)+'px Archivo, Arial, sans-serif';
+  const words=a[2].split(" ");const lines=a[2].length>14?[words.slice(0,Math.ceil(words.length/2)).join(" "),words.slice(Math.ceil(words.length/2)).join(" ")]:[a[2]];
+  lines.forEach((l,i)=>x.fillText(l,40,160+(i-(lines.length-1)/2)*64));return c;});}
+makeAds();if(document.fonts)document.fonts.ready.then(makeAds);
+let cars=[],peds=[],tick=0,adT=0;
+function seedCars(){cars=[];peds=[];const n=Math.round(traffic(S.h)*9);for(let i=0;i<n;i++)cars.push(newCar(rnd()));for(let i=0;i<n*2;i++)peds.push(newPed(rnd()));}
+const CARCOL=["#D9DCE8","#2B2E4A","#7A1F2B","#3E6A9A","#B9B2A4","#1C1C1C","#F2F2F2"];
+function newCar(px){const lane=rnd()<.5?0:1;return {lane,x:px!=null?px:(lane?1.08:-.08),v:(.0016+rnd()*.0012)*(lane?-1:1),c:CARCOL[Math.floor(rnd()*CARCOL.length)],l:.034+rnd()*.016};}
+function newPed(px){return {x:px!=null?px:(rnd()<.5?-.01:1.01),v:(.00018+rnd()*.0002)*(rnd()<.5?-1:1),y:rnd()};}
+function flame(x0,x1,base,top,lean){g.beginPath();g.moveTo(x0,base);g.bezierCurveTo(x0-(x1-x0)*.25,lerp(base,top,.55),x0+(x1-x0)*(.2+lean),lerp(base,top,.85),x0+(x1-x0)*(.55+lean),top);
+  g.bezierCurveTo(x1+(x1-x0)*.05,lerp(base,top,.7),x1+(x1-x0)*.15,lerp(base,top,.35),x1,base);g.closePath();}
+function drawScene(){
+  const h=S.h,n=night(h),[top,bot]=sky(h),hz=H*.62,rd0=H*.71,rd1=H*.9;
+  let gr=g.createLinearGradient(0,0,0,hz);gr.addColorStop(0,top);gr.addColorStop(1,bot);g.fillStyle=gr;g.fillRect(0,0,W,hz+2);
+  if(n>0){g.fillStyle="#fff";STARS.forEach(s=>{g.globalAlpha=n*(.3+.6*s[2])*(.75+.25*Math.sin(tick*.03+s[0]*40));g.fillRect(s[0]*W,s[1]*hz,1.4,1.4);});g.globalAlpha=1;}
+  // günəş / ay
+  const sp=(h-6)/12;if(sp>0&&sp<1){const sx=W*(.08+.84*sp),sy=hz-Math.sin(sp*Math.PI)*hz*.78;const sg=g.createRadialGradient(sx,sy,0,sx,sy,H*.16);sg.addColorStop(0,"rgba(255,236,190,.95)");sg.addColorStop(.18,"rgba(255,226,170,.75)");sg.addColorStop(1,"rgba(255,220,160,0)");g.fillStyle=sg;g.beginPath();g.arc(sx,sy,H*.16,0,7);g.fill();}
+  else{const mp=((h+6)%24)/12;const mx=W*(.1+.8*mp),my=hz-Math.sin(clamp(mp,0,1)*Math.PI)*hz*.7;g.fillStyle="rgba(240,240,255,"+(.85*n)+")";g.beginPath();g.arc(mx,my,H*.03,0,7);g.fill();g.fillStyle=top;g.beginPath();g.arc(mx+H*.012,my-H*.008,H*.026,0,7);g.fill();}
+  // təpə və Alov Qüllələri
+  const city=mix("#4C5785","#0E1030",n);g.fillStyle=mix("#5E6996","#141638",n);g.beginPath();g.moveTo(0,hz);g.bezierCurveTo(W*.08,hz-H*.12,W*.3,hz-H*.13,W*.42,hz);g.closePath();g.fill();
+  const fl=[[.16,.205,.5,.02],[.215,.26,.42,-.05],[.27,.31,.46,.04]];
+  fl.forEach((f,i)=>{const base=hz-H*.08,topY=H*(.62-f[2]);flame(W*f[0],W*f[1],base,topY,f[3]);
+    if(n>.05){const fg=g.createLinearGradient(0,topY,0,base);const ph=(tick*.012+i*.7)%1;fg.addColorStop(0,mix("#FFB347","#FFE29A",ph));fg.addColorStop(.5,mix("#F0642B","#FF8A3D",1-ph));fg.addColorStop(1,"#B3261E");
+      g.fillStyle=mix("#8FA3C8","#0E1030",n);g.fill();g.globalAlpha=n;g.fillStyle=fg;g.fill();g.globalAlpha=1;}
+    else{const dg=g.createLinearGradient(W*f[0],0,W*f[1],0);dg.addColorStop(0,"#9DB2D6");dg.addColorStop(1,"#61759F");g.fillStyle=dg;g.fill();}});
+  // şəhər
+  BLD.forEach((b,i)=>{const bx=b.x*W,bw=b.w*W,bh=b.h*H,by=hz-bh;if(b.x>.12&&b.x<.33)return;g.fillStyle=city;g.fillRect(bx,by,bw,bh+2);
+    if(n>.05){const cols=Math.max(2,Math.round(b.w*90)),rows=Math.max(3,Math.round(b.h*40)),cw=bw/cols,rh=bh/rows;g.fillStyle="#FFD58A";
+      WIN[i].forEach((r,k)=>{if(r<n*.45){g.globalAlpha=.55+.45*r;g.fillRect(bx+(k%cols)*cw+cw*.25,by+Math.floor(k/cols)*rh+rh*.3,cw*.5,rh*.4);}});g.globalAlpha=1;}});
+  // səki arxası, yol, səki
+  g.fillStyle=mix("#A7ABBD","#23253F",n);g.fillRect(0,hz,W,rd0-hz);
+  g.fillStyle=mix("#575B70","#191A2C",n);g.fillRect(0,rd0,W,rd1-rd0);
+  g.fillStyle=mix("#F4F4F4","#6A6C84",n);const dl=W*.04;for(let x=-(tick*1.2%(dl*2));x<W;x+=dl*2)g.fillRect(x,(rd0+rd1)/2-1.5,dl,3);
+  g.fillStyle=mix("#B9BCCB","#2A2C45",n);g.fillRect(0,rd1,W,H-rd1);
+  // fənərlər
+  for(let i=0;i<8;i++){const lx=W*(.06+i*.13),ly=rd0-H*.17;g.fillStyle=mix("#41445E","#0B0C1C",n);g.fillRect(lx-1.5,ly,3,rd0-ly);g.fillRect(lx-1.5,ly,14,3);
+    if(n>0){const lg=g.createRadialGradient(lx+12,ly+4,0,lx+12,ly+4,H*.22);lg.addColorStop(0,"rgba(255,190,100,"+(.55*n)+")");lg.addColorStop(1,"rgba(255,170,80,0)");g.fillStyle=lg;g.beginPath();g.arc(lx+12,ly+4,H*.22,0,7);g.fill();}}
+  // LED ekran
+  const bx=W*.6,bw=Math.min(W*.3,H*.62),bh=bw*.5,by=hz-H*.36,px=bx+bw/2;
+  g.fillStyle=mix("#3D4060","#090A18",n);g.fillRect(px-5,by+bh,10,rd0-by-bh);g.fillRect(px-bw*.3,by+bh,bw*.6,5);
+  if(n>0){const lg=g.createRadialGradient(px,by+bh/2,0,px,by+bh/2,bw*.9);lg.addColorStop(0,"rgba(169,173,234,"+(.35*n)+")");lg.addColorStop(1,"rgba(169,173,234,0)");g.fillStyle=lg;g.fillRect(px-bw,by-bw*.5,bw*2,bh+bw);}
+  g.fillStyle="#0C0D1E";g.fillRect(bx-6,by-6,bw+12,bh+12);
+  const cyc=adT/360,i0=Math.floor(cyc)%3,i1=(i0+1)%3,f=clamp((cyc%1-.82)/.18,0,1),e=f<.5?2*f*f:1-((-2*f+2)**2)/2;
+  g.save();g.beginPath();g.rect(bx,by,bw,bh);g.clip();g.globalAlpha=.78+.22*n;
+  g.drawImage(adCv[i0],bx,by-e*bh,bw,bh);g.drawImage(adCv[i1],bx,by+bh-e*bh,bw,bh);
+  g.globalAlpha=.14;g.fillStyle="#000";for(let y=by;y<by+bh;y+=3)g.fillRect(bx,y,bw,1);g.restore();g.globalAlpha=1;
+  // piyadalar
+  peds.forEach(p=>{const x=p.x*W,y=rd1+(H-rd1)*(.25+p.y*.5);g.fillStyle=mix("#2C2F48","#9496B8",n*.6);g.fillRect(x,y-H*.035,3,H*.035);g.beginPath();g.arc(x+1.5,y-H*.04,2.2,0,7);g.fill();});
+  // maşınlar
+  cars.forEach(c=>{const y=c.lane?rd0+(rd1-rd0)*.73:rd0+(rd1-rd0)*.27,cl=c.l*W,ch=H*.03,x=c.x*W,dir=c.v>0?1:-1;
+    if(n>.1){const hx=dir>0?x+cl:x;const hg=g.createLinearGradient(hx,0,hx+dir*W*.12,0);hg.addColorStop(0,"rgba(255,240,200,"+(.5*n)+")");hg.addColorStop(1,"rgba(255,240,200,0)");g.fillStyle=hg;g.beginPath();g.moveTo(hx,y-ch*.2);g.lineTo(hx+dir*W*.12,y-ch*.9);g.lineTo(hx+dir*W*.12,y+ch*.6);g.closePath();g.fill();}
+    g.fillStyle=c.c;g.fillRect(x,y-ch/2,cl,ch);g.fillRect(x+cl*.22,y-ch*1.05,cl*.5,ch*.6);
+    g.fillStyle=n>.1?"#FF3B30":"#7A2020";g.fillRect(dir>0?x-1:x+cl-2,y-ch*.35,3,ch*.3);});
+}
+function stepScene(){tick++;adT++;const target=traffic(S.h)*9;
+  cars.forEach(c=>c.x+=c.v);cars=cars.filter(c=>c.x>-.12&&c.x<1.12);if(cars.length<target&&rnd()<.08)cars.push(newCar());
+  peds.forEach(p=>p.x+=p.v);peds=peds.filter(p=>p.x>-.02&&p.x<1.02);if(peds.length<target*2&&rnd()<.1)peds.push(newPed());}
+let sceneOn=true,raf=0;
+function loop(){raf=requestAnimationFrame(loop);if(!sceneOn)return;if(play)playStep();stepScene();drawScene();}
+function resizeScene(){fitScene();drawScene();}
+addEventListener("resize",resizeScene);fitScene();seedCars();
+if("IntersectionObserver" in window)new IntersectionObserver(es=>{sceneOn=es[0].isIntersecting;}).observe($("scene"));
+listeners.push(()=>{if(REDUCE||!raf){if(REDUCE)seedCars();drawScene();}});
+/* bir günü oynat: 06:00-dan 18:00-a qədər, sonra dayanır */
+let play=null;
+function playStep(){const t=(performance.now()-play.t0)/play.dur;if(t>=1){setHour(play.to);play=null;$("playDay").textContent="Bir günü oynat";return;}const k=t<.5?4*t*t*t:1-((-2*t+2)**3)/2;setHour(lerp(play.from,play.to,k));}
+function startPlay(from,to,dur){play={from,to,dur,t0:performance.now()};$("playDay").textContent="Dayandır";}
+function stopPlay(){if(play){play=null;$("playDay").textContent="Bir günü oynat";}}
+$("playDay").onclick=()=>{if(play){stopPlay();return;}if(REDUCE){setHour(S.h>=12?8:18);return;}startPlay(0,23.75,9000);};
+
+/* ---------- xəritə ---------- */
+const cv=$("map"),ctx=cv.getContext("2d");
+const ROADS=[[[.05,.45],[.3,.47],[.56,.47],[.95,.3]],[[.2,.82],[.47,.72],[.7,.72],[.98,.62]],[[.33,.2],[.36,.42],[.31,.68],[.24,.85]],[[.66,.15],[.66,.36],[.66,.58],[.7,.85]],[[.4,.3],[.5,.56],[.6,.62],[.8,.5]],[[.56,.47],[.62,.44],[.72,.3],[.9,.24]]];
+let ripple=0;
+function sizeMap(){const r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);cv.width=r.width*d;cv.height=r.height*d;ctx.setTransform(d,0,0,d,0,0);drawMap();}
+function drawMap(){const w=cv.clientWidth,h=cv.clientHeight;if(!w)return;
+  ctx.fillStyle="#E6E8F0";ctx.fillRect(0,0,w,h);
+  ctx.fillStyle="#C9D0EA";ctx.beginPath();ctx.moveTo(w,h*.6);ctx.bezierCurveTo(w*.85,h*.66,w*.75,h*.8,w*.6,h*.82);ctx.bezierCurveTo(w*.48,h*.83,w*.4,h*.8,w*.3,h*.88);ctx.lineTo(w*.2,h);ctx.lineTo(w,h);ctx.closePath();ctx.fill();
+  ctx.fillStyle="#5C60AB";ctx.font="600 12px Archivo, Arial";ctx.fillText("Xəzər dənizi",w*.74,h*.93);
+  ctx.lineCap="round";ctx.lineJoin="round";
+  [[9,"#D2D5E2"],[6,"#FFFFFF"]].forEach(([lw,col])=>{ctx.strokeStyle=col;ctx.lineWidth=lw;ROADS.forEach(r=>{ctx.beginPath();r.forEach((p,i)=>i?ctx.lineTo(p[0]*w,p[1]*h):ctx.moveTo(p[0]*w,p[1]*h));ctx.stroke();});});
+  if(S.heat){ctx.globalCompositeOperation="multiply";const mx=Math.max(...CONS.map(c=>c.hours.reduce((a,b)=>Math.max(a,b),0)));
+    CONS.forEach(c=>{const v=clamp(at(c,S.h)/mx,0,1);const rad=(30+v*80)*(w/900);const gr=ctx.createRadialGradient(c.x*w,c.y*h,0,c.x*w,c.y*h,rad);
+      const col=v>.6?"217,72,43":v>.3?"232,150,46":"169,173,234";gr.addColorStop(0,"rgba("+col+","+(.18+v*.45)+")");gr.addColorStop(1,"rgba("+col+",0)");ctx.fillStyle=gr;ctx.beginPath();ctx.arc(c.x*w,c.y*h,rad,0,7);ctx.fill();});
+    ctx.globalCompositeOperation="source-over";}
+  if(S.pins)CONS.forEach(c=>{if(S.onlyFree&&!c.free)return;const sel=c===S.sel,r=sel?8:5.5,x=c.x*w,y=c.y*h;
+    if(sel&&ripple>0){ctx.strokeStyle="rgba(23,24,58,"+ripple+")";ctx.lineWidth=2;ctx.beginPath();ctx.arc(x,y,r+(1-ripple)*26,0,7);ctx.stroke();}
+    ctx.beginPath();ctx.arc(x,y,r+2.5,0,7);ctx.fillStyle="#FFFFFF";ctx.fill();
+    ctx.beginPath();ctx.arc(x,y,r,0,7);ctx.fillStyle=c.free?"#1F8A62":"#17183A";ctx.fill();
+    if(sel){ctx.font="700 13px Archivo, Arial";const tw=ctx.measureText(c.name).width;const lx=x+14>w-tw-16?x-tw-22:x+14;ctx.fillStyle="#FFFFFF";ctx.fillRect(lx-4,y-11,tw+8,20);ctx.fillStyle="#17183A";ctx.fillText(c.name,lx,y+4);}});}
+function side(){const c=S.sel,mx=Math.max(...c.hours),hi=Math.floor(S.h);
+  $("side").innerHTML=`<div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start"><div><div class="kind">${c.type.n}, ${c.type.size}</div><h3 style="margin-top:4px">${c.name}</h3><div class="where">${c.district} rayonu</div></div><span class="pill ${c.free?"free":"busy"}">${c.free?"Boşdur":"Doludur"}</span></div>
+  <div class="kv"><div><b>${fmt(at(c,S.h))}</b><span>saat ${pad(hi)}:00 keçid</span></div><div><b>${fmt(c.daily)}</b><span>gündə, təxmini</span></div><div><b>${pad(c.hours.indexOf(mx))}:00</b><span>pik saat</span></div><div><b>${fmt(c.daily*30/1000)}K</b><span>ayda, təxmini</span></div></div>
+  <div><div style="font-size:13px;color:var(--mute);margin-bottom:6px">24 saatlıq sıxlıq</div><div class="bars">${c.hours.map((v,k)=>`<i class="${k===hi?"now":""}" style="height:${Math.max(3,v/mx*100)}%" title="${pad(k)}:00, ${fmt(v)}"></i>`).join("")}</div><div class="bx num"><span>00</span><span>06</span><span>12</span><span>18</span><span>23</span></div></div>
+  <button class="linkbtn" id="to3d">Bu konstruksiyaya 3D-də bax</button>`;
+  $("to3d").onclick=()=>{show3d(c.type.k);$("texnika").scrollIntoView();};}
+function updSideLive(){const c=S.sel,hi=Math.floor(S.h);const b=$("side").querySelector(".kv b");if(b){b.textContent=fmt(at(c,S.h));b.nextElementSibling.textContent="saat "+pad(hi)+":00 keçid";}
+  $("side").querySelectorAll(".bars i").forEach((x,k)=>x.classList.toggle("now",k===hi));}
+function select(c){S.sel=c;side();if(!REDUCE){ripple=1;const t0=performance.now();(function rp(){ripple=1-(performance.now()-t0)/900;drawMap();if(ripple>0)requestAnimationFrame(rp);else{ripple=0;drawMap();}})();}else drawMap();}
+cv.addEventListener("click",e=>{const r=cv.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;let best=null,bd=1e9;
+  CONS.forEach(c=>{if(S.onlyFree&&!c.free)return;const d=(c.x-x)**2+((c.y-y)*.62)**2;if(d<bd){bd=d;best=c;}});if(best&&bd<.004)select(best);});
+const tog=(id,key)=>{const b=$(id);b.onclick=()=>{S[key]=!S[key];b.setAttribute("aria-pressed",S[key]);drawMap();};};
+tog("ly-heat","heat");tog("ly-pins","pins");tog("ly-free","onlyFree");
+addEventListener("resize",sizeMap);sizeMap();side();
+listeners.push(()=>{drawMap();updSideLive();});
+
+/* ---------- katalog ---------- */
+const TH={bilbord:'<rect x="34" y="6" width="36" height="20" fill="#A9ADEA"/><rect x="50" y="26" width="4" height="22" fill="#17183A"/>',
+ meqa:'<rect x="10" y="4" width="84" height="24" fill="#A9ADEA"/><rect x="26" y="28" width="4" height="20" fill="#17183A"/><rect x="74" y="28" width="4" height="20" fill="#17183A"/>',
+ led:'<rect x="30" y="4" width="44" height="26" fill="#17183A"/><rect x="33" y="7" width="38" height="20" fill="#E8962E"/><rect x="50" y="30" width="4" height="18" fill="#17183A"/>',
+ prizma:'<g fill="#A9ADEA">'+[0,1,2,3,4,5].map(i=>`<rect x="${34+i*6}" y="6" width="5" height="20" opacity="${.55+(i%2)*.45}"/>`).join("")+'</g><rect x="50" y="26" width="4" height="22" fill="#17183A"/>',
+ lightbox:'<rect x="42" y="4" width="20" height="30" fill="#E8962E" opacity=".8"/><rect x="50" y="34" width="4" height="14" fill="#17183A"/>',
+ roller:'<rect x="42" y="4" width="20" height="30" fill="#5C60AB"/><rect x="42" y="4" width="20" height="15" fill="#A9ADEA"/><rect x="50" y="34" width="4" height="14" fill="#17183A"/>'};
+const mini=c=>{const mx=Math.max(...c.hours);const pts=c.hours.map((v,i)=>(i/23*150).toFixed(1)+","+(32-v/mx*28).toFixed(1)).join(" ");return `<svg class="mini" viewBox="0 0 150 34" aria-hidden="true"><polyline points="0,32 ${pts} 150,32" fill="#A9ADEA" fill-opacity=".35" stroke="#5C60AB" stroke-width="1.5"/></svg>`;};
+let tf="all",showAll=false;
+function renderFilters(){const box=$("tfilters");box.innerHTML=[{k:"all",n:"Hamısı"},...TYPES].map(t=>`<button class="tg" aria-pressed="${tf===t.k}" data-k="${t.k}">${t.n}</button>`).join("");
+  box.querySelectorAll("button").forEach(b=>b.onclick=()=>{tf=b.dataset.k;renderFilters();renderRows(true);});}
+function renderRows(animate){const box=$("rows");const before={};if(animate&&!REDUCE)box.querySelectorAll(".row").forEach(r=>before[r.dataset.id]=r.getBoundingClientRect().top);
+  const F=CONS.filter(c=>tf==="all"||c.type.k===tf).sort((a,b)=>b.daily-a.daily);const L=showAll?F:F.slice(0,8);const mb=$("more");mb.hidden=F.length<=8;mb.textContent=showAll?"Qısa siyahı":"Hamısını göstər ("+F.length+")";
+  box.innerHTML=L.map(c=>`<button class="row" data-id="${c.id}"><svg class="th" viewBox="0 0 104 52" aria-hidden="true">${TH[c.type.k]}</svg><span class="nm"><b>${c.name}</b><span>${c.district} rayonu</span></span><span class="ty"><b>${c.type.n}</b><span class="num">${c.type.size}</span></span>${mini(c)}<span class="dv"><b>${fmt(c.daily)}</b><span>gündə keçid</span></span><span class="st"><span class="pill ${c.free?"free":"busy"}">${c.free?"Boşdur":"Doludur"}</span></span></button>`).join("");
+  box.querySelectorAll(".row").forEach((r,i)=>{r.onclick=()=>{select(CONS.find(c=>c.id==r.dataset.id));$("xerite").scrollIntoView();};
+    if(animate&&!REDUCE&&r.animate){const top=r.getBoundingClientRect().top;const old=before[r.dataset.id];
+      if(old!=null)r.animate([{transform:`translateY(${old-top}px)`},{transform:"none"}],{duration:420,easing:"cubic-bezier(.2,.8,.2,1)"});
+      else r.animate([{opacity:0,transform:"translateX(-12px)"},{opacity:1,transform:"none"}],{duration:300,delay:i*25,easing:"ease-out",fill:"backwards"});}});}
+renderFilters();renderRows(false);$("more").onclick=()=>{showAll=!showAll;renderRows(true);};
+
+/* ---------- 3D ---------- */
+let show3d=k=>setInfo(k),skyTo3d=()=>{};
+const tb=$("types3d");
+tb.innerHTML=TYPES.map((t,i)=>`<button aria-pressed="${i===0}" data-k="${t.k}"><b>${t.n}</b><span>${t.d}</span></button>`).join("");
+tb.querySelectorAll("button").forEach(b=>b.onclick=()=>show3d(b.dataset.k));
+function setInfo(k){const t=TYPES.find(x=>x.k===k);$("t3-name").textContent=t.n;$("t3-desc").textContent=t.d;$("t3-size").textContent=t.size;tb.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.k===k));}
+(function init3d(){
+  const host=$("three");const fail=()=>{$("fb3d").style.display="grid";};
+  if(!window.THREE||!THREE.OrbitControls){fail();return;}
+  let R;try{R=new THREE.WebGLRenderer({antialias:true});}catch(e){fail();return;}
+  R.setPixelRatio(Math.min(devicePixelRatio,2));host.appendChild(R.domElement);
+  const scene=new THREE.Scene();const cam=new THREE.PerspectiveCamera(40,1,.1,300);cam.position.set(9,5,14);
+  const ctr=new THREE.OrbitControls(cam,R.domElement);ctr.enableDamping=true;ctr.target.set(0,3.2,0);ctr.minDistance=5;ctr.maxDistance=42;ctr.maxPolarAngle=Math.PI*.49;ctr.autoRotate=!REDUCE;ctr.autoRotateSpeed=.7;
+  const hemi=new THREE.HemisphereLight(0xdfe4ff,0x8a8fa8,1);scene.add(hemi);const sun=new THREE.DirectionalLight(0xffffff,.8);sun.position.set(6,12,8);scene.add(sun);
+  const groundMat=new THREE.MeshStandardMaterial({color:0xb9bccb,roughness:1});const ground=new THREE.Mesh(new THREE.CircleGeometry(22,48),groundMat);ground.rotation.x=-Math.PI/2;scene.add(ground);
+  const adTex=(w,h,label,bg,fg)=>{const c=document.createElement("canvas");c.width=1024;c.height=Math.round(1024*h/w);const x=c.getContext("2d");x.fillStyle=bg;x.fillRect(0,0,c.width,c.height);
+    x.fillStyle=fg;x.font='800 '+Math.round(Math.min(c.height*.22,c.width*.11))+'px Archivo, Arial, sans-serif';x.textBaseline="middle";x.fillText(label,c.width*.07,c.height*.45);
+    x.font='600 '+Math.round(Math.min(c.height*.09,c.width*.05))+'px Archivo, Arial, sans-serif';x.globalAlpha=.75;x.fillText("mirror.az",c.width*.07,c.height*.75);const t=new THREE.CanvasTexture(c);t.anisotropy=4;return t;};
+  const metal=new THREE.MeshStandardMaterial({color:0x2b2e4a,metalness:.5,roughness:.45}),frame=new THREE.MeshStandardMaterial({color:0x17183a,metalness:.4,roughness:.5});
+  let group=null,anim=null,emissives=[];
+  const pole=(h,x=0,r=.22)=>{const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r*1.2,h,20),metal);m.position.set(x,h/2,0);return m;};
+  function panel(w,h,y,tex,glow){const g=new THREE.Group();g.add(new THREE.Mesh(new THREE.BoxGeometry(w+.3,h+.3,.4),frame));
+    const mat=new THREE.MeshStandardMaterial({map:tex,emissive:glow?0xffffff:0x000000,emissiveMap:glow?tex:null,emissiveIntensity:0,roughness:.6});if(glow)emissives.push(mat);
+    [.21,-.21].forEach((z,i)=>{const p=new THREE.Mesh(new THREE.PlaneGeometry(w,h),mat);p.position.z=z;if(i)p.rotation.y=Math.PI;g.add(p);});g.position.y=y;return g;}
+  const build={
+    bilbord(){const g=new THREE.Group();g.add(pole(5));g.add(panel(6,3,6.4,adTex(6,3,"Sizin reklam","#5C60AB","#FFFFFF")));return g;},
+    meqa(){const g=new THREE.Group();g.add(pole(6,-4,.28));g.add(pole(6,4,.28));g.add(panel(15,5,8.4,adTex(15,5,"Meqabord 5 × 15 m","#17183A","#E8962E")));cam.position.set(14,7,22);return g;},
+    led(){const g=new THREE.Group();g.add(pole(4.4,0,.3));const c=document.createElement("canvas");c.width=512;c.height=256;const t=new THREE.CanvasTexture(c);g.add(panel(8,4,6.6,t,true));let f=0;
+      const draw=()=>{const x=c.getContext("2d");const k=Math.floor(f/150)%3,a=ADS[k];x.fillStyle=a[0];x.fillRect(0,0,512,256);x.fillStyle=a[1];x.font="800 40px Archivo, Arial";x.textBaseline="middle";x.fillText(["LED ekran","Video reklam","18:00–21:00"][k],32,118);x.globalAlpha=.12;x.fillStyle="#000";for(let y=0;y<256;y+=4)x.fillRect(0,y,512,1);x.globalAlpha=1;t.needsUpdate=true;};
+      draw();anim=()=>{f++;if(f%150===0)draw();};return g;},
+    prizma(){const g=new THREE.Group();g.add(pole(5));const y=6.4,n=12,w=6/n;const texs=[["#5C60AB","#FFFFFF","Reklam A"],["#E8962E","#17183A","Reklam B"],["#EEF0F5","#5C60AB","Reklam C"]].map(c=>adTex(6,3,c[2],c[0],c[1]));
+      g.add(new THREE.Mesh(new THREE.BoxGeometry(6.4,3.4,.2),frame).translateY(y).translateZ(-.6));const slats=[];
+      for(let i=0;i<n;i++){const mats=texs.map(t=>{const tt=t.clone();tt.needsUpdate=true;tt.repeat.set(1/n,1);tt.offset.set(i/n,0);return new THREE.MeshStandardMaterial({map:tt,roughness:.6});});
+        const m=new THREE.Mesh(new THREE.BoxGeometry(w*.96,3,w*.55),mats[0]);m.userData={mats,rot:0};m.position.set(-3+w*(i+.5),y,0);g.add(m);slats.push(m);}
+      let t0=0,face=0;anim=()=>{t0++;if(t0%200===0)face++;slats.forEach((s,i)=>{const target=face*Math.PI;const d=Math.max(0,t0%200-i*3);if(d>0||t0>200)s.userData.rot+=(target-s.userData.rot)*.08;s.rotation.y=s.userData.rot;const fidx=Math.round(s.userData.rot/Math.PI)%3;s.material=s.userData.mats[fidx];});};return g;},
+    lightbox(){const g=new THREE.Group();g.add(pole(1.2,0,.12));g.add(panel(1.2,1.8,2.3,adTex(1.2,1.8,"Laytboks","#E8962E","#17183A"),true));cam.position.set(4,2.6,6);ctr.target.set(0,2,0);return g;},
+    roller(){const g=new THREE.Group();g.add(pole(1.2,0,.12));const c=document.createElement("canvas");c.width=256;c.height=1152;const x=c.getContext("2d");
+      [["#5C60AB","#FFF","Poster 1"],["#E8962E","#17183A","Poster 2"],["#EEF0F5","#5C60AB","Poster 3"]].forEach((p,i)=>{x.fillStyle=p[0];x.fillRect(0,i*384,256,384);x.fillStyle=p[1];x.font="800 38px Archivo, Arial";x.fillText(p[2],24,i*384+200);});
+      const t=new THREE.CanvasTexture(c);t.wrapT=THREE.RepeatWrapping;t.repeat.set(1,1/3);g.add(panel(1.2,1.8,2.3,t,true));let f=0;anim=()=>{f++;const tgt=(Math.floor(f/220)%3)/3;t.offset.y+=(tgt-t.offset.y)*.05;};cam.position.set(4,2.6,6);ctr.target.set(0,2,0);return g;}};
+  function size3(){const r=host.getBoundingClientRect();R.setSize(r.width,r.height,false);R.domElement.style.width="100%";R.domElement.style.height="100%";cam.aspect=r.width/Math.max(r.height,1);cam.updateProjectionMatrix();}
+  skyTo3d=()=>{const n=night(S.h),[top,bot]=sky(S.h);const c=new THREE.Color(bot).lerp(new THREE.Color(top),.35);scene.background=c;
+    hemi.intensity=lerp(1,.35,n);sun.intensity=lerp(.8,.05,n);groundMat.color.set(mix("#B9BCCB","#22243C",n));emissives.forEach(m=>m.emissiveIntensity=.15+.8*n);};
+  show3d=k=>{if(group)scene.remove(group);anim=null;emissives=[];cam.position.set(9,5,14);ctr.target.set(0,3.2,0);group=build[k]();scene.add(group);setInfo(k);skyTo3d();ctr.update();};
+  addEventListener("resize",size3);size3();show3d("bilbord");
+  let vis=true;if("IntersectionObserver" in window)new IntersectionObserver(es=>{vis=es[0].isIntersecting;}).observe(host);
+  (function L(){requestAnimationFrame(L);if(!vis)return;if(anim&&!REDUCE)anim();ctr.update();R.render(scene,cam);})();
+})();
+listeners.push(()=>skyTo3d());
+
+/* ---------- müştəri paneli ---------- */
+const MINE=[CONS[0],CONS[6],CONS[9]];const pb=$("pbody");
+const days=[...Array(14)].map((_,i)=>Math.round(MINE.reduce((a,c)=>a+c.daily,0)*(.86+.22*Math.sin(i*.9)+(i%7>4?.12:0))));
+function spark(vals){const w=560,h=130,mx=Math.max(...vals),mn=Math.min(...vals)*.9;const pts=vals.map((v,i)=>[i/(vals.length-1)*w,h-10-(v-mn)/(mx-mn||1)*(h-30)]);
+  const d=pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)).join(" ");const last=pts[pts.length-1];
+  return `<svg viewBox="0 0 ${w} ${h}" style="width:100%;height:auto;overflow:visible" role="img" aria-label="Son 14 günün gündəlik keçid sayı">${[0,1,2,3].map(i=>`<line x1="0" x2="${w}" y1="${20+i*30}" y2="${20+i*30}" stroke="#D3D6E2"/>`).join("")}
+  <path class="area" d="${d} L ${w} ${h} L 0 ${h} Z" fill="#A9ADEA" fill-opacity=".3"/><path class="ln" d="${d}" fill="none" stroke="#5C60AB" stroke-width="2.5" stroke-linejoin="round"/><circle class="dot" cx="${last[0]}" cy="${last[1]}" r="5" fill="#E8962E"/></svg>`;}
+const total14=days.reduce((a,b)=>a+b,0);
+const TABS=[
+  ()=>`<div class="tiles"><div class="tile"><b class="cu" data-v="3">3</b><span>aktiv konstruksiya</span></div><div class="tile"><b class="cu" data-v="${Math.round(total14/1000)}" data-s="K">${fmt(total14/1000)}K</b><span>14 gündə keçid</span> <em>+6%</em></div><div class="tile"><b>18:00</b><span>ən sıx saat</span></div><div class="tile"><b class="cu" data-v="16" data-s=" gün">16 gün</b><span>bitməsinə qalıb</span></div></div>
+   <div class="prow"><div class="box"><div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap"><h3>Gündəlik keçid, son 14 gün</h3><span style="font-size:13px;color:var(--mute)" class="num">son gün: ${fmt(days[13])}</span></div>${spark(days)}</div>
+   <div class="box"><h3>Bildirişlər</h3><div class="alert warn">Kampaniyanın bitməsinə 16 gün qalıb. Uzatmaq üçün sorğu göndərin.</div><div class="alert ok">Koroğlu LED ekranında yeni foto-hesabat yükləndi.</div><div class="alert">İzlədiyiniz yer boşaldı: Ziya Bünyadov pr. meqabordu.</div></div></div>`,
+  ()=>`<div class="tw"><table><thead><tr><th>Konstruksiya</th><th>Növ</th><th>Tarix</th><th>Gündəlik keçid</th><th>Pik saat</th><th>Status</th></tr></thead><tbody>
+   ${MINE.map(c=>`<tr><td><b>${c.name}</b></td><td>${c.type.n}</td><td>01.11–30.11</td><td>${fmt(c.daily)}</td><td>${pad(c.hours.indexOf(Math.max(...c.hours)))}:00</td><td><span class="pill free">Yayımda</span></td></tr>`).join("")}</tbody></table></div>
+   <p class="note" style="margin:0">Rəqəmlər təxminidir. Sensor qoyulan yerlərdə "ölçülüb" işarəsi görünəcək.</p>`,
+  ()=>`<div class="proofs">${MINE.flatMap(c=>["Montaj","Gündüz","Gecə"].map(t=>{const nt=t==="Gecə";return `<div class="proof"><svg viewBox="0 0 160 120" style="position:absolute;inset:0;width:100%;height:100%" aria-hidden="true"><rect width="160" height="120" fill="${nt?"#121641":"#9FC1EC"}"/><rect y="86" width="160" height="34" fill="${nt?"#191A2C":"#8E92A8"}"/><rect x="38" y="24" width="84" height="42" fill="${nt?"#E8962E":"#5C60AB"}"/><rect x="77" y="66" width="6" height="22" fill="#17183A"/></svg><span>${c.name}, ${t.toLowerCase()}, 02.11</span></div>`;})).join("")}</div>
+   <p class="note" style="margin:0">Hər foto tarix və GPS koordinatı ilə saxlanılır.</p>`];
+function openTab(i){pb.innerHTML=TABS[i]();if(REDUCE)return;
+  const ln=pb.querySelector(".ln");if(ln&&ln.getTotalLength){const L=ln.getTotalLength();ln.style.strokeDasharray=L;ln.animate([{strokeDashoffset:L},{strokeDashoffset:0}],{duration:1100,easing:"cubic-bezier(.3,.7,.2,1)",fill:"both"});
+    pb.querySelector(".area").animate([{opacity:0},{opacity:1}],{duration:700,delay:500,fill:"both"});pb.querySelector(".dot").animate([{transform:"scale(0)"},{transform:"scale(1.6)"},{transform:"scale(1)"}],{duration:500,delay:1000,fill:"both"}).ready;
+    pb.querySelector(".dot").style.transformBox="fill-box";pb.querySelector(".dot").style.transformOrigin="center";}
+  pb.querySelectorAll(".cu").forEach(el=>{const v=+el.dataset.v,s=el.dataset.s||"",t0=performance.now();(function f(){const t=Math.min(1,(performance.now()-t0)/900),k=1-(1-t)**3;el.textContent=fmt(v*k)+s;if(t<1)requestAnimationFrame(f);})();});
+  pb.querySelectorAll(".proof").forEach((p,k)=>p.animate([{opacity:0,transform:"scale(.96)"},{opacity:1,transform:"none"}],{duration:280,delay:k*40,fill:"backwards"}));}
+document.querySelectorAll("[data-pt]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-pt]").forEach(x=>x.setAttribute("aria-selected",x===b));openTab(+b.dataset.pt);});
+pb.innerHTML=TABS[0]();
+let panelSeen=false;if("IntersectionObserver" in window&&!REDUCE)new IntersectionObserver((es,o)=>{if(es[0].isIntersecting&&!panelSeen){panelSeen=true;openTab(0);o.disconnect();}},{threshold:.4}).observe(pb);
+
+/* ---------- start ---------- */
+setHour(18);
+if(REDUCE){drawScene();}
+else{raf=requestAnimationFrame(loop);startPlay(5,18,4200);}
+})();
+</script>
+</body>
+</html>

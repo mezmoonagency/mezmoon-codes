@@ -13,6 +13,7 @@ MezMoon Agency-nin marketing paneli + CRM: https://panel.mezmoonagency.az. UI v�
 - `index.html` — bütün panel (vanilla JS, tək fayl), işlənən yeganə nüsxə. `APP_VERSION` hər deploy-da artırılır (format `YYYY.MM.DDx`). Köhnə `index-<versiya>.html` nüsxələri artıq yaradılmır: tarixçə git-dədir.
 - `lounge.js` (index.html-dən dinamik import), `portal.html` (müştəri portalı, `?k=TOKEN`), `pwa/` (manifest, sw.js, ikonlar).
 - `functions/*.ts` — Supabase Edge Functions (telegram-bot, client-portal, link-thumb, ref-analyze, ref-similar, office-presence). Lid funksiyaları ayrı qovluqlardadır: `lead-research/`, `audit-sektor/` (ig-audit sector.ts), `prospect-search/`.
+- `mirror-sayt/index.html` — Mirror (outdoor reklam) üçün yeni sayt nümunəsi: tək fayl, three.js CDN-dən (3D baxış), datası hələ nümunədir. Mənbə: Claude artifaktı "Mirror Yeni Sayt Nümunəsi" (4.11.2026); bundan sonra yalnız depoda dəyişdirilir. Önizləmə: faylı brauzerdə açmaq kifayətdir.
 - `sql/` — köhnə miqrasiya skriptləri. Kökdəki köhnə `index-20*.html` nüsxələri yalnız bu Mac-də qalır, depoda yoxdur (`.gitignore`).
 - Tam tarixçə: `mezmoon-crm.zip` içində `mezmoon-crm/HANDOFF.md` + Claude yaddaşı (`mezmoon-crm-project`).
 
