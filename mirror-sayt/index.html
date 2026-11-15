@@ -247,6 +247,34 @@ td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;font
 @media (max-width:960px){.fk{grid-template-columns:1fr}.fk-phone{max-width:340px;margin:0 auto;width:100%}.flow{grid-template-columns:1fr 1fr}}
 @media (max-width:620px){.fk-body{grid-template-columns:1fr}.fk-q{border-right:0;border-bottom:1px solid var(--line)}.flow{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.fk-cam .car,.fk-cam .recd::before{animation:none}}
+/* 2 deqiqe endirim */
+.ofr-wrap{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:16px;background:rgba(23,24,58,.45);backdrop-filter:blur(3px);opacity:0;transition:opacity .35s}
+.ofr-wrap.on{opacity:1}
+.ofr{position:relative;width:min(420px,100%);background:var(--surface);border-radius:18px;padding:30px 26px 22px;text-align:center;box-shadow:0 30px 80px rgba(23,24,58,.35);transform:translateY(40px) scale(.85) rotate(-3deg);opacity:0;transition:transform .7s cubic-bezier(.2,1.6,.4,1),opacity .3s}
+.ofr-wrap.on .ofr{transform:none;opacity:1}
+.ofr .x{position:absolute;right:10px;top:8px;border:0;background:none;font-size:24px;line-height:1;color:var(--mute);padding:6px}
+.gift{position:relative;width:86px;height:80px;margin:-70px auto 12px}
+.gift .bx{position:absolute;left:8px;right:8px;bottom:0;height:48px;background:var(--brand);border-radius:6px}
+.gift .lid{position:absolute;left:2px;right:2px;top:20px;height:16px;background:#4A4E96;border-radius:5px;transform-origin:10% 100%;animation:lid .9s .45s cubic-bezier(.3,1.7,.5,1) both}
+.gift .rb{position:absolute;left:50%;width:12px;margin-left:-6px;top:20px;bottom:0;background:var(--amber)}
+.gift .lid::after{content:"";position:absolute;left:50%;width:12px;margin-left:-6px;top:0;bottom:0;background:var(--amber)}
+@keyframes lid{to{transform:translateY(-26px) rotate(-24deg)}}
+.ofr .pct{font-family:var(--display);font-stretch:125%;font-weight:900;font-size:64px;line-height:1;color:var(--brand);letter-spacing:-.03em;animation:pop .6s .7s cubic-bezier(.2,1.8,.4,1) both}
+@keyframes pop{from{transform:scale(.3);opacity:0}}
+.ofr h3{font-size:22px;margin:8px 0 6px}
+.ofr p{color:var(--mute);font-size:15px}
+.ofr .cd{display:inline-flex;gap:6px;margin:14px 0 4px;font-family:var(--display);font-stretch:112%;font-weight:800;font-size:28px;font-variant-numeric:tabular-nums}
+.ofr .cd span{background:var(--ink);color:var(--paper);border-radius:8px;padding:4px 10px;min-width:58px}
+.ofr .code{display:inline-block;margin-top:10px;border:1.5px dashed var(--brand);border-radius:8px;padding:6px 14px;font-weight:800;letter-spacing:.12em;color:var(--brand)}
+.ofr .btns{justify-content:center}
+.ofr small{display:block;margin-top:12px;font-size:12px;color:var(--mute)}
+.conf{position:absolute;left:50%;top:30%;width:9px;height:14px;border-radius:2px;opacity:0;pointer-events:none;animation:conf 1.4s var(--d) ease-out forwards}
+@keyframes conf{0%{opacity:1;transform:translate(0,0) rotate(0)}100%{opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r))}}
+.ofr-pill{position:fixed;left:16px;bottom:16px;z-index:55;display:flex;gap:8px;align-items:center;background:var(--ink);color:var(--paper);border:0;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:650;box-shadow:0 8px 24px rgba(23,24,58,.3);transform:translateY(120px);transition:transform .5s cubic-bezier(.2,1.4,.4,1)}
+.ofr-pill.on{transform:none}
+.ofr-pill b{color:var(--amber);font-variant-numeric:tabular-nums}
+.demo-btn{margin-top:10px;border:1.5px solid var(--ink);background:var(--surface);border-radius:6px;padding:6px 12px;font-size:13px;font-weight:650}
+@media (prefers-reduced-motion:reduce){.ofr,.ofr-wrap,.ofr-pill{transition:none}.gift .lid,.ofr .pct,.conf{animation:none}.conf{display:none}}
 footer{padding:70px 0 50px;font-size:13px;color:var(--mute)}
 </style>
 </head>
@@ -405,6 +433,7 @@ footer{padding:70px 0 50px;font-size:13px;color:var(--mute)}
       <div class="feat"><h3>LED üçün saat paketi</h3><p>Reklamı yalnız pik saatlarda göstərmək olar, məsələn 18:00–21:00 paketi.</p></div>
       <div class="feat"><h3>Bitmə və boşalma bildirişi</h3><p>Kampaniyanın bitməsinə 7 gün qalanda və istədiyi yer boşalanda WhatsApp və ya e-poçt gedir.</p></div>
       <div class="feat"><h3>Reklamı yerində gör</h3><p>Müştəri dizaynını yükləyir, sistem onu 3D konstruksiyanın üzərində göstərir.</p></div>
+      <div class="feat"><h3>2 dəqiqədən sonra şəxsi endirim</h3><p>Saytda 2 dəqiqədən çox qalan ziyarətçiyə animasiya ilə 1 saatlıq 10% endirim təklif olunur. Saat geri sayır, vaxt bitəndə təklif bağlanır. Maraqlanan, amma tərəddüd edən müştərini sifarişə itələyir.</p><button class="demo-btn" type="button" id="ofrDemo">Nümunəni indi göstər</button></div>
     </div>
   </div>
 </section>
@@ -442,7 +471,7 @@ footer{padding:70px 0 50px;font-size:13px;color:var(--mute)}
   <div class="wrap">
     <div class="shead"><h2>Necə quracağıq</h2><p>Üç mərhələ. Hər biri ayrıca işə düşür, növbəti mərhələni gözləmir.</p></div>
     <div class="stages">
-      <div class="stagecol"><div class="n">1</div><h3>Yeni sayt</h3><ul><li>Mobil uyğun yeni dizayn</li><li>Xəritə və filtrli katalog</li><li>Konstruksiya səhifəsi: foto, ölçü, 3D</li><li>Sorğu və WhatsApp sifarişi</li><li>Komanda və referanslar</li></ul></div>
+      <div class="stagecol"><div class="n">1</div><h3>Yeni sayt</h3><ul><li>Mobil uyğun yeni dizayn</li><li>Xəritə və filtrli katalog</li><li>Konstruksiya səhifəsi: foto, ölçü, 3D</li><li>Sorğu və WhatsApp sifarişi</li><li>2 dəqiqədən sonra 1 saatlıq endirim təklifi</li><li>Komanda və referanslar</li></ul></div>
       <div class="stagecol"><div class="n">2</div><h3>Müştəri paneli</h3><ul><li>Şəxsi giriş</li><li>Aktiv kampaniyalar və tarixlər</li><li>Foto-hesabat</li><li>Bitmə bildirişləri</li><li>Sahə komandası tətbiqi və rəhbərin təsdiqi</li><li>PDF hesabat</li></ul></div>
       <div class="stagecol"><div class="n">3</div><h3>Sıxlıq datası</h3><ul><li>Əl ilə sayım modeli</li><li>LED ekranlara sensor</li><li>Sıxlığa görə qiymət</li><li>Büdcəyə görə plan</li><li>"Ölçülüb" və "təxmini" işarəsi</li></ul></div>
     </div>
@@ -454,6 +483,7 @@ footer{padding:70px 0 50px;font-size:13px;color:var(--mute)}
         <li>Qiymət siyasəti: açıq göstərilsin, yoxsa sorğu ilə</li>
         <li>Mövcud saytın admin panelinə və bazasına giriş, köçürmə üçün</li>
         <li>Sıxlıq datası üçün başlanğıc yolun seçimi</li>
+        <li>Endirim təklifinin şərtləri: faiz, müddət, hansı xidmətlərə aiddir</li>
       </ul>
     </div>
   </div>
@@ -780,6 +810,50 @@ document.addEventListener("click",e=>{
  else if(b.dataset.why){t.st="redo";t.note=b.dataset.w;addLog(`<b>${tm()}</b> <span class="r">Düzəlişə qaytarıldı</span>: ${t.name}. Səbəb: ${t.note}`);sel=(T.find(x=>x.st==="pending")||{}).id||null;draw();}
 });
 draw();
+})();
+</script>
+<script>
+(()=>{
+const KEY="mirrorOffer",DUR=3600e3,WAIT=120e3;
+const get=()=>{try{return JSON.parse(localStorage.getItem(KEY)||"null")}catch(e){return null}};
+const put=v=>{try{localStorage.setItem(KEY,JSON.stringify(v))}catch(e){}};
+let tick=null,pill=null;
+const left=st=>Math.max(0,st+DUR-Date.now());
+const mmss=ms=>{const t=Math.ceil(ms/1000);return [String(Math.floor(t/60)).padStart(2,"0"),String(t%60).padStart(2,"0")]};
+function showPill(st){
+ if(!pill){pill=document.createElement("button");pill.className="ofr-pill";pill.type="button";pill.onclick=()=>openOffer(st,false);document.body.appendChild(pill);requestAnimationFrame(()=>pill.classList.add("on"));}
+ const upd=()=>{const l=left(st);if(!l){pill.remove();pill=null;clearInterval(tick);return;}const [m,s]=mmss(l);pill.innerHTML=`🎁 10% endirim <b>${m}:${s}</b>`;};
+ clearInterval(tick);upd();tick=setInterval(upd,1000);
+}
+function openOffer(st,fresh){
+ if(document.querySelector(".ofr-wrap"))return;
+ if(pill){pill.remove();pill=null;}
+ const w=document.createElement("div");w.className="ofr-wrap";w.setAttribute("role","dialog");w.setAttribute("aria-modal","true");w.setAttribute("aria-labelledby","ofrT");
+ const cols=["#5C60AB","#A9ADEA","#E8962E","#D9482B","#1F8A62"];
+ const conf=fresh?Array.from({length:28},(_,i)=>`<i class="conf" style="background:${cols[i%5]};--x:${Math.round(Math.cos(i/28*6.28)*(120+Math.random()*90))}px;--y:${Math.round(Math.sin(i/28*6.28)*(110+Math.random()*80)-40)}px;--r:${Math.round(Math.random()*720-360)}deg;--d:${(.5+Math.random()*.25).toFixed(2)}s"></i>`).join(""):"";
+ w.innerHTML=`<div class="ofr">${conf}<button class="x" aria-label="Bağla">×</button>
+  <div class="gift" aria-hidden="true"><div class="bx"></div><div class="rb"></div><div class="lid"></div></div>
+  <div class="pct">−10%</div>
+  <h3 id="ofrT">Sizə özəl təklif</h3>
+  <p>Saytımıza vaxt ayırdığınız üçün təşəkkür edirik. Növbəti 1 saat ərzində verdiyiniz sifarişə 10% endirim.</p>
+  <div class="cd" aria-live="off"><span id="ofrM">60</span><span id="ofrS">00</span></div>
+  <div><span class="code">MIRROR10</span></div>
+  <div class="btns"><a class="btn" href="#xerite" id="ofrGo">Endirimlə yer seç</a><button class="btn ghost" type="button" id="ofrLater">Sonra</button></div>
+  <small>Sifariş zamanı kodu menecerə deyin. Təklif bir dəfə verilir.</small></div>`;
+ document.body.appendChild(w);requestAnimationFrame(()=>requestAnimationFrame(()=>w.classList.add("on")));
+ const upd=()=>{const [m,s]=mmss(left(st));const M=document.getElementById("ofrM");if(!M)return;M.textContent=m;document.getElementById("ofrS").textContent=s;};
+ upd();const iv=setInterval(upd,1000);
+ const close=()=>{clearInterval(iv);w.classList.remove("on");setTimeout(()=>w.remove(),350);if(left(st))showPill(st);document.removeEventListener("keydown",esc);};
+ const esc=e=>{if(e.key==="Escape")close();};
+ document.addEventListener("keydown",esc);
+ w.addEventListener("click",e=>{if(e.target===w||e.target.closest(".x")||e.target.id==="ofrLater"||e.target.id==="ofrGo")close();});
+ w.querySelector("#ofrGo").focus();
+}
+function fire(){const st=Date.now();put({st});openOffer(st,true);}
+const saved=get();
+if(saved&&saved.st){if(left(saved.st))showPill(saved.st);}
+else setTimeout(()=>{if(!get())fire();},WAIT);
+const d=document.getElementById("ofrDemo");if(d)d.onclick=()=>{const v=get();if(v&&v.st&&left(v.st))openOffer(v.st,true);else fire();};
 })();
 </script>
 </body>
