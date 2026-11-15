@@ -76,8 +76,11 @@ section{padding:84px 0 0}
 /* map */
 .map-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
 .mapbox{position:relative;min-height:460px;background:#DDE1EE}
-.mapbox canvas{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair}
-.layers{position:absolute;left:12px;top:12px;display:flex;gap:6px;flex-wrap:wrap;z-index:2}
+.mapbox canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:450}
+#lmap{position:absolute;inset:0;z-index:1;background:#DDE1EE}
+#lmap .leaflet-control-zoom{margin-top:52px}
+.maphint{position:absolute;right:12px;bottom:26px;z-index:1000;background:rgba(23,24,58,.82);color:#fff;font-size:12px;padding:5px 10px;border-radius:999px;pointer-events:none;transition:opacity .3s}
+.layers{position:absolute;left:12px;top:12px;display:flex;gap:6px;flex-wrap:wrap;z-index:1000}
 .tg{background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:600;color:var(--mute)}
 .tg[aria-pressed="true"]{border-color:var(--ink);color:var(--ink)}
 .side{padding:22px;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:16px}
@@ -230,7 +233,9 @@ footer{padding:70px 0 50px;font-size:13px;color:var(--mute)}
     </div>
     <div class="map-grid">
       <div class="mapbox">
-        <canvas id="map" role="img" aria-label="Bakı sıxlıq xəritəsi, sxematik"></canvas>
+        <div id="lmap" aria-label="Bakı xəritəsi: sürüşdürün, yaxınlaşdırın"></div>
+        <canvas id="map" role="img" aria-label="Bakı sıxlıq xəritəsi və konstruksiyalar"></canvas>
+        <div class="maphint" id="maphint">Yaxınlaşdırmaq üçün xəritəyə basın, sonra təkəri çevirin</div>
         <div class="layers" role="group" aria-label="Xəritə qatları">
           <button class="tg" id="ly-heat" aria-pressed="true">Sıxlıq</button>
           <button class="tg" id="ly-pins" aria-pressed="true">Konstruksiyalar</button>
@@ -239,7 +244,7 @@ footer{padding:70px 0 50px;font-size:13px;color:var(--mute)}
       </div>
       <aside class="side" id="side" aria-live="polite"></aside>
     </div>
-    <p class="note">Xəritə sxematikdir. Real saytda Google Maps və aşağıdakı data mənbələrindən biri işlədiləcək.</p>
+    <p class="note">Xəritə: OpenStreetMap. Konstruksiyaların yerləri küçə adına görə təxminidir, sıxlıq rəqəmləri nümunədir.</p>
   </div>
 </section>
 
@@ -360,6 +365,8 @@ footer{padding:70px 0 50px;font-size:13px;color:var(--mute)}
   <div class="wrap">MezMoon tərəfindən Mirror Outdoor Advertising üçün hazırlanmış nümunə dizayn. Konstruksiyalar, sıxlıq rəqəmləri, ölçülər və müştəri məlumatları illüstrativdir. Əlaqə, mövcud saytdan: +994 50 263 55 33, commerce@mirror.az</div>
 </footer>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script>
@@ -385,17 +392,17 @@ const TYPES=[
   {k:"lightbox",n:"Laytboks",d:"İşıqlı, piyada zonası",size:"1.2 × 1.8 m"},
   {k:"roller",n:"Roller",d:"Növbə ilə dəyişən posterlər",size:"1.2 × 1.8 m"}];
 const SPOTS=[
-  ["Heydər Əliyev pr.","Nərimanov",.66,.36,"led"],["Neftçilər pr., Bulvar","Səbail",.47,.72,"meqa"],["28 May","Nəsimi",.5,.56,"lightbox"],
-  ["Nizami küç.","Nəsimi",.45,.6,"roller"],["Azadlıq pr.","Binəqədi",.36,.42,"bilbord"],["Tbilisi pr.","Yasamal",.33,.6,"bilbord"],
-  ["Babək pr.","Xətai",.66,.58,"prizma"],["Ziya Bünyadov pr.","Nərimanov",.72,.3,"meqa"],["H. Cavid pr.","Yasamal",.31,.68,"prizma"],
-  ["Koroğlu m.","Nərimanov",.62,.44,"led"],["Gənclik m.","Nərimanov",.56,.47,"lightbox"],["Elmlər Akademiyası","Yasamal",.38,.64,"roller"],
-  ["Xətai m.","Xətai",.6,.62,"bilbord"],["Qara Qarayev pr.","Nizami",.8,.5,"meqa"],["İnşaatçılar m.","Yasamal",.28,.55,"bilbord"],
-  ["Badamdar şossesi","Səbail",.24,.78,"bilbord"],["Ağ şəhər","Xətai",.7,.68,"led"],["Mərdəkan yolu","Xəzər",.9,.24,"meqa"],
-  ["20 Yanvar","Binəqədi",.3,.47,"prizma"],["Sahil m.","Səbail",.5,.66,"lightbox"],["Nəriman Nərimanov m.","Nərimanov",.6,.4,"roller"],
-  ["Hava limanı yolu","Xəzər",.86,.34,"meqa"],["Ağ Şəhər bulvarı","Xətai",.66,.74,"lightbox"],["Moskva pr.","Nərimanov",.58,.5,"bilbord"]];
+  ["Heydər Əliyev pr.","Nərimanov",.66,.36,"led",40.4085,49.892],["Neftçilər pr., Bulvar","Səbail",.47,.72,"meqa",40.369,49.842],["28 May","Nəsimi",.5,.56,"lightbox",40.38,49.849],
+  ["Nizami küç.","Nəsimi",.45,.6,"roller",40.3752,49.8478],["Azadlıq pr.","Binəqədi",.36,.42,"bilbord",40.426,49.8429],["Tbilisi pr.","Yasamal",.33,.6,"bilbord",40.396,49.8167],
+  ["Babək pr.","Xətai",.66,.58,"prizma",40.3884,49.8643],["Ziya Bünyadov pr.","Nərimanov",.72,.3,"meqa",40.4145,49.8528],["H. Cavid pr.","Yasamal",.31,.68,"prizma",40.3765,49.81],
+  ["Koroğlu m.","Nərimanov",.62,.44,"led",40.4199,49.9185],["Gənclik m.","Nərimanov",.56,.47,"lightbox",40.4005,49.8509],["Elmlər Akademiyası","Yasamal",.38,.64,"roller",40.3752,49.8155],
+  ["Xətai m.","Xətai",.6,.62,"bilbord",40.3833,49.8721],["Qara Qarayev pr.","Nizami",.8,.5,"meqa",40.4035,49.9483],["İnşaatçılar m.","Yasamal",.28,.55,"bilbord",40.3891,49.8024],
+  ["Badamdar şossesi","Səbail",.24,.78,"bilbord",40.342,49.8103],["Ağ şəhər","Xətai",.7,.68,"led",40.384,49.8881],["Mərdəkan yolu","Xəzər",.9,.24,"meqa",40.4862,50.1312],
+  ["20 Yanvar","Binəqədi",.3,.47,"prizma",40.4041,49.8077],["Sahil m.","Səbail",.5,.66,"lightbox",40.3718,49.8446],["Nəriman Nərimanov m.","Nərimanov",.6,.4,"roller",40.4028,49.8706],
+  ["Hava limanı yolu","Xəzər",.86,.34,"meqa",40.445,49.995],["Ağ Şəhər bulvarı","Xətai",.66,.74,"lightbox",40.3768,49.8673],["Moskva pr.","Nəsimi",.58,.5,"bilbord",40.4127,49.8028]];
 const CONS=SPOTS.map((s,i)=>{const base=.35+rnd()*.65;const type=TYPES.find(t=>t.k===s[4]);
   const hours=[...Array(24)].map((_,h)=>Math.round(base*traffic(h)*4200*(.85+rnd()*.3)));
-  return {id:i+1,name:s[0],district:s[1],x:s[2],y:s[3],type,free:rnd()>.55,hours,daily:hours.reduce((a,b)=>a+b,0)};});
+  return {id:i+1,name:s[0],district:s[1],x:s[2],y:s[3],lat:s[5],lon:s[6],type,free:rnd()>.55,hours,daily:hours.reduce((a,b)=>a+b,0)};});
 CONS[0].hours=CONS[0].hours.map(v=>Math.round(v*1.6));CONS[0].daily=CONS[0].hours.reduce((a,b)=>a+b,0);
 const at=(c,h)=>{const a=Math.floor(h)%24,b=(a+1)%24;return lerp(c.hours[a],c.hours[b],h-Math.floor(h));};
 
@@ -494,20 +501,25 @@ $("playDay").onclick=()=>{if(play){stopPlay();return;}if(REDUCE){setHour(S.h>=12
 
 /* ---------- xəritə ---------- */
 const cv=$("map"),ctx=cv.getContext("2d");
-const ROADS=[[[.05,.45],[.3,.47],[.56,.47],[.95,.3]],[[.2,.82],[.47,.72],[.7,.72],[.98,.62]],[[.33,.2],[.36,.42],[.31,.68],[.24,.85]],[[.66,.15],[.66,.36],[.66,.58],[.7,.85]],[[.4,.3],[.5,.56],[.6,.62],[.8,.5]],[[.56,.47],[.62,.44],[.72,.3],[.9,.24]]];
 let ripple=0;
-function sizeMap(){const r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);cv.width=r.width*d;cv.height=r.height*d;ctx.setTransform(d,0,0,d,0,0);drawMap();}
+const LM=window.L?L.map("lmap",{zoomControl:true,scrollWheelZoom:false,attributionControl:true,minZoom:11,maxZoom:18,maxBounds:[[40.25,49.6],[40.62,50.35]]}):null;
+if(LM){L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(LM);
+  LM.setView([40.395,49.86],13);
+  const hint=$("maphint");
+  LM.on("click",()=>{LM.scrollWheelZoom.enable();hint.style.opacity=0;});
+  LM.getContainer().addEventListener("mouseleave",()=>{LM.scrollWheelZoom.disable();hint.style.opacity=1;});
+  LM.on("move zoom resize",drawMap);}
+else $("maphint").textContent="Xəritə yüklənmədi";
+function pt(c){if(!LM)return {x:c.x*cv.clientWidth,y:c.y*cv.clientHeight};const p=LM.latLngToContainerPoint([c.lat,c.lon]);return {x:p.x,y:p.y};}
+function sizeMap(){const r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);cv.width=r.width*d;cv.height=r.height*d;ctx.setTransform(d,0,0,d,0,0);if(LM)LM.invalidateSize();drawMap();}
 function drawMap(){const w=cv.clientWidth,h=cv.clientHeight;if(!w)return;
-  ctx.fillStyle="#E6E8F0";ctx.fillRect(0,0,w,h);
-  ctx.fillStyle="#C9D0EA";ctx.beginPath();ctx.moveTo(w,h*.6);ctx.bezierCurveTo(w*.85,h*.66,w*.75,h*.8,w*.6,h*.82);ctx.bezierCurveTo(w*.48,h*.83,w*.4,h*.8,w*.3,h*.88);ctx.lineTo(w*.2,h);ctx.lineTo(w,h);ctx.closePath();ctx.fill();
-  ctx.fillStyle="#5C60AB";ctx.font="600 12px Archivo, Arial";ctx.fillText("Xəzər dənizi",w*.74,h*.93);
-  ctx.lineCap="round";ctx.lineJoin="round";
-  [[9,"#D2D5E2"],[6,"#FFFFFF"]].forEach(([lw,col])=>{ctx.strokeStyle=col;ctx.lineWidth=lw;ROADS.forEach(r=>{ctx.beginPath();r.forEach((p,i)=>i?ctx.lineTo(p[0]*w,p[1]*h):ctx.moveTo(p[0]*w,p[1]*h));ctx.stroke();});});
+  ctx.clearRect(0,0,w,h);
+  const zk=LM?Math.pow(2,LM.getZoom()-13)*.8:w/900;
   if(S.heat){ctx.globalCompositeOperation="multiply";const mx=Math.max(...CONS.map(c=>c.hours.reduce((a,b)=>Math.max(a,b),0)));
-    CONS.forEach(c=>{const v=clamp(at(c,S.h)/mx,0,1);const rad=(30+v*80)*(w/900);const gr=ctx.createRadialGradient(c.x*w,c.y*h,0,c.x*w,c.y*h,rad);
-      const col=v>.6?"217,72,43":v>.3?"232,150,46":"169,173,234";gr.addColorStop(0,"rgba("+col+","+(.18+v*.45)+")");gr.addColorStop(1,"rgba("+col+",0)");ctx.fillStyle=gr;ctx.beginPath();ctx.arc(c.x*w,c.y*h,rad,0,7);ctx.fill();});
+    CONS.forEach(c=>{const v=clamp(at(c,S.h)/mx,0,1),P=pt(c);const rad=(30+v*80)*zk;if(P.x<-rad||P.y<-rad||P.x>w+rad||P.y>h+rad)return;const gr=ctx.createRadialGradient(P.x,P.y,0,P.x,P.y,rad);
+      const col=v>.6?"217,72,43":v>.3?"232,150,46":"169,173,234";gr.addColorStop(0,"rgba("+col+","+(.18+v*.45)+")");gr.addColorStop(1,"rgba("+col+",0)");ctx.fillStyle=gr;ctx.beginPath();ctx.arc(P.x,P.y,rad,0,7);ctx.fill();});
     ctx.globalCompositeOperation="source-over";}
-  if(S.pins)CONS.forEach(c=>{if(S.onlyFree&&!c.free)return;const sel=c===S.sel,r=sel?8:5.5,x=c.x*w,y=c.y*h;
+  if(S.pins)CONS.forEach(c=>{if(S.onlyFree&&!c.free)return;const sel=c===S.sel,r=sel?8:5.5,P=pt(c),x=P.x,y=P.y;if(x<-40||y<-40||x>w+40||y>h+40)return;
     if(sel&&ripple>0){ctx.strokeStyle="rgba(23,24,58,"+ripple+")";ctx.lineWidth=2;ctx.beginPath();ctx.arc(x,y,r+(1-ripple)*26,0,7);ctx.stroke();}
     ctx.beginPath();ctx.arc(x,y,r+2.5,0,7);ctx.fillStyle="#FFFFFF";ctx.fill();
     ctx.beginPath();ctx.arc(x,y,r,0,7);ctx.fillStyle=c.free?"#1F8A62":"#17183A";ctx.fill();
@@ -520,9 +532,9 @@ function side(){const c=S.sel,mx=Math.max(...c.hours),hi=Math.floor(S.h);
   $("to3d").onclick=()=>{show3d(c.type.k);$("texnika").scrollIntoView();};}
 function updSideLive(){const c=S.sel,hi=Math.floor(S.h);const b=$("side").querySelector(".kv b");if(b){b.textContent=fmt(at(c,S.h));b.nextElementSibling.textContent="saat "+pad(hi)+":00 keçid";}
   $("side").querySelectorAll(".bars i").forEach((x,k)=>x.classList.toggle("now",k===hi));}
-function select(c){S.sel=c;side();if(!REDUCE){ripple=1;const t0=performance.now();(function rp(){ripple=1-(performance.now()-t0)/900;drawMap();if(ripple>0)requestAnimationFrame(rp);else{ripple=0;drawMap();}})();}else drawMap();}
-cv.addEventListener("click",e=>{const r=cv.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;let best=null,bd=1e9;
-  CONS.forEach(c=>{if(S.onlyFree&&!c.free)return;const d=(c.x-x)**2+((c.y-y)*.62)**2;if(d<bd){bd=d;best=c;}});if(best&&bd<.004)select(best);});
+function select(c){S.sel=c;side();if(LM&&!LM.getBounds().pad(-.1).contains([c.lat,c.lon]))LM.panTo([c.lat,c.lon]);if(!REDUCE){ripple=1;const t0=performance.now();(function rp(){ripple=1-(performance.now()-t0)/900;drawMap();if(ripple>0)requestAnimationFrame(rp);else{ripple=0;drawMap();}})();}else drawMap();}
+if(LM)LM.on("click",e=>{const x=e.containerPoint.x,y=e.containerPoint.y;let best=null,bd=1e9;
+  CONS.forEach(c=>{if(S.onlyFree&&!c.free)return;const P=pt(c),d=(P.x-x)**2+(P.y-y)**2;if(d<bd){bd=d;best=c;}});if(best&&bd<18*18)select(best);});
 const tog=(id,key)=>{const b=$(id);b.onclick=()=>{S[key]=!S[key];b.setAttribute("aria-pressed",S[key]);drawMap();};};
 tog("ly-heat","heat");tog("ly-pins","pins");tog("ly-free","onlyFree");
 addEventListener("resize",sizeMap);sizeMap();side();
