@@ -50,6 +50,7 @@ Fayl birbaşa alətlə yox, hazır skriptlə yüklənir (2026-11-14-dən):
 - Analizdə rəqəmləri özün hesabla və yoxla; videolara baxmadığını, baxış sayı gəlmədiyini səhifədə də qeyd et. Brendin öz paylaşımlarını kreator paylaşımlarından ayır.
 
 ## Komanda ilə iş (git)
+İnsanlar üçün sadə dildə təlimat: `KOMANDA.md`. İstifadəçi orada yazılan ifadələrlə (məsələn "ən son versiyanı çək", "PR aç") müraciət edəcək.
 Bu qovluq git deposudur. Komanda: CEO və bir əməkdaş, hər kəs öz Claude Code-u ilə işləyir. İki Claude bir-birini görmür: bir-birinin işini yalnız göndərilmiş (push) dəyişikliklərdən bilir.
 - **İşə başlamazdan əvvəl:** `git pull`. Sonra yeni budaq aç: `git switch -c <qısa-ad>` (məsələn `godiva-paket`). `main` budağında birbaşa işləmə.
 - **İşləyərkən:** kiçik və tez-tez commit et, sonra `git push`. Göndərilməyən iş digəri üçün mövcud deyil.
