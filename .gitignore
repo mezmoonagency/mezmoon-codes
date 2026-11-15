@@ -1,0 +1,20 @@
+# Panelin köhnə ehtiyat nüsxələri: tarixçəni git saxlayır, kompüterdə qalırlar
+index-20*.html
+index-live.html
+preview.html
+server-preview-old.html
+CLAUDE-*-backup.md
+# Yükləmə üçün hazırlanan müvəqqəti qovluqlar (hər yükləmədə yenidən yaranır)
+panel-deploy/
+panel-preview/
+teklif-deploy/
+# Sirlər heç vaxt depoya düşməsin
+.env
+.env.*
+*.pem
+*.key
+credentials*.json
+# Sistem faylları
+.DS_Store
+__pycache__/
+node_modules/

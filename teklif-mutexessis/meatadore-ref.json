@@ -1,0 +1,361 @@
+{
+"dek": "Bakının burger bazarında yerli və qlobal brendlərin rəqəmsal araşdırması, Meatadore üçün aşkar etdiyimiz boşluqlar və onları bağlamaq üçün 90 günlük plan.",
+"meta": [
+[
+"Müştəri",
+"Meatadore"
+],
+[
+"Araşdırılan brend",
+"6"
+],
+[
+"Mənbə",
+"Instagram, veb"
+],
+[
+"Hazırlayan",
+"WeTrend"
+]
+],
+"state": {
+"big": "Auditoriya var. Ritm yoxdur.",
+"lead": "@meatadore səhifəsinin son 12 paylaşımı Apify ilə analiz edildi. 27.9 min izləyicisi olan səhifədə son 30 gündə cəmi <b>2 paylaşım</b> var, engagement isə <b>0.25%</b>-dir. Halbuki eyni səhifədə bir video <b>40 282</b> baxış toplayıb.",
+"stats": [
+[
+"27.9K",
+"Instagram izləyici",
+0
+],
+[
+"0.25%",
+"Engagement",
+0
+],
+[
+"40.3K",
+"Ən yaxşı video baxışı",
+1
+],
+[
+"1 700",
+"Tipik video baxışı",
+1
+],
+[
+"7 / 12",
+"Son postların statik payı",
+0
+],
+[
+"4",
+"Filial",
+0
+]
+],
+"note": "Nəticə: brend güclüdür və video işləyir, amma paylaşımlar nadirdir və çoxu sifarişə aparmır. Ən böyük potensial elə buradadır."
+},
+"reels": {
+"label": "Reels — prioritet №1",
+"bigA": "Reels yoxdursa, ",
+"bigB": "Meatadore görünmür.",
+"lead": "Rəqəmlər ortadadır. Ən yaxşı video <b>40 282</b> baxış toplayıb, tipik video isə <b>1 700</b>. Bu, <b>24 dəfə</b> fərq deməkdir. Yəni səhifə geniş auditoriyaya çıxa bilir, sadəcə bunu ardıcıl etmir.",
+"vs": {
+"bad": [
+"Tipik video",
+"1 700",
+"baxış",
+4
+],
+"good": [
+"Ən yaxşı video",
+"40 282",
+"baxış · 25 mart",
+100
+]
+},
+"rules": [
+[
+"Statik foto tək format olmamalıdır.",
+"Foto karusel və aksiya elanı üçün qalır. Lentin əsasını video təşkil edir."
+],
+[
+"Hər ay 10–12 video.",
+"6–8 professional video və 4 reels, yəni həftədə 2–3 video. Aprel-avqust kimi fasilələr olmur."
+],
+[
+"İlk 3 saniyə həlledicidir.",
+"Hər video kəsik, pendir axını və ya qutunun açılışı ilə başlayır. Ümumi planla başlamaq olmaz."
+],
+[
+"Hər paylaşım sifarişə aparır.",
+"Mətndə burgerin adı, filial və Bolt Food/Wolt çağırışı olur. Yalnız hashtag yetərli deyil."
+],
+[
+"Burger qəhrəmandır.",
+"Kadrda insan ola bilər, amma məhsul həmişə önə çıxır."
+],
+[
+"Reklam büdcəsi yalnız videoya gedir.",
+"Üzvi olaraq yaxşı işləyən video Meta Ads ilə filial yaxınlığına verilir."
+]
+]
+},
+"rivals": {
+"big": "Kim qalib gəlir və niyə?",
+"head": [
+"Brend",
+"İzləyici",
+"Engagement",
+"Video payı",
+"Nə işləyir"
+],
+"rows": [
+[
+"Meatadore",
+"AZ",
+"27.9K",
+"0.25%",
+"42%",
+"25 mart videosu: 40.3K baxış",
+1,
+0
+],
+[
+"Crunch Burger",
+"AZ",
+"27.2K",
+"0.66%",
+"75%",
+"Video üstünlüklü lent, qısa mətnlər. 44.7K baxış",
+0,
+0
+],
+[
+"Burger King Azerbaijan",
+"AZ",
+"23.3K",
+"0.89%",
+"42%",
+"Halloween və sərfəli menyu. 22.6K baxış",
+0,
+1
+],
+[
+"Burger House",
+"AZ",
+"16.6K",
+"0.51%",
+"17%",
+"Kampaniya menyuları. Son paylaşım: dekabr 2024",
+0,
+0
+],
+[
+"Shake Shack",
+"ABŞ",
+"931.7K",
+"1.28%",
+"33%",
+"Geri qayıdan məhdud menyu. 851K baxış",
+0,
+1
+],
+[
+"Five Guys",
+"ABŞ",
+"455.6K",
+"0.10%",
+"58%",
+"World Burger Games. Böyük baza, az reaksiya",
+0,
+0
+]
+],
+"fine": "Engagement = son 12 postun orta bəyənmə və şərhi / izləyici. Mənbə: Apify Instagram Scraper, 02.11.2026. Burger Baku və Hopdaddy üçün data alınmadı, ona görə cədvəldə yoxdur.",
+"lessons": [
+[
+"Video lenti aparır",
+"Crunch Burger izləyici sayında Meatadore ilə eynidir, amma lentinin 75%-i videodur və engagement 2.6 dəfə yüksəkdir."
+],
+[
+"Mövsüm və təklif işləyir",
+"Burger King Azerbaijan-ın ən çox baxılan videoları Halloween və sərfəli menyu mövzusundadır."
+],
+[
+"Baza tək başına yetmir",
+"Five Guys 455K izləyici ilə 0.10% engagement göstərir. Meatadore üçün də əsas məsələ ölçü deyil, reaksiyadır."
+],
+[
+"Boş yer var",
+"Burger House 16.6K izləyici ilə dekabr 2024-dən paylaşım etmir. Bazarda aktiv rəqib sayı azdır."
+]
+]
+},
+"gaps": {
+"big": "Aşkar etdiyimiz 6 boşluq",
+"items": [
+[
+"Ritm pozulub.",
+"18 apreldən 28 avqusta qədər 4 aydan çox paylaşım yoxdur, son 30 gündə isə cəmi 2 paylaşım var."
+],
+[
+"Mətn yalnız hashtagdır.",
+"12 paylaşımın 6-sında burgerin adı, tərkibi, filial və sifariş çağırışı yoxdur."
+],
+[
+"40 282 baxış satışa bağlanmayıb.",
+"Ən çox baxılan videonun mətnində yalnız hashtag var, bu auditoriyaya heç bir çağırış edilməyib."
+],
+[
+"Sifariş yolu görünmür.",
+"Bolt Food və Wolt-da olmağınız son 12 paylaşımdan yalnız birində, 2 noyabr videosunda deyilib."
+],
+[
+"Bio yalnız ingiliscədir.",
+"Filialların sayı və yeri bioda yazılmayıb, 4 ünvan yalnız paket şəklində görünür."
+],
+[
+"Öz kontent azdır.",
+"Son 3 paylaşımın 2-si tərəfdaşlarla (festival, rəssam) bağlıdır. Brendin müntəzəm səsi eşidilmir."
+]
+]
+},
+"trends": {
+"label": "Qlobal yeniliklər → Meatadore",
+"big": "Dünyada işləyənlərdən nəyi gətiririk",
+"items": [
+[
+"Habit Burger · ABŞ",
+"Festival burgeri",
+"Festival kontenti kreatorlarla çəkilib, 1.08M baxış toplayıb, festival burgeri sonra məhdud müddətli təklifə çevrilib.",
+"United Coffee Fest təcrübəsini sistemə salmaq: tədbirdə kreator kontenti, sonra filiallarda festival burgeri."
+],
+[
+"BurgerMe · Almaniya",
+"Uyğun kreator",
+"Kreatorlar izləyici sayına görə yox, auditoriya uyğunluğuna görə seçilib. 5 kampaniyada 1.4M insana çatılıb.",
+"Ayda 2–3 Bakı food kreatoru, hər biri üçün ayrıca filial və burger."
+],
+[
+"Shake Shack · ABŞ",
+"Geri qayıdan menyu",
+"Black Truffle menyusu \"Worth the wait\" mesajı ilə məhdud müddətə qayıdır.",
+"Hər 2 ayda bir mövsümi burger və onun 3–4 videoluq anons seriyası."
+],
+[
+"McDonald's · Almaniya",
+"Burgeri müştəri yaradır",
+"\"Create Your Taste\" kampaniyasında 116 000 burger yaradılıb, 1.5M səs verilib.",
+"\"Ayın burgeri\" səsverməsi: story-də sous və pendir seçimi, qalib menyuya düşür."
+],
+[
+"Wendy's · ABŞ",
+"Brendin xarakteri",
+"Yumorlu cavablarla danışan brend. WARC premium hamburger satışında 2.8% artım bildirir.",
+"#özüdü səsini inkişaf etdirmək: qısa, özündən əmin mətnlər və şərhlərə cavab."
+],
+[
+"Five Guys · ABŞ",
+"Komanda qəhrəmandır",
+"\"On the Line: World Burger Games\": 8 əməkdaş 100 000 dollar üçün yarışır.",
+"\"Filiallar yarışı\" video seriyası: Mərkəz, Caspian Plaza, Nərimanov, Ağ şəhər."
+]
+],
+"fine": "Nəticə rəqəmləri brendlərin və agentliklərin öz keys-study-lərindəndir: Later, Hypefy, Famous Campaigns, WARC. Shake Shack və Five Guys: Instagram paylaşımları."
+},
+"mix": {
+"big": "Aylıq kontent qarışığı",
+"items": [
+[
+35,
+"Məhsul videoları",
+"Kəsik, pendir axını, qutunun açılışı, ASMR",
+"--lav"
+],
+[
+20,
+"Filial və sifariş yolu",
+"4 filial, Bolt Food/Wolt, ofis naharı",
+"--wt-pink"
+],
+[
+20,
+"Kreator və insan",
+"Food kreatorları, dostlarla süfrə anları",
+"#7B4BF0"
+],
+[
+15,
+"Brend və gecə atmosferi",
+"02:00-a qədər açıq, neon, məkanın hekayəsi",
+"#B9A6FF"
+],
+[
+10,
+"Aksiya və yeniliklər",
+"Ayın burgeri, endirim, tədbir",
+"#5E528F"
+]
+]
+},
+"plan": {
+"big": "Üç mərhələ, bir hədəf",
+"kpi": [
+[
+"1–1.5%",
+"Engagement hədəfi<br>(hazırda 0.25%)"
+],
+[
+"10 000",
+"Tipik video baxışı<br>(hazırda 1 700)"
+],
+[
+"60%",
+"Kontentdə video payı<br>(hazırda 42%)"
+],
+[
+"15–25",
+"30 gündə paylaşım<br>(hazırda 2)"
+]
+],
+"fine": "Bunlar birgə iş üçün hədəflərdir, nəticə zəmanəti deyil."
+},
+"services": {
+"big": "Strategiyadan icraya, bir komanda",
+"groups": [
+[
+"Kontent istehsalı",
+"VIDEO · FOTO",
+[
+"Professional foto çəkiliş",
+"Professional kreativ video çəkiliş",
+"Reels video",
+"Süni intellekt inteqrasiyalı kreativ video (Meatadore Special)",
+"Bütün poster və motion dizaynların hazırlanması"
+]
+],
+[
+"Səhifə idarəçiliyi",
+"INSTAGRAM · TIKTOK",
+[
+"Kontent planın hazırlanması və tətbiqi",
+"Gündəlik story və posterlərin paylaşılması, səhifə idarəçiliyi",
+"Səhifə vizualının brendə uyğun səliqəyə salınması",
+"Gündəlik mesajlara cavablanma və şablon mesajların hazırlanması"
+]
+],
+[
+"Reklam və analitika",
+"ADS · DATA",
+[
+"Targeting xidməti (Meta Ads, TikTok Ads)",
+"Digital marketing xidməti (Google Maps, TripAdvisor və digərləri)",
+"Reklam kabinetinin qurulması və optimizasiyası",
+"Rəqib analizi və konsultasiya xidməti",
+"Aylıq hesabatın hazırlanması və təhvil verilməsi"
+]
+]
+]
+}
+}

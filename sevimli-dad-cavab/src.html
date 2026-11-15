@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Sevimli Dad · cavablar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#130A38;--ink-2:#1A0E4A;--panel:#22125C;--paper:#F5F2FF;--soft:#D9D3F5;--muted:#A9A2D8;--cyan:#2CE6F0;--pink:#FF9CF5;--violet:#7B4BF0;
+--grad:linear-gradient(90deg,#2CE6F0,#9FB8F6 50%,#FF9CF5);--line:rgba(245,242,255,.12);--line-2:rgba(245,242,255,.24)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--ink);color:var(--paper);font:400 17px/1.65 "Instrument Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Outfit,system-ui,sans-serif;margin:0;line-height:1.14;text-wrap:balance}
+p{margin:0}
+a{color:var(--cyan)}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+.mono{font:500 12px/1.3 "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.gt{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+header.top{position:sticky;top:0;z-index:5;background:rgba(19,10,56,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:6px;height:60px;overflow-x:auto;scrollbar-width:none}
+header.top .wrap::-webkit-scrollbar{display:none}
+header.top img{height:22px;width:auto;margin-right:auto;display:block}
+header.top a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;padding:8px 11px;border-radius:999px;white-space:nowrap}
+header.top a:hover{color:var(--paper);background:var(--panel)}
+header.top a:focus-visible,.btn:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+
+.hero{position:relative;padding:88px 0 60px;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;inset:-30% -10% auto auto;width:560px;height:560px;background:radial-gradient(circle,rgba(123,75,240,.55),transparent 62%);pointer-events:none}
+.hero::after{content:"";position:absolute;left:-140px;bottom:-220px;width:460px;height:460px;background:radial-gradient(circle,rgba(44,230,240,.2),transparent 62%);pointer-events:none}
+.hero .wrap{position:relative;z-index:1}
+.hero h1{font-size:clamp(38px,6.6vw,74px);font-weight:700;letter-spacing:-.02em;margin:18px 0 20px}
+.hero .lead{max-width:680px;font-size:19px;color:var(--soft)}
+.toc{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:44px}
+.toc a{display:block;text-decoration:none;color:var(--paper);background:var(--ink-2);border:1px solid var(--line);border-radius:16px;padding:16px 18px;transition:border-color .2s,transform .2s}
+.toc a:hover{border-color:var(--line-2);transform:translateY(-2px)}
+.toc b{display:block;font:500 12px "JetBrains Mono",monospace;margin-bottom:8px}
+.toc span{font:500 16px Outfit}
+
+section{padding:68px 0;border-bottom:1px solid var(--line)}
+.head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px}
+.head .n{font:500 14px "JetBrains Mono",monospace}
+.head h2{font-size:clamp(27px,4vw,42px);font-weight:600;letter-spacing:-.01em}
+
+.q{background:var(--ink-2);border:1px solid var(--line);border-radius:18px;padding:22px 26px;margin-bottom:14px}
+.q .mono{display:block;margin-bottom:8px}
+.q p{font:500 21px/1.35 Outfit;color:var(--paper)}
+.a{position:relative;background:var(--panel);border:1px solid var(--line-2);border-radius:18px;padding:26px 28px 28px;overflow:hidden}
+.a::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#2CE6F0,#FF9CF5)}
+.a .mono{display:block;margin-bottom:10px;color:var(--cyan)}
+.a p{color:var(--soft)}
+.a p+p{margin-top:14px}
+.a b{color:var(--paper);font-weight:600}
+
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:14px}
+.stats.three{grid-template-columns:repeat(3,1fr)}
+.stat{background:var(--ink-2);border:1px solid var(--line);border-radius:18px;padding:22px 24px}
+.stat strong{display:block;font:700 44px/1 Outfit;font-variant-numeric:tabular-nums}
+.stat span{display:block;margin-top:10px;color:var(--muted);font-size:15px}
+
+.note{margin-top:14px;border:1px dashed var(--line-2);border-radius:16px;padding:18px 22px;color:var(--soft);font-size:16px}
+.note b{color:var(--paper)}
+
+.red{border-color:rgba(255,156,245,.5)}
+.red::before{background:var(--pink)}
+.red .mono{color:var(--pink)}
+.pts{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:14px}
+.pt{background:var(--ink-2);border:1px solid var(--line);border-radius:18px;padding:20px 22px}
+.pt h3{font-size:19px;font-weight:600;margin-bottom:6px}
+.pt p{color:var(--muted);font-size:16px}
+
+.case{background:var(--panel);border:1px solid var(--line-2);border-radius:20px;padding:28px 30px}
+.case .mono{display:block;margin-bottom:10px;color:var(--pink)}
+.case h3{font-size:28px;font-weight:600;margin-bottom:14px}
+.case p{color:var(--soft)}
+.case p+p{margin-top:12px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 4px}
+.chips span{font-size:14px;border:1px solid var(--line-2);border-radius:999px;padding:6px 13px;color:var(--soft)}
+.verdict{margin-top:18px;padding-top:18px;border-top:1px solid var(--line);display:flex;gap:14px;align-items:flex-start}
+.verdict i{flex:none;width:10px;height:10px;border-radius:50%;background:var(--pink);margin-top:9px}
+.verdict p{color:var(--paper);font-weight:500}
+
+.vid{margin-top:18px;max-width:420px;border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line-2)}.vid iframe{display:block;width:100%;height:452px;border:0}
+.btn{display:inline-flex;align-items:center;gap:10px;margin-top:20px;background:var(--grad);color:#130A38;font:600 16px Outfit;text-decoration:none;border-radius:999px;padding:13px 24px}
+.role{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.role div{background:var(--ink-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;color:var(--soft);font-size:15.5px}
+.role b{display:block;font:500 12px "JetBrains Mono",monospace;margin-bottom:8px}
+
+.ab{background:var(--panel);border:1px solid var(--line-2);border-radius:20px;padding:26px 28px 30px}
+.ab+.ab{margin-top:14px}
+.ab h3{font-size:26px;font-weight:600}
+.ab .h{color:var(--muted);font:500 13px "JetBrains Mono",monospace;margin:6px 0 20px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:720px}
+.pair figure{margin:0}
+.pair img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--line-2);background:#fff}
+.pair figcaption{display:flex;align-items:center;gap:8px;margin-bottom:10px;font:600 15px Outfit}
+.lb{font:500 11px "JetBrains Mono",monospace;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:5px 11px}
+.lb.b{color:var(--muted);border:1px solid var(--line-2)}
+.lb.a{color:#130A38;background:var(--grad)}
+.sub{font:600 23px Outfit;margin:44px 0 6px}
+.subp{color:var(--muted);max-width:720px;margin-bottom:18px}
+.now{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.nw{background:var(--ink-2);border:1px solid var(--line);border-radius:18px;padding:22px 24px}
+.nw h3{font-size:21px;font-weight:600}.nw .h{color:var(--muted);font:500 13px "JetBrains Mono",monospace;margin:4px 0 14px}
+.nw dl{display:grid;grid-template-columns:1fr auto;gap:8px 16px;margin:0}
+.nw dt{color:var(--soft);font-size:15.5px}.nw dd{margin:0;font:600 17px Outfit;font-variant-numeric:tabular-nums;text-align:right}
+.nw p{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);color:var(--soft);font-size:15.5px}
+.feeds{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.ph{background:#0B0620;border:1px solid var(--line-2);border-radius:26px;padding:14px 12px 16px;max-width:400px;width:100%;justify-self:center}
+.ph .pr{display:flex;align-items:center;gap:10px;padding:2px 4px 12px}
+.ph .av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font:700 14px Outfit;color:#fff;background:var(--bc)}
+.ph .pr b{font:600 15px Outfit;display:block}.ph .pr small{color:var(--muted);font-size:12px}
+.pins{display:flex;gap:8px;padding:0 4px 12px}
+.pins span{font-size:11px;border:1px solid var(--line-2);border-radius:999px;padding:4px 9px;color:var(--soft);white-space:nowrap}
+.gridm{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;border-radius:12px;overflow:hidden}
+.tl{position:relative;aspect-ratio:3/4;padding:7px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;color:#fff}
+.tl.v{background:linear-gradient(160deg,var(--b1),var(--b2))}
+.tl.v::before{content:"";position:absolute;right:7px;top:7px;border-left:9px solid #fff;border-top:6px solid transparent;border-bottom:6px solid transparent;opacity:.95}
+.tl.v::after{content:"";position:absolute;left:18%;right:18%;top:20%;height:34%;border-radius:50%;background:rgba(255,255,255,.16)}
+.tl .tg{position:absolute;left:0;top:10px;background:#fff;color:var(--b2);font:700 8.5px/1 "JetBrains Mono",monospace;letter-spacing:.06em;padding:4px 6px;border-radius:0 4px 4px 0;z-index:1}
+.tl .tt{position:relative;z-index:1;font:700 12px/1.12 Outfit;text-wrap:balance}
+.tl .no{position:relative;z-index:1;font:500 8.5px "JetBrains Mono",monospace;opacity:.8;margin-top:3px}
+.tl.f{background:#EFE7DC;color:#3A2C1E;justify-content:center;align-items:center;text-align:center}
+.tl.f i{width:46%;aspect-ratio:1;border-radius:50%;background:var(--b1);opacity:.85;margin-bottom:6px}
+.tl.d{background:#fff;color:var(--b2);justify-content:center;align-items:center;text-align:center;border:3px solid var(--b1)}
+.tl.f span,.tl.d span{font:600 10px/1.2 "JetBrains Mono",monospace;letter-spacing:.04em;text-transform:uppercase}
+.tl.d b{font:700 13px/1.1 Outfit;margin-bottom:4px;display:block}
+.sd{--bc:#E0312F;--b1:#F0552B;--b2:#B5161D}.ht{--bc:#178A55;--b1:#27A968;--b2:#0C5A38}
+.lg{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;color:var(--muted);font-size:14px}
+.lg span{display:inline-flex;align-items:center;gap:7px}.lg i{width:12px;height:12px;border-radius:3px;display:inline-block}
+.cov{display:grid;grid-template-columns:260px 1fr;gap:30px;align-items:center;background:var(--panel);border:1px solid var(--line-2);border-radius:20px;padding:26px 28px}
+.big{position:relative;aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:linear-gradient(160deg,#F0552B,#B5161D);color:#fff}
+.big .safe{position:absolute;left:0;right:0;top:15%;bottom:15%;border-top:1.5px dashed rgba(255,255,255,.75);border-bottom:1.5px dashed rgba(255,255,255,.75)}
+.big .face{position:absolute;left:22%;right:22%;top:24%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.2)}
+.big .tg{position:absolute;left:0;top:19%;background:#fff;color:#B5161D;font:700 12px/1 "JetBrains Mono",monospace;letter-spacing:.06em;padding:7px 10px;border-radius:0 6px 6px 0}
+.big .tt{position:absolute;left:14px;right:14px;bottom:21%;font:700 25px/1.08 Outfit}
+.big .no{position:absolute;left:14px;bottom:17%;font:500 11px "JetBrains Mono",monospace;opacity:.85}
+.big em{position:absolute;font:600 11px "JetBrains Mono",monospace;font-style:normal;background:#130A38;color:#fff;width:20px;height:20px;border-radius:50%;display:grid;place-items:center}
+.rules{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+.rules li{display:grid;grid-template-columns:28px 1fr;gap:12px;color:var(--soft);font-size:16px}
+.rules li b{color:var(--paper)}
+.rules li>span{font:600 12px "JetBrains Mono",monospace;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--grad);color:#130A38;margin-top:2px}
+.wk{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.wk>div{background:var(--ink-2);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.wk h4{margin:0 0 10px;font:500 12px "JetBrains Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.wk p{display:flex;gap:8px;align-items:baseline;font-size:15px;color:var(--soft)}.wk p+p{margin-top:7px}
+.wk p b{font:600 10px "JetBrains Mono",monospace;border-radius:5px;padding:3px 5px;color:#fff;flex:none}
+.wk .s{background:#E0312F}.wk .h{background:#178A55}
+.road{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.rd{background:var(--ink-2);border:1px solid var(--line);border-radius:18px;padding:22px 24px}
+.rd .mono{display:block;margin-bottom:10px}
+.rd h3{font-size:20px;font-weight:600;margin-bottom:10px}
+.rd ul{margin:0;padding-left:18px;color:var(--soft);font-size:15.5px}.rd li{margin-top:5px}
+.kpi{overflow-x:auto;background:var(--ink-2);border:1px solid var(--line);border-radius:18px}
+.kpi table{width:100%;border-collapse:collapse;min-width:560px;font-size:15.5px}
+.kpi th,.kpi td{text-align:left;padding:13px 18px;border-bottom:1px solid var(--line)}
+.kpi th{font:500 12px "JetBrains Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.kpi tr:last-child td{border-bottom:0}.kpi td{color:var(--soft)}.kpi td b{color:var(--paper)}
+.kpi td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.src2{color:var(--muted);font-size:13.5px;margin-top:12px}
+.next{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.nx{background:var(--ink-2);border:1px solid var(--line);border-radius:18px;padding:24px 26px}
+.nx .tag{display:inline-block;font:500 11px "JetBrains Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:#130A38;background:var(--grad);border-radius:999px;padding:5px 11px;margin-bottom:14px}
+.nx h3{font-size:22px;font-weight:600;margin-bottom:8px}
+.nx p{color:var(--muted);font-size:16px}
+
+footer{padding:44px 0 70px;color:var(--muted);font-size:14px}
+footer img{height:20px;opacity:.85;display:block;margin-bottom:12px}
+
+@media(max-width:780px){
+ body{font-size:16px}
+ .toc{grid-template-columns:1fr 1fr}
+ .stats,.stats.three,.pts,.next,.role,.now,.feeds,.road{grid-template-columns:1fr}
+ .toc{grid-template-columns:1fr 1fr}.wk{grid-template-columns:1fr 1fr}.cov{grid-template-columns:1fr;padding:20px 18px}.big{max-width:230px;margin:0 auto}.sub{margin-top:34px}
+ .pair{gap:10px}.ab{padding:20px 16px 22px}.lb{font-size:10px;padding:4px 9px}
+ .hero{padding:58px 0 44px}
+ section{padding:48px 0}
+ .q p{font-size:19px}
+ .a,.case{padding:22px 22px 24px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.toc a{transition:none}}
+@media print{header.top,.vid{display:none}body{background:#fff;color:#111}.gt{color:#5B3FD0;background:none}.q,.a,.stat,.pt,.case,.nx,.ab,.nw,.rd,.cov,.kpi,.wk>div,.role div,.toc a{background:#fff;border-color:#ccc;break-inside:avoid}.a p,.case p,.lead,.stat span,.pt p,.nx p,.role div,.q p{color:#222}.hero::before,.hero::after{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+ <img src="__LOGO__" alt="WeTrend">
+ <a href="#video">Video və qiymət</a><a href="#cavab">Cavablanma</a><a href="#numune">Nümunələr</a><a href="#evvelsonra">Əvvəl və sonra</a><a href="#plan">Kontent planı</a><a href="#novbeti">Növbəti addımlar</a>
+</div></header>
+
+<div class="hero"><div class="wrap">
+ <div class="mono">Sevimli Dad · iclas üzrə geri dönüş</div>
+ <h1>Suallarınıza <span class="gt">cavablarımız</span></h1>
+ <p class="lead">Görüşümüzdə qaldırdığınız sualları və qeydləri bir yerə topladıq. Aşağıda hər biri üzrə mövqeyimizi açıq şəkildə təqdim edirik.</p>
+ <div class="toc">
+  <a href="#video"><b class="gt">01</b><span>Video sayı və qiymət</span></a>
+  <a href="#cavab"><b class="gt">02</b><span>Cavablanma və şərhlər</span></a>
+  <a href="#numune"><b class="gt">03</b><span>Layihə nümunələri</span></a>
+  <a href="#evvelsonra"><b class="gt">04</b><span>Əvvəl və sonra</span></a>
+  <a href="#plan"><b class="gt">05</b><span>Kontent əsaslı biznes plan</span></a>
+  <a href="#novbeti"><b class="gt">06</b><span>Növbəti addımlar</span></a>
+ </div>
+</div></div>
+
+<section id="video"><div class="wrap">
+ <div class="head"><span class="n gt">01</span><h2>Video sayı və qiymət</h2></div>
+ <div class="q"><span class="mono">Sualınız</span><p>Xüsusi hallarda video sayı azaldılsa, qiymət necə dəyişəcək?</p></div>
+ <div class="a"><span class="mono">Cavabımız</span>
+  <p>Komandamız mövzunu ayrıca müzakirə və analiz etdi. Tövsiyəmiz <b>ayda minimum 5 videonun qorunmasıdır</b>: bu say səhifənin aktivliyini saxlayır və brendin marketinq fəaliyyətində daim iştirak etdiyini göstərir.</p>
+  <p>Bununla belə, xüsusi hal yaranarsa, <b>Production videosunu ixtisar etməklə</b> paketin məbləğinin <b>3 000 AZN-dən</b> hesablanması mümkündür.</p>
+ </div>
+ <div class="stats">
+  <div class="stat"><strong class="gt">5 video</strong><span>ayda tövsiyə etdiyimiz minimum say</span></div>
+  <div class="stat"><strong class="gt">3 000 AZN</strong><span>Production videosu ixtisar olunduqda paketin başlanğıc məbləği</span></div>
+ </div>
+ <div class="note"><b>Çəkiliş olan ay ilə olmayan ayın fərqi.</b> Çəkiliş olmayan ayda səhifəyə yeni video çıxmır, aktivlik azalır və brend izləyicinin gözündən düşür. Minimum 5 video tövsiyəmizin səbəbi də budur.</div>
+</div></section>
+
+<section id="cavab"><div class="wrap">
+ <div class="head"><span class="n gt">02</span><h2>Cavablanma və şərhlər</h2></div>
+ <div class="a red"><span class="mono">Qırmızı xətt</span>
+  <p>İclasda xüsusi vurğuladığınız kimi, <b>mesajların və şərhlərin cavablandırılması bizim üçün qırmızı xətdir.</b> Bu işə ayrıca diqqət ayırırıq və ona paketin əlavəsi kimi yox, əsas hissəsi kimi yanaşırıq.</p>
+ </div>
+ <div class="pts">
+  <div class="pt"><h3>Həssas yanaşma</h3><p>Hər müraciətə və şərhə diqqətlə, müştərinin vəziyyətini nəzərə alaraq cavab veririk.</p></div>
+  <div class="pt"><h3>Brendin adından danışırıq</h3><p>Hər cavab Sevimli Dad-ın adından yazılır, ona görə ton və ifadə brendə uyğun seçilir.</p></div>
+ </div>
+</div></section>
+
+<section id="numune"><div class="wrap">
+ <div class="head"><span class="n gt">03</span><h2>Layihə nümunələri</h2></div>
+ <div class="q"><span class="mono">Xahişiniz</span><p>Uğursuz layihə nümunəsi və çöl reportajı nümunəsi.</p></div>
+
+ <div class="case">
+  <span class="mono">Gözlənilən nəticəni verməyən layihə</span>
+  <h3>Gilan Holding · "Iam Tea": Rodeo Challenge</h3>
+  <p>Yay boyu, 3 ay ərzində Bakının və rayonların tanınmış istirahət məkanlarında xüsusi hədiyyəli yarışlar təşkil etdik. Yarışlar bu layihə üçün xüsusi sifarişlə hazırlanan böyük həcmli 3D öküz fiqurunun üzərində keçirilirdi.</p>
+  <p>Layihənin ideyası da, həyata keçirilməsi də 20 nəfərlik peşəkar heyətimizin işi idi.</p>
+  <div class="chips"><span>3 ay</span><span>20 nəfərlik heyət</span><span>My Beach Novxanı</span><span>Amburan</span><span>Atlant</span><span>Nabran</span></div>
+  <div class="vid"><iframe src="https://www.instagram.com/p/BX5Fx4AF5II/embed" title="Rodeo Challenge videosu" loading="lazy" allowfullscreen scrolling="no"></iframe></div>
+  <a class="btn" href="https://www.instagram.com/p/BX5Fx4AF5II/" target="_blank" rel="noopener">Layihənin videosuna Instagram-da baxın →</a>
+  <div class="verdict"><i></i><p>Bütün bu hazırlığa baxmayaraq, layihə gözlənilən nəticəni vermədi. Bunu sizdən gizlətmirik: uğursuz təcrübəmizi də uğurlu işlərimiz qədər açıq bölüşürük.</p></div>
+ </div>
+
+ <div class="case" style="margin-top:14px">
+  <span class="mono" style="color:var(--cyan)">Çöl reportajı nümunəsi</span>
+  <h3>Bloggerlə birgə çəkilən reportaj</h3>
+  <p>Bu işdə bizim payımız:</p>
+  <div class="role">
+   <div><b class="gt">01</b>Ssenarinin və kontentin hazırlanması</div>
+   <div><b class="gt">02</b>Bloggerlə əməkdaşlığın qurulması</div>
+   <div><b class="gt">03</b>Videonun təhvil alınması prosesində iştirak</div>
+  </div>
+  <a class="btn" href="https://www.instagram.com/p/DKewGRaivsh/" target="_blank" rel="noopener">Videoya Instagram-da baxın →</a>
+ </div>
+</div></section>
+
+<section id="evvelsonra"><div class="wrap">
+ <div class="head"><span class="n gt">04</span><h2>Əvvəl və sonra</h2></div>
+ <div class="q"><span class="mono">Xahişiniz</span><p>Mood board üzrə əvvəl və sonra nümunələri.</p></div>
+
+ <div class="ab">
+  <h3>The Place Baku</h3><div class="h">@theplacebaku</div>
+  <div class="pair">
+   <figure><figcaption><span class="lb b">Əvvəl</span></figcaption><img src="__place_before__" alt="The Place Baku səhifəsinin əvvəlki görünüşü" loading="lazy"></figure>
+   <figure><figcaption><span class="lb a">Sonra</span></figcaption><img src="__place_after__" alt="The Place Baku səhifəsinin sonrakı görünüşü" loading="lazy"></figure>
+  </div>
+ </div>
+
+ <div class="ab">
+  <h3>Etçi Umut Baku</h3><div class="h">@etci.umut.baku</div>
+  <div class="pair">
+   <figure><figcaption><span class="lb b">Əvvəl</span></figcaption><img src="__etci_before__" alt="Etçi Umut Baku səhifəsinin əvvəlki görünüşü" loading="lazy"></figure>
+   <figure><figcaption><span class="lb a">Sonra</span></figcaption><img src="__etci_after__" alt="Etçi Umut Baku səhifəsinin sonrakı görünüşü" loading="lazy"></figure>
+  </div>
+ </div>
+</div></section>
+
+<section id="plan"><div class="wrap">
+ <div class="head"><span class="n gt">05</span><h2>Kontent əsaslı biznes plan</h2></div>
+ <div class="q"><span class="mono">Xahişiniz</span><p>Səhifələr necə görünəcək, videoların üzlükləri necə olacaq və ümumi gediş necə qurulacaq?</p></div>
+ <div class="a"><span class="mono">Qısa cavab</span>
+  <p>Plan təqdim etdiyimiz strategiyanın davamıdır: <b>bir istehsalçı, iki brend, iki fərqli səs</b>. Hər brend üçün ayda 6 video, hər videonun öz formatı və tanınan üzlüyü olur. Səhifə şahmat düzümü ilə qurulur: video, foto və dizayn növbə ilə gəlir, izləyici səhifəyə baxanda nizam görür.</p>
+ </div>
+
+ <h3 class="sub">Hazırda səhifələr necədir</h3>
+ <p class="subp">Hər iki hesabın son 12 paylaşımı üzrə ölçdüyümüz rəqəmlər.</p>
+ <div class="now">
+  <div class="nw"><h3>Sevimli Dad</h3><div class="h">@sevimlidad.az</div>
+   <dl><dt>İzləyici</dt><dd>32 997</dd><dt>Son 12 paylaşımda video</dt><dd>1</dd><dt>Bir paylaşıma orta bəyənmə</dt><dd>34</dd></dl>
+   <p>Səhifə demək olar tamamilə fotodan ibarətdir. 33 min izləyiciyə 34 bəyənmə göstərir ki, paylaşımlar izləyiciyə çatmır.</p></div>
+  <div class="nw"><h3>Hacı Turqay</h3><div class="h">@haciturqay.az</div>
+   <dl><dt>İzləyici</dt><dd>36 224</dd><dt>Son 12 paylaşımda video</dt><dd>4</dd><dt>Foto paylaşıma orta bəyənmə</dt><dd>23</dd><dt>Resept videosuna bəyənmə</dt><dd>290 və 297</dd></dl>
+   <p>İki resept videosu fotoların orta göstəricisindən təxminən 12 dəfə çox bəyənmə yığıb. Bu, video üzərində qurulan planın əsasını təsdiqləyir.</p></div>
+ </div>
+ <p class="src2">Mənbə: Instagram, hər hesabın son 12 paylaşımı, 13.11.2026.</p>
+
+ <h3 class="sub">Səhifə necə görünəcək</h3>
+ <p class="subp">Bir ayın paylaşımları. Videolar şahmat düzümü ilə yerləşir, aralarında foto və dizayn gəlir. Aşağıdakı maketdir: rənglər və şriftlər brend kitabçasına uyğunlaşdırılacaq.</p>
+ <div class="feeds">
+  <div class="ph sd"><div class="pr"><span class="av">SD</span><div><b>sevimlidad.az</b><small>Zarafatcıl, sürətli, ailəvi</small></div></div>
+   <div class="pins"><span>📌 Brend çarxı</span><span>📌 Halallıq</span><span>📌 Ən yaxşı resept</span></div>
+   <div class="gridm">
+    <div class="tl v"><span class="tg">KÜÇƏ</span><span class="tt">Hansı daha dadlıdır?</span><span class="no">№ 01</span></div>
+    <div class="tl f"><i></i><span>Məhsul fotosu</span></div>
+    <div class="tl v"><span class="tg">HALALLIQ</span><span class="tt">Tərkibi oxuyuram</span><span class="no">№ 01</span></div>
+    <div class="tl d"><b>Aksiya</b><span>Dizayn</span></div>
+    <div class="tl v"><span class="tg">YUMOR</span><span class="tt">Sosiska kimin payıdır?</span><span class="no">№ 01</span></div>
+    <div class="tl f"><i></i><span>Süfrə fotosu</span></div>
+    <div class="tl v"><span class="tg">SEVİMLİ MƏTBƏX</span><span class="tt">Qonaqla bişiririk</span><span class="no">№ 01</span></div>
+    <div class="tl d"><b>5 fakt</b><span>Karusel</span></div>
+    <div class="tl v"><span class="tg">RESEPT</span><span class="tt">5 dəqiqəlik səhər yeməyi</span><span class="no">№ 01</span></div>
+    <div class="tl f"><i></i><span>Məhsul fotosu</span></div>
+    <div class="tl v"><span class="tg">BREND ÇARXI</span><span class="tt">Soyuducu qapısı</span><span class="no">Production</span></div>
+    <div class="tl d"><b>Bayram</b><span>Dizayn</span></div>
+   </div></div>
+  <div class="ph ht"><div class="pr"><span class="av">HT</span><div><b>haciturqay.az</b><small>Sakit, inandırıcı, səmimi</small></div></div>
+   <div class="pins"><span>📌 Brend çarxı</span><span>📌 Halallıq</span><span>📌 Ən yaxşı resept</span></div>
+   <div class="gridm">
+    <div class="tl v"><span class="tg">KÜÇƏ</span><span class="tt">Halal dadı bilinir?</span><span class="no">№ 01</span></div>
+    <div class="tl f"><i></i><span>Süfrə fotosu</span></div>
+    <div class="tl v"><span class="tg">YUMOR</span><span class="tt">Ana nəzarəti</span><span class="no">№ 01</span></div>
+    <div class="tl d"><b>Sertifikat</b><span>Karusel</span></div>
+    <div class="tl v"><span class="tg">USTA İLƏ SÖHBƏT</span><span class="tt">Usta cavab verir</span><span class="no">№ 01</span></div>
+    <div class="tl f"><i></i><span>Məhsul fotosu</span></div>
+    <div class="tl v"><span class="tg">RESEPT</span><span class="tt">Sucuqlu yumurta</span><span class="no">№ 01</span></div>
+    <div class="tl d"><b>Aksiya</b><span>Dizayn</span></div>
+    <div class="tl v"><span class="tg">HALALLIQ</span><span class="tt">Şübhəli gəlsin</span><span class="no">№ 01</span></div>
+    <div class="tl f"><i></i><span>Süfrə fotosu</span></div>
+    <div class="tl v"><span class="tg">BREND ÇARXI</span><span class="tt">Üç nəsil süfrəsi</span><span class="no">Production</span></div>
+    <div class="tl d"><b>Bayram</b><span>Dizayn</span></div>
+   </div></div>
+ </div>
+ <div class="lg"><span><i style="background:linear-gradient(160deg,#F0552B,#B5161D)"></i>Video (üzlüklü)</span><span><i style="background:#EFE7DC"></i>Foto: məhsul və süfrə</span><span><i style="background:#fff;border:2px solid #F0552B"></i>Dizayn və karusel</span></div>
+
+ <h3 class="sub">Video üzlükləri</h3>
+ <p class="subp">Üzlük videonun vitrinidir. İzləyici səhifəyə girəndə videonu yox, üzlüyü görür. Ona görə hər üzlük eyni qayda ilə qurulur.</p>
+ <div class="cov">
+  <div class="big"><div class="safe"></div><div class="face"></div><span class="tg">RESEPT</span><span class="tt">5 dəqiqəlik səhər yeməyi</span><span class="no">№ 01 · Sevimli Dad</span>
+   <em style="left:42%;top:13%">5</em><em style="right:8px;top:19.5%">1</em><em style="right:10%;top:36%">3</em><em style="right:8px;bottom:26%">2</em><em style="right:8px;bottom:16.5%">4</em></div>
+  <ul class="rules">
+   <li><span>1</span><div><b>Format lenti.</b> Hər formatın öz adı var: Resept, Halallıq, Yumor, Küçə, Sevimli Mətbəx, Usta ilə söhbət. İzləyici lentdən videonun nə haqqında olduğunu dərhal bilir.</div></li>
+   <li><span>2</span><div><b>Qısa başlıq.</b> 2–4 söz, böyük və oxunaqlı, hər üzlükdə eyni şrift.</div></li>
+   <li><span>3</span><div><b>Üz və ya məhsul.</b> Kadrın yuxarı hissəsində insan üzü və ya məhsulun yaxın planı.</div></li>
+   <li><span>4</span><div><b>Seriya nömrəsi.</b> Hər format seriya kimi nömrələnir, davamiyyət hiss olunur.</div></li>
+   <li><span>5</span><div><b>Təhlükəsiz zona.</b> Profildə üzlük yuxarıdan və aşağıdan kəsilir. Yazı və üz qırıq xətlərin arasında qalır ki, heç nə itməsin.</div></li>
+  </ul>
+ </div>
+ <div class="note"><b>Brendlər qarışmır.</b> Sevimli Dad-ın üzlükləri isti rəngli, canlı və zarafatcıl olur. Hacı Turqay-ın üzlükləri sakit, yaşıl tonlu və təmkinlidir. Quruluş eynidir, əhval-ruhiyyə fərqlidir.</div>
+
+ <h3 class="sub">Bir ayın gedişi</h3>
+ <p class="subp">İki brend üzrə 12 video, 4 həftə, hər həftə 3 video. Aralarında foto, dizayn və gündəlik story gedir.</p>
+ <div class="wk">
+  <div><h4>Həftə 1</h4><p><b class="s">SD</b>Brend çarxı</p><p><b class="h">HT</b>Brend çarxı</p><p><b class="s">SD</b>Resept</p></div>
+  <div><h4>Həftə 2</h4><p><b class="h">HT</b>Halallıq danışığı</p><p><b class="s">SD</b>Sevimli Mətbəx</p><p><b class="h">HT</b>Resept</p></div>
+  <div><h4>Həftə 3</h4><p><b class="s">SD</b>Yumor</p><p><b class="h">HT</b>Usta ilə söhbət</p><p><b class="s">SD</b>Halallıq danışığı</p></div>
+  <div><h4>Həftə 4</h4><p><b class="h">HT</b>Yumor</p><p><b class="s">SD</b>Küçə dequstasiyası</p><p><b class="h">HT</b>Küçə dequstasiyası</p></div>
+ </div>
+ <div class="note">Studiya videolarından hər ay əlavə 3–4 qısa kəsik çıxır və həftələrin arasında paylaşılır.</div>
+
+ <h3 class="sub">İlk üç ay</h3>
+ <div class="road">
+  <div class="rd"><span class="mono gt">1-ci ay · Qurulma</span><h3>Təməl</h3><ul><li>Hər brendin mood board-u və üzlük şablonları</li><li>Profilin səliqəyə salınması: sabitlənmiş 3 paylaşım, highlight-lar</li><li>İlk 12 videonun çəkilişi və paylaşımı</li><li>Halallıq suallarına hazır cavab şablonları</li></ul></div>
+  <div class="rd"><span class="mono gt">2-ci ay · Ritm</span><h3>Davamiyyət</h3><ul><li>Hər format seriya kimi davam edir (№ 02)</li><li>Halallıq videolarının reklamla geniş auditoriyaya çatdırılması</li><li>Bloger və kreator əməkdaşlıqlarının başlanması</li></ul></div>
+  <div class="rd"><span class="mono gt">3-cü ay · Ölçmə</span><h3>Düzəliş</h3><ul><li>Hansı format işləyir, hansı işləmir: rəqəmlərlə</li><li>Zəif formatın dəyişdirilməsi, güclü formatın artırılması</li><li>Növbəti rüb üçün plan və hesabat görüşü</li></ul></div>
+ </div>
+
+ <h3 class="sub">Nəyi ölçəcəyik</h3>
+ <p class="subp">Vəd yox, ölçü: hər ay aşağıdakı göstəricilərə bugünkü vəziyyətlə müqayisədə baxacağıq.</p>
+ <div class="kpi"><table>
+  <tr><th>Göstərici</th><th>Sevimli Dad, bu gün</th><th>Hacı Turqay, bu gün</th><th>İstiqamət</th></tr>
+  <tr><td><b>Son 12 paylaşımda video sayı</b></td><td class="num">1</td><td class="num">4</td><td>Ən azı 6</td></tr>
+  <tr><td><b>Bir paylaşıma orta bəyənmə</b></td><td class="num">34</td><td class="num">23 (foto)</td><td>Aydan-aya artım</td></tr>
+  <tr><td><b>Videoların baxış sayı</b></td><td colspan="2">Hər format üzrə ayrıca izlənəcək</td><td>Formatların müqayisəsi</td></tr>
+  <tr><td><b>Yadda saxlama və paylaşma</b></td><td colspan="2">Resept və yumor videolarında əsas ölçü</td><td>Aydan-aya artım</td></tr>
+  <tr><td><b>Halallıq sualları</b></td><td colspan="2">Şərh və mesajlarda sualların sayı və cavab müddəti</td><td>Hər suala cavab</td></tr>
+ </table></div>
+</div></section>
+
+<section id="novbeti"><div class="wrap">
+ <div class="head"><span class="n gt">06</span><h2>Növbəti addımlar</h2></div>
+ <div class="next">
+  <div class="nx"><span class="tag">Hazırlanır</span><h3>Əvvəl və sonra: video nümunələri</h3><p>Video formatında müqayisələr. Hazır olan kimi ayrıca təqdim edəcəyik.</p></div>
+  <div class="nx"><span class="tag">Növbəti görüş</span><h3>Planın təsdiqi</h3><p>Üzlük şablonlarını və ilk ayın təqvimini sizinlə birlikdə dəqiqləşdirək.</p></div>
+ </div>
+</div></section>
+
+<footer><div class="wrap">
+ <img src="__LOGO__" alt="WeTrend">
+ Bu səhifə yalnız Sevimli Dad komandası üçün hazırlanıb.
+</div></footer>
+
+</body>
+</html>

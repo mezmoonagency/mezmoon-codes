@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Outdoor Reklam Platforması Planı</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Tək sütunlu strateji sənəd. Yaşıl-neft aksent: xəritə/lokasiya hissi. */
+:root{
+  --bg:#0E1512;--panel:#16201C;--panel2:#1C2823;--ink:#EAF2EC;--muted:#9FB2A8;--line:#2A3A33;
+  --accent:#2BD4A7;--accent2:#7CE38B;--gold:#E7C86A;--warn:#E8A85C;--bad:#E8766B;
+  --display:"Space Grotesk",system-ui,sans-serif;--body:"Manrope",system-ui,sans-serif;color-scheme:dark;
+}
+:root[data-theme="light"]{--bg:#F3F6F3;--panel:#FFFFFF;--panel2:#EDF3EF;--ink:#122018;--muted:#4C6155;--line:#D5E2DA;--accent:#0E9E78;--accent2:#2E9E46;--gold:#9A7B1E;color-scheme:light}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#F3F6F3;--panel:#FFFFFF;--panel2:#EDF3EF;--ink:#122018;--muted:#4C6155;--line:#D5E2DA;--accent:#0E9E78;--accent2:#2E9E46;--gold:#9A7B1E;color-scheme:light}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--body)}
+.wrap{max-width:940px;margin:0 auto;padding:40px 20px 80px;display:flex;flex-direction:column;gap:40px}
+h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0;letter-spacing:-.02em}
+h1{font-size:clamp(30px,5.4vw,46px);font-weight:700}
+h2{font-size:23px;font-weight:600}
+h3{font-size:15.5px;font-weight:600}
+p{margin:0;max-width:70ch}
+section{display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.dek{font-size:18px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:13px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:17px 19px;display:flex;flex-direction:column;gap:9px}
+.card p,.card li{font-size:14.5px}
+.src{font-size:11.5px;color:var(--muted);font-family:var(--display);letter-spacing:.04em}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;padding:3px 9px;border-radius:999px;background:var(--panel2);color:var(--accent)}
+ul,ol{margin:0;padding-left:19px;display:flex;flex-direction:column;gap:5px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:640px}
+th{font-family:var(--display);font-size:12px;font-weight:600;text-align:left;padding:12px 15px;border-bottom:1px solid var(--line);color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+td{padding:12px 15px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td b{font-weight:700}
+.call{background:linear-gradient(135deg,var(--panel2),var(--panel));border:1px solid var(--accent);border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;gap:9px}
+.call .eyebrow{color:var(--accent2)}
+.combine{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch}
+.combine .col{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.combine .mid{display:grid;place-items:center;font-family:var(--display);font-size:26px;color:var(--accent);font-weight:700}
+.combine h3{color:var(--gold)}
+.combine .col ul{font-size:13.5px;color:var(--muted)}
+.phase{display:grid;grid-template-columns:132px 1fr;gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:15px 18px}
+.phase .p-t{font-family:var(--display);font-weight:600;font-size:14px;color:var(--accent)}
+.phase .p-t span{display:block;font-size:12px;color:var(--muted);font-weight:500;margin-top:3px}
+.phase ul{font-size:14px}
+.note{font-size:13.5px;color:var(--muted)}
+.score{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px}
+.pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--panel2);color:var(--muted)}
+.pill.has{color:var(--accent);background:color-mix(in srgb,var(--accent) 16%,transparent)}
+a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:18px}
+@media(max-width:620px){.combine{grid-template-columns:1fr}.combine .mid{padding:4px}.phase{grid-template-columns:1fr;gap:6px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header style="display:flex;flex-direction:column;gap:14px">
+    <span class="eyebrow">Outdoor Reklam · Platforma Planı</span>
+    <h1>Qlobal liderlərin gücü + yerli üstünlük</h1>
+    <p class="dek">Dünyanın ən yaxşı outdoor reklam platformalarının funksiyalarını Smart Outdoor-un yerli yanaşması ilə birləşdirib, sənin quracağın sayt üçün konkret plana çevirdim.</p>
+  </header>
+
+  <div class="call">
+    <span class="eyebrow">Əsas fikir</span>
+    <p>Qlobal liderlər <b>böyük reklam ekranı şəbəkələrini idarə etmək və almaq</b> üçün qurulub. Smart Outdoor isə fərqli və Azərbaycan üçün daha dəyərli şeyə baxır: <b>kimin harada, nə qədər bilbordu var və nə qədər xərcləyir</b>. Sənin fürsətin bu iki dünyanı birləşdirməkdir: yerli rəqib kəşfiyyatı + qlobal səviyyəli xəritə, ölçmə və planlama təcrübəsi.</p>
+  </div>
+
+  <section>
+    <span class="eyebrow">01 — Qlobal liderlər</span>
+    <h2>Dünyada ən yaxşıları nə edir</h2>
+    <div class="grid">
+      <div class="card"><span class="tag">AdQuick</span><h3>Hamısı bir panseldə</h3><p>"Ağıllı planla, tez al, hər şeyi ölç." 38 ölkədə 1.6M+ reklam yeri bir xəritədə. Özün idarə et və ya komanda icra etsin.</p><span class="src">adquick.com</span></div>
+      <div class="card"><span class="tag">Geopath</span><h3>Auditoriya ölçmə standartı</h3><p>Hər lövhənin neçə nəfərə göründüyünü ölçür. Sənaye standartı, İllik planlaşdırma datası və API verir.</p><span class="src">geopath.org</span></div>
+      <div class="card"><span class="tag">Route (BK)</span><h3>Kim gördü, təxmin yox</h3><p>"Görmək imkanı"nı deyil, reklamı həqiqətən kimin gördüyünü hesablayır. Real auditoriya datası.</p><span class="src">route.org.uk</span></div>
+      <div class="card"><span class="tag">Place Exchange / Vistar</span><h3>Proqramatik alış</h3><p>Rəqəmsal ekranları onlayn, DSP-lərin içindən, şəffaf və ölçülə bilən şəkildə almaq.</p><span class="src">placeexchange.com · vistarmedia.com</span></div>
+      <div class="card"><span class="tag">Billups</span><h3>Nəticə sübutu</h3><p>Patentli analitika ilə kampaniyanın real təsirini ölçür: brendə baxış, mağaza ziyarəti, satış.</p><span class="src">billups.com</span></div>
+      <div class="card"><span class="tag">Broadsign</span><h3>Ekran şəbəkəsi idarəsi</h3><p>Media sahibləri üçün: ekranlara məzmun yerləşdirmək, boşluğu doldurmaq, alıcı ilə satıcını birləşdirmək.</p><span class="src">broadsign.com</span></div>
+    </div>
+    <p class="note">Qeyd: bu funksiyalar şirkətlərin öz saytlarından götürülüb, nəticə iddiaları müstəqil yoxlanmayıb. Hivestack indi Perion/Outmax-a keçib, Blip və Alfi.ai saytları faydalı məlumat vermədi.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">02 — Yerli oyunçu</span>
+    <h2>Smart Outdoor nə edir</h2>
+    <div class="grid">
+      <div class="card"><span class="tag">Rəqib analizi</span><h3>Kateqoriya üzrə brendlər</h3><p>Hansı brendin neçə konstruksiyası, hansı növü və təxmini büdcəsi olduğunu göstərir.</p></div>
+      <div class="card"><span class="tag">Xəritə</span><h3>Vizual monitorinq</h3><p>Konkret lokasiyada konstruksiya növünü seçib həmin yeri xəritədə görmək.</p></div>
+      <div class="card"><span class="tag">Planlama</span><h3>Boş yerlər</h3><p>Boş konstruksiyalara, rəqibin sayına və büdcəsinə baxıb öz planını qurmaq.</p></div>
+    </div>
+    <p class="note">Smart Outdoor-un üstünlüyü: qlobal platformalar auditoriya ölçməyə baxır, o isə <b>rəqibin yerdəki mövcudluğuna</b> baxır. Azərbaycanda bu data daha nadir və dəyərlidir. Mənbə haradan gəlir, saytda açıqlanmır (ehtimal: ADRA icazələri və ya sahə monitorinqi).</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">03 — Birləşmə</span>
+    <h2>Sənin saytın: ikisinin ən yaxşısı</h2>
+    <div class="combine">
+      <div class="col"><h3>Qlobaldan götür</h3><ul>
+        <li>Təmiz xəritə və axtarış</li>
+        <li>Auditoriya təxmini (trafik, baxış)</li>
+        <li>Nəticə/ROI ölçməsi</li>
+        <li>API və hesabat ixracı</li>
+        <li>Özün-idarə et paneli</li>
+      </ul></div>
+      <div class="mid">+</div>
+      <div class="col"><h3>Yerlidən saxla</h3><ul>
+        <li>Rəqibin konstruksiya sayı</li>
+        <li>Brend və kateqoriya filtri</li>
+        <li>Büdcə təxmini</li>
+        <li>Boş yer tapma</li>
+        <li>Azərbaycan datası</li>
+      </ul></div>
+    </div>
+    <div class="tw"><table>
+      <thead><tr><th>Funksiya</th><th>Smart Outdoor</th><th>Qlobal</th><th>Sənin saytın</th></tr></thead>
+      <tbody>
+        <tr><td><b>Rəqib konstruksiya analizi</b></td><td>Var</td><td>Zəif</td><td>Əsas güc</td></tr>
+        <tr><td><b>Büdcə / xərc payı (SOV)</b></td><td>Təxmini</td><td>Var</td><td>Formulu şəffaf göstər</td></tr>
+        <tr><td><b>Auditoriya ölçməsi (kim görür)</b></td><td>Yox</td><td>Güclü</td><td>Trafik datası ilə əlavə et</td></tr>
+        <tr><td><b>Nəticə / ROI sübutu</b></td><td>Yox</td><td>Var</td><td>Fərqləndirici ola bilər</td></tr>
+        <tr><td><b>Boş yer + planlama</b></td><td>Var</td><td>Var</td><td>Saxla, yaxşılaşdır</td></tr>
+        <tr><td><b>API / inteqrasiya</b></td><td>Məlum deyil</td><td>Var</td><td>Agentliklər üçün vacib</td></tr>
+        <tr><td><b>Avtomatik yeniləmə (AI tanıma)</b></td><td>Məlum deyil</td><td>Var</td><td>Avtomobil kamerası + AI</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">"Sənin saytın" sütunu mənim tövsiyəmdir, hazır funksiya deyil.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">04 — Fərqlənmə</span>
+    <h2>Rəqibdən irəli keçmək üçün 6 ideya</h2>
+    <div class="grid">
+      <div class="card"><h3>Xərc payı (Share of Voice)</h3><p>Hər kateqoriyada "sən rəqiblərinin arasında neçə faiz görünürsən" rəqəmini bir qrafikdə. Brend menecerinin ən sevdiyi slayd budur.</p></div>
+      <div class="card"><h3>Dəyişiklik siqnalı</h3><p>"Rəqibin bu həftə 8 yeni bilbord qoydu" bildirişi. Statik hesabat deyil, canlı xəbərdarlıq.</p></div>
+      <div class="card"><h3>Auditoriya qatı</h3><p>Hər konstruksiyaya yaxınlıqdakı trafik və baxış təxmini. Geopath və Route-un etdiyini yerli data ilə sadələşdir.</p></div>
+      <div class="card"><h3>AI ilə avtomatik yeniləmə</h3><p>Avtomobil kamerası şəhəri gəzir, AI lövhəni və brendi tanıyır, baza özü yenilənir. Bakıda SCOUT prototipi bunu sübut edib.</p></div>
+      <div class="card"><h3>Kampaniya təqdimatı</h3><p>Agentlik bir kliklə müştəri üçün plan PDF-i çıxarır: xəritə, yerlər, büdcə, rəqib müqayisəsi. Satışı asanlaşdırır.</p></div>
+      <div class="card"><h3>Qiymət şəffaflığı</h3><p>Konstruksiya ölçüsü və ADRA rüsumu ilə təxmini qiymət. "Bu yer təxminən X AZN/ay" deyə bilmək böyük üstünlükdür.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">05 — Necə qurulur</span>
+    <h2>Mərhələli plan</h2>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="phase"><div class="p-t">Mərhələ 1<span>Data təməli</span></div><ul>
+        <li>ADRA icazə məlumatı və ya sahə foto-yığımı ilə başlanğıc baza: lokasiya, ölçü, növ, sahib.</li>
+        <li>Brend və kateqoriya kataloqu. Əl ilə etiketləmə.</li>
+        <li>Xəritə və axtarış olan sadə panel.</li>
+      </ul></div>
+      <div class="phase"><div class="p-t">Mərhələ 2<span>Rəqib kəşfiyyatı</span></div><ul>
+        <li>Konstruksiya sayı, büdcə təxmini, xərc payı qrafikləri.</li>
+        <li>Boş yer tapma və kampaniya planlaşdırma.</li>
+        <li>Bir kliklə müştəri təqdimatı (PDF).</li>
+      </ul></div>
+      <div class="phase"><div class="p-t">Mərhələ 3<span>Avtomatlaşdırma</span></div><ul>
+        <li>Avtomobil kamerası + GPS + AI ilə lövhə tanıma, bazanın özü-yenilənməsi.</li>
+        <li>Dəyişiklik bildirişləri və auditoriya/trafik qatı.</li>
+        <li>Agentliklər üçün API və abunə modeli.</li>
+      </ul></div>
+    </div>
+    <p class="note">Müddət və qiymət hələ yoxdur: komanda ölçüsü, data mənbəyi (icazə, yoxsa sahə yığımı) və hədəf şəhər lazımdır.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">06 — Risklər</span>
+    <h2>Əvvəlcədən bilməli olduğun</h2>
+    <div class="tw"><table>
+      <thead><tr><th>Risk</th><th>Həll</th></tr></thead>
+      <tbody>
+        <tr><td><b>Data haradan gələcək</b></td><td>ADRA icazə reyestrinin açıq olub-olmadığı yoxlanmalıdır. Açıq deyilsə, sahə yığımı lazımdır: daha bahalı, amma rəqibin olmadığı data.</td></tr>
+        <tr><td><b>Büdcə təxmini dəqiqliyi</b></td><td>Rəqibin real xərcini bilmirsən, təxmin edirsən. Formulu (ölçü × rüsum × müddət) müştəriyə şəffaf göstər, "təxmini" yaz.</td></tr>
+        <tr><td><b>Yeniləmə yükü</b></td><td>Bilbordlar tez-tez dəyişir. Əl ilə yeniləmə davamlı xərcdir; AI tanıma 3-cü mərhələdə bu yükü azaldır.</td></tr>
+        <tr><td><b>Hüquq və şəxsi data</b></td><td>İcazə datası açıq ola bilər, amma foto və lokasiyada şəxsi məlumat olmamalıdır. Hüquqşünas baxmalıdır.</td></tr>
+        <tr><td><b>Smart Outdoor mövcuddur</b></td><td>Onlardan yaxşı olmaq üçün fərqlənmə lazımdır: auditoriya qatı, nəticə ölçməsi, qiymət şəffaflığı və ya daha yaxşı interfeys.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <span class="eyebrow">07 — Qərar üçün</span>
+    <h2>Səndən lazım olanlar</h2>
+    <ol>
+      <li>Saytın məqsədi: agentliklərə satmaq, yoxsa öz agentliyin üçün alət?</li>
+      <li>Başlanğıc şəhər: yalnız Bakı, yoxsa bütün ölkə?</li>
+      <li>Data mənbəyi: ADRA icazəsini ala bilirsən, yoxsa sahə yığımı quracağıq?</li>
+      <li>Büdcə və komanda: data yığımı üçün adam varmı?</li>
+      <li>Fərqlənmə: Smart Outdoor-dan hansı bir şeydə üstün olmaq istəyirsən?</li>
+    </ol>
+  </section>
+
+  <footer>
+    Mənbələr: adquick.com, vistarmedia.com, broadsign.com, geopath.org, placeexchange.com, billups.com, route.org.uk, smartoutdoor.az, SCOUT (jpit.az), ADRA. Qlobal platformaların funksiya və nəticə iddiaları öz saytlarındandır, müstəqil yoxlanmayıb. "Sənin saytın" sütunu və ideyalar tövsiyədir.
+  </footer>
+</main>
+</body>
+</html>

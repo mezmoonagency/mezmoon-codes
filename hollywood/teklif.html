@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hollywood İdarəetmə Sistemi Təklifi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: tək sütunlu qərar sənədi. Əvvəl tövsiyə, sonra modullar, plan və açıq suallar. */
+:root{
+  --bg:#F6F6F4;--panel:#FFFFFF;--ink:#17171C;--muted:#5C5C68;--line:#DEDED9;--accent:#A8460F;--accent-soft:#F7E8DC;--good:#1F7A4D;--warn:#9A6400;
+  --display:"Sora",system-ui,sans-serif;--body:"Manrope",system-ui,sans-serif;color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141417;--panel:#1E1E23;--ink:#F1F1EE;--muted:#A9A9B3;--line:#34343B;--accent:#F0A36B;--accent-soft:#3A271B;--good:#67C796;--warn:#E3B45C;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141417;--panel:#1E1E23;--ink:#F1F1EE;--muted:#A9A9B3;--line:#34343B;--accent:#F0A36B;--accent-soft:#3A271B;--good:#67C796;--warn:#E3B45C;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--body)}
+.wrap{max-width:900px;margin:0 auto;padding:44px 20px 72px;display:flex;flex-direction:column;gap:44px}
+h1,h2,h3{font-family:var(--display);line-height:1.2;text-wrap:balance;margin:0}
+h1{font-size:clamp(30px,5vw,44px);font-weight:700;letter-spacing:-.02em}
+h2{font-size:24px;font-weight:600;letter-spacing:-.01em}
+h3{font-size:16px;font-weight:600}
+p{margin:0;max-width:68ch}
+section{display:flex;flex-direction:column;gap:16px}
+.dek{font-size:18px;color:var(--muted)}
+.head{display:flex;flex-direction:column;gap:14px}
+.call{background:var(--accent-soft);border-left:4px solid var(--accent);padding:18px 20px;border-radius:0 10px 10px 0;display:flex;flex-direction:column;gap:8px}
+.call b{font-family:var(--display);font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.card p,.card li{font-size:14.5px}
+.tag{font-size:12px;font-weight:700;color:var(--accent)}
+ul,ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:620px}
+th{font-family:var(--display);font-size:12.5px;font-weight:600;text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);color:var(--muted)}
+td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td b{font-weight:700}
+.tree{display:flex;flex-direction:column;gap:6px}
+.lvl{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+.lvl b{font-family:var(--display);font-size:14px;font-weight:600}
+.lvl span{font-size:14.5px;color:var(--muted)}
+.lvl:nth-child(1){border-left:4px solid var(--accent)}
+.pl{font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.note{font-size:13.5px;color:var(--muted)}
+a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.src{font-size:13.5px;color:var(--muted)}
+@media(max-width:560px){.lvl{grid-template-columns:1fr;gap:4px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="head">
+    <h1>Hollywood şəbəkəsi üçün idarəetmə sistemi</h1>
+    <p class="dek">Rəhbərin tapşırıq verdiyi, 700 işçinin QR ilə giriş-çıxış etdiyi və hər məkanın nəticəsinin bir ekranda göründüyü sistem üçün təklif.</p>
+  </header>
+
+  <div class="call">
+    <b>Tövsiyə</b>
+    <p>Əvvəl iiko-dan 3 aylıq itki auditi, sonra 2 məkanda 4 həftəlik pilot: tapşırıqlar, QR davamiyyət və audit. Nəticə təsdiqlənəndən sonra bütün şəbəkəyə keçid, sonra kassa sistemi ilə inteqrasiya. Rəhbər üçün əsas dəyər yalnız QR deyil: <b>hər səhər bir baxışda hansı məkanda nəyin problem olduğunu görmək</b>.</p>
+  </div>
+
+  <section>
+    <h2>Şirkət quruluşu sistemdə necə olacaq</h2>
+    <div class="tree">
+      <div class="lvl"><b>2 rəhbər</b><span>Bütün məkanlar, tapşırıq vermək, təsdiq, bütün hesabatlar</span></div>
+      <div class="lvl"><b>4 müavin</b><span>Təyin olunmuş məkanlar və ya istiqamətlər, tapşırığı bölüşdürmək, gecikmələrə nəzarət</span></div>
+      <div class="lvl"><b>2 audit</b><span>Yoxlama aparmaq, bal vermək, nöqsanı tapşırığa çevirmək. Müavinlərdən asılı olmayan hesabat</span></div>
+      <div class="lvl"><b>Məkan rəhbərləri</b><span>Öz məkanının növbə cədvəli, işçiləri və tapşırıqları</span></div>
+      <div class="lvl"><b>~700 işçi</b><span>QR giriş-çıxış, öz növbəsi, ona verilən tapşırıq və yoxlama siyahısı</span></div>
+    </div>
+    <p class="note">"Məkan rəhbəri" səviyyəsini mən əlavə etmişəm, çünki rəhbərdən 700 işçiyə birbaşa keçid işləməz. Şirkətdə bu vəzifənin adı fərqlidirsə, dəyişəcək.</p>
+  </section>
+
+  <section>
+    <h2>Birinci addım: 3 aylıq itki auditi</h2>
+    <div class="call">
+      <b>Sistemi satmazdan əvvəl rəhbərə öz rəqəmlərini göstərək</b>
+      <p>iiko-dan yalnız oxumaq icazəsi ilə son 3 ayın çek məlumatını təhlil edirik. Avadanlıq lazım deyil, restoranda heç nə dəyişmir. Nəticədə rəhbər görür: hansı məkanda, hansı növbədə, hansı işçidə ləğv və endirim qeyri-adidir. Bu, qiymət danışığını da asanlaşdırır, çünki sistemin faydası Hollywood-un öz rəqəmi ilə görünür.</p>
+    </div>
+    <div class="tw"><table>
+      <thead><tr><th>Yoxlama</th><th>Nəyi göstərir</th></tr></thead>
+      <tbody>
+        <tr><td><b>Ləğv və silinmə</b></td><td>İşçi və növbə üzrə sayı, məbləği və şəbəkə ortalaması ilə fərqi</td></tr>
+        <tr><td><b>Endirim və pulsuz yemək</b></td><td>Kim, nə qədər, hansı səbəblə verib. Eyni işçidə təkrarlanan nümunələr</td></tr>
+        <tr><td><b>Ödənişdən sonra dəyişiklik</b></td><td>Çek bağlanandan sonra edilən əməliyyatlar</td></tr>
+        <tr><td><b>Məkan riski siyahısı</b></td><td>Məkanlar risk məbləğinə görə düzülür, ilk baxılacaq yer bəlli olur</td></tr>
+        <tr><td><b>Səhv, yoxsa pozuntu?</b></td><td>Hər hal pozuntu deyil. Yeni işçi səhvi təlim tapşırığına, şübhəli nümunə auditə gedir</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Xaricdə bir satıcı daxili oğurluğun gəlirin 4%-inə qədər ola bildiyini yazır, amma mənbəsi yoxlanmayıb və Hollywood-a aid deyil. Ona görə təxmin vermirəm, real rəqəm auditdən çıxacaq. Audit yalnız şübhəli halı göstərir, heç kimi ittiham etmir.</p>
+  </section>
+
+  <section>
+    <h2>Çek-video: sıfırdan qurmağa ehtiyac olmaya bilər</h2>
+    <p>Dərin araşdırmanın ən faydalı nəticəsi: iiko-nu video ilə birləşdirən hazır həllər artıq var. Məsləhətim onları özümüz yenidən yazmamaq, üstünə Hollywood üçün nəzarət qatı qurmaqdır.</p>
+    <div class="tw"><table>
+      <thead><tr><th>Yol</th><th>Nə verir</th><th>Bilinən</th></tr></thead>
+      <tbody>
+        <tr><td><b>Trassir + iiko</b></td><td>Kassa əməliyyatı video ilə birləşir, kassir nəzarəti və satış analizi</td><td>Rusiya inteqratorunun səhifəsi. Azərbaycanda mövcudluğu yoxlanmalıdır</td></tr>
+        <tr><td><b>Ivideon + iiko</b></td><td>iiko API açarı ilə kassalar kameraya bağlanır</td><td>Qoşulma Ivideon meneceri vasitəsilə olur. Qiymət məlum deyil</td></tr>
+        <tr><td><b>АКО + iiko</b></td><td>iiko əməliyyatları video və rəhbər hesabatı ilə bağlanır</td><td>Səhifədə 7 günlük test: 13 500 ₽, 8–16 kamera: 18 500 ₽. Şərtlər yoxlanmalıdır</td></tr>
+        <tr><td><b>Berry AI (xarici)</b></td><td>Videodan süni intellektlə şübhəli hal tapır: kassada qonaq yoxdur, amma geri ödəniş var; işçi endirimi ilə verilən yemək qonağa gedir</td><td>Mövcud kameralarla işləyə bildiyini bildirir. Əsasən fast-food üçündür</td></tr>
+      </tbody>
+    </table></div>
+    <p>iiko-nun özündə də "təhlükəli əməliyyatlar jurnalı" var. Optima-dan bunun Hollywood lisenziyasında aktiv olub-olmadığını soruşmaq lazımdır.</p>
+  </section>
+
+  <section>
+    <h2>Dərin araşdırmadan çıxan yeni təkliflər</h2>
+    <div class="grid">
+      <div class="card"><span class="tag">Quruluşa uyğun</span><h3>Məkan öz işini yoxlamır</h3><p>Şübhəli hal məkan rəhbərinə yox, birbaşa 2 audit əməkdaşına düşür. Audit müavindən də asılı deyil. Hər hala son qərar yazılır, bağlanmayan hal rəhbərə gedir.</p></div>
+      <div class="card"><span class="tag">Məkana görə norma</span><h3>Kino və restoran üçün ayrı hədd</h3><p>Kino barında və restoranda normal ləğv səviyyəsi fərqlidir. Hədd hər konsept üçün ayrı qurulur, yoxsa yalan xəbərdarlıq çox olar.</p></div>
+      <div class="card"><span class="tag">Bir ekran</span><h3>Risk məbləğinə görə sıralama</h3><p>Rəhbər uzun siyahı yox, "bu gün baxılmalı 5 hal" görür. Rüblük yoxlama əvəzinə gündəlik baxış olur.</p></div>
+      <div class="card"><span class="tag">Görünməyən xərc</span><h3>İşçi axınının qiyməti</h3><p>QR sistemi kimin gəlib-getdiyini dəqiq bilir. Rəhbər məkan üzrə işdən çıxma faizini və yeni işçinin neçə gündə ayrıldığını görür. ABŞ-da tam xidmətli restoranlarda illik axın təxminən 92%-dir, Hollywood-un öz rəqəmini ilk dəfə görəcəyik.</p></div>
+      <div class="card"><span class="tag">Kameradan ikinci fayda</span><h3>Eyni kamera, əməliyyat analizi</h3><p>Kamera yalnız nəzarət üçün deyil: növbə, boş masa, xidmət vaxtı da ölçülə bilər. Bu, 3-cü mərhələdən sonrakı işdir, əvvəl kamera keyfiyyəti yoxlanmalıdır.</p></div>
+      <div class="card"><span class="tag">Qərar</span><h3>Almaq, yoxsa qurmaq</h3><p>Video və kassa bağlantısını hazır alırıq. Tapşırıq, QR, audit, risk siyahısı və rəhbər paneli Hollywood-un quruluşuna görə qurulur. Bölgədə "Смена" kimi hazır tətbiq də var, müqayisə üçün baxmaq olar.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Rəhbərin marağına səbəb olacaq 8 ideya</h2>
+    <p>Əsas sual: sistem rəhbərə nə qədər pul və vaxt qazandırır? Bu ideyalar davamiyyətdən daha böyük dəyər verir.</p>
+    <div class="grid">
+      <div class="card"><span class="tag">Pulu qoruyur</span><h3>İtki radarı</h3><p>iiko-dan çek ləğvi, endirim və ödənişdən sonrakı dəyişikliklər gəlir. Sistem qeyri-adi nümunəni tapır: "Bu ofisiantda ləğv şəbəkə ortalamasından 4 dəfə çoxdur." Rəhbərə həmin gün Telegram-da gedir.</p><p class="note">Xaricdə var: Lavu, Berry AI. Lazımdır: iiko.</p></div>
+      <div class="card"><span class="tag">Pulu qoruyur</span><h3>Şübhəli çekin videosu</h3><p>Radar bir çeki işarələyəndə həmin an kassa kamerasının görüntüsü bir kliklə açılır. Audit saatlarla video axtarmır.</p><p class="note">Xaricdə var: Solink, Reap AI. Lazımdır: iiko və uyğun kamera sistemi.</p></div>
+      <div class="card"><span class="tag">Pulu qoruyur</span><h3>Tullantı kamerası</h3><p>Mətbəx zibil qabının üstündə kamera və tərəzi: nə atıldığını və dəyərini göstərir. Əvvəl bir mətbəxdə sınaq.</p><p class="note">Xaricdə var: Winnow. Şirkət 2–8% ərzaq xərci qənaəti bildirir, müstəqil yoxlanmayıb.</p></div>
+      <div class="card"><span class="tag">Rəhbərin vaxtı</span><h3>Səslə əmr</h3><p>Rəhbər maşında Telegram-a 1 dəqiqəlik səs yazır: "Planet-də təmizliyə bax, Badam menyunu cümə günü dəyişsin." Sistem bunu ayrı tapşırıqlara bölür, adamlara paylayır, göndərməzdən əvvəl bir toxunuşla təsdiq soruşur.</p><p class="note">Bizim ideya. Əvvəlcə Azərbaycan dilində səs tanıma keyfiyyəti sınanmalıdır.</p></div>
+      <div class="card"><span class="tag">Rəhbərin nəzarəti</span><h3>Müavin kartı və sürpriz audit</h3><p>Audit tarixini sistem təsadüfi seçir, məkana əvvəlcədən görünmür. Auditorun orada olduğu yerlə təsdiqlənir. Audit balı yüksək, qonaq balı aşağıdırsa, rəhbərə xəbər gedir. Hər müavinin məkanlarının nəticəsi bir kartda görünür.</p><p class="note">Bizim ideya. Şirkətin 4 müavin, 2 audit quruluşuna görə.</p></div>
+      <div class="card"><span class="tag">Şəbəkənin gücü</span><h3>Şəbəkədaxili növbə bazarı</h3><p>Planet-də cümə axşamı ofisiant çatmır. Boş olan Badam ofisiantı telefonda görür və götürür. İşçi əlavə qazanır, müvəqqəti işçi lazım olmur. 700 nəfərlik şəbəkə olmadan bu işləmir.</p><p class="note">Bizim ideya. Fərqli məkan üzrə iş haqqı qaydası lazımdır.</p></div>
+      <div class="card"><span class="tag">Şəbəkənin gücü</span><h3>Kino və hadisə proqnozu</h3><p>iiko satışı, kino premyerası, futbol oyunu, bayram və hava birləşir: "Şənbə premyerası var, Platinum-a 3 ofisiant əlavə et, kartofu 20% çox hazırla." Faizlər nümunədir, məlumat yığılandan sonra hesablanacaq.</p><p class="note">Proqnoz xaricdə var: Deputy, Fourth. Kino hissəsi Hollywood-a xasdır. Lazımdır: iiko.</p></div>
+      <div class="card"><span class="tag">İşçi motivasiyası</span><h3>Hər qonaq öz ofisiantına bal verir</h3><p>Çekdəki QR həmin ofisiantla bağlıdır. Rəy birbaşa ona düşür. Aylıq bonus 4 şeydən hesablanır: davamiyyət, audit, qonaq balı, satış. İşçi öz yerini telefonda görür.</p><p class="note">Bizim ideya. Bonus məbləğini və qaydasını rəhbər təyin edir. Lazımdır: iiko.</p></div>
+    </div>
+    <p class="note">Xarici şirkətlərin nəticə iddiaları müstəqil yoxlanmayıb. Pulu qoruyan ideyalar işçini avtomatik ittiham etmir: sistem yalnız yoxlanmalı halı göstərir, qərarı audit verir.</p>
+  </section>
+
+<section>
+    <h2>İstədiyiniz iki əsas modul</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Tapşırıqlar</h3>
+        <ul>
+          <li>Rəhbər bir tapşırığı şəxsə, vəzifəyə, bir məkana və ya bütün şəbəkəyə verir.</li>
+          <li>Son tarix, foto sübutu və qəbul təsdiqi.</li>
+          <li>Gecikəndə avtomatik yuxarıya xəbərdarlıq: işçi → məkan rəhbəri → müavin → rəhbər.</li>
+          <li>Təkrarlanan işlər: gündəlik, həftəlik, aylıq.</li>
+          <li>Telegram və mobil bildiriş.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>QR giriş-çıxış</h3>
+        <ul>
+          <li>Hər məkanın girişində planşet, ekranda dəyişən QR. Şəkli çəkilib göndərilən kodla kənardan giriş olmur.</li>
+          <li>İşçi öz telefonu ilə oxuyur: giriş, yer yoxlaması, anlıq selfi.</li>
+          <li>Smartfonu olmayan işçi öz şəxsi QR kartını planşetə göstərir, planşet şəklini çəkir.</li>
+          <li>Növbə ilə müqayisə: gecikmə, erkən çıxış, gəlməyən, əlavə iş.</li>
+          <li>İnternet kəsiləndə qeyd planşetdə qalır, sonra göndərilir.</li>
+        </ul>
+      </div>
+    </div>
+    <p>Sadəcə sabit QR kifayət etmir: mənbələrə görə QR və telefon tətbiqləri başqasının yerinə giriş riskini tam aradan qaldırmır, foto sübutu isə ucuz əlavə qorumadır. Bu mənbələr satıcı şirkətlərin yazılarıdır, ona görə nəticəni pilotda ölçəcəyik.</p>
+  </section>
+
+  <section>
+    <h2>Rəhbərin xeyrinə olacaq əlavələr</h2>
+    <div class="tw"><table>
+      <thead><tr><th>Modul</th><th>Rəhbərə nə verir</th><th>Mərhələ</th></tr></thead>
+      <tbody>
+        <tr><td><b>Səhər xülasəsi</b></td><td>Hər səhər Telegram-da: dünənki davamiyyət, gecikən tapşırıq, ən aşağı audit balı, diqqət tələb edən 3 məkan.</td><td><span class="pl">1</span></td></tr>
+        <tr><td><b>Məkan reytinqi</b></td><td>Məkanlar eyni göstəricilərlə yan-yana: davamiyyət, tapşırıq icrası, audit balı.</td><td><span class="pl">1</span></td></tr>
+        <tr><td><b>Audit və yoxlama</b></td><td>Telefonda yoxlama forması, foto, bal. Nöqsan avtomatik məkan rəhbərinə tapşırıq olur və bağlanana qədər izlənir.</td><td><span class="pl">1</span></td></tr>
+        <tr><td><b>Açılış-bağlanış yoxlaması</b></td><td>Məkan vaxtında açıldımı, temperatur və təmizlik qeyd olundumu, kassa bağlandımı.</td><td><span class="pl">1</span></td></tr>
+        <tr><td><b>Növbə cədvəli</b></td><td>Məkan rəhbəri cədvəl qurur, işçi görür, dəyişiklik təsdiqlə olur. Davamiyyətin müqayisə bazası budur.</td><td><span class="pl">2</span></td></tr>
+        <tr><td><b>Əməkhaqqı üçün hesabat</b></td><td>Aylıq iş saatı, gecikmə, əlavə iş Excel-də mühasibatlığa hazır. Hesablamanı avtomatik dəyişmir, mühasib təsdiqləyir.</td><td><span class="pl">2</span></td></tr>
+        <tr><td><b>İşçi kartı</b></td><td>Sənədlər, sanitar kitabçasının bitmə tarixi, təlim, köçürmə tarixçəsi.</td><td><span class="pl">2</span></td></tr>
+        <tr><td><b>Satış və xərc paneli</b></td><td>Kassa sistemindən gündəlik satış, orta çek, işçi xərci faizi, bir iş saatına düşən satış.</td><td><span class="pl">3</span></td></tr>
+        <tr><td><b>Qonaq rəyləri</b></td><td>QR ilə rəy forması və xəritə rəyləri bir yerdə, aşağı bal məkan rəhbərinə tapşırıq olur.</td><td><span class="pl">3</span></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Xarici sistemlərdən digər ideyalar</h2>
+    <p>Apify ilə 14 xarici sistemin saytına baxdım, 10-undan məlumat gəldi. Bunlar daha sadə, gündəlik iş üçün olan ideyalardır.</p>
+    <div class="tw"><table>
+      <thead><tr><th>İdeya</th><th>Kimdə görünür</th><th>Hollywood-da necə olacaq</th><th>Mərhələ</th></tr></thead>
+      <tbody>
+        <tr><td><b>Siqnal avtomatik tapşırıq olur</b></td><td>WorkJam</td><td>İşçi növbəyə gəlmədi, audit balı düşdü, açılış yoxlanmadı: sistem özü doğru adama tapşırıq açır, foto sübutu ilə bağlanır.</td><td><span class="pl">1</span></td></tr>
+        <tr><td><b>Oxundu təsdiqi</b></td><td>Operandio</td><td>Rəhbərin elanını kimin oxuduğu, kimin oxumadığı məkan-məkan görünür.</td><td><span class="pl">1</span></td></tr>
+        <tr><td><b>Çəkili audit balı</b></td><td>SmartSense ONE (Jolt)</td><td>Gigiyena kimi kritik bənd daha ağır sayılır. Səhv bənd avtomatik düzəliş tapşırığı açır.</td><td><span class="pl">1</span></td></tr>
+        <tr><td><b>Bir şablon, fərqli məkanlar</b></td><td>Trail</td><td>Yoxlama siyahısı bir dəfə yazılır, hər məkan yalnız ona aid addımları görür. Dəyişiklik hamıya eyni anda çatır.</td><td><span class="pl">1</span></td></tr>
+        <tr><td><b>Növbə çərçivəsi</b></td><td>WorkJam</td><td>İş tapşırıqları yalnız növbə vaxtı və məkanda açılır. İşçiyə iş vaxtından kənar iş düşmür, QR məlumatı ilə də uyğun gəlir.</td><td><span class="pl">2</span></td></tr>
+        <tr><td><b>Növbə dəyişmə təklifi</b></td><td>Planday</td><td>İşçi növbəsini başqası ilə dəyişmək istəyir, məkan rəhbəri bir toxunuşla təsdiqləyir. İş vaxtı qaydası pozulanda sistem xəbərdarlıq edir.</td><td><span class="pl">2</span></td></tr>
+        <tr><td><b>Ən yaxşı məkanın təcrübəsi</b></td><td>YOOBIC, Fourth</td><td>Hər göstəricidə ən yaxşı məkan görünür, onun necə işlədiyi digərlərinə nümunə kimi göndərilir. Hədəf zəif məkanları yuxarı çəkməkdir.</td><td><span class="pl">2</span></td></tr>
+        <tr><td><b>Yeni məkan açılış planı</b></td><td>Operandio</td><td>Yeni filial üçün hazır tapşırıq paketi: işə qəbul, təlim, avadanlıq, açılış günü.</td><td><span class="pl">2</span></td></tr>
+        <tr><td><b>Rəhbər sual verir, sistem cavab verir</b></td><td>MarginEdge, YOOBIC</td><td>Telegram-da yazır: "Bu həftə ən çox gecikmə harada olub?" Cavab sistemin öz məlumatından gəlir. Məkan rəhbərinə də gündəlik prioritet siyahısı.</td><td><span class="pl">3</span></td></tr>
+        <tr><td><b>Faktura şəkli və qiymət xəbərdarlığı</b></td><td>MarginEdge, opsi</td><td>Təchizatçı fakturasının şəkli çəkilir, məhsul qiyməti artanda rəhbərə xəbər gedir, yemək maya dəyəri yenilənir.</td><td><span class="pl">3</span></td></tr>
+        <tr><td><b>Satışa görə işçi planı</b></td><td>Deputy, Fourth</td><td>Kassa satışından proqnoz qurulur, gözlənilən satışa görə növbədə neçə nəfərin lazım olduğu görünür.</td><td><span class="pl">3</span></td></tr>
+        <tr><td><b>Soyuducu sensorları</b></td><td>SmartSense ONE (Jolt)</td><td>Temperatur qalxanda avtomatik xəbərdarlıq və tapşırıq. Əl ilə qeyd lazım olmur, amma avadanlıq xərci var.</td><td><span class="pl">3</span></td></tr>
+        <tr><td><b>Ayrılma riski siqnalı</b></td><td>7shifts</td><td>Gecikmə və növbə imtinası artan işçi məkan rəhbərinə göstərilir ki, vaxtında danışsın. Cəza üçün yox, söhbət üçün.</td><td><span class="pl">3</span></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Xarici sistemlərin bildirdiyi nəticələr</h2>
+    <div class="tw"><table>
+      <thead><tr><th>Sistem</th><th>Bildirilən nəticə</th></tr></thead>
+      <tbody>
+        <tr><td><b>WorkJam</b></td><td>İşçi axını 33% az, növbəyə gəlməmə 16% az, tapşırıq icrası 98%</td></tr>
+        <tr><td><b>Operandio</b></td><td>Qayda pozuntusu 68% az, məkan gəlirliliyi orta hesabla 22% yüksək</td></tr>
+        <tr><td><b>Fourth</b></td><td>Bir müştəridə mənfəət marjası 15% yaxşılaşıb, ərzaq itkisi 30%-ə qədər azalıb</td></tr>
+        <tr><td><b>7shifts (Fresh Restaurants)</b></td><td>İşçi xərci 12% az, bir iş saatına satış 13% yüksək</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Bu rəqəmləri sistemlərin özləri bildirir, müstəqil yoxlanmayıb və xarici bazara aiddir. Ona görə təklifdə vəd kimi işlətmirəm, Hollywood-un nəticəsini pilotda ölçəcəyik.</p>
+  </section>
+
+  <section>
+    <h2>Hansı rəqəmlər izlənəcək</h2>
+    <div class="tw"><table>
+      <thead><tr><th>Göstərici</th><th>Hesablanması</th><th>Məlumat</th></tr></thead>
+      <tbody>
+        <tr><td><b>Davamiyyət</b></td><td>Vaxtında gələn / növbədə olan işçi</td><td>QR, ilk gündən</td></tr>
+        <tr><td><b>Tapşırıq icrası</b></td><td>Vaxtında bağlanan / verilən tapşırıq</td><td>Sistem, ilk gündən</td></tr>
+        <tr><td><b>Audit balı</b></td><td>Məkan üzrə orta bal, açıq nöqsan sayı</td><td>Audit, ilk gündən</td></tr>
+        <tr><td><b>İşçi xərci faizi</b></td><td>Əməkhaqqı / satış. Xarici mənbələrdə tez-tez 28–33% aralığı göstərilir</td><td>Kassa və mühasibat lazımdır</td></tr>
+        <tr><td><b>Prime cost</b></td><td>(Məhsul + işçi xərci) / satış. Xarici mənbələrdə adətən 55–65%</td><td>Kassa, anbar lazımdır</td></tr>
+        <tr><td><b>Bir iş saatına satış</b></td><td>Satış / işlənmiş saat. QR məlumatı burada dəyər qazanır</td><td>Kassa və QR</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Bu aralıqlar xarici mənbələrdəndir və bir-birindən fərqlənir. Azərbaycan üçün hədəfi Hollywood-un öz 3 aylıq məlumatından quracağıq.</p>
+  </section>
+
+  <section>
+    <h2>iiko API verirmi?</h2>
+    <p><b>Bəli, iiko-nun API imkanı var.</b> Mənbələrə görə iki yol mövcuddur: iikoServer (hesabatlar, işçilər, kassa növbələri) və iikoCloud (sifarişlər, çatdırılma, menyu, işçilər). Bu, satış panelini, itki radarını və proqnozu mümkün edir.</p>
+    <ul>
+      <li>Bu məlumat əsasən üçüncü tərəf inteqrasiya sənədlərindəndir, rəsmi sənədi hələ görməmişəm. Dəqiq imkanı iiko nümayəndəsi təsdiqləməlidir.</li>
+      <li>iikoServer girişi bir iiko lisenziya yerini tuta bilər, ona görə lisenziya sayı yoxlanmalıdır.</li>
+      <li>Çek ləğvi və endirim məlumatının API-dən gəldiyini Hollywood-un öz hesabında sınamaq lazımdır.</li>
+    </ul>
+    <p class="note">iiko nümayəndəsinə sual: API açarı necə verilir, əlavə ödəniş varmı, ləğv və endirim tarixçəsi oxuna bilirmi?</p>
+  </section>
+
+<section>
+    <h2>Mərhələli plan</h2>
+    <div class="grid">
+      <div class="card"><span class="tag">Hazırlıq · 1–2 həftə</span><h3>Dəqiqləşdirmə</h3><p>Məkan siyahısı, işçi bazası, vəzifələr, audit formaları, kassa sistemi.</p></div>
+      <div class="card"><span class="tag">Pilot · 4 həftə</span><h3>2 məkan</h3><p>Tapşırıq, QR, audit, səhər xülasəsi. Sonda rəhbər davam etmək qərarını rəqəmlərlə verir.</p></div>
+      <div class="card"><span class="tag">Yayılma · 4–6 həftə</span><h3>Bütün şəbəkə</h3><p>Məkan-məkan keçid, təlim, növbə cədvəli, əməkhaqqı hesabatı.</p></div>
+      <div class="card"><span class="tag">İnkişaf · sonra</span><h3>Kassa və xərclər</h3><p>Kassa sistemi imkan verirsə, satış və xərc paneli, qonaq rəyləri.</p></div>
+    </div>
+    <p class="note">Müddətlər təxminidir, hazırlıqdan sonra dəqiqləşəcək. Qiyməti hələ yazmamışam: sizin qiymət qərarınız və məkan sayı lazımdır. Müqayisə üçün xarici xidmətlərdən birində başlanğıc qiymət işçi başına ayda $6.99-dur, 700 işçi üçün bu, təxminən ayda $4 900 edir, amma yalnız davamiyyəti əhatə edir.</p>
+  </section>
+
+  <section>
+    <h2>Risklər</h2>
+    <div class="tw"><table>
+      <thead><tr><th>Risk</th><th>Tədbir</th></tr></thead>
+      <tbody>
+        <tr><td><b>İşçi foto və yer məlumatı</b></td><td>İşçidən yazılı razılıq, foto qısa müddət saxlanır, yer yalnız skan anında yoxlanır. Üz tanıma birinci mərhələdə yoxdur. Hüquqşünas Əmək Məcəlləsi və "Fərdi məlumatlar haqqında" qanun üzrə təsdiqləməlidir, mən bunu təsdiqləyə bilmədim.</td></tr>
+        <tr><td><b>İşçilərin müqaviməti</b></td><td>Pilotda sadə qaydalar, ilk həftələr cərimə yox, yalnız ölçmə. Daxili qaydanı rəhbər elan edir.</td></tr>
+        <tr><td><b>Pik yükü və kəsinti</b></td><td>Növbə dəyişikliyində yüzlərlə skan olur. Bunun üçün pulsuz yox, ödənişli baza planı, oflayn qeyd və gündəlik ehtiyat nüsxə lazımdır.</td></tr>
+        <tr><td><b>Yanlış data ilə qərar</b></td><td>Kassa inteqrasiyası olmadan maliyyə rəqəmi göstərilmir. Kassa sisteminin API imkanını əvvəl yoxlamaq lazımdır.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Qərar üçün lazım olanlar</h2>
+    <ol>
+      <li>Neçə məkan var və 700 nəfər onlara necə bölünür?</li>
+      <li>iiko bütün məkanlarda işlənirmi? Anbar da iiko-dadırmı? Kameralar hansı sistemdədir?</li>
+      <li>İşçilərin nə qədərinin smartfonu var? Kart və ya planşet neçə nəfərə lazım olacaq?</li>
+      <li>Əməkhaqqı gecikməyə görə dəyişirmi, yoxsa sistem yalnız məlumat versin?</li>
+      <li>Müavinlər məkana görə, yoxsa istiqamətə görə (mətbəx, servis, maliyyə) bölünüb?</li>
+      <li>Audit hazırda hansı forma ilə aparılır? Mövcud yoxlama siyahıları varsa, sistemə köçürək.</li>
+      <li>Hansı pilot məkan daha uyğundur?</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Mənbələr</h2>
+    <p class="src">Restoran əməliyyat sistemləri: <a href="https://operandio.com/restaurant-task-management-software/">Operandio</a>, <a href="https://www.zenput.com/demo">Zenput</a>, <a href="https://xenia.team/articles/zenput-vs-jolt">Xenia</a>. Davamiyyət: <a href="https://netchex.com/blog/reducing-buddy-punching-in-restaurants-and-retail-in-2026/">Netchex</a>, <a href="https://buddypunch.com/blog/time-clock-kiosk-app/">Buddy Punch</a>, <a href="https://blog.allgeo.com/?p=2222">allGeo</a>. Göstəricilər: <a href="https://www.restaurant365.com/blog/5-restaurant-kpis-to-track-weekly/">Restaurant365</a>, <a href="https://www.touchbistro.com/?p=32093">TouchBistro</a>, <a href="https://www.btcpa.net/glossary/restaurant-labor-cost-percentage">BT CPA</a>. Xarici sistemlər: <a href="https://www.workjam.com/">WorkJam</a>, <a href="https://operandio.com/">Operandio</a>, <a href="https://www.jolt.com/">SmartSense ONE (Jolt)</a>, <a href="https://www.trailapp.com/">Trail</a>, <a href="https://www.planday.com/">Planday</a>, <a href="https://www.yoobic.com/">YOOBIC</a>, <a href="https://www.fourth.com/">Fourth</a>, <a href="https://www.marginedge.com/">MarginEdge</a>, <a href="https://www.opsi.io/">opsi</a>, <a href="https://www.deputy.com/industry/hospitality">Deputy</a>, <a href="https://www.casestudies.com/company/7shifts/case-study/how-fresh-restaurants-reduced-their-labor-cost-by-12-in-one-year-with-7shifts">7shifts</a>. iiko: <a href="https://github.com/Nap20192/iiko-go">iiko-go</a>, <a href="https://blog.fudov.ru/podklyucheniye-integratsiy-iiko-api">Fudov</a>. İtki və video: <a href="https://lavu.com/ai-restaurant-theft-prevention/">Lavu</a>, <a href="https://www.berry-ai.com/solutions/security-loss-prevention">Berry AI</a>, <a href="https://solink.com/resources/cctv-pos-integration/">Solink</a>. Hazır çek-video həlləri: <a href="https://denvic.ru/service/avtomatizatsiya-obshchepita/integratsiya-iiko-s-sistemoy-videonablyudeniya-trassir/">Trassir + iiko</a>, <a href="https://support.ivideon.com/l_ENG/knowledge_base/item/264611">Ivideon</a>, <a href="https://profitm.pro/iiko_ako">АКО</a>, <a href="https://iikoservice.ru/service/svn/">iikoservice</a>. Risk qiymətləndirməsi: <a href="https://www.restroworks.com/restaurant-anti-theft-software/">Restroworks</a>, <a href="https://support.berry-ai.com/hc/en-us/articles/47663274288020-What-is-Berry-AI-s-Security-and-Loss-Prevention-product">Berry AI</a>. İşçi axını: <a href="https://blackboxintelligence.com/blog/state-of-the-restaurant-workforce-employee-turnover/">Black Box</a>. Tullantı: <a href="https://venturebeat.com/ai/winnow-uses-computer-vision-to-help-commercial-kitchens-cut-food-waste">Winnow</a>. Bu mənbələrin çoxu satıcı şirkətlərin yazılarıdır, müstəqil tədqiqat deyil.</p>
+  </section>
+</main>
+</body>
+</html>

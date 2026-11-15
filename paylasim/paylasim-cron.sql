@@ -1,0 +1,2 @@
+-- smm-publish yerləşdiriləndən SONRA işlədilir
+select cron.schedule('mm-smm-publish', '*/2 * * * *', $$ select net.http_post(url:='https://tcdfhbtlqxcpwlycqhfv.supabase.co/functions/v1/smm-publish', headers:=jsonb_build_object('Content-Type','application/json','x-internal-key',(select value from public.app_secrets where key='IG_INTERNAL_KEY')), body:='{}'::jsonb, timeout_milliseconds:=120000); $$);

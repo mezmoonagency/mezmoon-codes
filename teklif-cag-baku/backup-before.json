@@ -1,0 +1,50 @@
+{
+ "slug": "cag-baku-kebab-steakhouse-xv47",
+ "saved": "2026-11-14",
+ "meta": {
+  "eyebrow": "",
+  "cta_link": "",
+  "cta_text": "",
+  "note_body": "",
+  "note_title": ""
+ },
+ "strategy": [
+  {
+   "d": "ayda 6+ peşəkar video (məkan turu, aşpaz, atmosfer, kreator collab).",
+   "t": "Reels əsas reach mənbəyidir"
+  },
+  {
+   "d": "qonaq, aşpaz, kreator. Adsız atmosfer kadrlarından daha çox yadda qalır.",
+   "t": "İnsan və hekayə olan videolar"
+  },
+  {
+   "d": "menyu, canlı musiqi, tədbir və bayram anonsları üçün sabit təqvim.",
+   "t": "Həftəlik ritm"
+  },
+  {
+   "d": "ən yaxşı videonu yaxın ərazidə mesaj/profil ziyarəti kampaniyası ilə gücləndirmək.",
+   "t": "Meta Ads"
+  }
+ ],
+ "packages": [
+  {
+   "hi": [
+    {
+     "l": "video / ay",
+     "n": "8"
+    }
+   ],
+   "tag": "Aylıq paket",
+   "desc": "Video və kontent bir paketdə.",
+   "name": "Standart",
+   "items": [
+    "Ayda 6 video: ssenari, çəkiliş, montaj, rəng korreksiyası",
+    "Ayda 8 kontent: post, karusel və story dizaynları",
+    "Aylıq kontent planı, AZ/RU mətnlər və hashtag",
+    "Paylaşımların vaxtında yerləşdirilməsi",
+    "Aylıq hesabat: baxış, reach, ən yaxşı paylaşım"
+   ],
+   "price": 1500
+  }
+ ]
+}

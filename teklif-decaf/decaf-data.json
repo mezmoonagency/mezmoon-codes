@@ -1,0 +1,602 @@
+{
+ "ref": {
+  "dek": "Bakının qəhvə və kafe bazarında yerli brendlərin rəqəmsal araşdırması, Decaf üçün aşkar etdiyimiz boşluqlar və onları bağlamaq üçün 90 günlük plan.",
+  "meta": [
+   [
+    "Müştəri",
+    "Decaf"
+   ],
+   [
+    "Araşdırılan brend",
+    "6"
+   ],
+   [
+    "Mənbə",
+    "Instagram, veb"
+   ],
+   [
+    "Hazırlayan",
+    "WeTrend"
+   ]
+  ],
+  "state": {
+   "big": "Məkan bəyənilir. Brend danışmır.",
+   "lead": "@decaf.az səhifəsinin son 12 paylaşımı Apify ilə analiz edildi. 4 980 izləyicisi olan səhifədə ən güclü nəticəni Decaf-ın öz paylaşımı yox, kreator videosu verib: <b>102 569</b> baxış və <b>1 681</b> bəyənmə. Decaf-ın öz 10 paylaşımı isə orta hesabla <b>26</b> bəyənmə toplayır.",
+   "stats": [
+    [
+     "5.0K",
+     "Instagram izləyici",
+     0
+    ],
+    [
+     "0.57%",
+     "Öz paylaşımların engagement-i",
+     0
+    ],
+    [
+     "102.6K",
+     "Kreator videosunun baxışı",
+     1
+    ],
+    [
+     "8 796",
+     "Ən yaxşı öz video",
+     1
+    ],
+    [
+     "6 / 10",
+     "Öz paylaşımlarda tək foto",
+     0
+    ],
+    [
+     "08–02",
+     "İş saatları",
+     0
+    ]
+   ],
+   "note": "Nəticə: insanlar Decaf-ı görəndə bəyənir. Problem məkanda deyil, məkanın necə göstərilməsindədir."
+  },
+  "reels": {
+   "label": "Reels — prioritet №1",
+   "bigA": "Video olmasa, ",
+   "bigB": "Decaf-ı yalnız gələnlər tanıyır.",
+   "lead": "Decaf-ın öz ən yaxşı videosu <b>8 796</b> baxış toplayıb, tipik video isə <b>1 346</b>. Tək fotolar orta hesabla <b>12</b> bəyənmədə qalır. Kreatorun çəkdiyi video isə <b>102 569</b> baxışa çatıb. Yəni video və insan olan kadr işləyir, sadəcə səhifə bunu ardıcıl etmir.",
+   "vs": {
+    "bad": [
+     "Tipik öz video",
+     "1 346",
+     "baxış",
+     15
+    ],
+    "good": [
+     "Ən yaxşı öz video",
+     "8 796",
+     "baxış · 4 oktyabr",
+     100
+    ]
+   },
+   "rules": [
+    [
+     "Tək foto əsas format olmamalıdır.",
+     "Foto karusel menyu və anons üçün qalır. Lentin əsasını video təşkil edir."
+    ],
+    [
+     "Hər ay 10–12 video.",
+     "6–8 professional video və 4 reels, yəni həftədə 2–3 video."
+    ],
+    [
+     "İlk 3 saniyə həlledicidir.",
+     "Video qəhvənin süzülməsi, desertin kəsilməsi və ya axşam işıqları ilə açılır. Ümumi interyer planı ilə başlamaq olmaz."
+    ],
+    [
+     "İnsan kadrda olmalıdır.",
+     "Barista, qonaq, cütlük. Kreator videosunun uğuru boş məkan kadrından yox, insan hekayəsindən gəlib."
+    ],
+    [
+     "Hər paylaşım gəlmək üçün səbəb verir.",
+     "Səhər yeməyi, date, iş görüşü və ya gecə qəhvəsi. Mətndə məhsulun adı və rezerv çağırışı olur."
+    ],
+    [
+     "Reklam büdcəsi yalnız videoya gedir.",
+     "Üzvi olaraq yaxşı işləyən video Meta Ads ilə Ağ Şəhər və yaxın ərazilərə verilir."
+    ]
+   ]
+  },
+  "rivals": {
+   "big": "Kim qalib gəlir və niyə?",
+   "head": [
+    "Brend",
+    "İzləyici",
+    "Engagement",
+    "Video payı",
+    "Nə işləyir"
+   ],
+   "rows": [
+    [
+     "Decaf",
+     "AZ",
+     "5.0K",
+     "0.57%",
+     "30%",
+     "Kreator videosu: 102.6K baxış",
+     1,
+     0
+    ],
+    [
+     "Coffee Moffie",
+     "AZ",
+     "26.7K",
+     "0.87%",
+     "50%",
+     "Kino mövzulu konsept, Halloween tədbiri. 635 bəyənmə",
+     0,
+     1
+    ],
+    [
+     "Michelle",
+     "AZ",
+     "16.1K",
+     "0.22%",
+     "25%",
+     "Lent statik menyu kadrlarıdır. Videolar fotodan 5 dəfə çox bəyənmə alır",
+     0,
+     0
+    ],
+    [
+     "Coffee Hub Baku",
+     "AZ",
+     "12.1K",
+     "0.61%",
+     "58%",
+     "Müntəzəm video, barista yarışması qalibi. 134 bəyənmə",
+     0,
+     0
+    ],
+    [
+     "Jini Coffee",
+     "AZ",
+     "9.9K",
+     "4.91%",
+     "75%",
+     "Bir axşam videosu 5 376 bəyənmə. Qalanları 9–85",
+     0,
+     0
+    ],
+    [
+     "Cozy Coffee Baku",
+     "AZ",
+     "6.4K",
+     "1.15%",
+     "67%",
+     "Tələbə təklifi, futbol yayımı, şərh yarışması: 99 şərh",
+     0,
+     1
+    ]
+   ],
+   "fine": "Engagement = son 12 postun orta bəyənmə və şərhi / izləyici. Decaf üçün yalnız brendin öz 10 paylaşımı götürülüb; kreator videosu ilə birlikdə göstərici 3.41%-dir. Jini Coffee-nin göstəricisi bir videonun hesabınadır. Mənbə: Apify Instagram Scraper, 10.11.2026.",
+   "lessons": [
+    [
+     "Kreator effekti",
+     "Bir kreator videosu Decaf-ın öz 10 paylaşımının cəmindən 6 dəfə çox bəyənmə toplayıb. Kreatorla iş təsadüfi yox, sistemli olmalıdır."
+    ],
+    [
+     "Konsept yadda qalır",
+     "Coffee Moffie kino mövzusu və tədbirləri ilə 26.7K izləyiciyə çatıb. Məkanın bir aydın hekayəsi var."
+    ],
+    [
+     "Statik menyu lenti zəifdir",
+     "Michelle 16.1K izləyici ilə 0.22% engagement göstərir. Onun da ən yaxşı nəticələri videolardadır."
+    ],
+    [
+     "Gəlmək üçün səbəb ver",
+     "Cozy Coffee tələbə təklifi, Çempionlar Liqası yayımı və şərh yarışmaları ilə 6.4K izləyicidə 1.15% engagement alır."
+    ]
+   ]
+  },
+  "gaps": {
+   "big": "Aşkar etdiyimiz 6 boşluq",
+   "items": [
+    [
+     "Öz video azdır.",
+     "23 oktyabrdan bəri brendin öz videosu yoxdur. Son 10 öz paylaşımın 6-sı tək fotodur və orta hesabla 12 bəyənmə alır."
+    ],
+    [
+     "Ən güclü mesajı kreator deyib.",
+     "«Ağ Şəhərin ən zövqlü date məkanı» mövqeyi 102 569 baxış toplayıb, amma Decaf-ın öz mətnlərində və bioda yoxdur."
+    ],
+    [
+     "Real engagement 0.57%-dir.",
+     "3.41% göstəricisi bir kreator videosunun hesabınadır. Öz paylaşımlar izləyicilərin çox kiçik hissəsinə çatır."
+    ],
+    [
+     "Mətnlərdə çağırış yoxdur.",
+     "Məhsulun adı, qiyməti və rezerv çağırışı yazılmır. Hər mətn eyni ünvan və telefon bloku ilə bitir."
+    ],
+    [
+     "18 saatlıq gün göstərilmir.",
+     "08:00-dan 02:00-a qədər açıqsınız: səhər yeməyi, gündüz qəhvə, axşam date, gecə. İndiyə qədər yalnız səhər yeməyi videosu bu fürsəti göstərib və 8 796 baxış alıb."
+    ],
+    [
+     "Kreatorla iş sistemsizdir.",
+     "Son 12 paylaşımda 2 kreator videosu var: biri 102 569, digəri 831 baxış. Seçim, ssenari və təkrar planı yoxdur."
+    ]
+   ]
+  },
+  "trends": {
+   "label": "Qlobal yeniliklər → Decaf",
+   "big": "Dünyada işləyənlərdən nəyi gətiririk",
+   "items": [
+    [
+     "Philz Coffee · ABŞ",
+     "Kreator proqramı",
+     "90-dan çox kreatorla 700-dən çox vizual hazırlanıb, Instagram-da 3.4M-dan çox göstərim alınıb.",
+     "Ayda 3–4 Bakı kreatoru, hər biri ayrı ssenari ilə: date, səhər yeməyi, iş görüşü."
+    ],
+    [
+     "Starbucks · İndoneziya",
+     "Reklamdan mesaja",
+     "Reklamlar birbaşa Instagram Direct-ə yönəldilib: 6 dəfə ROAS və mağazaya gəlmə niyyətində artım.",
+     "Meta Ads-i «masa rezerv et» mesaj kampaniyası kimi qurmaq. Hər mesaj rezerv şansıdır."
+    ],
+    [
+     "The Nitro Bar · ABŞ",
+     "Barista qəhrəmandır",
+     "Qəhvə hazırlanmasını göstərən videolarla viral olub. Sahibkar mətbuata satışın 60% artdığını deyib.",
+     "«Decaf barista» seriyası: imza içkilərin hazırlanması, ASMR səs, yaxın plan."
+    ],
+    [
+     "Café Kitsuné · Fransa",
+     "Brend əməkdaşlığı",
+     "Kosmetika brendi Summer Fridays ilə kreatorlar üzərində qurulmuş birgə aktivasiya.",
+     "Ağ Şəhərdəki gözəllik və moda brendləri ilə birgə həftəsonu və kreator günü."
+    ],
+    [
+     "Starbucks · Qlobal",
+     "Geri qayıdan mövsüm",
+     "Pumpkin Spice Latte hər payız məhdud müddətə qayıdır və mövsümün başlanğıcı kimi gözlənilir.",
+     "Decaf-ın kokoslu və darçınlı içkilərindən mövsümi imza içki və 3–4 videoluq anons seriyası."
+    ],
+    [
+     "Joe & The Juice · Qlobal",
+     "Kafe axşam məkanıdır",
+     "Şəhərdən şəhərə DJ turu: kafe musiqi və axşam tədbiri məkanına çevrilir.",
+     "Gecə 02:00-a qədər açıq olmağı göstərmək: akustik və DJ axşamları, date gecəsi."
+    ]
+   ],
+   "fine": "Nəticə rəqəmləri brendlərin və platformaların keys-study-lərindəndir: Cohley, Instagram for Business, Planoly (Brown Daily Herald müsahibəsi). Café Kitsuné: Kolsquare. Starbucks və Joe & The Juice: brendlərin öz paylaşımları."
+  },
+  "mix": {
+   "big": "Aylıq kontent qarışığı",
+   "items": [
+    [
+     30,
+     "Məhsul və barista videoları",
+     "Qəhvənin hazırlanması, səhər yeməyi, desert kəsikləri",
+     "--lav"
+    ],
+    [
+     25,
+     "Date və axşam atmosferi",
+     "Axşam işıqları, cütlüklər, 02:00-a qədər açıq",
+     "--wt-pink"
+    ],
+    [
+     20,
+     "Kreator və qonaq",
+     "Bakı food və lifestyle kreatorları, qonaq reaksiyası",
+     "#7B4BF0"
+    ],
+    [
+     15,
+     "Səhər yeməyi və iş günü",
+     "08:00 səhər yeməyi, laptopla iş, iş görüşü",
+     "#B9A6FF"
+    ],
+    [
+     10,
+     "Yeniliklər və tədbirlər",
+     "Mövsümi içki, canlı musiqi, bayram",
+     "#5E528F"
+    ]
+   ]
+  },
+  "plan": {
+   "big": "Üç mərhələ, bir hədəf",
+   "kpi": [
+    [
+     "2–3%",
+     "Öz paylaşımların engagement-i<br>(hazırda 0.57%)"
+    ],
+    [
+     "5 000",
+     "Tipik video baxışı<br>(hazırda 1 346)"
+    ],
+    [
+     "60%",
+     "Kontentdə video payı<br>(hazırda 30%)"
+    ],
+    [
+     "16–20",
+     "30 gündə paylaşım<br>(hazırda 7)"
+    ]
+   ],
+   "fine": "Bunlar birgə iş üçün hədəflərdir, nəticə zəmanəti deyil."
+  },
+  "services": {
+   "big": "Strategiyadan icraya, bir komanda",
+   "groups": [
+    [
+     "Kontent istehsalı",
+     "VIDEO · FOTO",
+     [
+      "Professional foto çəkiliş",
+      "Professional kreativ video çəkiliş",
+      "Reels video",
+      "Süni intellekt inteqrasiyalı kreativ video (Decaf Special)",
+      "Bütün poster və motion dizaynların hazırlanması"
+     ]
+    ],
+    [
+     "Səhifə idarəçiliyi",
+     "INSTAGRAM · TIKTOK",
+     [
+      "Kontent planın hazırlanması və tətbiqi",
+      "Gündəlik story və posterlərin paylaşılması, səhifə idarəçiliyi",
+      "Səhifə vizualının brendə uyğun səliqəyə salınması",
+      "Gündəlik mesajlara cavablanma və şablon mesajların hazırlanması"
+     ]
+    ],
+    [
+     "Reklam və analitika",
+     "ADS · DATA",
+     [
+      "Targeting xidməti (Meta Ads, TikTok Ads)",
+      "Digital marketing xidməti (Google Maps, TripAdvisor və digərləri)",
+      "Reklam kabinetinin qurulması və optimizasiyası",
+      "Rəqib analizi və konsultasiya xidməti",
+      "Aylıq hesabatın hazırlanması və təhvil verilməsi"
+     ]
+    ]
+   ]
+  }
+ },
+ "deck": {
+  "off": false,
+  "summary": "Decaf-ın güclü tərəfi məkanın özüdür: zövqlü interyer, 08:00-dan 02:00-a qədər iş qrafiki və səhər yeməyindən date axşamına qədər geniş menyu. Bunu ən yaxşı kreator göstərib: onun videosu 102 569 baxış toplayıb. Decaf-ın öz paylaşımları isə əsasən tək fotolardır və orta hesabla 26 bəyənmə alır. Əsas iş videonu artırmaq, «date məkanı» mövqeyini brendin öz səsinə çevirmək və kreatorla işi sistemə salmaqdır.",
+  "ig": [
+   {
+    "t": "Paylaşım ritmi",
+    "d": "Son 30 gündə 7 paylaşım var, yəni həftədə orta hesabla 2. Ritm qırılmayıb, amma alqoritm üçün azdır. 23 oktyabrdan sonra brendin öz paylaşımları yalnız fotolardır: 29 oktyabr toyuq qanadları və 3 noyabr kokoslu qəhvə."
+   },
+   {
+    "t": "Formatlar",
+    "d": "Son 10 öz paylaşımın 6-sı tək foto, 1-i karusel, 3-ü videodur. Fotolar 9–22 bəyənmə alır. Videolar isə daha güclüdür: Amerikan səhər yeməyi 8 796, qəhvə videosu 1 346, pasta videosu 858 baxış toplayıb. Karusel (24 bəyənmə) öz paylaşımlar arasında ən çox bəyəniləndir."
+   },
+   {
+    "t": "Vizual üslub",
+    "d": "Qəhvəyi-krem palitra, isti işıq və səliqəli servis vahid görünüş yaradır. Məkanın interyeri çox fotogenikdir, kreator da bunu vurğulayıb: «buranın hər hissəsi şəkil çəkdirmək üçün hazırlanıb». Amma öz kadrların çoxu masa üstündə tək fincan və ya boş interyerdir, kadrda insan demək olar yoxdur."
+   },
+   {
+    "t": "Paylaşım mətnləri",
+    "d": "Mətnlər Azərbaycan və rus dillərindədir, bu yaxşıdır. Amma əksəriyyəti ümumi əhval cümləsidir: «Şirin dad, sakit atmosfer…», «Eleqant ab-havamız…». Məhsulun adı, qiyməti və ya rezerv çağırışı yoxdur. Hər mətn eyni ünvan və telefon bloku ilə bitir."
+   },
+   {
+    "t": "İlk saniyələr və diqqət",
+    "d": "Ən yaxşı öz video (8 796 baxış) yeməyin yaxın planı ilə açılır və «günün ən dadlı başlanğıcı» mesajı aydındır. Pasta videosu ümumi «yeni dadlar» mesajı ilə 858 baxışda qalıb. Kreator videosu isə POV formatı və birbaşa çağırışla açılır: «Rəfiqənə yolla». Bu, paylaşımı təşviq edir."
+   },
+   {
+    "t": "Auditoriyanın reaksiyası və şərhlər",
+    "d": "Öz paylaşımlarda orta hesabla 26 bəyənmə və 1-2 şərh var, engagement 0.57%-dir. Ən çox şərh kreatorla birgə qəhvə videosundadır (10). Kreator videosu 33 şərh və 1 681 bəyənmə toplayıb. Auditoriya insan və hekayə olan kontentə reaksiya verir."
+   },
+   {
+    "t": "Bio və rezerv yolu",
+    "d": "Bioda iş saatları (08:00–02:00), Ağ Şəhər ünvanı, telefon və Google Maps linki var. Amma Decaf-ın kim olduğu yazılmayıb: qəhvə evi, səhər yeməyi, date məkanı. Rezerv üçün WhatsApp və ya Direct çağırışı yoxdur."
+   }
+  ],
+  "pros": [
+   "Məkan çox fotogenikdir. Kreator videosu 102 569 baxış və 1 681 bəyənmə ilə bunu sübut edib.",
+   "08:00-dan 02:00-a qədər iş qrafiki: səhər yeməyi, gündüz qəhvə, axşam date və gecə üçün hazır mövzular.",
+   "Səhər yeməyi videosu 8 796 baxış toplayıb, izləyici sayından 1.8 dəfə çox. Doğru video yeni insanlara çatır.",
+   "Mətnlər AZ və RU dillərindədir, ünvan və telefon hər paylaşımda var.",
+   "Ritm qırılmayıb: son 30 gündə 7 paylaşım, son paylaşım 2 gün əvvəl.",
+   "Kreatorlar Decaf-ı özü tag edir: 7 noyabrda da yeni kreator videosu çıxıb."
+  ],
+  "cons": [
+   "Son 10 öz paylaşımın 6-sı tək fotodur və orta hesabla 12 bəyənmə alır.",
+   "Real engagement 0.57%-dir. 3.41% göstəricisi bir kreator videosunun hesabınadır.",
+   "23 oktyabrdan bəri brendin öz videosu yoxdur.",
+   "«Date məkanı» mövqeyi yalnız kreatorun mətnindədir, brendin öz səsində yoxdur.",
+   "Mətnlərdə məhsul adı, qiymət və rezerv çağırışı yoxdur.",
+   "Kreatorla iş sistemsizdir: 2 videodan biri 102 569, digəri 831 baxış alıb."
+  ],
+  "plan": [
+   {
+    "period": "1-ci ay",
+    "focus": "Video ritmi və məhsul",
+    "items": [
+     "Həftədə 4–5 paylaşım, onlardan 2–3-ü video. Fasiləsiz kontent təqvimi.",
+     "İmza içkilər və səhər yeməyi üçün yaxın planda hazırlanma videoları (8 796 baxışlıq formatın davamı).",
+     "Menyu karuseli: hər məhsulun adı, qiyməti, AZ/RU mətni.",
+     "Bio yenilənir: kim olduğunuz bir cümlədə və rezerv çağırışı."
+    ]
+   },
+   {
+    "period": "2-ci ay",
+    "focus": "Date məkanı və kreatorlar",
+    "items": [
+     "«Date məkanı» seriyası: axşam işıqları, cütlüklər, desert və içki kadrları.",
+     "Ayda 3–4 Bakı kreatoru, hər biri üçün ayrı ssenari və POV formatı.",
+     "Ən yaxşı kreator videosu Meta Ads ilə Ağ Şəhər və yaxın ərazilərə verilir.",
+     "Story-də «masa rezerv et» düymələri və Direct mesaj kampaniyası."
+    ]
+   },
+   {
+    "period": "3-cü ay",
+    "focus": "Gecə həyatı və icma",
+    "items": [
+     "Gecə 02:00-a qədər açıq olmağı göstərən videolar: akustik və DJ axşamları.",
+     "Mövsümi imza içki və 3–4 videoluq anons seriyası.",
+     "Ağ Şəhərdəki brendlərlə birgə həftəsonu və ya kreator günü.",
+     "Hesabata əsasən ən yaxşı 2 formatı ikiqat artırmaq, zəif formatları dayandırmaq."
+    ]
+   }
+  ],
+  "posts": [
+   {
+    "img": "https://tcdfhbtlqxcpwlycqhfv.supabase.co/storage/v1/object/public/lead-media/decaf.az/1794302012881/p0.jpg?v=1794302018695",
+    "url": "https://www.instagram.com/p/DeMshRgoWWX/",
+    "note": "Kreator videosu 102 569 baxış, 1 681 bəyənmə və 33 şərh toplayıb. POV formatı və «Rəfiqənə yolla» çağırışı paylaşımı təşviq edib. Bu, Decaf-ın öz səhifəsində olmayan mövqedir: «Ağ Şəhərin ən zövqlü date məkanı».",
+    "likes": 1681,
+    "video": true,
+    "views": 102569,
+    "verdict": "yaxşı"
+   },
+   {
+    "img": "https://tcdfhbtlqxcpwlycqhfv.supabase.co/storage/v1/object/public/lead-media/decaf.az/1794302012881/p1.jpg?v=1794302015743",
+    "url": "https://www.instagram.com/p/DeEDQELIvjY/",
+    "note": "Amerikan səhər yeməyi videosu 8 796 baxışla brendin öz ən yaxşı paylaşımıdır, izləyici sayından 1.8 dəfə çox. Yaxın plan yemək kadrı və aydın mesaj işləyir. Bu format hər həftə təkrarlanmalıdır.",
+    "likes": 85,
+    "video": true,
+    "views": 8796,
+    "verdict": "yaxşı"
+   },
+   {
+    "img": "https://tcdfhbtlqxcpwlycqhfv.supabase.co/storage/v1/object/public/lead-media/decaf.az/1794302012881/p2.jpg?v=1794302017047",
+    "url": "https://www.instagram.com/p/De1y_DbIOKh/",
+    "note": "Kreatorla birgə qəhvə videosu 1 346 baxış və 10 şərh toplayıb, öz paylaşımlar arasında ən çox şərh buradadır. İnsan olan kadr reaksiya yaradır, amma mətndə içkinin adı və qiyməti yoxdur.",
+    "likes": 66,
+    "video": true,
+    "views": 1346,
+    "verdict": "orta"
+   }
+  ],
+  "targets": [
+   {
+    "metric": "Paylaşım sayı (30 gün)",
+    "now": "7",
+    "goal": "16-20",
+    "when": "1-ci ayın sonu"
+   },
+   {
+    "metric": "Həftəlik video",
+    "now": "0.7",
+    "goal": "2-3",
+    "when": "1-ci aydan etibarən"
+   },
+   {
+    "metric": "Video payı",
+    "now": "30%",
+    "goal": "60%",
+    "when": "2-ci ayın sonu"
+   },
+   {
+    "metric": "Tipik video baxışı",
+    "now": "1 346",
+    "goal": "5 000",
+    "when": "3-cü ayın sonu"
+   },
+   {
+    "metric": "Öz paylaşımların engagement-i",
+    "now": "0.57%",
+    "goal": "2-3%",
+    "when": "3-cü ayın sonu"
+   }
+  ],
+  "promises": [
+   {
+    "t": "Ayda 10–12 video",
+    "d": "Ssenari, çəkiliş, montaj və rəng korreksiyası ilə qəhvə hazırlanması, səhər yeməyi, date axşamı və barista videoları hazırlayacağıq. Hər video ilk saniyədən məhsulu və ya insanı göstərəcək."
+   },
+   {
+    "t": "Post, karusel və story dizaynları hazırlayacağıq",
+    "d": "menyu karuselləri, qiymətlər, rezerv story-ləri. Belə ki, ümumi əhval cümləsindən ibarət paylaşımlar olmayacaq."
+   },
+   {
+    "t": "Kontent planı və AZ/RU mətnlər",
+    "d": "Hər ay üçün plan quracağıq. Mətnləri Azərbaycan və rus dillərində məhsulun adı, qiyməti və rezerv çağırışı ilə yazacağıq."
+   },
+   {
+    "t": "Kreatorlarla sistemli iş",
+    "d": "Hər ay uyğun Bakı kreatorlarını seçib ssenari verəcəyik. 102 569 baxışlıq videonun formulunu təkrarlayacağıq."
+   },
+   {
+    "t": "Aylıq hesabat",
+    "d": "Hər ay baxış, reach, rezerv mesajları və ən yaxşı paylaşımı göstərən hesabat verəcəyik."
+   }
+  ]
+ },
+ "packages": [
+  {
+   "name": "Decaf Special",
+   "tag": "Aylıq paket",
+   "desc": "Special package for Decaf",
+   "price": 2500,
+   "hi": [
+    {
+     "l": "Professional video / ay",
+     "n": "8"
+    },
+    {
+     "l": "Reels video / ay",
+     "n": "4"
+    },
+    {
+     "l": "Foto / ay",
+     "n": "15-25"
+    }
+   ],
+   "items": [
+    "15-25 ədəd Professional foto çəkiliş",
+    "8 ədəd professional kreativ video çəkiliş",
+    "4 ədəd Reels video",
+    "1 ədəd süni intellekt inteqrasiyalı kreativ video",
+    "Bütün poster və motion dizaynların hazırlanması (süni intellekt)",
+    "Kontent planın hazırlanması və tətbiqi",
+    "Gündəlik story və posterlərin paylaşılması, səhifə idarəçiliyi (Instagram, TikTok)",
+    "Səhifə vizualının brendə uyğun səliqəyə salınması",
+    "Gündəlik mesajlara cavablanma və şablon mesajların hazırlanması",
+    "Targeting xidməti (Meta Ads, TikTok Ads)",
+    "Digital marketing xidməti (Google Maps, TripAdvisor və digərləri)",
+    "Reklam kabinetinin qurulması və optimizasiyası",
+    "Rəqib analizi və konsultasiya xidməti",
+    "Aylıq hesabatın hazırlanması və təhvil verilməsi"
+   ]
+  },
+  {
+   "name": "Decaf Standart",
+   "tag": "Aylıq paket",
+   "desc": "Standard package for Decaf",
+   "price": 1500,
+   "hi": [
+    {
+     "l": "Professional video / ay",
+     "n": "6"
+    },
+    {
+     "l": "Reels video / ay",
+     "n": "4"
+    },
+    {
+     "l": "Foto / ay",
+     "n": "10-20"
+    }
+   ],
+   "items": [
+    "10-20 ədəd Professional foto çəkiliş",
+    "6 ədəd professional kreativ video çəkiliş",
+    "4 ədəd Reels video",
+    "Bütün poster və motion dizaynların hazırlanması",
+    "Kontent planın hazırlanması və tətbiqi",
+    "Gündəlik story və posterlərin paylaşılması, səhifə idarəçiliyi (Instagram, TikTok)",
+    "Səhifə vizualının brendə uyğun səliqəyə salınması",
+    "Gündəlik mesajlara cavablanma və şablon mesajların hazırlanması",
+    "Targeting xidməti (Meta Ads, TikTok Ads)",
+    "Digital marketing xidməti (Google Maps, TripAdvisor və digərləri)",
+    "Reklam kabinetinin qurulması və optimizasiyası",
+    "Rəqib analizi və konsultasiya xidməti",
+    "Aylıq hesabatın hazırlanması və təhvil verilməsi"
+   ]
+  }
+ ],
+ "intro": "Price List for Decaf"
+}
