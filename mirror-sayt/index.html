@@ -114,32 +114,56 @@ section{padding:84px 0 0}
 .row svg.mini{width:150px;height:34px}
 @media (max-width:860px){.row{grid-template-columns:80px 1fr auto;gap:6px 12px}.row svg.th{width:80px;height:40px;grid-row:span 2}.row .ty{grid-column:2}.row svg.mini,.row .dv{display:none}.row .st{grid-column:3;grid-row:1}}
 
-/* 3D */
-.three-grid{display:grid;grid-template-columns:250px minmax(0,1fr);gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface)}
-.types{display:flex;flex-direction:column;border-right:1px solid var(--line)}
-.types button{text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:14px 18px;position:relative}
-.types button b{display:block;font-size:15px;font-weight:700}
-.types button span{font-size:13px;color:var(--mute)}
-.types button[aria-pressed="true"]{background:var(--paper)}
-.types button[aria-pressed="true"]::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--amber)}
-.stage{position:relative;min-height:440px}
+/* 3D baxış + brendlər (birləşmiş) */
+.m3tabs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border-top:2px solid var(--ink);margin-bottom:14px}
+.m3tabs button{display:flex;gap:10px;align-items:center;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:9px 8px;color:var(--ink);min-width:0}
+.m3tabs img{width:54px;height:31px;object-fit:cover;border-radius:4px;opacity:.7;flex:none}
+.m3tabs b{display:block;font-size:14px;line-height:1.2}
+.m3tabs small{display:block;font-size:12px;color:var(--mute);white-space:nowrap}
+.m3tabs button:hover{background:color-mix(in srgb,var(--surface) 60%,transparent)}
+.m3tabs button[aria-pressed="true"]{background:var(--surface);box-shadow:inset 0 -3px 0 var(--amber)}
+.m3tabs button[aria-pressed="true"] img{opacity:1}
+.m3grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;align-items:stretch}
+.m3stage{position:relative;border-radius:10px;overflow:hidden;background:#cfd3df;aspect-ratio:1600/904;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.m3stage:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
+.m3stage.grab{cursor:grabbing}
+.m3stage>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 #three{position:absolute;inset:0}
-.stage .info{position:absolute;left:16px;bottom:16px;display:flex;gap:8px;flex-wrap:wrap;pointer-events:none}
-.stage .info div{background:color-mix(in srgb,var(--surface) 90%,transparent);border-radius:6px;padding:8px 12px;font-size:13px}
-.stage .info b{display:block;font-size:15px}
-.up3d{position:absolute;right:14px;top:14px;display:flex;flex-direction:column;align-items:flex-end;gap:8px;max-width:min(320px,calc(100% - 28px));z-index:3}
-.btn3d{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;border:0;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:650;cursor:pointer;box-shadow:0 4px 14px rgba(23,24,58,.25)}
+#three canvas{display:block;width:100%!important;height:100%!important}
+.m3hint{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);background:rgba(23,24,58,.74);color:#fff;font-size:13px;font-weight:600;padding:6px 14px;border-radius:999px;pointer-events:none;transition:opacity .5s;white-space:nowrap}
+.m3stage.used .m3hint{opacity:0}
+.m3stage.drag::after{content:"Şəkli bura atın";position:absolute;inset:10px;border:2px dashed #fff;border-radius:8px;display:grid;place-items:center;font-weight:700;font-size:18px;color:#fff;background:rgba(23,24,58,.45);z-index:4;pointer-events:none}
+.fb3d{position:absolute;left:12px;right:12px;bottom:12px;display:none;background:rgba(255,255,255,.92);border-radius:8px;padding:10px 14px;font-size:14px;color:var(--ink)}
+.m3bar{display:flex;align-items:center;gap:10px 12px;flex-wrap:wrap;margin-top:12px;font-size:14px}
+.m3bar label{display:flex;align-items:center;gap:10px;font-weight:650;flex:1 1 240px}
+.m3bar input[type=range]{flex:1;min-width:120px;accent-color:var(--brand)}
+.m3bar output{min-width:4.5ch;text-align:right;font-variant-numeric:tabular-nums;color:var(--mute)}
+.m3bar button,.up3d-opts button{background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13.5px;font-weight:650;color:var(--ink)}
+.m3bar button:hover,.up3d-opts button:hover{border-color:var(--ink)}
+.m3cap{display:flex;justify-content:space-between;gap:4px 12px;flex-wrap:wrap;margin-top:8px;font-size:14px;color:var(--mute)}
+.m3cap b{color:var(--ink)}
+.m3side{display:flex;flex-direction:column;gap:14px;min-width:0}
+.own3{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.own3 h3,.bl3 h3{font-size:17px}
+.own3 p{margin:4px 0 12px;font-size:13.5px;color:var(--mute);line-height:1.45}
+.btn3d{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;border:0;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:650;cursor:pointer;position:relative}
 .btn3d:focus-within,.btn3d:hover{background:var(--brand)}
-.up3d-opts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.up3d-opts{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
 .up3d-opts[hidden]{display:none}
-.up3d-opts button{background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:600;color:var(--ink)}
-.up3d-opts button:hover{border-color:var(--ink)}
-.up3d-msg{font-size:12.5px;line-height:1.4;color:var(--ink);background:color-mix(in srgb,var(--surface) 92%,transparent);border-radius:6px;padding:7px 10px;text-align:right}
+.up3d-msg{margin-top:8px;font-size:12.5px;line-height:1.45;color:var(--ink)}
 .up3d-msg:empty{display:none}
-.stage.drag::after{content:"Şəkli bura atın";position:absolute;inset:10px;border:2px dashed var(--brand);border-radius:8px;display:grid;place-items:center;font-weight:700;font-size:18px;color:var(--brand);background:color-mix(in srgb,var(--surface) 70%,transparent);z-index:4;pointer-events:none}
-.fb3d{position:absolute;inset:0;display:none;place-items:center;text-align:center;padding:24px;color:var(--mute)}
-@media (max-width:860px){.three-grid{grid-template-columns:1fr}.types{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line)}.types button{border-bottom:0;border-right:1px solid var(--line);min-width:150px}.types button[aria-pressed="true"]::before{top:auto;right:0;height:4px;width:auto}.stage{min-height:340px}}
-
+.bl3{position:relative;flex:1 1 auto;min-height:250px;display:flex;flex-direction:column}
+.bl3 h3{margin-bottom:8px}
+.bwall{position:absolute;left:0;right:0;top:34px;bottom:0;overflow:auto;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:56px;align-content:start;border-top:2px solid var(--ink);border-left:1px solid var(--line);overscroll-behavior:contain}
+.bwall button{border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface);display:grid;place-items:center;padding:6px;color:var(--ink);transition:background .15s}
+.bwall button:hover{background:var(--paper)}
+.bwall button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.bwall .wm{font-family:var(--display);line-height:1;text-align:center;max-width:100%;overflow-wrap:anywhere}
+.bwall .ownb{grid-column:1/-1;display:flex;gap:10px;align-items:center;justify-content:flex-start;padding:6px 10px;font-weight:700;font-size:14px}
+.bwall .ownb[hidden]{display:none}
+.bwall .ownb img{width:64px;height:40px;object-fit:cover;border-radius:4px;flex:none}
+@media (max-width:1060px){.m3tabs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:860px){.m3grid{grid-template-columns:1fr}.m3tabs{display:flex;overflow-x:auto}.m3tabs button{flex:0 0 auto;min-width:150px}.bl3{min-height:0}.bwall{position:static;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));max-height:300px}.m3hint{font-size:12px}}
 /* portal */
 .portal{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
 .ptop{display:flex;align-items:center;gap:14px;padding:10px 16px;border-bottom:1px solid var(--line);flex-wrap:wrap}
@@ -300,49 +324,6 @@ td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;font
 .replay{margin-top:12px;border:1.5px solid var(--ink);background:var(--surface);border-radius:6px;padding:6px 12px;font-size:13px;font-weight:650}
 @media (max-width:860px){.ofr-sec{grid-template-columns:1fr;gap:22px}.bview{aspect-ratio:4/5}}
 @media (prefers-reduced-motion:reduce){.ofr,.bview .shade{transition:none}.bframe.play .gift .lid,.bframe.play .ofr .pct,.bframe.play .conf{animation:none}.conf{display:none}}
-/* brendler */
-.bwall{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));border-top:2px solid var(--ink);border-left:1px solid var(--line);margin-bottom:28px}
-.bwall button{height:76px;border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface);display:grid;place-items:center;padding:8px;color:var(--ink);transition:background .2s,color .2s}
-.bwall button:hover{background:var(--paper)}
-.bwall button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-.bwall .wm{font-family:var(--display);line-height:1;text-align:center;max-width:100%;overflow-wrap:anywhere}
-.bview2{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:18px;align-items:start}
-.bstage{position:relative;border-radius:10px;overflow:hidden;background:#cfd3df;aspect-ratio:2688/1520;user-select:none}
-.bstage>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.bface{position:absolute;left:0;top:0;transform-origin:0 0;overflow:hidden;backface-visibility:hidden}
-.cr{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:6% 7%;font-family:var(--display);overflow:hidden}
-.cr .n{font-weight:900;font-stretch:125%;line-height:.92;letter-spacing:-.02em;white-space:nowrap;width:max-content;max-width:none}
-.cr .t{font-family:var(--body);font-weight:600;margin-top:.5em;opacity:.92}
-.cr .a{position:absolute;right:6%;bottom:8%;font-family:var(--body);font-weight:700;letter-spacing:.06em;opacity:.8}
-.cr .dot{position:absolute;border-radius:50%;opacity:.9}
-.cr.port{justify-content:flex-end;padding:10% 9% 14%}
-.cr.port .a{left:9%;right:auto;top:8%;bottom:auto}
-.light{position:absolute;inset:0;pointer-events:none}
-.k-bilbord .light,.k-meqabord .light{background:linear-gradient(100deg,rgba(255,236,200,.18),rgba(0,0,0,0) 40%,rgba(0,0,0,.14));mix-blend-mode:multiply}
-.k-led .light{background:repeating-linear-gradient(0deg,rgba(0,0,0,.10) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(0,0,0,.08) 0 1px,transparent 1px 3px)}
-.k-led .bface{filter:saturate(1.25) brightness(1.08);box-shadow:0 0 30px rgba(255,255,255,.35)}
-.k-prizma .bface{background:#34363f}
-.k-prizma .light{background:repeating-linear-gradient(90deg,rgba(0,0,0,.16) 0 1px,rgba(255,255,255,.06) 1px 2px,transparent 2px 4.16%)}
-.k-laytboks .bface,.k-roller .bface{filter:brightness(1.06)}
-.k-laytboks .light,.k-roller .light{background:radial-gradient(ellipse at 50% 40%,rgba(255,255,255,.18),transparent 70%)}
-.slat{position:absolute;top:0;bottom:0;overflow:hidden;transform-origin:50% 50%}
-.slat>.cr{width:var(--fw);left:var(--off);right:auto}
-.k-led .ledin .n{animation:ledin .9s cubic-bezier(.2,1.2,.4,1) both}
-.k-led .ledin .t{animation:ledin .9s .25s cubic-bezier(.2,1.2,.4,1) both}
-@keyframes ledin{from{transform:translateY(40%);opacity:0}}
-.rolltrack{position:absolute;left:0;right:0;top:0;transition:transform 1.2s cubic-bezier(.6,0,.3,1)}
-.rolltrack>.cr{position:relative;inset:auto}
-.btypes{display:flex;flex-direction:column;border-top:2px solid var(--ink)}
-.btypes button{display:grid;grid-template-columns:72px 1fr;gap:10px;align-items:center;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:8px 4px}
-.btypes img{width:72px;height:41px;object-fit:cover;border-radius:4px;opacity:.75}
-.btypes b{display:block;font-size:14.5px}
-.btypes span{font-size:12.5px;color:var(--mute)}
-.btypes button[aria-pressed="true"]{background:var(--surface)}
-.btypes button[aria-pressed="true"] img{opacity:1;outline:2px solid var(--ink)}
-.bcap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:10px;font-size:14px;color:var(--mute)}
-.bcap b{color:var(--ink)}
-@media (max-width:860px){.bview2{grid-template-columns:1fr}.btypes{flex-direction:row;overflow-x:auto}.btypes button{grid-template-columns:1fr;min-width:118px;border-bottom:0;border-right:1px solid var(--line)}.btypes img{width:100%;height:56px}.bwall{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}.bwall button{height:62px}.bwall .wm{font-size:12.5px!important}}
-@media (prefers-reduced-motion:reduce){.rolltrack{transition:none}.k-led .ledin .n,.k-led .ledin .t{animation:none}}
 footer{padding:70px 0 50px;font-size:13px;color:var(--mute)}
 </style>
 </head>
@@ -356,7 +337,6 @@ footer{padding:70px 0 50px;font-size:13px;color:var(--mute)}
     <a class="l" href="#xerite">Xəritə</a>
     <a class="l" href="#katalog">Konstruksiyalar</a>
     <a class="l" href="#texnika">3D baxış</a>
-    <a class="l" href="#brendler">Brendlər</a>
     <a class="l" href="#panel">Müştəri paneli</a>
     <a class="l" href="#sahe">Sahə komandası</a>
     <a class="cta" href="#plan">Təqdimat planı</a>
@@ -423,45 +403,43 @@ footer{padding:70px 0 50px;font-size:13px;color:var(--mute)}
   <div class="wrap">
     <div class="shead">
       <h2>Hər konstruksiyaya 3D baxış</h2>
-      <p>Səhnəni siçanla və ya barmaqla fırladın, yaxınlaşdırın. Öz reklamınızı yükləyin və ya şəkli səhnəyə atın: o, seçdiyiniz konstruksiyanın üzərində görünəcək. Fon yuxarıda seçdiyiniz saatın səmasıdır, reklamın gecə necə göründüyünü də yoxlaya bilərsiniz.</p>
+      <p>Panonu real Bakı küçəsində görün və siçanla, barmaqla və ya aşağıdakı zolaqla 360° fırladın. Əməkdaşlıq etdiyimiz brendlərdən birini seçin və ya öz reklamınızı əlavə edin: o, seçdiyiniz konstruksiyanın üzərində görünəcək.</p>
     </div>
-    <div class="three-grid">
-      <div class="types" role="group" aria-label="Konstruksiya növü" id="types3d"></div>
-      <div class="stage">
-        <div id="three"></div>
-        <div class="up3d" id="up3d">
-          <label class="btn3d"><input type="file" accept="image/png,image/jpeg,image/webp" id="up3d-in" style="position:absolute;width:1px;height:1px;opacity:0">Reklamınızı yükləyin</label>
+    <div class="m3tabs" id="types3d" role="group" aria-label="Konstruksiya növü"></div>
+    <div class="m3grid" id="m3">
+      <div>
+        <div class="m3stage" id="stage3" tabindex="0" role="img" aria-roledescription="3D səhnə" aria-label="3D pano">
+          <img id="plate3" alt="">
+          <div id="three"></div>
+          <div class="m3hint">Fırlatmaq üçün sağa-sola sürüşdürün</div>
+          <div class="fb3d" id="fb3d">3D görüntü bu brauzerdə açılmadı, konstruksiyanın fotosu göstərilir.</div>
+        </div>
+        <div class="m3bar">
+          <label for="rot3">Fırlat <input type="range" id="rot3" min="-180" max="180" step="1" value="0"><output id="rot3o" for="rot3">0°</output></label>
+          <button type="button" id="spin3">360° fırlat</button>
+          <button type="button" id="front3d">Önündən bax</button>
+          <button type="button" id="shot3d">Şəkli endir</button>
+        </div>
+        <div class="m3cap"><span id="m3capL"></span><span id="m3capR"></span></div>
+      </div>
+      <aside class="m3side" id="brendler" aria-label="Reklam seçimi">
+        <div class="own3" id="own3">
+          <h3>Öz reklamınızı əlavə edin</h3>
+          <p>JPG, PNG və ya WebP. Şəkli seçin və ya səhnəyə atın, o, panonun üzərində görünəcək.</p>
+          <label class="btn3d">Şəkil seçin<input type="file" accept="image/png,image/jpeg,image/webp" id="up3d-in" style="position:absolute;width:1px;height:1px;opacity:0"></label>
           <div class="up3d-opts" id="up3d-opts" hidden>
             <button type="button" id="fit3d">Tam göstər</button>
-            <button type="button" id="front3d">Önündən bax</button>
-            <button type="button" id="shot3d">Şəkli endir</button>
             <button type="button" id="clr3d">Sil</button>
           </div>
           <div class="up3d-msg" id="up3d-msg" aria-live="polite"></div>
         </div>
-        <div class="fb3d" id="fb3d">3D görüntü bu brauzerdə açılmadı. Real saytda hər konstruksiyanın fotoları da olacaq.</div>
-        <div class="info"><div><b id="t3-name">Bilbord</b><span id="t3-desc">Klassik iki tərəfli</span></div><div><span>Ölçü</span><b id="t3-size" class="num">3 × 6 m</b></div></div>
-      </div>
+        <div class="bl3">
+          <h3>Əməkdaşlıq etdiyimiz brendlər</h3>
+          <div class="bwall" id="bwall" role="group" aria-label="Brendlər"></div>
+        </div>
+      </aside>
     </div>
-    <p class="note">3D modellər sadələşdirilib, ölçülər illüstrativdir. Yüklədiyiniz şəkil yalnız sizin brauzerinizdə qalır, heç yerə göndərilmir.</p>
-  </div>
-</section>
-
-<section id="brendler">
-  <div class="wrap">
-    <div class="shead">
-      <h2>Əməkdaşlıq etdiyimiz brendlər</h2>
-      <p>Bakının tanınan restoran, əyləncə və otel brendləri. Brendə basın: onun reklamı Mirror-un hər texnikasında real küçə görüntüsündə necə görünəcəyini görün.</p>
-    </div>
-    <div class="bwall" id="bwall" role="group" aria-label="Brendlər"></div>
-    <div class="bview2">
-      <div>
-        <div class="bstage" id="bstage"><img id="bimg" alt=""><div class="bface" id="bface"></div></div>
-        <div class="bcap"><span id="bcapL"></span><span id="bcapR"></span></div>
-      </div>
-      <div class="btypes" id="btypes" role="group" aria-label="Texnika növü"></div>
-    </div>
-    <p class="note">Brendlər MezMoon agentliyinin müştəriləridir. Loqolar yerinə ad yazısı göstərilir, reklam dizaynları nümunədir, real kampaniya deyil. Küçə fotoları süni intellektlə yaradılıb; real saytda Mirror-un öz konstruksiyalarının fotoları olacaq.</p>
+    <p class="note">Brendlər MezMoon agentliyinin müştəriləridir. Loqolar yerinə ad yazısı göstərilir, reklam dizaynları nümunədir, real kampaniya deyil. Küçə fotoları süni intellektlə yaradılıb, 3D modellər sadələşdirilib. Real saytda Mirror-un öz konstruksiyalarının fotoları olacaq. Yüklədiyiniz şəkil yalnız sizin brauzerinizdə qalır, heç yerə göndərilmir.</p>
   </div>
 </section>
 
@@ -625,7 +603,6 @@ footer{padding:70px 0 50px;font-size:13px;color:var(--mute)}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script>
 (function(){
 "use strict";
@@ -817,90 +794,8 @@ function renderRows(animate){const box=$("rows");const before={};if(animate&&!RE
       else r.animate([{opacity:0,transform:"translateX(-12px)"},{opacity:1,transform:"none"}],{duration:300,delay:i*25,easing:"ease-out",fill:"backwards"});}});}
 renderFilters();renderRows(false);$("more").onclick=()=>{showAll=!showAll;renderRows(true);};
 
-/* ---------- 3D ---------- */
-let show3d=k=>setInfo(k),skyTo3d=()=>{};
-const tb=$("types3d");
-tb.innerHTML=TYPES.map((t,i)=>`<button aria-pressed="${i===0}" data-k="${t.k}"><b>${t.n}</b><span>${t.d}</span></button>`).join("");
-tb.querySelectorAll("button").forEach(b=>b.onclick=()=>show3d(b.dataset.k));
-function setInfo(k){const t=TYPES.find(x=>x.k===k);$("t3-name").textContent=t.n;$("t3-desc").textContent=t.d;$("t3-size").textContent=t.size;tb.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.k===k));}
-(function init3d(){
-  const host=$("three");const fail=()=>{$("fb3d").style.display="grid";};
-  if(!window.THREE||!THREE.OrbitControls){fail();return;}
-  let R;try{R=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});}catch(e){fail();return;}
-  R.setPixelRatio(Math.min(devicePixelRatio,2));host.appendChild(R.domElement);
-  const scene=new THREE.Scene();const cam=new THREE.PerspectiveCamera(40,1,.1,300);cam.position.set(9,5,14);
-  const ctr=new THREE.OrbitControls(cam,R.domElement);ctr.enableDamping=true;ctr.target.set(0,3.2,0);ctr.minDistance=5;ctr.maxDistance=42;ctr.maxPolarAngle=Math.PI*.49;ctr.autoRotate=!REDUCE;ctr.autoRotateSpeed=.7;
-  const hemi=new THREE.HemisphereLight(0xdfe4ff,0x8a8fa8,1);scene.add(hemi);const sun=new THREE.DirectionalLight(0xffffff,.8);sun.position.set(6,12,8);scene.add(sun);
-  const groundMat=new THREE.MeshStandardMaterial({color:0xb9bccb,roughness:1});const ground=new THREE.Mesh(new THREE.CircleGeometry(22,48),groundMat);ground.rotation.x=-Math.PI/2;scene.add(ground);
-  const adTex=(w,h,label,bg,fg)=>{const c=document.createElement("canvas");c.width=1024;c.height=Math.round(1024*h/w);const x=c.getContext("2d");x.fillStyle=bg;x.fillRect(0,0,c.width,c.height);
-    x.fillStyle=fg;x.font='800 '+Math.round(Math.min(c.height*.22,c.width*.11))+'px Archivo, Arial, sans-serif';x.textBaseline="middle";x.fillText(label,c.width*.07,c.height*.45);
-    x.font='600 '+Math.round(Math.min(c.height*.09,c.width*.05))+'px Archivo, Arial, sans-serif';x.globalAlpha=.75;x.fillText("mirror.az",c.width*.07,c.height*.75);const t=new THREE.CanvasTexture(c);t.anisotropy=4;return t;};
-  /* müştərinin reklamı: şəkil yalnız brauzerdə qalır */
-  const DIM={bilbord:[6,3],meqa:[15,5],led:[8,4],prizma:[6,3],lightbox:[1.2,1.8],roller:[1.2,1.8]};
-  let userImg=null,fitAll=false,cur="bilbord";
-  const drawFit=(x,img,W,H,Y=0)=>{const ir=img.width/img.height,br=W/H;let dw,dh;
-    if(fitAll?ir>br:ir<br){dw=W;dh=W/ir;}else{dh=H;dw=H*ir;}
-    if(fitAll){x.fillStyle="#17183A";x.fillRect(0,Y,W,H);}
-    x.save();x.beginPath();x.rect(0,Y,W,H);x.clip();x.drawImage(img,(W-dw)/2,Y+(H-dh)/2,dw,dh);x.restore();};
-  const userTex=(w,h)=>{const c=document.createElement("canvas");const k=Math.min(2048/w,2048/h);c.width=Math.round(w*k);c.height=Math.round(h*k);
-    drawFit(c.getContext("2d"),userImg,c.width,c.height);const t=new THREE.CanvasTexture(c);t.anisotropy=R.capabilities.getMaxAnisotropy();return t;};
-  const adFor=(w,h,label,bg,fg)=>userImg?userTex(w,h):adTex(w,h,label,bg,fg);
-  const metal=new THREE.MeshStandardMaterial({color:0x2b2e4a,metalness:.5,roughness:.45}),frame=new THREE.MeshStandardMaterial({color:0x17183a,metalness:.4,roughness:.5});
-  let group=null,anim=null,emissives=[];
-  const pole=(h,x=0,r=.22)=>{const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r*1.2,h,20),metal);m.position.set(x,h/2,0);return m;};
-  function panel(w,h,y,tex,glow){const g=new THREE.Group();g.add(new THREE.Mesh(new THREE.BoxGeometry(w+.3,h+.3,.4),frame));
-    const mat=new THREE.MeshStandardMaterial({map:tex,emissive:0xffffff,emissiveMap:tex,emissiveIntensity:0,roughness:.6});mat.userData.lit=glow?1:.55;emissives.push(mat);
-    [.21,-.21].forEach((z,i)=>{const p=new THREE.Mesh(new THREE.PlaneGeometry(w,h),mat);p.position.z=z;if(i)p.rotation.y=Math.PI;g.add(p);});g.position.y=y;return g;}
-  const build={
-    bilbord(){const g=new THREE.Group();g.add(pole(5));g.add(panel(6,3,6.4,adFor(6,3,"Sizin reklam","#5C60AB","#FFFFFF")));return g;},
-    meqa(){const g=new THREE.Group();g.add(pole(6,-4,.28));g.add(pole(6,4,.28));g.add(panel(15,5,8.4,adFor(15,5,"Meqabord 5 × 15 m","#17183A","#E8962E")));cam.position.set(14,7,22);return g;},
-    led(){const g=new THREE.Group();g.add(pole(4.4,0,.3));const c=document.createElement("canvas");c.width=1024;c.height=512;const t=new THREE.CanvasTexture(c);g.add(panel(8,4,6.6,t,true));let f=0;
-      const draw=()=>{const x=c.getContext("2d");x.setTransform(1,0,0,1,0,0);if(userImg){drawFit(x,userImg,1024,512);}else{x.scale(2,2);const k=Math.floor(f/150)%3,a=ADS[k];x.fillStyle=a[0];x.fillRect(0,0,512,256);x.fillStyle=a[1];x.font="800 40px Archivo, Arial";x.textBaseline="middle";x.fillText(["LED ekran","Video reklam","18:00–21:00"][k],32,118);x.setTransform(1,0,0,1,0,0);}
-        x.globalAlpha=.1;x.fillStyle="#000";for(let y=0;y<512;y+=4)x.fillRect(0,y,1024,1.5);x.globalAlpha=1;t.needsUpdate=true;};
-      draw();anim=()=>{f++;if(f%150===0)draw();};return g;},
-    prizma(){const g=new THREE.Group();g.add(pole(5));const y=6.4,n=12,w=6/n;const texs=[["#5C60AB","#FFFFFF","Reklam A"],["#E8962E","#17183A","Reklam B"],["#EEF0F5","#5C60AB","Reklam C"]].map((c,i)=>i===0?adFor(6,3,c[2],c[0],c[1]):adTex(6,3,c[2],c[0],c[1]));
-      g.add(new THREE.Mesh(new THREE.BoxGeometry(6.4,3.4,.2),frame).translateY(y).translateZ(-.6));const slats=[];
-      for(let i=0;i<n;i++){const mats=texs.map(t=>{const tt=t.clone();tt.needsUpdate=true;tt.repeat.set(1/n,1);tt.offset.set(i/n,0);const mm=new THREE.MeshStandardMaterial({map:tt,emissive:0xffffff,emissiveMap:tt,emissiveIntensity:0,roughness:.6});mm.userData.lit=.55;emissives.push(mm);return mm;});
-        const m=new THREE.Mesh(new THREE.BoxGeometry(w*.96,3,w*.55),mats[0]);m.userData={mats,rot:0};m.position.set(-3+w*(i+.5),y,0);g.add(m);slats.push(m);}
-      let t0=0,face=0;anim=()=>{t0++;if(t0%200===0)face++;slats.forEach((s,i)=>{const target=face*Math.PI;const d=Math.max(0,t0%200-i*3);if(d>0||t0>200)s.userData.rot+=(target-s.userData.rot)*.08;s.rotation.y=s.userData.rot;const fidx=Math.round(s.userData.rot/Math.PI)%3;s.material=s.userData.mats[fidx];});};return g;},
-    lightbox(){const g=new THREE.Group();g.add(pole(1.2,0,.12));g.add(panel(1.2,1.8,2.3,adFor(1.2,1.8,"Laytboks","#E8962E","#17183A"),true));cam.position.set(4,2.6,6);ctr.target.set(0,2,0);return g;},
-    roller(){const g=new THREE.Group();g.add(pole(1.2,0,.12));const c=document.createElement("canvas");c.width=256;c.height=1152;const x=c.getContext("2d");
-      [["#5C60AB","#FFF","Poster 1"],["#E8962E","#17183A","Poster 2"],["#EEF0F5","#5C60AB","Poster 3"]].forEach((p,i)=>{if(i===2&&userImg){drawFit(x,userImg,256,384,768);return;}x.fillStyle=p[0];x.fillRect(0,i*384,256,384);x.fillStyle=p[1];x.font="800 38px Archivo, Arial";x.fillText(p[2],24,i*384+200);});
-      const t=new THREE.CanvasTexture(c);t.wrapT=THREE.RepeatWrapping;t.repeat.set(1,1/3);g.add(panel(1.2,1.8,2.3,t,true));let f=0;anim=()=>{f++;const tgt=(Math.floor(f/220)%3)/3;t.offset.y+=(tgt-t.offset.y)*.05;};cam.position.set(4,2.6,6);ctr.target.set(0,2,0);return g;}};
-  function size3(){const r=host.getBoundingClientRect();R.setSize(r.width,r.height,false);R.domElement.style.width="100%";R.domElement.style.height="100%";cam.aspect=r.width/Math.max(r.height,1);cam.updateProjectionMatrix();}
-  skyTo3d=()=>{const n=night(S.h),[top,bot]=sky(S.h);const c=new THREE.Color(bot).lerp(new THREE.Color(top),.35);scene.background=c;
-    hemi.intensity=lerp(1,.35,n);sun.intensity=lerp(.8,.05,n);groundMat.color.set(mix("#B9BCCB","#22243C",n));emissives.forEach(m=>m.emissiveIntensity=(m.userData.lit||1)*(.15+.8*n)*(m.userData.lit<1?n:1));};
-  show3d=k=>{if(group)scene.remove(group);anim=null;emissives=[];cam.position.set(9,5,14);ctr.target.set(0,3.2,0);cur=k;group=build[k]();scene.add(group);setInfo(k);skyTo3d();if(userImg)frontView();ctr.update();upMsg();};
-  /* ---- reklam yükləmə ---- */
-  const ratioTxt=r=>{const c=[[1,1],[4,5],[3,4],[2,3],[9,16],[16,9],[3,2],[4,3],[2,1],[3,1],[5,4]].find(([a,b])=>Math.abs(a/b-r)<.04);return c?c[0]+":"+c[1]:r.toFixed(2)+":1";};
-  function upMsg(){const m=$("up3d-msg");if(!userImg){m.textContent="";return;}const [w,h]=DIM[cur],br=w/h,ir=userImg.width/userImg.height,t=TYPES.find(x=>x.k===cur);
-    let s=t.n+" "+ratioTxt(br)+", şəkliniz "+ratioTxt(ir)+".";
-    if(Math.abs(ir/br-1)<.06)s+=" Ölçü uyğundur.";else s+=fitAll?" Şəkil tam göstərilir, boş yerlər tünd rəngdədir.":" Şəklin kənarları kəsilir. Tam görmək üçün \"Tam göstər\" basın.";
-    if(Math.min(userImg.width,userImg.height)<600)s+=" Şəklin keyfiyyəti aşağıdır, çapda bulanıq görünə bilər.";
-    m.textContent=s;}
-  function frontView(){const b=new THREE.Box3();group.children.forEach(o=>{if(o.type==="Group"||o.geometry&&o.geometry.type!=="CylinderGeometry")b.expandByObject(o);});
-    const c=b.getCenter(new THREE.Vector3()),z=b.getSize(new THREE.Vector3());const d=Math.max(z.x/cam.aspect,z.y)*1.55/Math.tan(cam.fov*Math.PI/360)/2+1;
-    ctr.target.copy(c);cam.position.set(c.x+d*.18,c.y+d*.06,c.z+d);ctr.autoRotate=false;ctr.update();}
-  function loadFile(f){const m=$("up3d-msg");
-    if(!f||!/^image\/(png|jpeg|webp)$/.test(f.type)){m.textContent="Yalnız JPG, PNG və ya WebP şəkil yükləmək olar.";return;}
-    if(f.size>30*1024*1024){m.textContent="Şəkil çox böyükdür, 30 MB-dan kiçik fayl seçin.";return;}
-    const u=URL.createObjectURL(f),img=new Image();img.onload=()=>{URL.revokeObjectURL(u);userImg=img;$("up3d-opts").hidden=false;show3d(cur);};
-    img.onerror=()=>{URL.revokeObjectURL(u);m.textContent="Şəkil açılmadı. Başqa fayl seçin.";};img.src=u;}
-  $("up3d-in").onchange=e=>{loadFile(e.target.files[0]);e.target.value="";};
-  const st=host.parentElement;let dc=0;
-  st.addEventListener("dragenter",e=>{e.preventDefault();dc++;st.classList.add("drag");});
-  st.addEventListener("dragleave",()=>{if(--dc<=0){dc=0;st.classList.remove("drag");}});
-  st.addEventListener("dragover",e=>e.preventDefault());
-  st.addEventListener("drop",e=>{e.preventDefault();dc=0;st.classList.remove("drag");loadFile(e.dataTransfer.files[0]);});
-  $("fit3d").onclick=()=>{fitAll=!fitAll;$("fit3d").textContent=fitAll?"Doldur":"Tam göstər";show3d(cur);};
-  $("front3d").onclick=frontView;
-  $("clr3d").onclick=()=>{userImg=null;fitAll=false;$("fit3d").textContent="Tam göstər";$("up3d-opts").hidden=true;ctr.autoRotate=!REDUCE;show3d(cur);};
-  $("shot3d").onclick=()=>{R.render(scene,cam);const a=document.createElement("a");a.download="mirror-"+cur+"-reklam.png";a.href=R.domElement.toDataURL("image/png");a.click();};
-  addEventListener("resize",size3);size3();show3d("bilbord");
-  let vis=true;if("IntersectionObserver" in window)new IntersectionObserver(es=>{vis=es[0].isIntersecting;}).observe(host);
-  (function L(){requestAnimationFrame(L);if(!vis)return;if(anim&&!REDUCE)anim();ctr.update();R.render(scene,cam);})();
-})();
-listeners.push(()=>skyTo3d());
+/* ---------- 3D: ayrıca skriptdədir (3D baxış + brendlər) ---------- */
+const show3d=k=>{const m={meqa:"meqabord",lightbox:"laytboks"};if(window.M3D)window.M3D(m[k]||k);};
 
 /* ---------- müştəri paneli ---------- */
 const MINE=[CONS[0],CONS[6],CONS[9]];const pb=$("pbody");
@@ -990,18 +885,19 @@ document.getElementById("ofrReplay").onclick=play;
 })();
 </script>
 <script>
+/* 3D baxış + brendlər: real küçə fonu, üzərində 360° fırlanan 3D pano */
 (()=>{
-const g=id=>document.getElementById(id);if(!g("bstage"))return;
-const ex=(q,k)=>{const cx=(q[0][0]+q[1][0]+q[2][0]+q[3][0])/4,cy=(q[0][1]+q[1][1]+q[2][1]+q[3][1])/4;return q.map(([x,y])=>[x+(x-cx)*k,y+(y-cy)*k*1.6]);};
+const g=id=>document.getElementById(id);if(!g("m3"))return;
+const REDUCE=matchMedia("(prefers-reduced-motion: reduce)").matches,D2R=Math.PI/180;
+/* foto koordinatları (0..1): f = reklam üzü, gy = yer, yaw = fotodakı bucaq */
 const T=[
- {k:"bilbord",n:"Bilbord",d:"3 × 6 m · Neftçilər pr.",ar:2,q:[[0.1783,0.0944],[0.731,0.1636],[0.731,0.6077],[0.1783,0.6077]]},
- {k:"led",n:"LED ekran",d:"3 × 6 m · axşam",ar:1.9,q:[[0.365,0.1701],[0.8683,0.1249],[0.8683,0.5335],[0.365,0.5415]]},
- {k:"meqabord",n:"Meqabord",d:"5 × 15 m · Hava limanı yolu",ar:3.4,q:[[0.1133,0.1167],[0.9071,0.1219],[0.9115,0.4749],[0.1133,0.475]]},
- {k:"prizma",n:"Prizma",d:"3 × 6 m · 3 reklam növbə ilə",ar:2,q:[[0.2067,0.1278],[0.8257,0.1927],[0.8274,0.6891],[0.2067,0.6822]]},
- {k:"laytboks",n:"Laytboks",d:"1.2 × 1.8 m · piyada küçəsi",ar:.66,q:[[0.5433,0.1246],[0.7717,0.123],[0.7716,0.7758],[0.5433,0.7758]]},
- {k:"roller",n:"Roller",d:"1.2 × 1.8 m · metro çıxışı",ar:.66,q:[[0.237,0.1593],[0.4283,0.1593],[0.4283,0.6962],[0.239,0.6962]]},
+ {k:"bilbord",hz:0.71,n:"Bilbord",size:"3 × 6 m",loc:"Neftçilər pr.",f:[.1783,.0944,.731,.6077],gy:.972,yaw:13,b:.018,dep:.55,fr:0x4f545b,two:true,em:.3,poles:[.4236],pw:.053,L:[0xffe4c6,1.05,[-1,.9,1]],H:[0xdfe6ff,0x7b7466,.75]},
+ {k:"led",hz:0.73,n:"LED ekran",size:"3 × 6 m",loc:"axşam, Neftçilər pr.",f:[.365,.1249,.8683,.5415],gy:.946,yaw:-10,b:.012,dep:.8,fr:0x222428,two:false,em:.95,poles:[.62],pw:.054,L:[0xc9d4ff,.5,[1,.8,1]],H:[0xa3b2e0,0x3f3f4a,.55],led:true},
+ {k:"meqabord",hz:0.81,n:"Meqabord",size:"5 × 15 m",loc:"Hava limanı yolu",f:[.1133,.1167,.9115,.475],gy:.91,yaw:0,b:.006,dep:.6,fr:0xaab0b7,two:false,em:.3,poles:[.266,.789],pw:.033,L:[0xfff6e8,1.1,[.7,1,1]],H:[0xcfe0ff,0x8a7f6a,.8],truss:.069},
+ {k:"prizma",hz:0.8,n:"Prizma",size:"3 × 6 m",loc:"3 reklam növbə ilə",f:[.2067,.1278,.8274,.6891],gy:1.02,yaw:9,b:.012,dep:1.1,fr:0x6b7077,two:false,em:.3,poles:[.499],pw:.083,L:[0xfff3e0,1,[-.8,1,1]],H:[0xe6ecf5,0x77705f,.8],prizma:true},
+ {k:"laytboks",hz:0.54,n:"Laytboks",size:"1.2 × 1.8 m",loc:"piyada küçəsi",f:[.5433,.1238,.7717,.7758],gy:.923,yaw:0,b:.011,dep:.35,fr:0xb9bdc3,two:true,em:.62,legs:[.564,.75],pw:.029,L:[0xffe2b8,.75,[-1,1,1]],H:[0xf0e2c8,0x6d6458,.7]},
+ {k:"roller",hz:0.54,n:"Roller",size:"1.2 × 1.8 m",loc:"metro çıxışı",f:[.237,.1593,.4283,.6962],gy:.923,yaw:0,b:.022,dep:.65,fr:0x26282c,two:true,em:.5,box:[.331,.104],L:[0xffffff,.95,[.8,1,1]],H:[0xe8eef7,0x7d7a74,.8],roller:true},
 ];
-T.forEach(t=>t.q=ex(t.q,.012));
 // MezMoon musterileri (ad yazisi; reklam metnleri numunedir)
 const B=[
  {n:"Highlevel",t:"Yeni nəsil əyləncə",bg:"#0E0E12",fg:"#F3E7C9",ac:"#C9A44C",st:"upper",w:900,x:125},
@@ -1024,45 +920,207 @@ const B=[
 const WALL=["Highlevel","Mezze Baku","Social Baku","Papa Cinema","Pure Hotel","Port Marine","Khan Baku","Park Wine","Nar Cafe","Köhnə Samovar","The Gallery","Elma","Finnegans","Ruin","Badam","Okean","İrish","İstanbul","Black","Deluxe","Diamond","Evolution","Gold","Planet","Platinium"];
 const PAL=[["#17183A","#FFFFFF","#A9ADEA"],["#E8962E","#17183A","#FFFFFF"],["#1F8A62","#FFFFFF","#D9F2E6"],["#5C60AB","#FFFFFF","#FFD166"],["#111111","#F5F5F5","#D9482B"]];
 WALL.forEach((n,i)=>{if(!B.find(x=>x.n===n)){const [bg,fg,ac]=PAL[i%PAL.length];B.push({n,t:"Bakı",bg,fg,ac,st:"upper",w:900,x:118});}});
-let bi=0,ti=0,timer=null;
-const cs=(b,port,sz)=>{const name=b.st==="upper"?b.n.toUpperCase():b.st==="lower"?b.n.toLowerCase():b.n;
- return `<div class="cr${port?" port":""}" style="background:${b.bg};color:${b.fg}"><span class="dot" style="background:${b.ac};width:${port?42:26}%;aspect-ratio:1;right:${port?-12:-6}%;top:${port?-8:-30}%"></span><div class="n" style="font-size:${sz}px;font-weight:${b.w};font-stretch:${b.x}%">${name}</div><div class="t" style="font-size:${sz*.32}px;color:${b.fg}">${b.t}</div><div class="a" style="font-size:${sz*.2}px;color:${b.ac}">BAKI</div></div>`;};
-function H(w,h,p){const [[x0,y0],[x1,y1],[x2,y2],[x3,y3]]=p;const dx1=x1-x2,dx2=x3-x2,dx3=x0-x1+x2-x3,dy1=y1-y2,dy2=y3-y2,dy3=y0-y1+y2-y3;let a,b,c,d,e,f,G,Hh;
- if(Math.abs(dx3)<1e-9&&Math.abs(dy3)<1e-9){a=x1-x0;b=x2-x1;c=x0;d=y1-y0;e=y2-y1;f=y0;G=0;Hh=0;}
- else{const den=dx1*dy2-dx2*dy1;G=(dx3*dy2-dx2*dy3)/den;Hh=(dx1*dy3-dx3*dy1)/den;a=x1-x0+G*x1;b=x3-x0+Hh*x3;c=x0;d=y1-y0+G*y1;e=y3-y0+Hh*y3;f=y0;}
- a/=w;d/=w;G/=w;b/=h;e/=h;Hh/=h;return `matrix3d(${a},${d},0,${G},${b},${e},0,${Hh},0,0,1,0,${c},${f},0,1)`;}
-function fitIn(root){root.querySelectorAll(".cr .n").forEach(n=>{const avail=800*.8;let fs=parseFloat(n.style.fontSize),i=0;while(n.scrollWidth>avail&&i<40){fs*=.94;n.style.fontSize=fs+"px";i++;}});}
-function fit(){const face=g("bface");face.querySelectorAll(".cr .n").forEach(n=>{const cr=n.parentElement;const avail=(cr.closest(".sl")?800:cr.clientWidth)*(cr.classList.contains("port")?.8:.82);let fs=parseFloat(n.style.fontSize);let i=0;while(n.scrollWidth>avail&&i<40){fs*=.94;n.style.fontSize=fs+"px";i++;}});}
-function place(){const t=T[ti],st=g("bstage"),W=st.clientWidth,Hh=st.clientHeight,face=g("bface");const fw=t.ar>=1?800:400,fh=Math.round(fw/t.ar);
- face.style.width=fw+"px";face.style.height=fh+"px";face.style.transform=H(fw,fh,t.q.map(([x,y])=>[x*W,y*Hh]));}
-function render(){clearInterval(timer);const t=T[ti],b=B[bi],face=g("bface"),port=t.ar<1,fw=t.ar>=1?800:400,fh=Math.round(fw/t.ar);
- const sz=port?fw*.2:Math.min(fh*.34,fw*.13);
- g("bstage").className="bstage k-"+t.k;g("bimg").src="brendler/"+t.k+".jpg";g("bimg").alt=t.n+" Bakı küçəsində, üzərində "+b.n+" reklamı";
- const others=[1,2].map(i=>B[(bi+i*3)%B.length]);
- if(t.k==="prizma"){const faces=[b,...others];let fi=0;const N=24;
-  const step=()=>{const cur=faces[fi%3],nxt=faces[(fi+1)%3];
-   face.innerHTML=Array.from({length:N},(_,i)=>`<div class="slat" style="left:${i/N*100}%;width:${100/N+.06}%"><div class="sl" style="position:absolute;top:0;bottom:0;width:${fw}px;left:${-i*fw/N}px;transition:transform .38s ${i*30}ms ease-in">${cs(cur,false,sz)}</div></div>`).join("")+`<div class="light"></div>`;
-   requestAnimationFrame(()=>requestAnimationFrame(()=>face.querySelectorAll(".sl").forEach(e=>e.style.transform="scaleX(0)")));
-   setTimeout(()=>{face.querySelectorAll(".sl").forEach((e,i)=>{e.style.transition="none";e.innerHTML=cs(nxt,false,sz);fitIn(e);e.style.transform="scaleX(0)";requestAnimationFrame(()=>{e.style.transition=`transform .38s ${i*30}ms ease-out`;e.style.transform="none";});});fi++;},380+N*30);};
-  face.innerHTML=Array.from({length:N},(_,i)=>`<div class="slat" style="left:${i/N*100}%;width:${100/N+.06}%"><div class="sl" style="position:absolute;top:0;bottom:0;width:${fw}px;left:${-i*fw/N}px">${cs(b,false,sz)}</div></div>`).join("")+`<div class="light"></div>`;
-  timer=setInterval(step,3800);
- }else if(t.k==="roller"){const faces=[b,...others,b];let r=0;
-  face.innerHTML=`<div class="rolltrack" id="rtrack">${faces.map(x=>`<div style="height:${fh}px;position:relative">${cs(x,true,sz)}</div>`).join("")}</div><div class="light"></div>`;
-  timer=setInterval(()=>{const tr=g("rtrack");if(!tr)return;r++;tr.style.transition="transform 1.2s cubic-bezier(.6,0,.3,1)";tr.style.transform=`translateY(${-r*fh}px)`;if(r===3)setTimeout(()=>{tr.style.transition="none";tr.style.transform="none";r=0;},1300);},3600);
- }else if(t.k==="led"){const seq=[b,...others];let li=0;const show=()=>{face.innerHTML=`<div class="ledin" style="position:absolute;inset:0">${cs(seq[li%3],false,sz)}</div><div class="light"></div>`;li++;fit();};show();timer=setInterval(show,3200);
- }else face.innerHTML=cs(b,port,sz)+`<div class="light"></div>`;
- place();fit();
- g("bcapL").innerHTML=`<b>${b.n}</b> · ${t.n}`;g("bcapR").textContent=t.d+(["led","prizma","roller"].includes(t.k)?" · digər brendlərlə növbələşir":"");
- g("bwall").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x.dataset.n===b.n));
- g("btypes").querySelectorAll("button").forEach((x,i)=>x.setAttribute("aria-pressed",i===ti));}
-g("bwall").innerHTML=WALL.map(n=>{const b=B.find(x=>x.n===n);const st=b?`font-weight:${b.w};font-stretch:${b.x}%;${b.st==="upper"?"text-transform:uppercase;letter-spacing:.04em;":""}${b.st==="lower"?"text-transform:lowercase;":""}`:"font-weight:800;font-stretch:115%;text-transform:uppercase;letter-spacing:.05em;";
- const lab=b&&b.st==="lower"?n.toLowerCase():(!b||b.st==="upper")?n.toUpperCase():n;return `<button type="button" data-n="${n}" aria-pressed="false"><span class="wm" style="${st.replace(/text-transform:[a-z]+;/g,"")}font-size:${n.length>11?15:18}px">${lab}</span></button>`;}).join("");
-g("bwall").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;bi=B.findIndex(x=>x.n===b.dataset.n);render();});
-g("btypes").innerHTML=T.map((t,i)=>`<button type="button" aria-pressed="false"><img src="brendler/${t.k}.jpg" alt="" loading="lazy"><span><b>${t.n}</b><span>${t.d}</span></span></button>`).join("");
-g("btypes").querySelectorAll("button").forEach((x,i)=>x.onclick=()=>{ti=i;render();});
-addEventListener("resize",place);
-render();
-if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>render());
+
+/* ---- reklam şəkli (canvas) ---- */
+const cased=b=>b.st==="upper"?b.n.toLocaleUpperCase("az"):b.st==="lower"?b.n.toLocaleLowerCase("az"):b.n;
+const stretch=x=>x>=122?"expanded":x>=110?"semi-expanded":"normal";
+let userImg=null,fitAll=false;
+function drawFit(x,img,W,H){const ir=img.width/img.height,br=W/H;let dw,dh;
+  if(fitAll?ir>br:ir<br){dw=W;dh=W/ir;}else{dh=H;dw=H*ir;}
+  x.fillStyle="#17183A";x.fillRect(0,0,W,H);x.drawImage(img,(W-dw)/2,(H-dh)/2,dw,dh);}
+function drawBrand(x,b,W,H){const port=W<H,sz=port?W*.2:Math.min(H*.34,W*.13);
+  x.save();x.fillStyle=b.bg;x.fillRect(0,0,W,H);x.beginPath();x.rect(0,0,W,H);x.clip();
+  const dd=(port?.42:.26)*W,cx=W*(port?1.12:1.06)-dd/2,cy=H*(port?-.08:-.3)+dd/2;
+  x.globalAlpha=.9;x.fillStyle=b.ac;x.beginPath();x.arc(cx,cy,dd/2,0,7);x.fill();x.globalAlpha=1;
+  const avail=W*(port?.8:.82);let fs=sz;x.textBaseline="alphabetic";
+  const setF=(w,s,f)=>{x.font=w+" "+s+"px Archivo, 'Helvetica Neue', Arial, sans-serif";if("fontStretch" in x)x.fontStretch=f;};
+  for(let i=0;i<40;i++){setF(b.w,fs,stretch(b.x));if(x.measureText(cased(b)).width<=avail)break;fs*=.94;}
+  const ts=sz*.32,blockH=fs*.92+ts*.5+ts*1.25,left=W*(port?.09:.07);
+  const top=port?H*.86-blockH:(H-blockH)/2;
+  x.fillStyle=b.fg;x.fillText(cased(b),left,top+fs*.78);
+  setF(600,ts,"normal");x.globalAlpha=.92;x.fillText(b.t,left,top+fs*.92+ts*.5+ts*.95);
+  setF(700,sz*.2,"normal");if("letterSpacing" in x)x.letterSpacing=(sz*.2*.06)+"px";x.fillStyle=b.ac;x.globalAlpha=.8;
+  if(port)x.fillText("BAKI",left,H*.08+sz*.2);else{x.textAlign="right";x.fillText("BAKI",W*.94,H*.92);}
+  x.restore();}
+function drawItem(x,it,W,H){x.setTransform(1,0,0,1,0,0);x.globalAlpha=1;if(it.img)drawFit(x,it.img,W,H);else drawBrand(x,it.b,W,H);}
+function canvasFor(it,a){const c=document.createElement("canvas");if(a>=1){c.width=1024;c.height=Math.round(1024/a);}else{c.height=1024;c.width=Math.round(1024*a);}drawItem(c.getContext("2d"),it,c.width,c.height);return c;}
+
+/* ---- seçim ---- */
+let ti=0,bi=0,own=false;
+const cur=()=>own&&userImg?{img:userImg,n:"Sizin reklamınız"}:{b:B[bi],n:B[bi].n};
+const seq=()=>{const c=cur();const o=[1,2].map(i=>({b:B[(bi+(own?i-1:i*3))%B.length]}));o.forEach(x=>x.n=x.b.n);return [c,...o];};
+
+/* ---- three.js ---- */
+const host=g("three"),stage=g("stage3"),plate=g("plate3");
+let R=null;
+if(window.THREE){try{R=new THREE.WebGLRenderer({antialias:true,alpha:true,preserveDrawingBuffer:true});}catch(e){R=null;}}
+const AR=1600/904,FOV=34,DZ=20,HV=2*DZ*Math.tan(FOV*D2R/2),WV=HV*AR,X=x=>(x-.5)*WV,Y=y=>(.5-y)*HV;
+let scene,cam,hemi,sun,ground,blob,G=null,anim=null,model=null;
+if(R){
+  R.setPixelRatio(Math.min(devicePixelRatio,2));R.setClearColor(0,0);R.outputEncoding=THREE.sRGBEncoding;
+  R.shadowMap.enabled=true;R.shadowMap.type=THREE.PCFSoftShadowMap;host.appendChild(R.domElement);
+  scene=new THREE.Scene();cam=new THREE.PerspectiveCamera(FOV,AR,.1,300);
+  hemi=new THREE.HemisphereLight(0xffffff,0x666666,.8);scene.add(hemi);
+  sun=new THREE.DirectionalLight(0xffffff,1);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);sun.shadow.bias=-.0004;scene.add(sun,sun.target);
+  ground=new THREE.Mesh(new THREE.PlaneGeometry(120,120),new THREE.ShadowMaterial({opacity:.24}));ground.rotation.x=-Math.PI/2;ground.receiveShadow=true;scene.add(ground);
+  const bc=document.createElement("canvas");bc.width=bc.height=128;const bx=bc.getContext("2d"),gr=bx.createRadialGradient(64,64,0,64,64,64);gr.addColorStop(0,"rgba(0,0,0,.55)");gr.addColorStop(1,"rgba(0,0,0,0)");bx.fillStyle=gr;bx.fillRect(0,0,128,128);
+  blob=new THREE.Mesh(new THREE.PlaneGeometry(1,1),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(bc),transparent:true,depthWrite:false}));blob.rotation.x=-Math.PI/2;scene.add(blob);
+}
+const tex=c=>{const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.anisotropy=R.capabilities.getMaxAnisotropy();return t;};
+const metal=(c,o)=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:.5,metalness:.45},o||{}));
+const faceMat=(t,em)=>new THREE.MeshStandardMaterial({map:t,emissive:0xffffff,emissiveMap:t,emissiveIntensity:em,roughness:.55,metalness:0});
+const M=(geo,m,x,y,z)=>{const o=new THREE.Mesh(geo,m);o.position.set(x||0,y||0,z||0);o.castShadow=true;o.receiveShadow=true;return o;};
+const box=(w,h,d,m,x,y,z)=>M(new THREE.BoxGeometry(w,h,d),m,x,y,z);
+
+function build(t){
+  if(G){scene.remove(G);G.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material){[].concat(o.material).forEach(m=>{if(m.map)m.map.dispose();m.dispose();});}});}
+  anim=null;const cs=Math.cos(t.yaw*D2R),Y=y=>(t.hz-y)*HV;cam.setViewOffset(1600,904,0,(.5-t.hz)*904,1600,904);
+  const fw=(t.f[2]-t.f[0])*WV/cs,fh=(t.f[3]-t.f[1])*HV,bw=t.b*WV,gy=Y(t.gy),lift=Y(t.f[3])-gy,cy=lift+fh/2,dep=t.dep,cxw=X((t.f[0]+t.f[2])/2);
+  const rel=x=>(X(x)-cxw)/cs,fm=metal(t.fr),a=fw/fh,zf=dep/2+.012;
+  G=new THREE.Group();G.position.set(cxw,gy,-DZ);
+  /* çərçivə */
+  if(!t.prizma)G.add(box(fw+2*bw,fh+2*bw,dep,fm,0,cy,0));
+  /* reklam üzü */
+  const sq=seq();
+  if(t.prizma){
+    G.add(box(fw+2*bw,fh+2*bw,.3,fm,0,cy,-dep/2+.15));G.add(box(fw+2*bw,bw,dep,fm,0,cy+fh/2+bw/2,0));G.add(box(fw+2*bw,bw,dep,fm,0,cy-fh/2-bw/2,0));
+    [-1,1].forEach(s=>G.add(box(bw,fh+2*bw,dep,fm,s*(fw/2+bw/2),cy,0)));
+    const N=18,sw=fw/N,ap=sw*.2887,texs=sq.map(it=>tex(canvasFor(it,a))),slats=[];
+    for(let i=0;i<N;i++){const s=new THREE.Group();s.position.set(-fw/2+sw*(i+.5),cy,0);
+      for(let j=0;j<3;j++){const tt=texs[j].clone();tt.needsUpdate=true;tt.repeat.set(1/N,1);tt.offset.set(i/N,0);
+        const p=M(new THREE.PlaneGeometry(sw*.965,fh),faceMat(tt,t.em),Math.sin(j*2.0944)*ap,0,Math.cos(j*2.0944)*ap);p.rotation.y=j*2.0944;s.add(p);}
+      G.add(s);slats.push(s);}
+    let step=0,t0=performance.now()-3000;
+    anim=now=>{if(now-t0>4200){t0=now;step++;}slats.forEach((s,i)=>{const k=Math.min(1,Math.max(0,(now-t0-i*55)/650)),e=k<.5?2*k*k:1-(-2*k+2)**2/2;s.rotation.y=-(step-1+e)*2.0944;});};
+    if(REDUCE)anim=null;
+  }else if(t.led){
+    const mk=()=>{const c=document.createElement("canvas");c.width=1024;c.height=Math.round(1024/a);return c;};
+    const c=mk(),cp=mk(),cn=mk(),x=c.getContext("2d"),tt=tex(c);let k=0,t0=performance.now(),fade=1;
+    const paint=()=>{cp.getContext("2d").drawImage(cn,0,0);drawItem(cn.getContext("2d"),sq[k%3],c.width,c.height);};
+    const comp=()=>{x.globalAlpha=1;x.drawImage(cp,0,0);x.globalAlpha=fade;x.drawImage(cn,0,0);x.globalAlpha=.08;x.fillStyle="#000";for(let y=0;y<c.height;y+=4)x.fillRect(0,y,c.width,1.5);x.globalAlpha=1;tt.needsUpdate=true;};
+    paint();fade=1;comp();
+    G.add(M(new THREE.PlaneGeometry(fw,fh),faceMat(tt,t.em),0,cy,zf));
+    anim=now=>{if(now-t0>3600){t0=now;k++;paint();fade=0;}if(fade<1){fade=Math.min(1,fade+.06);comp();}};if(REDUCE)anim=null;
+  }else if(t.roller){
+    const c=document.createElement("canvas");c.height=1024;c.width=Math.round(1024*a);const x=c.getContext("2d"),H3=c.height;
+    const big=document.createElement("canvas");big.width=c.width;big.height=H3*3;const bx=big.getContext("2d");
+    sq.forEach((it,i)=>{drawItem(x,it,c.width,H3);bx.drawImage(c,0,i*H3);});
+    const tt=tex(big);tt.wrapT=THREE.RepeatWrapping;tt.repeat.set(1,1/3);tt.offset.y=2/3;
+    [1,-1].forEach(s=>{const p=M(new THREE.PlaneGeometry(fw,fh),faceMat(tt,t.em),0,cy,s*zf);if(s<0)p.rotation.y=Math.PI;G.add(p);});
+    let st=0,shown=0,t0=performance.now();
+    anim=now=>{if(now-t0>3800){t0=now;st++;}shown+=(st-shown)*.05;tt.offset.y=(2-shown)/3;};if(REDUCE)anim=null;
+  }else{
+    const tt=tex(canvasFor(sq[0],a));
+    G.add(M(new THREE.PlaneGeometry(fw,fh),faceMat(tt,t.em),0,cy,zf));
+    if(t.two){const p=M(new THREE.PlaneGeometry(fw,fh),faceMat(tt,t.em),0,cy,-zf);p.rotation.y=Math.PI;G.add(p);}
+  }
+  /* arxa tərəf: bir üzlü konstruksiyalarda boz panel və bərkidici xətlər */
+  if(!t.two&&!t.prizma){const bm=metal(t.led?0x1b1c20:0x8d939b,{roughness:.7});const p=M(new THREE.PlaneGeometry(fw+2*bw,fh+2*bw),bm,0,cy,-dep/2-.01);p.rotation.y=Math.PI;G.add(p);
+    for(let i=1;i<4;i++)G.add(box(fw+2*bw,.12,.12,fm,0,cy-fh/2+fh*i/4,-dep/2-.07));}
+  /* dirəklər, ayaqlar, altlıq */
+  const r=(t.pw||.03)*WV/2;let foot=[];
+  if(t.poles){const top=t.truss?lift-t.truss*HV:lift+fh*.35;
+    const one=t.poles.length===1,pz=one?-(dep/2+r*.95):0,ph=one?lift+fh*.6:top;
+    t.poles.forEach(px=>{const x0=one?0:rel(px);G.add(M(new THREE.CylinderGeometry(r,r*1.12,ph,28),fm,x0,ph/2,pz));
+      if(one)G.add(box(r*2.6,fh*.5,r*.9,fm,0,lift+fh*.3,-dep/2-r*.4));
+      G.add(box(r*4.2,.22,r*4.2,metal(0x9a9da3,{roughness:.9}),x0,.11,pz));foot.push(x0);});}
+  if(t.truss){const th=t.truss*HV,yb=lift-th;G.add(box(fw,.22,.3,fm,0,lift-.11,0));G.add(box(fw,.22,.3,fm,0,yb+.11,0));
+    const n=22;for(let i=0;i<=n;i++){const x0=-fw/2+fw*i/n;G.add(box(.1,th,.1,fm,x0,yb+th/2,0));
+      if(i<n){const d=box(.08,Math.hypot(fw/n,th),.08,fm,x0+fw/n/2,yb+th/2,0);d.rotation.z=(i%2?1:-1)*Math.atan2(fw/n,th);G.add(d);}}
+    for(let i=0;i<6;i++){const x0=-fw/2+fw*(i+.5)/6;G.add(box(.07,.07,1.1,fm,x0,yb+.1,dep/2+.5));G.add(box(.5,.18,.3,metal(0x30333a),x0,yb+.15,dep/2+1.05));}}
+  if(t.legs){const lw=t.pw*WV,lh=lift+fh*.12;t.legs.forEach(px=>{const x0=rel(px);G.add(box(lw,lh,lw*1.3,fm,x0,lh/2,0));G.add(box(lw*2.2,.12,lw*3.4,fm,x0,.06,0));foot.push(x0);});}
+  if(t.box){const w=t.box[1]*WV/cs,h=lift+.15;G.add(box(w,h,dep*1.15,fm,rel(t.box[0])-0,h/2,0));foot.push(0);}
+  scene.add(G);
+  /* işıq və kölgə */
+  const [lc,li,ld]=t.L;sun.color.setHex(lc);sun.intensity=li;hemi.color.setHex(t.H[0]);hemi.groundColor.setHex(t.H[1]);hemi.intensity=t.H[2];
+  const span=Math.max(fw,fh+lift)*1.1;sun.position.set(cxw+ld[0]*30,gy+ld[1]*30,-DZ+ld[2]*30);sun.target.position.set(cxw,gy+cy*.5,-DZ);
+  Object.assign(sun.shadow.camera,{left:-span,right:span,top:span,bottom:-span,near:1,far:90});sun.shadow.camera.updateProjectionMatrix();
+  ground.position.set(cxw,gy,-DZ);
+  const bs=Math.max(fw*.25,(foot.length>1?Math.abs(foot[1]-foot[0])+3:3));blob.scale.set(bs,Math.max(1.6,dep*3),1);blob.position.set(cxw,gy+.02,-DZ);
+  model={t,fw,fh,a};applyYaw();
+}
+
+/* ---- fırlatma ---- */
+let yaw=0,vel=0,spinT=null,dragging=false;
+const rot=g("rot3"),rotO=g("rot3o");
+const norm=d=>((d+180)%360+360)%360-180;
+function applyYaw(){if(!G||!model)return;G.rotation.y=(model.t.yaw+yaw)*D2R;const v=Math.round(norm(yaw));if(+rot.value!==v)rot.value=v;rotO.textContent=v+"°";}
+const used=()=>stage.classList.add("used");
+rot.addEventListener("input",()=>{spinT=null;vel=0;yaw=+rot.value;used();applyYaw();});
+g("spin3").onclick=()=>{used();vel=0;if(REDUCE){yaw=norm(yaw);applyYaw();return;}spinT={from:yaw,t0:performance.now(),dur:4200};};
+g("front3d").onclick=()=>{spinT={from:norm(yaw),to:0,t0:performance.now(),dur:REDUCE?1:900};yaw=norm(yaw);vel=0;};
+let px0=0,lastX=0,lastT=0,pid=null;
+stage.addEventListener("pointerdown",e=>{if(e.button>0)return;pid=e.pointerId;px0=lastX=e.clientX;lastT=performance.now();dragging=false;spinT=null;vel=0;});
+stage.addEventListener("pointermove",e=>{if(e.pointerId!==pid)return;const dx=e.clientX-lastX;
+  if(!dragging&&Math.abs(e.clientX-px0)>4){dragging=true;stage.classList.add("grab");try{stage.setPointerCapture(pid);}catch(_){}used();}
+  if(dragging){const k=360/Math.max(stage.clientWidth,320)*.9;yaw+=dx*k;const now=performance.now();vel=dx*k/Math.max(1,now-lastT)*16;lastT=now;applyYaw();}lastX=e.clientX;});
+const up=e=>{if(e.pointerId!==pid)return;pid=null;stage.classList.remove("grab");if(REDUCE)vel=0;dragging=false;};
+stage.addEventListener("pointerup",up);stage.addEventListener("pointercancel",up);
+stage.addEventListener("keydown",e=>{if(e.key==="ArrowLeft"||e.key==="ArrowRight"){e.preventDefault();used();spinT=null;vel=0;yaw+=e.key==="ArrowLeft"?-15:15;applyYaw();}});
+
+/* ---- konstruksiya növləri ---- */
+const tb=g("types3d");
+tb.innerHTML=T.map((t,i)=>`<button type="button" aria-pressed="${i===0}" data-k="${t.k}"><img src="brendler/${t.k}.jpg" alt="" loading="lazy"><span><b>${t.n}</b><small>${t.size}</small></span></button>`).join("");
+tb.querySelectorAll("button").forEach((x,i)=>x.onclick=()=>{ti=i;yaw=0;spinT=null;vel=0;render();});
+
+/* ---- brend divarı ---- */
+const wall=g("bwall");
+wall.innerHTML=`<button type="button" class="ownb" data-own="1" aria-pressed="false" hidden><img id="ownthumb" alt=""><span>Sizin reklamınız</span></button>`+WALL.map(n=>{const b=B.find(x=>x.n===n);
+  const st=b?`font-weight:${b.w};font-stretch:${b.x}%;${b.st==="upper"?"letter-spacing:.04em;":""}`:"font-weight:800;font-stretch:115%;letter-spacing:.05em;";
+  const lab=b&&b.st==="lower"?n.toLocaleLowerCase("az"):(!b||b.st==="upper")?n.toLocaleUpperCase("az"):n;
+  return `<button type="button" data-n="${n}" aria-pressed="false"><span class="wm" style="${st}font-size:${n.length>11?13:15}px">${lab}</span></button>`;}).join("");
+wall.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.own){own=true;}else{own=false;bi=B.findIndex(x=>x.n===b.dataset.n);}render();});
+
+/* ---- göstər ---- */
+function render(){const t=T[ti],c=cur();
+  if(R){plate.src="brendler/fon/"+t.k+".jpg";build(t);}else{plate.src="brendler/"+t.k+".jpg";}
+  plate.alt=t.n+", Bakı, "+t.loc;stage.setAttribute("aria-label",t.n+" Bakı küçəsində, üzərində "+c.n+" reklamı. Fırlatmaq üçün sol və sağ ox düymələri.");
+  g("m3capL").innerHTML=`<b>${c.n}</b> · ${t.n}, ${t.size}`;
+  g("m3capR").textContent=t.loc+(["led","prizma","roller"].includes(t.k)?" · digər reklamlarla növbələşir":"");
+  tb.querySelectorAll("button").forEach((x,i)=>x.setAttribute("aria-pressed",i===ti));
+  wall.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x.dataset.own?own&&!!userImg:!own&&x.dataset.n===B[bi].n));
+  upMsg();}
+
+/* ---- öz reklamı ---- */
+const ratioTxt=r=>{const c=[[1,1],[4,5],[3,4],[2,3],[9,16],[16,9],[3,2],[4,3],[2,1],[3,1],[5,4],[7,2]].find(([a,b])=>Math.abs(a/b-r)<.04);return c?c[0]+":"+c[1]:r.toFixed(2)+":1";};
+function upMsg(){const m=g("up3d-msg");if(!userImg||!own){m.textContent=userImg?"Brend seçilib. Öz reklamınıza qayıtmaq üçün siyahıda \"Sizin reklamınız\" basın.":"";return;}
+  const t=T[ti],br=model?model.a:2,ir=userImg.width/userImg.height;let s=t.n+" üzü təxminən "+ratioTxt(br)+", şəkliniz "+ratioTxt(ir)+".";
+  if(Math.abs(ir/br-1)<.08)s+=" Ölçü uyğundur.";else s+=fitAll?" Şəkil tam göstərilir, boş yerlər tünd rəngdədir.":" Şəklin kənarları kəsilir. Tam görmək üçün \"Tam göstər\" basın.";
+  if(Math.min(userImg.width,userImg.height)<600)s+=" Şəklin keyfiyyəti aşağıdır, çapda bulanıq görünə bilər.";m.textContent=s;}
+function loadFile(f){const m=g("up3d-msg");
+  if(!f||!/^image\/(png|jpeg|webp)$/.test(f.type)){m.textContent="Yalnız JPG, PNG və ya WebP şəkil yükləmək olar.";return;}
+  if(f.size>30*1024*1024){m.textContent="Şəkil çox böyükdür, 30 MB-dan kiçik fayl seçin.";return;}
+  const u=URL.createObjectURL(f),img=new Image();
+  img.onload=()=>{userImg=img;own=true;g("up3d-opts").hidden=false;const ob=wall.querySelector(".ownb");ob.hidden=false;g("ownthumb").src=u;wall.scrollTop=0;render();};
+  img.onerror=()=>{URL.revokeObjectURL(u);m.textContent="Şəkil açılmadı. Başqa fayl seçin.";};img.src=u;}
+g("up3d-in").onchange=e=>{loadFile(e.target.files[0]);e.target.value="";};
+[stage,g("own3")].forEach(el=>{let dc=0;
+  el.addEventListener("dragenter",e=>{e.preventDefault();dc++;stage.classList.add("drag");});
+  el.addEventListener("dragleave",()=>{if(--dc<=0){dc=0;stage.classList.remove("drag");}});
+  el.addEventListener("dragover",e=>e.preventDefault());
+  el.addEventListener("drop",e=>{e.preventDefault();dc=0;stage.classList.remove("drag");loadFile(e.dataTransfer.files[0]);});});
+g("fit3d").onclick=()=>{fitAll=!fitAll;g("fit3d").textContent=fitAll?"Doldur":"Tam göstər";render();};
+g("clr3d").onclick=()=>{const th=g("ownthumb");if(th.src.startsWith("blob:"))URL.revokeObjectURL(th.src);th.removeAttribute("src");userImg=null;own=false;fitAll=false;g("fit3d").textContent="Tam göstər";g("up3d-opts").hidden=true;wall.querySelector(".ownb").hidden=true;render();};
+
+/* ---- şəkli endir: fon + 3D bir yerdə ---- */
+g("shot3d").onclick=()=>{const c=document.createElement("canvas");c.width=1600;c.height=904;const x=c.getContext("2d");
+  const go=()=>{x.drawImage(plate,0,0,1600,904);if(R){R.render(scene,cam);x.drawImage(R.domElement,0,0,1600,904);}
+    const a=document.createElement("a");a.download="mirror-"+T[ti].k+"-"+(own?"reklam":B[bi].n.toLowerCase().replace(/\s+/g,"-"))+".png";a.href=c.toDataURL("image/png");a.click();};
+  plate.complete?go():plate.onload=()=>{plate.onload=null;go();};};
+
+/* ---- katalogdan "3D-də bax" ---- */
+window.M3D=k=>{const i=T.findIndex(t=>t.k===k);if(i>=0){ti=i;yaw=0;render();}};
+
+/* ---- ölçü və dövr ---- */
+function size3(){if(!R)return;const w=stage.clientWidth,h=stage.clientHeight;R.setSize(w,h,false);cam.updateProjectionMatrix();}
+if(!R)g("fb3d").style.display="block";
+addEventListener("resize",size3);size3();render();
+if(document.fonts&&document.fonts.load)Promise.all(["900 100px Archivo","600 40px Archivo"].map(f=>document.fonts.load(f))).then(()=>render()).catch(()=>{});
+let vis=true;if("IntersectionObserver" in window)new IntersectionObserver(es=>{vis=es[0].isIntersecting;}).observe(stage);
+if(R)(function L(now){requestAnimationFrame(L);if(!vis)return;
+  if(spinT){const k=Math.min(1,(now-spinT.t0)/spinT.dur),e=k<.5?4*k*k*k:1-(-2*k+2)**3/2;yaw=spinT.to!==undefined?spinT.from+(spinT.to-spinT.from)*e:spinT.from+360*e;if(k>=1){yaw=norm(yaw);spinT=null;}applyYaw();}
+  else if(!dragging&&Math.abs(vel)>.01){yaw+=vel;vel*=.94;applyYaw();}
+  if(anim)anim(now);R.render(scene,cam);})(performance.now());
 })();
 </script>
 </body>
