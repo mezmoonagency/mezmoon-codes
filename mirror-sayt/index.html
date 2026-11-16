@@ -124,20 +124,13 @@ section{padding:84px 0 0}
 .m3tabs button[aria-pressed="true"]{background:var(--surface);box-shadow:inset 0 -3px 0 var(--amber)}
 .m3tabs button[aria-pressed="true"] img{opacity:1}
 .m3grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;align-items:stretch}
-.m3stage{position:relative;border-radius:10px;overflow:hidden;background:#cfd3df;aspect-ratio:1600/904;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
-.m3stage:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
-.m3stage.grab{cursor:grabbing}
+.m3stage{position:relative;border-radius:10px;overflow:hidden;background:#cfd3df;aspect-ratio:1600/904}
 .m3stage>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 #three{position:absolute;inset:0}
 #three canvas{display:block;width:100%!important;height:100%!important}
-.m3hint{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);background:rgba(23,24,58,.74);color:#fff;font-size:13px;font-weight:600;padding:6px 14px;border-radius:999px;pointer-events:none;transition:opacity .5s;white-space:nowrap}
-.m3stage.used .m3hint{opacity:0}
 .m3stage.drag::after{content:"Şəkli bura atın";position:absolute;inset:10px;border:2px dashed #fff;border-radius:8px;display:grid;place-items:center;font-weight:700;font-size:18px;color:#fff;background:rgba(23,24,58,.45);z-index:4;pointer-events:none}
 .fb3d{position:absolute;left:12px;right:12px;bottom:12px;display:none;background:rgba(255,255,255,.92);border-radius:8px;padding:10px 14px;font-size:14px;color:var(--ink)}
 .m3bar{display:flex;align-items:center;gap:10px 12px;flex-wrap:wrap;margin-top:12px;font-size:14px}
-.m3bar label{display:flex;align-items:center;gap:10px;font-weight:650;flex:1 1 240px}
-.m3bar input[type=range]{flex:1;min-width:120px;accent-color:var(--brand)}
-.m3bar output{min-width:4.5ch;text-align:right;font-variant-numeric:tabular-nums;color:var(--mute)}
 .m3bar button,.up3d-opts button{background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13.5px;font-weight:650;color:var(--ink)}
 .m3bar button:hover,.up3d-opts button:hover{border-color:var(--ink)}
 .m3cap{display:flex;justify-content:space-between;gap:4px 12px;flex-wrap:wrap;margin-top:8px;font-size:14px;color:var(--mute)}
@@ -163,7 +156,7 @@ section{padding:84px 0 0}
 .bwall .ownb[hidden]{display:none}
 .bwall .ownb img{width:64px;height:40px;object-fit:cover;border-radius:4px;flex:none}
 @media (max-width:1060px){.m3tabs{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:860px){.m3grid{grid-template-columns:1fr}.m3tabs{display:flex;overflow-x:auto}.m3tabs button{flex:0 0 auto;min-width:150px}.bl3{min-height:0}.bwall{position:static;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));max-height:300px}.m3hint{font-size:12px}}
+@media (max-width:860px){.m3grid{grid-template-columns:1fr}.m3tabs{display:flex;overflow-x:auto}.m3tabs button{flex:0 0 auto;min-width:150px}.bl3{min-height:0}.bwall{position:static;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));max-height:300px}}
 /* portal */
 .portal{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
 .ptop{display:flex;align-items:center;gap:14px;padding:10px 16px;border-bottom:1px solid var(--line);flex-wrap:wrap}
@@ -403,21 +396,17 @@ footer{padding:70px 0 50px;font-size:13px;color:var(--mute)}
   <div class="wrap">
     <div class="shead">
       <h2>Hər konstruksiyaya 3D baxış</h2>
-      <p>Panonu real Bakı küçəsində görün və siçanla, barmaqla və ya aşağıdakı zolaqla 360° fırladın. Əməkdaşlıq etdiyimiz brendlərdən birini seçin və ya öz reklamınızı əlavə edin: o, seçdiyiniz konstruksiyanın üzərində görünəcək.</p>
+      <p>Panonu real Bakı küçəsində görün. Əməkdaşlıq etdiyimiz brendlərdən birini seçin və ya öz reklamınızı əlavə edin: o, seçdiyiniz konstruksiyanın üzərində görünəcək.</p>
     </div>
     <div class="m3tabs" id="types3d" role="group" aria-label="Konstruksiya növü"></div>
     <div class="m3grid" id="m3">
       <div>
-        <div class="m3stage" id="stage3" tabindex="0" role="img" aria-roledescription="3D səhnə" aria-label="3D pano">
+        <div class="m3stage" id="stage3" role="img" aria-label="3D pano">
           <img id="plate3" alt="">
           <div id="three"></div>
-          <div class="m3hint">Fırlatmaq üçün sağa-sola sürüşdürün</div>
           <div class="fb3d" id="fb3d">3D görüntü bu brauzerdə açılmadı, konstruksiyanın fotosu göstərilir.</div>
         </div>
         <div class="m3bar">
-          <label for="rot3">Fırlat <input type="range" id="rot3" min="-180" max="180" step="1" value="0"><output id="rot3o" for="rot3">0°</output></label>
-          <button type="button" id="spin3">360° fırlat</button>
-          <button type="button" id="front3d">Önündən bax</button>
           <button type="button" id="shot3d">Şəkli endir</button>
         </div>
         <div class="m3cap"><span id="m3capL"></span><span id="m3capR"></span></div>
@@ -885,7 +874,7 @@ document.getElementById("ofrReplay").onclick=play;
 })();
 </script>
 <script>
-/* 3D baxış + brendlər: real küçə fonu, üzərində 360° fırlanan 3D pano */
+/* 3D baxış + brendlər: real küçə fonu, üzərində 3D pano */
 (()=>{
 const g=id=>document.getElementById(id);if(!g("m3"))return;
 const REDUCE=matchMedia("(prefers-reduced-motion: reduce)").matches,D2R=Math.PI/180;
@@ -1037,31 +1026,13 @@ function build(t){
   Object.assign(sun.shadow.camera,{left:-span,right:span,top:span,bottom:-span,near:1,far:90});sun.shadow.camera.updateProjectionMatrix();
   ground.position.set(cxw,gy,-DZ);
   const bs=Math.max(fw*.25,(foot.length>1?Math.abs(foot[1]-foot[0])+3:3));blob.scale.set(bs,Math.max(1.6,dep*3),1);blob.position.set(cxw,gy+.02,-DZ);
-  model={t,fw,fh,a};applyYaw();
+  model={t,fw,fh,a};G.rotation.y=t.yaw*D2R;
 }
-
-/* ---- fırlatma ---- */
-let yaw=0,vel=0,spinT=null,dragging=false;
-const rot=g("rot3"),rotO=g("rot3o");
-const norm=d=>((d+180)%360+360)%360-180;
-function applyYaw(){if(!G||!model)return;G.rotation.y=(model.t.yaw+yaw)*D2R;const v=Math.round(norm(yaw));if(+rot.value!==v)rot.value=v;rotO.textContent=v+"°";}
-const used=()=>stage.classList.add("used");
-rot.addEventListener("input",()=>{spinT=null;vel=0;yaw=+rot.value;used();applyYaw();});
-g("spin3").onclick=()=>{used();vel=0;if(REDUCE){yaw=norm(yaw);applyYaw();return;}spinT={from:yaw,t0:performance.now(),dur:4200};};
-g("front3d").onclick=()=>{spinT={from:norm(yaw),to:0,t0:performance.now(),dur:REDUCE?1:900};yaw=norm(yaw);vel=0;};
-let px0=0,lastX=0,lastT=0,pid=null;
-stage.addEventListener("pointerdown",e=>{if(e.button>0)return;pid=e.pointerId;px0=lastX=e.clientX;lastT=performance.now();dragging=false;spinT=null;vel=0;});
-stage.addEventListener("pointermove",e=>{if(e.pointerId!==pid)return;const dx=e.clientX-lastX;
-  if(!dragging&&Math.abs(e.clientX-px0)>4){dragging=true;stage.classList.add("grab");try{stage.setPointerCapture(pid);}catch(_){}used();}
-  if(dragging){const k=360/Math.max(stage.clientWidth,320)*.9;yaw+=dx*k;const now=performance.now();vel=dx*k/Math.max(1,now-lastT)*16;lastT=now;applyYaw();}lastX=e.clientX;});
-const up=e=>{if(e.pointerId!==pid)return;pid=null;stage.classList.remove("grab");if(REDUCE)vel=0;dragging=false;};
-stage.addEventListener("pointerup",up);stage.addEventListener("pointercancel",up);
-stage.addEventListener("keydown",e=>{if(e.key==="ArrowLeft"||e.key==="ArrowRight"){e.preventDefault();used();spinT=null;vel=0;yaw+=e.key==="ArrowLeft"?-15:15;applyYaw();}});
 
 /* ---- konstruksiya növləri ---- */
 const tb=g("types3d");
 tb.innerHTML=T.map((t,i)=>`<button type="button" aria-pressed="${i===0}" data-k="${t.k}"><img src="brendler/${t.k}.jpg" alt="" loading="lazy"><span><b>${t.n}</b><small>${t.size}</small></span></button>`).join("");
-tb.querySelectorAll("button").forEach((x,i)=>x.onclick=()=>{ti=i;yaw=0;spinT=null;vel=0;render();});
+tb.querySelectorAll("button").forEach((x,i)=>x.onclick=()=>{ti=i;render();});
 
 /* ---- brend divarı ---- */
 const wall=g("bwall");
@@ -1074,7 +1045,7 @@ wall.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)retur
 /* ---- göstər ---- */
 function render(){const t=T[ti],c=cur();
   if(R){plate.src="brendler/fon/"+t.k+".jpg";build(t);}else{plate.src="brendler/"+t.k+".jpg";}
-  plate.alt=t.n+", Bakı, "+t.loc;stage.setAttribute("aria-label",t.n+" Bakı küçəsində, üzərində "+c.n+" reklamı. Fırlatmaq üçün sol və sağ ox düymələri.");
+  plate.alt=t.n+", Bakı, "+t.loc;stage.setAttribute("aria-label",t.n+" Bakı küçəsində, üzərində "+c.n+" reklamı");
   g("m3capL").innerHTML=`<b>${c.n}</b> · ${t.n}, ${t.size}`;
   g("m3capR").textContent=t.loc+(["led","prizma","roller"].includes(t.k)?" · digər reklamlarla növbələşir":"");
   tb.querySelectorAll("button").forEach((x,i)=>x.setAttribute("aria-pressed",i===ti));
@@ -1109,7 +1080,7 @@ g("shot3d").onclick=()=>{const c=document.createElement("canvas");c.width=1600;c
   plate.complete?go():plate.onload=()=>{plate.onload=null;go();};};
 
 /* ---- katalogdan "3D-də bax" ---- */
-window.M3D=k=>{const i=T.findIndex(t=>t.k===k);if(i>=0){ti=i;yaw=0;render();}};
+window.M3D=k=>{const i=T.findIndex(t=>t.k===k);if(i>=0){ti=i;render();}};
 
 /* ---- ölçü və dövr ---- */
 function size3(){if(!R)return;const w=stage.clientWidth,h=stage.clientHeight;R.setSize(w,h,false);cam.updateProjectionMatrix();}
@@ -1118,8 +1089,6 @@ addEventListener("resize",size3);size3();render();
 if(document.fonts&&document.fonts.load)Promise.all(["900 100px Archivo","600 40px Archivo"].map(f=>document.fonts.load(f))).then(()=>render()).catch(()=>{});
 let vis=true;if("IntersectionObserver" in window)new IntersectionObserver(es=>{vis=es[0].isIntersecting;}).observe(stage);
 if(R)(function L(now){requestAnimationFrame(L);if(!vis)return;
-  if(spinT){const k=Math.min(1,(now-spinT.t0)/spinT.dur),e=k<.5?4*k*k*k:1-(-2*k+2)**3/2;yaw=spinT.to!==undefined?spinT.from+(spinT.to-spinT.from)*e:spinT.from+360*e;if(k>=1){yaw=norm(yaw);spinT=null;}applyYaw();}
-  else if(!dragging&&Math.abs(vel)>.01){yaw+=vel;vel*=.94;applyYaw();}
   if(anim)anim(now);R.render(scene,cam);})(performance.now());
 })();
 </script>
