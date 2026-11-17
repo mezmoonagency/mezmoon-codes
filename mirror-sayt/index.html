@@ -6,7 +6,7 @@
 <title>Mirror Saytı Nümunəsi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* Plan: bir saat bütün səhifəni idarə edir. Küçə səhnəsi, xəritə və 3D eyni saatı göstərir.
    Səhifə soyuq asfalt-ağ, mürəkkəb indiqo; Mirror-un lavanda loqosu brend rəngi, natrium fənər kəhrəbası diqqət rəngi.
@@ -388,6 +388,62 @@ html.intro-on .nav .brand{visibility:hidden}
 .pk-done a{color:var(--amber);font-weight:700}
 @media (max-width:960px){.pk{grid-template-columns:1fr}.pk-sum{position:static}}
 @media (max-width:560px){.pk-time{grid-template-columns:1fr}}
+/* ==== AdQuick üslubu: Inter, ağ və açıq boz bölmələr, ortalanmış başlıqlar, yumşaq kartlar, kapsul düymələr. Funksiyalar dəyişmir ==== */
+:root{--paper:#FFFFFF;--surface:#FFFFFF;--ink:#1F2937;--mute:#6B7280;--line:#E5E7EB;--soft:#F7F8FC;
+  --display:"Inter","Helvetica Neue",Arial,sans-serif;--body:"Inter","Helvetica Neue",Arial,sans-serif;
+  --sh:0 1px 2px rgba(16,24,40,.04),0 12px 32px rgba(16,24,40,.07);--r:18px}
+body{font:400 16px/1.65 var(--body);color:#374151}
+h1,h2,h3{font-stretch:100%!important}
+.shead h2,.hero h1,.feat h3,.stagecol h3,.pk-step h3{color:var(--ink)}
+h1{font-size:clamp(34px,4.6vw,56px);line-height:1.08;font-weight:700;letter-spacing:-.03em}
+h2{font-size:clamp(28px,3.4vw,46px);line-height:1.12;font-weight:700;letter-spacing:-.025em}
+h3{font-size:18px;font-weight:650;letter-spacing:-.01em}
+.brand b,#ilogo b{font-family:"Archivo","Helvetica Neue",Arial,sans-serif;font-stretch:125%}
+/* menyu */
+.nav{background:rgba(255,255,255,.92);border-bottom:1px solid var(--line)}
+.nav .wrap{height:64px;gap:26px}
+.nav .l{font-size:15px;font-weight:500;color:#374151}
+.nav .l:hover{color:var(--brand)}
+.nav .cta{background:#fff;color:var(--brand);border:1.5px solid color-mix(in srgb,var(--brand) 35%,#fff);border-radius:999px;padding:8px 18px;font-weight:600}
+.nav .cta:hover{background:color-mix(in srgb,var(--lav) 18%,#fff)}
+/* hero */
+.hero{padding-top:76px;background:radial-gradient(900px 420px at 88% -10%,#E3EAFF 0,transparent 65%),radial-gradient(800px 380px at 5% 0,#EFEAFF 0,transparent 60%),#F8FAFF}
+.hero-top{align-items:center}
+.hero h1{color:var(--ink)}
+.hero-side p{font-size:18px;color:var(--mute)}
+.live{border-bottom-color:color-mix(in srgb,var(--brand) 45%,transparent)}
+.demo{display:inline-flex;align-items:center;background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 12px 5px 10px;box-shadow:0 1px 2px rgba(16,24,40,.05)}
+.btn{border-radius:999px;padding:12px 22px;background:var(--brand);border-color:var(--brand);font-weight:600;box-shadow:0 6px 16px color-mix(in srgb,var(--brand) 28%,transparent)}
+.btn:hover{filter:brightness(1.07)}
+.btn.ghost{background:#fff;color:var(--ink);border-color:var(--line);box-shadow:0 1px 2px rgba(16,24,40,.05)}
+.scene{margin-top:56px;border-top:1px solid var(--line)}
+/* bölmələr: ağ / açıq boz növbə ilə, ortalanmış başlıq */
+section{padding:104px 0 104px;border-top:1px solid var(--line)}
+section:nth-of-type(odd){background:var(--soft)}
+section#intro{padding:0;border:0;background:#0E0F24}
+.shead{grid-template-columns:1fr;text-align:center;justify-items:center;gap:16px;margin-bottom:48px}
+.shead p{max-width:62ch;font-size:18px;color:var(--mute)}
+.note{margin-left:auto;margin-right:auto;text-align:center}
+/* kartlar */
+.map-grid,.rows,.tiles,.m3stage,.pk-sum{border-radius:var(--r);box-shadow:var(--sh)}
+.map-grid{background:#fff;border:1px solid var(--line);overflow:hidden}
+.rows{border:1px solid var(--line);background:#fff;overflow:hidden}
+.m3tabs,.flow,.feats,.pk-step,.stages{border-top-width:1px;border-top-color:var(--line)}
+.stages{gap:20px;border-top:0}
+.need{border-radius:var(--r);background:#111827}
+.m3tabs{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.feats{gap:20px;border-top:0}
+.feat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.stagecol{background:#fff;border:1px solid var(--line)!important;border-radius:16px;padding:24px!important;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.pkb{border-radius:14px;border-width:1px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.pkb:hover{box-shadow:var(--sh)}
+.pk-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px 22px;margin-bottom:16px}
+.pk-sum{background:#111827;border-radius:20px}
+.chip{border-width:1px}
+.chip[aria-pressed="true"]{background:var(--brand);border-color:var(--brand)}
+.tg{border-width:1px}
+.clock{background:#111827}
+footer{background:var(--soft);border-top:1px solid var(--line)}
 </style>
 </head>
 <body>
