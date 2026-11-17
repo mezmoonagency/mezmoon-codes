@@ -308,6 +308,108 @@ section{padding:clamp(56px,8vw,96px) 0;border-bottom:1px solid var(--line)}
  .phone{width:min(300px,88vw)}
 }
 
+/* ===== Nərd ===== */
+.fmt{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:clamp(28px,4vw,44px)}
+.fmt div{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}
+.fmt strong{display:block;font:600 clamp(30px,3.4vw,40px)/1 var(--display);color:var(--paper);font-variant-numeric:tabular-nums}
+.fmt strong small{font-size:.45em;color:var(--lav);margin-left:4px;font-weight:500}
+.fmt b{display:block;font:600 15px var(--display);margin-top:12px}
+.fmt span{display:block;font-size:14px;color:var(--muted);margin-top:4px}
+.nerd-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+.cal{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px}
+.cal-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.cal-h b{font:600 20px var(--display);text-transform:capitalize}
+.cal-h span{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cal-g{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.cal-g .wd{font:500 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:center;padding-bottom:4px}
+.cal-g .d{aspect-ratio:1;border-radius:10px;background:var(--ink-2);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;padding:6px;font:500 12px var(--display);color:var(--muted);opacity:0;transform:scale(.9);transition:opacity .35s ease,transform .35s var(--ease)}
+.cal.in .d{opacity:1;transform:none}
+.cal-g .d.e{background:none;border:0}
+.cal-g .d i{font:600 9px/1.1 var(--mono);font-style:normal;letter-spacing:.04em;text-transform:uppercase}
+.cal-g .d.b1{background:rgba(108,103,206,.22);border-color:rgba(151,148,229,.5);color:var(--paper)}
+.cal-g .d.b1 i{color:var(--lav-hi)}
+.cal-g .d.b2{background:rgba(202,33,38,.16);border-color:rgba(232,71,76,.45);color:var(--paper)}
+.cal-g .d.b2 i{color:#F49A9D}
+.cal-g .d.fn{background:linear-gradient(135deg,var(--lav-lo),var(--red));border-color:transparent;color:#fff;box-shadow:0 10px 30px -12px rgba(151,148,229,.8)}
+.cal-g .d.fn i{color:#fff}
+.cal-l{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;font-size:13px;color:var(--soft)}
+.cal-l span{display:flex;align-items:center;gap:7px}
+.cal-l i{width:12px;height:12px;border-radius:4px;display:block}
+.story-w{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:center}
+.story{width:210px;aspect-ratio:9/16;border-radius:26px;overflow:hidden;position:relative;background:radial-gradient(120% 70% at 50% 30%,#3a2a1c,#120d0a 70%);box-shadow:0 0 0 6px #1b1b24,0 0 0 7px #2a2a36}
+.story .bars{position:absolute;top:10px;left:10px;right:10px;display:flex;gap:4px}
+.story .bars i{flex:1;height:2px;border-radius:2px;background:rgba(255,255,255,.3);overflow:hidden}
+.story .bars i::after{content:"";display:block;height:100%;width:0;background:#fff}
+.story .bars i.done::after{width:100%}
+.story .bars i.run::after{animation:sbar 6s linear forwards}
+@keyframes sbar{to{width:100%}}
+.story .who{position:absolute;top:20px;left:12px;display:flex;align-items:center;gap:7px;font:600 11px var(--display);color:#fff}
+.story .who img{width:24px;height:24px;border-radius:50%;background:#fff;padding:3px;object-fit:contain}
+.story .live{position:absolute;top:22px;right:12px;font:600 9px var(--mono);letter-spacing:.1em;background:var(--red);color:#fff;border-radius:4px;padding:3px 6px}
+.story svg.board{position:absolute;left:10px;right:10px;top:62px;width:calc(100% - 20px)}
+.dice{position:absolute;left:50%;top:150px;transform:translateX(-50%);display:flex;gap:8px}
+.die{width:30px;height:30px;border-radius:7px;background:#fff;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);padding:4px;box-shadow:0 6px 14px rgba(0,0,0,.5)}
+.die i{width:5px;height:5px;border-radius:50%;background:#111;place-self:center;visibility:hidden}
+.die.roll{animation:roll .5s ease}
+@keyframes roll{0%{transform:rotate(0) scale(.7)}60%{transform:rotate(320deg) scale(1.1)}100%{transform:rotate(360deg) scale(1)}}
+.sb{position:absolute;left:10px;right:10px;bottom:14px;background:rgba(8,8,10,.85);backdrop-filter:blur(6px);border-radius:14px;padding:10px 12px;border:1px solid rgba(255,255,255,.1)}
+.sb small{display:block;font:500 8.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--lav)}
+.sb .r{display:flex;justify-content:space-between;font:600 13px var(--display);color:#fff;margin-top:5px}
+.sb .r b{font-variant-numeric:tabular-nums;color:var(--lav-hi)}
+.sb .r.lead b{color:#fff}
+.story-t h3{font-size:20px;font-weight:600;margin-bottom:8px}
+.story-t ul{margin:0;padding-left:18px;color:var(--soft);font-size:15px}
+.story-t li{margin-top:6px}
+.brk{margin-top:14px;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:22px}
+.brk-h{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.brk-h h3{font-size:20px;font-weight:600;margin-right:auto}
+.brk-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,.8fr);gap:16px;align-items:center;overflow-x:auto}
+.rnd{display:flex;flex-direction:column;justify-content:space-around;gap:12px;height:100%}
+.rnd>small{font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.m{background:var(--ink-2);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:border-color .3s,box-shadow .3s;min-width:170px}
+.m.play{border-color:var(--lav);box-shadow:0 0 0 3px var(--lav-bg)}
+.m .p{display:flex;align-items:center;gap:8px;padding:8px 10px;font-size:13.5px;color:var(--soft);transition:background-color .3s,color .3s}
+.m .p+.p{border-top:1px solid var(--line)}
+.m .p small{font:500 9px var(--mono);color:var(--muted);letter-spacing:.06em;margin-left:auto;white-space:nowrap}
+.m .p b{font:600 14px var(--display);min-width:14px;text-align:right;color:var(--paper);font-variant-numeric:tabular-nums}
+.m .p.w{background:rgba(151,148,229,.14);color:var(--paper)}
+.m .p.l{opacity:.45}
+.m .p.tbd{color:var(--muted);font-style:italic}
+.champ{text-align:center;border:1px dashed var(--line-2);border-radius:18px;padding:22px 12px;position:relative;overflow:hidden;transition:border-color .4s,background .4s}
+.champ svg{width:44px;height:44px;stroke:var(--muted);margin:0 auto 8px;transition:stroke .4s}
+.champ small{font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.champ b{display:block;font:600 20px var(--display);margin-top:6px;min-height:24px}
+.champ.on{border-color:var(--lav);background:radial-gradient(circle at 50% 0,rgba(151,148,229,.25),transparent 70%)}
+.champ.on svg{stroke:var(--lav-hi)}
+.prz{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
+.prz div{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}
+.prz svg{width:28px;height:28px;stroke:var(--lav-hi);margin-bottom:12px}
+.prz small{font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--lav)}
+.prz b{display:block;font:600 18px var(--display);margin:6px 0 4px}
+.prz p{color:var(--soft);font-size:14.5px}
+.wk{margin-top:14px;background:var(--panel);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.wk h3{font-size:18px;font-weight:600;padding:18px 20px 0}
+.wk>p{color:var(--muted);font-size:14px;padding:4px 20px 0}
+.wk-g{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:1px;background:var(--line);margin-top:16px;border-top:1px solid var(--line)}
+.wk-g div{background:var(--panel);padding:14px 12px;min-height:120px}
+.wk-g small{display:block;font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.wk-g b{display:block;font:600 13.5px var(--display);color:var(--paper)}
+.wk-g span{display:block;font-size:12.5px;color:var(--muted);margin-top:3px}
+.wk-g div.hot{background:linear-gradient(180deg,rgba(123,75,240,.16),var(--panel))}
+.wk-g div.hot small{color:var(--lav)}
+@media (max-width:960px){
+ .fmt{grid-template-columns:1fr 1fr}
+ .nerd-top{grid-template-columns:1fr}
+ .prz{grid-template-columns:1fr}
+ .wk-g{grid-template-columns:1fr 1fr}
+ .wk-g div{min-height:0}
+}
+@media (max-width:600px){
+ .story-w{grid-template-columns:1fr;justify-items:center}
+ .brk-g{grid-template-columns:repeat(4,minmax(170px,1fr))}
+ .cal-g .d i{font-size:7.5px}
+}
+
 footer{padding:36px 0 64px;color:var(--muted);font-size:14px}
 footer .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 footer img{width:72px;opacity:.7}
@@ -351,6 +453,7 @@ footer img{width:72px;opacity:.7}
   <a href="#mekanlar">Məkanlar</a>
   <a href="#umumi">Ümumi</a>
   <a href="#crm">CRM</a>
+  <a href="#nerd">Nərd</a>
   <a href="#ssenari">Ssenarilər</a>
   <a href="#cekilis">Çəkiliş</a>
  </div>
@@ -513,8 +616,85 @@ footer img{width:72px;opacity:.7}
  </div>
 </div></section>
 
+<section id="nerd"><div class="wrap">
+ <div class="sh"><span class="num">04</span><h2>Badam Nərd Liqası</h2><p>Badam 1 və Badam 2 üçün ortaq aylıq liqa. Seçmələr həftəiçi boş axşamları doldurur, ayın sonunda aparıcı ilə final keçirilir. Qeydiyyat CRM formu ilədir, ona görə hər iştirakçı qonaq bazasına düşür.</p></div>
+
+ <div class="fmt">
+  <div><strong>16<small>yer</small></strong><b>Hər seçmə turnirdə</b><span>Olimpiya sistemi: 4 tur, 1 qalib. Dolanda gözləmə siyahısı</span></div>
+  <div><strong>2<small>axşam</small></strong><b>Hər həftə</b><span>Çərşənbə Badam 1, cümə axşamı Badam 2, saat 19:00</span></div>
+  <div><strong>8<small>finalçı</small></strong><b>Ayın sonunda</b><span>İlk 4 həftənin hər məkandakı qalibləri finala çıxır</span></div>
+  <div><strong>0<small>₼</small></strong><b>İştirak haqqı</b><span>İştirak pulsuzdur, masada minimum sifariş: çay dəstgahı</span></div>
+ </div>
+
+ <div class="nerd-top">
+  <div class="cal" id="cal">
+   <div class="cal-h"><b id="calM"></b><span>Liqa təqvimi · nümunə</span></div>
+   <div class="cal-g" id="calG"></div>
+   <div class="cal-l"><span><i style="background:rgba(151,148,229,.6)"></i>Seçmə · Badam 1</span><span><i style="background:rgba(232,71,76,.6)"></i>Seçmə · Badam 2</span><span><i style="background:linear-gradient(135deg,var(--lav-lo),var(--red))"></i>Final</span></div>
+  </div>
+  <div class="story-w">
+   <div class="story" aria-label="Instagram story nümunəsi">
+    <div class="bars"><i class="done"></i><i class="run"></i><i></i></div>
+    <div class="who"><img src="hw-mezmoon-logo.png" alt="">badam.baku</div>
+    <span class="live">CANLI</span>
+    <svg class="board" viewBox="0 0 190 120" aria-hidden="true">
+     <rect x="0" y="0" width="190" height="120" rx="6" fill="#5a3a22"/><rect x="5" y="5" width="85" height="110" fill="#e7d3b0"/><rect x="100" y="5" width="85" height="110" fill="#e7d3b0"/><rect x="90" y="0" width="10" height="120" fill="#3e2716"/>
+     <g id="pts"></g><g id="chk"></g>
+    </svg>
+    <div class="dice"><div class="die" id="d1"></div><div class="die" id="d2"></div></div>
+    <div class="sb"><small id="sbT">Final · 5 xala qədər</small><div class="r" id="sbA"><span>—</span><b>0</b></div><div class="r" id="sbB"><span>—</span><b>0</b></div></div>
+   </div>
+   <div class="story-t">
+    <h3>Aparıcı və canlı yayım</h3>
+    <ul>
+     <li>Final günü xüsusi aparıcı oyunları şərh edir, qonaqlarla zarafat edir, hər xalı elan edir.</li>
+     <li>Lövhə yuxarıdan çəkilir, story-də canlı hesab görünür. Soldakı nümunə final cədvəli ilə birlikdə işləyir.</li>
+     <li>Finaldan sonra 30 saniyəlik "Ayın çempionu" Reels-i və çempionun divardakı fotosu.</li>
+     <li>Badam 2-nin 2-ci zalı turnir zalına çevrilir: masalar sıra ilə, divarda turnir cədvəli, ekranda hesab.</li>
+    </ul>
+   </div>
+  </div>
+ </div>
+
+ <div class="brk" id="brk">
+  <div class="brk-h"><h3>Final günü · cədvəl</h3><span class="tag">Adlar nümunədir</span><button class="btn" id="brkGo">Finalı oynat</button></div>
+  <div class="brk-g">
+   <div class="rnd" id="r0"><small>Çeyrək final · 3 xal</small></div>
+   <div class="rnd" id="r1"><small>Yarımfinal · 3 xal</small></div>
+   <div class="rnd" id="r2"><small>Final · 5 xal</small></div>
+   <div class="champ" id="champ"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4zM7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3"/></svg><small>Ayın çempionu</small><b id="champN">?</b></div>
+  </div>
+ </div>
+
+ <div class="prz">
+  <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4zM7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3"/></svg><small>1-ci yer</small><b>Kubok və kabinet axşamı</b><p>Liqa kuboku, 6 nəfərlik pulsuz kabinet axşamı və divarda "Ayın çempionu" fotosu.</p></div>
+  <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><circle cx="12" cy="9" r="6"/><path d="M8.5 14 7 22l5-3 5 3-1.5-8"/></svg><small>2-ci yer</small><b>Çay dəstgahı seti</b><p>4 nəfərlik çay dəstgahı və növbəti ayın finalına birbaşa vəsiqə.</p></div>
+  <div><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8S10 3 7.5 4 9 8 12 8zm0 0s2-5 4.5-4S15 8 12 8z"/></svg><small>Həftə qalibi</small><b>Final bileti və desert</b><p>Hər seçmənin qalibi finala çıxır və masaya pulsuz desert alır.</p></div>
+ </div>
+
+ <div class="wk">
+  <h3>Bir həftənin kontent planı</h3>
+  <p>Liqa həftə boyu səhifədə görünür, hər turnir öz kontentini yaradır.</p>
+  <div class="wk-g">
+   <div><small>B.e</small><b>Elan posteri</b><span>Həftənin turnirləri, qeydiyyat linki</span></div>
+   <div><small>Ç.a</small><b>Story: son 5 yer</b><span>Qeydiyyat sayğacı, təcili hiss</span></div>
+   <div class="hot"><small>Ç · Badam 1</small><b>Seçmə turnir</b><span>Story-lər, maraqlı xallar, qalib</span></div>
+   <div class="hot"><small>C.a · Badam 2</small><b>Seçmə turnir</b><span>Story-lər, maraqlı xallar, qalib</span></div>
+   <div><small>C</small><b>Qaliblər postu</b><span>İki qalibin fotosu, "finalda görüşək"</span></div>
+   <div><small>Ş</small><b>Liqa cədvəli</b><span>Finala çıxanların siyahısı yenilənir</span></div>
+   <div><small>B</small><b>Ayın sonu: final</b><span>Canlı yayım, Reels, çempion fotosu</span></div>
+  </div>
+ </div>
+
+ <div class="why">
+  <div><b>Qaydalar</b><p>Uzun nərd. Seçmələrdə 3 xala qədər, finalda 5 xala qədər. Mars 2 xal sayılır. Mübahisəli anda aparıcının qərarı son sözdür.</p></div>
+  <div><b>CRM ilə əlaqə</b><p>Qeydiyyat eyni formdandır: ad, soyad, ad günü, nömrə. Turnirə yazılan hər kəs ad günü və "sizi çoxdandır görmürük" SMS-lərini də alır.</p></div>
+  <div><b>Ölçü</b><p>Qeydiyyat sayı, turnir axşamlarının satışı adi çərşənbə və cümə axşamı ilə müqayisədə, bazaya düşən yeni nömrə, story baxışları.</p></div>
+ </div>
+</div></section>
+
 <section id="ssenari"><div class="wrap">
- <div class="sh"><span class="num">04</span><h2><span lang="en">Ruin 1 · 2 · 3</span> təqdimatları</h2><p>Aparıcını seçin. Soldakı ekran mətnin videoda necə axacağını göstərir: hər sətir oxunma tempi ilə irəliləyir. Sağdakı sətrə klikləsəniz, ekran həmin yerə keçir.</p></div>
+ <div class="sh"><span class="num">05</span><h2><span lang="en">Ruin 1 · 2 · 3</span> təqdimatları</h2><p>Aparıcını seçin. Soldakı ekran mətnin videoda necə axacağını göstərir: hər sətir oxunma tempi ilə irəliləyir. Sağdakı sətrə klikləsəniz, ekran həmin yerə keçir.</p></div>
  <div class="cast" id="cast" role="tablist" aria-label="Aparıcılar"></div>
  <div class="studio">
   <div class="tp" id="tp">
@@ -534,7 +714,7 @@ footer img{width:72px;opacity:.7}
 </div></section>
 
 <section id="cekilis"><div class="wrap">
- <div class="sh"><span class="num">05</span><h2>Çəkiliş günü</h2><p>Hər üç video üçün eyni qayda. Məkandan gözlədiyimiz dörd şey:</p></div>
+ <div class="sh"><span class="num">06</span><h2>Çəkiliş günü</h2><p>Hər üç video üçün eyni qayda. Məkandan gözlədiyimiz dörd şey:</p></div>
  <div class="prod">
   <div><b>01 · Rəqəmlər</b><p>Kabinet sayı və hər kabinetin tutumu. Ssenaridə <mark>[say]</mark> yazılan yerlər bu rəqəmlərlə dolacaq.</p></div>
   <div><b>02 · Zal</b><p>Çəkiliş üçün 3 saatlıq boş zal və ən azı 2 hazır kabinet. Ən yaxşı vaxt günortadır.</p></div>
@@ -603,10 +783,10 @@ const V=[
   k:"Kabinet rezervləri və rezervin orta məbləği.",go:2},
  {n:"Badam 1",c:["Tədbir"],ask:"Nərd çempionatının keçirilməsi. Xüsusi aparıcı ilə.",
   e:["Format: hər həftə seçmə oyunlar, ayın sonunda final. Badam 1 və Badam 2 arasında <b>ortaq liqa</b>, final növbə ilə keçirilir.","Qeydiyyat formu ilə ad, nömrə və ad günü bazaya düşür. Bu, CRM üçün ilk data olacaq.","Aparıcı finalı canlı şərh edir, story-də yayım, finaldan qısa video.","Çay dəstgahının çərəzləri düzəlsin: turnirdə qonaq saatlarla oturur, süfrə kadrda görünür."],
-  k:"Qeydiyyat sayı və turnir günlərinin satışı."},
+  k:"Qeydiyyat sayı və turnir günlərinin satışı.",nerd:1},
  {n:"Badam 2",c:["Tədbir"],ask:"Nərd çempionatının keçirilməsi. Xüsusi aparıcı ilə. Zalların birləşdirilməsi (?)",
   e:["Reklam analizimiz 2-ci zalın qonaqlara, xüsusən xanımlara maraqlı gəlmədiyini göstərdi. Çempionat 2-ci zalda keçirilsə, zal yeni funksiya qazanır: <b>turnir zalı</b>.","Zalların birləşdirilməsi barədə təklifimiz: əvvəl 1 ay turnir sınağı, sonra doluluğa baxıb qərar verək.","Liqa qaydaları Badam 1 ilə eynidir."],
-  k:"2-ci zalın turnirdən əvvəl və sonra doluluğu."},
+  k:"2-ci zalın turnirdən əvvəl və sonra doluluğu.",nerd:1},
  {n:"Deluxe",c:["Blogger"],ask:"Blogger dəstəyi (daimi).",
   e:["Ayda 2 mikro və 1 orta blogger, kod söz qaydası ilə.","Format: dostlarla kabinetdə axşam, real qonaq kimi. Studiya görüntüsü yox."],
   k:"Kod sözlə gələn rezervlər."},
@@ -628,7 +808,7 @@ const cardHTML=v=>`<article class="card" data-c="${v.c.join('|')}">
  <div class="ask"><span class="k">Tələb</span>${v.ask}</div>
  <div class="edit"><span class="k">Bizim düzəlişimiz</span><ul>${v.e.map(x=>`<li>${x}</li>`).join('')}</ul></div>
  <div class="kpi"><b>Ölçü:</b> ${v.k}</div>
- ${v.go!=null?`<a class="go" href="#ssenari" data-go="${v.go}">Ssenariyə bax →</a>`:''}${v.crm?`<a class="go" href="#crm">Necə işlədiyinə bax →</a>`:''}
+ ${v.go!=null?`<a class="go" href="#ssenari" data-go="${v.go}">Ssenariyə bax →</a>`:''}${v.crm?`<a class="go" href="#crm">Necə işlədiyinə bax →</a>`:''}${v.nerd?`<a class="go" href="#nerd">Liqanın detallarına bax →</a>`:''}
 </article>`;
 document.getElementById('grid').innerHTML=V.map(cardHTML).join('');
 document.getElementById('grid2').innerHTML=G.map(cardHTML).join('');
@@ -855,6 +1035,81 @@ new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){playTl();o.disconnect
 $('tlGo').onclick=playTl;
 })();
 
+
+/* ===== Nərd liqası ===== */
+(()=>{
+const $=id=>document.getElementById(id);
+/* calendar: next month */
+const now=new Date(),y=now.getMonth()===11?now.getFullYear()+1:now.getFullYear(),mo=(now.getMonth()+1)%12;
+const MN=["yanvar","fevral","mart","aprel","may","iyun","iyul","avqust","sentyabr","oktyabr","noyabr","dekabr"];
+$('calM').textContent=MN[mo]+' '+y;
+const first=new Date(y,mo,1),days=new Date(y,mo+1,0).getDate(),off=(first.getDay()+6)%7;
+let lastSun=days;while(new Date(y,mo,lastSun).getDay()!==0)lastSun--;
+let html=["B.e","Ç.a","Ç","C.a","C","Ş","B"].map(d=>`<span class="wd">${d}</span>`).join('');
+for(let i=0;i<off;i++)html+='<span class="d e"></span>';
+let wk1=0,wk2=0;
+for(let d=1;d<=days;d++){const wd=new Date(y,mo,d).getDay();let c='',t='';
+ if(wd===3&&wk1<4){c='b1';t='Badam 1';wk1++}
+ else if(wd===4&&wk2<4){c='b2';t='Badam 2';wk2++}
+ if(d===lastSun){c='fn';t='Final'}
+ html+=`<span class="d ${c}" style="transition-delay:${(off+d)*18}ms">${d}${t?`<i>${t}</i>`:''}</span>`}
+$('calG').innerHTML=html;
+new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){$('cal').classList.add('in');o.disconnect()}},{threshold:.3}).observe($('cal'));
+
+/* board */
+let pts='';for(let i=0;i<12;i++){const x=(i<6?5:100)+(i%6)*14.17,col=i%2?'#7a1f22':'#2a2a70';
+ pts+=`<polygon points="${x},5 ${x+14.17},5 ${x+7.08},52" fill="${col}"/><polygon points="${x},115 ${x+14.17},115 ${x+7.08},68" fill="${i%2?'#2a2a70':'#7a1f22'}"/>`}
+$('pts').innerHTML=pts;
+const chk=(n,top,x,col)=>Array.from({length:n},(_,k)=>`<circle cx="${x}" cy="${top?11+k*11:109-k*11}" r="5.2" fill="${col}" stroke="rgba(0,0,0,.35)"/>`).join('');
+$('chk').innerHTML=chk(5,1,12.1,'#f4f1ea')+chk(3,0,54.6,'#f4f1ea')+chk(5,0,107.1,'#1d1d1d')+chk(2,1,178,'#1d1d1d')+chk(4,1,135.4,'#f4f1ea')+chk(3,0,163.8,'#1d1d1d');
+const PIPS={1:[4],2:[0,8],3:[0,4,8],4:[0,2,6,8],5:[0,2,4,6,8],6:[0,2,3,5,6,8]};
+const die=(el,n)=>{el.innerHTML=Array.from({length:9},(_,k)=>`<i style="${PIPS[n].includes(k)?'visibility:visible':''}"></i>`).join('');el.classList.remove('roll');void el.offsetWidth;el.classList.add('roll')};
+die($('d1'),6);die($('d2'),5);
+
+/* bracket */
+const PL=[["Elnur Q.","H1 · B1"],["Kamran M.","H3 · B2"],["Rauf H.","H2 · B1"],["Tural Ə.","H4 · B2"],["Samir İ.","H1 · B2"],["Orxan B.","H3 · B1"],["Fərid S.","H2 · B2"],["Vüsal K.","H4 · B1"]];
+const mHTML=(a,b)=>`<div class="m">${[a,b].map(p=>`<div class="p${p?'':' tbd'}"><span>${p?p[0]:'Gözlənilir'}</span>${p?`<small>${p[1]}</small>`:''}<b></b></div>`).join('')}</div>`;
+let R;
+function reset(){
+ R=[[...Array(4)].map((_,i)=>[PL[i*2],PL[i*2+1]]),[[null,null],[null,null]],[[null,null]]];
+ ['r0','r1','r2'].forEach((id,r)=>{const el=$(id);el.querySelectorAll('.m').forEach(m=>m.remove());el.insertAdjacentHTML('beforeend',R[r].map(m=>mHTML(m[0],m[1])).join(''))});
+ $('champ').classList.remove('on');$('champN').textContent='?';
+ $('sbA').querySelector('span').textContent='—';$('sbB').querySelector('span').textContent='—';$('sbA').querySelector('b').textContent='0';$('sbB').querySelector('b').textContent='0';
+}
+reset();
+let run=0;
+const wait=ms=>new Promise(r=>setTimeout(r,reduce?0:ms));
+async function play(){
+ const my=++run;reset();$('brkGo').disabled=true;
+ for(let r=0;r<3;r++){
+  const to=r===2?5:3;
+  for(let m=0;m<R[r].length;m++){
+   if(my!==run)return;
+   const box=$('r'+r).querySelectorAll('.m')[m],ps=box.querySelectorAll('.p'),[A,B]=R[r][m];
+   box.classList.add('play');$('sbT').textContent=(r===0?'Çeyrək final':r===1?'Yarımfinal':'Final')+' · '+to+' xala qədər';
+   $('sbA').querySelector('span').textContent=A[0];$('sbB').querySelector('span').textContent=B[0];
+   let s=[0,0];ps[0].querySelector('b').textContent=0;ps[1].querySelector('b').textContent=0;$('sbA').querySelector('b').textContent=0;$('sbB').querySelector('b').textContent=0;
+   while(s[0]<to&&s[1]<to){
+    await wait(r===2?520:300);if(my!==run)return;
+    const d1=1+Math.floor(Math.random()*6),d2=1+Math.floor(Math.random()*6);die($('d1'),d1);die($('d2'),d2);
+    const k=Math.random()<.5?0:1,pt=(r===2&&Math.random()<.18&&s[k]+2<=to)?2:1;s[k]+=pt;
+    ps[k].querySelector('b').textContent=s[k];[$('sbA'),$('sbB')][k].querySelector('b').textContent=s[k];
+    $('sbA').classList.toggle('lead',s[0]>s[1]);$('sbB').classList.toggle('lead',s[1]>s[0]);
+   }
+   const w=s[0]>=to?0:1;ps[w].classList.add('w');ps[1-w].classList.add('l');box.classList.remove('play');
+   const win=R[r][m][w];
+   if(r<2){const nm=Math.floor(m/2),slot=m%2;R[r+1][nm][slot]=win;
+    const nb=$('r'+(r+1)).querySelectorAll('.m')[nm].querySelectorAll('.p')[slot];
+    nb.classList.remove('tbd');nb.innerHTML=`<span>${win[0]}</span><small>${win[1]}</small><b></b>`}
+   else{$('champ').classList.add('on');$('champN').textContent=win[0]}
+   await wait(250);
+  }
+ }
+ $('brkGo').disabled=false;$('brkGo').textContent='Yenidən oynat';
+}
+$('brkGo').onclick=play;
+new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){play();o.disconnect()}},{threshold:.35}).observe($('brk'));
+})();
 </script>
 </body>
 </html>
