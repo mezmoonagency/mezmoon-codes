@@ -318,9 +318,57 @@ td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;font
 @media (max-width:860px){.ofr-sec{grid-template-columns:1fr;gap:22px}.bview{aspect-ratio:4/5}}
 @media (prefers-reduced-motion:reduce){.ofr,.bview .shade{transition:none}.bframe.play .gift .lid,.bframe.play .ofr .pct,.bframe.play .conf{animation:none}.conf{display:none}}
 footer{padding:70px 0 50px;font-size:13px;color:var(--mute)}
+
+/* ---- Açılış (intro) ---- */
+#intro{position:fixed;inset:0;z-index:9999;pointer-events:auto;color:#EEF0F5;font-family:var(--display)}
+#intro .ih{position:absolute;left:0;right:0;height:50.1%;background:#0E0F24;transition:transform .9s cubic-bezier(.77,0,.18,1)}
+#intro .ih.t{top:0}#intro .ih.b{bottom:0}
+#intro.out .ih.t{transform:translateY(-100%)}#intro.out .ih.b{transform:translateY(100%)}
+#intro .il{position:absolute;inset:0;transition:opacity .35s}
+#intro.out .il{opacity:0}
+#intro .scr{position:absolute;left:8vw;top:13vh;font-stretch:112%;font-weight:500;font-size:clamp(14px,1.5vw,20px);line-height:1.35;letter-spacing:.01em}
+#intro .scr div{white-space:pre;min-height:1.35em}
+#intro .scr .r{position:fixed;right:8vw;top:13vh;text-align:right}
+#intro .cnt{position:absolute;right:6vw;bottom:7vh;font-stretch:125%;font-weight:800;font-size:clamp(56px,11vw,170px);line-height:.8;font-variant-numeric:tabular-nums;color:#A9ADEA}
+#intro .cnt small{font-size:.28em;vertical-align:top;margin-left:.08em}
+#intro .lbl{position:absolute;left:8vw;bottom:7vh;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#8E92E0}
+#intro .fr{position:absolute;left:50%;top:50%;width:min(46vw,680px);aspect-ratio:16/9;transform:translate(-50%,-50%);opacity:0}
+#intro .fr canvas{width:100%;height:100%;display:block}
+#intro .fr .tint{position:absolute;inset:0;mix-blend-mode:multiply;transition:opacity .25s}
+#intro .fr .rf{position:absolute;left:0;top:100%;width:100%;height:100%;transform:scaleY(-1);opacity:.28;-webkit-mask:linear-gradient(to top,#000 0,transparent 45%);mask:linear-gradient(to top,#000 0,transparent 45%);filter:blur(1px)}
+#intro .fr .tag{position:absolute;left:0;top:-30px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#A9ADEA}
+#intro .lg{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);display:flex;align-items:flex-end;gap:clamp(14px,2vw,28px);opacity:0}
+#intro .lg svg{width:clamp(70px,9vw,128px);height:auto;overflow:visible}
+#intro .lg polygon{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);transition:transform .7s cubic-bezier(.2,1.3,.4,1)}
+#intro .lg.on polygon{transform:scaleY(1)}
+#intro .lg.on polygon:nth-child(2){transition-delay:.12s}#intro .lg.on polygon:nth-child(3){transition-delay:.24s}
+#intro .wm{font-stretch:125%;font-weight:800;font-size:clamp(48px,9vw,140px);line-height:.8;letter-spacing:.04em;white-space:pre;position:relative}
+#intro .wm i{font-style:normal}
+#intro .shine{position:absolute;inset:-10% -20%;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.55) 50%,transparent 60%);transform:translateX(-120%);mix-blend-mode:overlay;pointer-events:none}
+#intro .lg.sh .shine{transition:transform 1s ease;transform:translateX(120%)}
+#intro .lgr{position:absolute;left:0;right:0;top:100%;transform:scaleY(-1);opacity:.22;-webkit-mask:linear-gradient(to top,#000 0,transparent 60%);mask:linear-gradient(to top,#000 0,transparent 60%);pointer-events:none}
+#intro .sub{position:absolute;left:50%;top:calc(46% + clamp(70px,8vw,120px));transform:translateX(-50%);font-size:12px;font-weight:600;letter-spacing:.42em;text-transform:uppercase;color:#A9ADEA;opacity:0;transition:opacity .5s;white-space:nowrap}
+#intro .skip{position:absolute;right:24px;top:20px;background:none;border:1px solid rgba(169,173,234,.4);color:#EEF0F5;font:600 12px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;padding:9px 14px;border-radius:99px;cursor:pointer}
+#intro .skip:hover{background:rgba(169,173,234,.15)}
 </style>
 </head>
 <body>
+<div id="intro" aria-hidden="true">
+  <div class="ih t"></div><div class="ih b"></div>
+  <div class="il">
+    <div class="scr"><div id="sc1"></div><div id="sc2"></div><div id="sc3"></div><div class="r"><div id="sc4"></div><div id="sc5"></div></div></div>
+    <div class="fr" id="ifr"><div class="tag" id="itag"></div><canvas id="icv" width="640" height="360"></canvas><div class="tint" id="itint"></div><canvas class="rf" id="irf" width="640" height="360"></canvas></div>
+    <div class="lg" id="ilg">
+      <svg viewBox="0 0 60 60"><polygon points="8,26 20,38 20,56 8,44" fill="#A9ADEA"/><polygon points="24,16 36,28 36,56 24,44" fill="#8E92E0"/><polygon points="40,4 52,16 52,56 40,44" fill="#5C60AB"/></svg>
+      <div class="wm" id="iwm"></div><div class="shine"></div>
+      <div class="lgr" id="ilgr"></div>
+    </div>
+    <div class="sub" id="isub">Outdoor Advertising · Bakı</div>
+    <div class="lbl">Yüklənir</div>
+    <div class="cnt"><span id="icnt">000</span><small>%</small></div>
+    <button class="skip" id="iskip" type="button">Keç</button>
+  </div>
+</div>
 <nav class="nav" aria-label="Əsas menyu">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Mirror Outdoor Advertising">
@@ -1090,6 +1138,41 @@ if(document.fonts&&document.fonts.load)Promise.all(["900 100px Archivo","600 40p
 let vis=true;if("IntersectionObserver" in window)new IntersectionObserver(es=>{vis=es[0].isIntersecting;}).observe(stage);
 if(R)(function L(now){requestAnimationFrame(L);if(!vis)return;
   if(anim)anim(now);R.render(scene,cam);})(performance.now());
+})();
+</script>
+<script>
+/* ---- Açılış animasiyası: Locomotive üslubunda deşifrə + piksel kadrlar, sonda güzgü əksli Mirror loqosu ---- */
+(function(){
+  const I=document.getElementById("intro");if(!I)return;
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches||/[?&]intro=0/.test(location.search)){I.remove();return;}
+  document.documentElement.style.overflow="hidden";
+  const $=id=>document.getElementById(id),T0=performance.now(),G="ABCDEFGHJKLMNOPRSTUVXYZ#%&*<>/0123456789ƏÖÜÇŞĞ";
+  let done=false;const timers=[];const at=(ms,f)=>timers.push(setTimeout(f,ms));
+  function scramble(el,txt,dur){const t0=performance.now();(function f(){const p=Math.min(1,(performance.now()-t0)/dur);let o="";for(let i=0;i<txt.length;i++){const k=i/txt.length;o+=p>k?txt[i]:(txt[i]===" "?" ":(p+.25>k?G[Math.random()*G.length|0]:""));}el.textContent=o;if(p<1&&!done)requestAnimationFrame(f);})();}
+  // 1) deşifrə olunan sətirlər
+  at(100,()=>scramble($("sc1"),"Mirror Outdoor Advertising",700));
+  at(260,()=>scramble($("sc2"),"Bilbord · LED · Prizma · Meqabord",750));
+  at(420,()=>scramble($("sc3"),"Bakı, Azərbaycan",600));
+  at(300,()=>scramble($("sc4"),"24 konstruksiya",600));
+  at(480,()=>scramble($("sc5"),"Gündə 1.2M+ baxış",650));
+  // sayğac
+  const CD=3300;(function c(){const p=Math.min(1,(performance.now()-T0)/CD),e=1-Math.pow(1-p,3);$("icnt").textContent=String(Math.round(e*100)).padStart(3,"0");if(p<1&&!done)requestAnimationFrame(c);})();
+  // 2) piksel mozaikadan aydınlaşan kadrlar + güzgü əksi
+  const SH=[["bilbord","Bilbord","#5C60AB"],["led","LED ekran","#D9482B"],["prizma","Prizma","#E8962E"],["meqabord","Meqabord","#A9ADEA"],["laytboks","Laytboks","#1F8A62"],["roller","Roller","#5C60AB"]];
+  const imgs=SH.map(s=>{const im=new Image();im.src="brendler/fon/"+s[0]+".jpg";return im;});
+  const cv=$("icv"),cx=cv.getContext("2d"),rf=$("irf"),rx=rf.getContext("2d"),off=document.createElement("canvas"),ox=off.getContext("2d");
+  function draw(im,px){const W=cv.width,H=cv.height;if(!im.complete||!im.naturalWidth){cx.fillStyle="#1d1f45";cx.fillRect(0,0,W,H);}else{const r=Math.max(W/im.naturalWidth,H/im.naturalHeight),w=im.naturalWidth*r,h=im.naturalHeight*r;const sw=Math.max(2,Math.round(W/px)),sh=Math.max(2,Math.round(H/px));off.width=sw;off.height=sh;ox.drawImage(im,(W-w)/2/W*sw,(H-h)/2/H*sh,w/W*sw,h/H*sh);cx.imageSmoothingEnabled=px<=1.5;cx.drawImage(off,0,0,sw,sh,0,0,W,H);}rx.clearRect(0,0,W,H);rx.drawImage(cv,0,0);}
+  const F0=1000,FD=330;
+  SH.forEach((s,i)=>at(F0+i*FD,()=>{const fr=$("ifr");fr.style.opacity=1;$("itag").textContent=String(i+1).padStart(2,"0")+" / "+s[1];const tn=$("itint");tn.style.transition="none";tn.style.background=s[2];tn.style.opacity=.85;requestAnimationFrame(()=>{tn.style.transition="opacity .28s";tn.style.opacity=i===SH.length-1?0:.35;});const t0=performance.now();(function f(){const p=Math.min(1,(performance.now()-t0)/230);draw(imgs[i],Math.max(1,48*Math.pow(1-p,2.2)));if(p<1&&!done)requestAnimationFrame(f);})();}));
+  // 3) kadr yığılır, loqo pillələri qalxır, söz deşifrə olunur, əks görünür
+  const L=F0+SH.length*FD+120;
+  at(L,()=>{const fr=$("ifr");fr.style.transition="transform .45s cubic-bezier(.7,0,.3,1),opacity .35s";fr.style.transform="translate(-50%,-50%) scale(.2,.02)";fr.style.opacity=0;document.querySelector("#intro .scr").style.cssText+="transition:opacity .4s;opacity:0";});
+  at(L+300,()=>{const lg=$("ilg");lg.style.transition="opacity .2s";lg.style.opacity=1;lg.classList.add("on");scramble($("iwm"),"MIRROR",650);});
+  at(L+1000,()=>{$("ilgr").innerHTML=$("ilg").querySelector("svg").outerHTML.replace("<svg",'<svg style="width:clamp(70px,9vw,128px);height:auto"')+"";$("ilgr").style.cssText+="display:flex;gap:inherit;align-items:flex-start";const w=document.createElement("div");w.className="wm";w.textContent="MIRROR";$("ilgr").appendChild(w);$("ilgr").querySelectorAll("polygon").forEach(p=>p.style.transform="scaleY(1)");$("ilg").classList.add("sh");$("isub").style.opacity=1;});
+  // 4) güzgü kimi ortadan aralanıb sayta keçid
+  function finish(){if(done)return;done=true;timers.forEach(clearTimeout);I.classList.add("out");document.documentElement.style.overflow="";setTimeout(()=>I.remove(),1000);}
+  at(L+2300,finish);
+  $("iskip").addEventListener("click",finish);addEventListener("keydown",e=>{if(e.key==="Escape")finish();});
 })();
 </script>
 </body>
