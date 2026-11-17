@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mirror Konsept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--l:#A9ADEA;--m:#8E92E0;--d:#5C60AB;--deep:#2E3175;--night:#0E0F24;--ink:#1E2156;--paper:#D3D5F5;--card:#E1E3F9;--txt:#E1E3F9}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:auto}
+body{background:var(--night);color:var(--txt);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wm{font-family:Archivo,Inter,sans-serif;font-weight:800;font-stretch:125%;letter-spacing:.04em}
+.k{font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--l)}
+h2{font-weight:600;font-size:clamp(28px,4vw,54px);line-height:1.08;letter-spacing:-.025em}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* menyu */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;mix-blend-mode:difference;color:#fff}
+nav .b{display:flex;align-items:center;gap:10px;font-size:15px;text-decoration:none}
+nav .b svg{width:22px;height:22px}
+nav .cta{font-size:13px;font-weight:600;text-decoration:none;border:1px solid currentColor;border-radius:999px;padding:7px 16px}
+
+/* 1. hero: loqo və onun güzgü əksi */
+#hero{position:relative;height:100vh;height:100svh;display:grid;place-items:center;overflow:hidden}
+#hero .bg{position:absolute;inset:-6%;background:url(../arasdirma/baki-kuce-fotolari/10_Heyder-Aliyev-pr-genis.jpg) center/cover;filter:grayscale(1) brightness(.35) contrast(1.1);transform:scale(1.1)}
+#hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,15,36,.55),rgba(14,15,36,.2) 40%,var(--night) 92%)}
+.lock{position:relative;display:flex;flex-direction:column;align-items:center}
+.logo{display:flex;align-items:center;gap:clamp(14px,2vw,26px)}
+.logo svg{width:clamp(64px,9vw,128px);height:auto;overflow:visible}
+.logo svg polygon{transition:transform .25s ease-out}
+.logo b{font-size:clamp(46px,9.5vw,148px);line-height:1;color:#F1F2FD}
+.refl{transform:scaleY(-1);margin-top:6px;opacity:.55;filter:url(#ripple) blur(.6px);
+  -webkit-mask-image:linear-gradient(to top,rgba(0,0,0,.8),transparent 70%);mask-image:linear-gradient(to top,rgba(0,0,0,.8),transparent 70%)}
+.water{position:absolute;left:-30vw;right:-30vw;top:50%;height:1px;background:linear-gradient(90deg,transparent,var(--l),transparent);opacity:.5}
+#hero .tag{position:absolute;bottom:13vh;left:0;right:0;text-align:center;font-size:clamp(17px,1.6vw,22px);color:#C9CBF4}
+#hero .tag em{font-style:normal;color:#fff}
+#hero .down{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px}
+#hero .down i{width:1px;height:38px;background:linear-gradient(var(--l),transparent);animation:dn 1.8s ease-in-out infinite;transform-origin:top}
+@keyframes dn{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+/* 2. reklamsız / reklamlı güzgü xətti */
+#ayna{position:relative;height:100vh;overflow:hidden;background:var(--night)}
+#ayna .ph{position:absolute;inset:0;background:url(../arasdirma/baki-kuce-fotolari/04_Fevvareler-meydani.jpg) center/cover}
+#ayna .a{filter:grayscale(1) brightness(.55)}
+#ayna .b2{clip-path:inset(0 0 0 50%)}
+#ayna .ad{position:absolute;left:58%;top:16%;width:min(30vw,420px);aspect-ratio:2/1;background:var(--deep);border:6px solid #1a1b3a;box-shadow:0 30px 80px rgba(0,0,0,.5);display:flex;flex-direction:column;justify-content:center;padding:4% 6%;gap:6px}
+#ayna .ad strong{font-size:clamp(16px,2vw,30px);line-height:1.1;color:#fff}
+#ayna .ad span{font-size:clamp(10px,.9vw,13px);color:var(--l);letter-spacing:.2em}
+#ayna .ad::after{content:"";position:absolute;left:50%;top:100%;width:12px;height:40vh;background:#1a1b3a;transform:translateX(-50%)}
+#ayna .line{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;box-shadow:0 0 30px 4px rgba(169,173,234,.8)}
+#ayna .line::before{content:"";position:absolute;top:50%;left:50%;width:46px;height:46px;border-radius:50%;transform:translate(-50%,-50%);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Cpolygon points='8,26 20,38 20,56 8,44' fill='%23A9ADEA'/%3E%3Cpolygon points='24,16 36,28 36,56 24,44' fill='%238E92E0'/%3E%3Cpolygon points='40,4 52,16 52,56 40,44' fill='%235C60AB'/%3E%3C/svg%3E") center/26px no-repeat}
+#ayna .lab{position:absolute;bottom:36px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:7px 14px;border-radius:999px;background:rgba(14,15,36,.65);backdrop-filter:blur(8px)}
+#ayna .lab.l{left:28px}#ayna .lab.r{right:28px;color:var(--l)}
+#ayna .cap{position:absolute;top:110px;left:28px;max-width:440px}
+#ayna .cap h2{text-shadow:0 4px 30px rgba(0,0,0,.6)}
+
+/* 3. rəqəmlər */
+#reqem{padding:140px 0 120px;background:linear-gradient(var(--night),#15173A)}
+#reqem .row{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:60px}
+#reqem .n{font-size:clamp(54px,8vw,120px);font-weight:600;letter-spacing:-.04em;line-height:1;background:linear-gradient(180deg,#fff,var(--m));-webkit-background-clip:text;background-clip:text;color:transparent}
+#reqem .n + p{margin-top:10px;color:#AEB1E6}
+#reqem small{display:block;margin-top:40px;color:#7F82C4;font-size:12px}
+
+/* 4. maska ilə açılan küçələr */
+#kuce{padding:120px 0;background:#15173A}
+.g{display:grid;grid-template-columns:repeat(12,1fr);gap:22px;margin-top:60px}
+.it{position:relative}
+.it .fr{overflow:hidden;border-radius:18px;clip-path:inset(100% 0 0 0 round 18px)}
+.it img{width:100%;height:100%;object-fit:cover;transform:scale(1.35)}
+.it .meta{display:flex;justify-content:space-between;margin-top:12px;font-size:14px;color:#AEB1E6}
+.it .meta b{color:#fff;font-weight:600}
+.i1{grid-column:1/8}.i1 .fr{aspect-ratio:16/10}
+.i2{grid-column:9/13;margin-top:140px}.i2 .fr{aspect-ratio:3/4}
+.i3{grid-column:2/6;margin-top:-60px}.i3 .fr{aspect-ratio:4/5}
+.i4{grid-column:7/13;margin-top:60px}.i4 .fr{aspect-ratio:16/10}
+
+/* 5. insan axını */
+#axin{position:relative;height:100vh;overflow:hidden;background:var(--night)}
+#axin canvas{position:absolute;inset:0;width:100%;height:100%}
+#axin .cap{position:absolute;left:28px;bottom:60px;max-width:520px}
+#axin .cnt{position:absolute;right:28px;top:110px;text-align:right}
+#axin .cnt b{display:block;font-size:clamp(40px,5vw,72px);font-weight:600;letter-spacing:-.03em;color:#fff;line-height:1}
+
+/* 6. fırlanan billbord və güzgü döşəmə */
+#bb{position:relative;height:100vh;display:grid;place-items:center;overflow:hidden;background:radial-gradient(60% 50% at 50% 60%,#262968,var(--night))}
+.stage{perspective:1400px}
+.panel{width:min(62vw,720px);aspect-ratio:2/1;position:relative;transform-style:preserve-3d;-webkit-box-reflect:below 24px linear-gradient(transparent 55%,rgba(255,255,255,.28))}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:10px solid #121331;border-radius:6px;display:flex;flex-direction:column;justify-content:center;padding:6%;overflow:hidden}
+.face.f1{background:url(../arasdirma/baki-kuce-fotolari/10_Heyder-Aliyev-pr-genis.jpg) center/cover}
+.face.f1::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,15,36,.85),rgba(14,15,36,.15))}
+.face.f1 *{position:relative}
+.face.f1 strong{font-size:clamp(22px,3.6vw,52px);line-height:1.05;color:#fff;max-width:12ch}
+.face.f1 span{margin-top:10px;color:var(--l);font-size:clamp(11px,1vw,14px);letter-spacing:.2em}
+.face.f2{transform:rotateY(180deg);background:linear-gradient(135deg,var(--deep),var(--night));align-items:center}
+.face.f2 .logo svg{width:clamp(40px,6vw,80px)}.face.f2 .logo b{font-size:clamp(30px,5vw,72px)}
+.sheen{position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);transform:translateX(-120%);pointer-events:none}
+#bb .cap{position:absolute;top:110px;left:0;right:0;text-align:center}
+
+/* 7. konstruksiya növləri: üfüqi sürüşmə */
+#nov{position:relative;height:100vh;overflow:hidden;background:var(--paper);color:var(--ink)}
+#nov .head{position:absolute;top:100px;left:28px}
+#nov .head .k{color:var(--d)}
+#nov .track{position:absolute;top:50%;left:0;display:flex;gap:28px;padding:0 28px;transform:translateY(-38%)}
+.card{flex:none;width:min(40vw,440px);background:var(--card);border-radius:20px;overflow:hidden;box-shadow:0 20px 50px rgba(46,49,117,.18)}
+.card .im{aspect-ratio:4/3;overflow:hidden}.card .im img{width:100%;height:100%;object-fit:cover}
+.card .t{padding:18px 22px 22px}.card h3{font-size:20px;font-weight:600}.card p{font-size:14px;color:#474B8E}
+
+/* 8. son */
+#son{position:relative;height:100vh;display:grid;place-items:center;text-align:center;background:var(--night);overflow:hidden}
+#son h2{font-size:clamp(36px,6vw,92px)}
+#son .go{display:inline-block;margin-top:34px;background:var(--l);color:var(--night);font-weight:600;text-decoration:none;padding:15px 30px;border-radius:999px;box-shadow:0 10px 40px rgba(169,173,234,.35)}
+#son .logo{justify-content:center;margin-bottom:40px}
+#son .logo svg{width:60px}#son .logo b{font-size:44px}
+footer{padding:30px 28px 40px;background:var(--night);color:#6E71B4;font-size:11.5px;line-height:1.7;border-top:1px solid #23254f}
+
+@media (max-width:760px){
+  #reqem .row{grid-template-columns:1fr}
+  .g{display:block}.it{margin:0 0 40px!important}
+  #ayna .ad{left:54%;width:40vw}
+  .card{width:78vw}
+}
+@media (prefers-reduced-motion:reduce){.refl{filter:none}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="ripple"><feTurbulence id="turb" type="fractalNoise" baseFrequency="0.012 0.09" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="14"/></filter>
+  <symbol id="mk" viewBox="0 0 60 60"><polygon points="8,26 20,38 20,56 8,44" fill="#A9ADEA"/><polygon points="24,16 36,28 36,56 24,44" fill="#8E92E0"/><polygon points="40,4 52,16 52,56 40,44" fill="#5C60AB"/></symbol>
+</svg>
+
+<nav><a class="b" href="#hero"><svg><use href="#mk"/></svg><span class="wm">MIRROR</span></a><a class="cta" href="../index.html#paket">Paket yarat</a></nav>
+
+<!-- 1 -->
+<section id="hero">
+  <div class="bg"></div>
+  <div class="lock">
+    <div class="logo" id="mainLogo"><svg viewBox="0 0 60 60"><polygon points="8,26 20,38 20,56 8,44" fill="#A9ADEA"/><polygon points="24,16 36,28 36,56 24,44" fill="#8E92E0"/><polygon points="40,4 52,16 52,56 40,44" fill="#5C60AB"/></svg><b class="wm">MIRROR</b></div>
+    <div class="water"></div>
+    <div class="logo refl" aria-hidden="true"><svg viewBox="0 0 60 60"><use href="#mk"/></svg><b class="wm">MIRROR</b></div>
+  </div>
+  <p class="tag">Şəhər hər gün <em>sizin brendinizi</em> əks etdirir.</p>
+  <div class="down"><span class="k">Aşağı sürüşdürün</span><i></i></div>
+</section>
+
+<!-- 2 -->
+<section id="ayna">
+  <div class="ph a"></div>
+  <div class="ph b2"><div class="ad"><strong>Sizin brend burada</strong><span>MIRROR · BAKI</span></div></div>
+  <div class="line"></div>
+  <div class="cap"><p class="k">Güzgü xətti</p><h2>Eyni meydan.<br>Fərq sizin reklamınızdır.</h2></div>
+  <span class="lab l">Reklamsız</span><span class="lab r">Mirror ilə</span>
+</section>
+
+<!-- 3 -->
+<section id="reqem"><div class="wrap">
+  <p class="k">Şəbəkə</p><h2>Bakının ən çox baxılan nöqtələrində.</h2>
+  <div class="row">
+    <div><div class="n" data-to="24">0</div><p>konstruksiya</p></div>
+    <div><div class="n" data-to="9">0</div><p>rayon</p></div>
+    <div><div class="n" data-to="1.2" data-dec="1" data-suf="M+">0</div><p>gündəlik baxış</p></div>
+  </div>
+  <small>Rəqəmlər nümunədir, real göstəriciləri Mirror təqdim edəcək.</small>
+</div></section>
+
+<!-- 4 -->
+<section id="kuce"><div class="wrap">
+  <p class="k">Küçələr</p><h2>Hər küçənin öz auditoriyası var.</h2>
+  <div class="g">
+    <div class="it i1"><div class="fr"><img src="../arasdirma/baki-kuce-fotolari/11_Heyder-Aliyev-Merkezi-qarsisi.jpg" alt="Heydər Əliyev Mərkəzi qarşısı"></div><div class="meta"><b>Heydər Əliyev pr.</b><span>gündə ~53 000 nəfər</span></div></div>
+    <div class="it i2"><div class="fr"><img src="../arasdirma/baki-kuce-fotolari/05_Heyder-Aliyev-pr-2022.jpg" alt="Heydər Əliyev prospekti"></div><div class="meta"><b>Nərimanov</b><span>gündə ~48 000</span></div></div>
+    <div class="it i3"><div class="fr"><img src="../arasdirma/baki-kuce-fotolari/09_Nizami-kucesi.jpg" alt="Nizami küçəsi"></div><div class="meta"><b>Nizami küçəsi</b><span>gündə ~41 000</span></div></div>
+    <div class="it i4"><div class="fr"><img src="../arasdirma/baki-kuce-fotolari/07_Tbilisi-pr-kopru.jpg" alt="Tbilisi prospekti"></div><div class="meta"><b>Tbilisi pr.</b><span>gündə ~37 000</span></div></div>
+  </div>
+</div></section>
+
+<!-- 5 -->
+<section id="axin">
+  <canvas id="flow"></canvas>
+  <div class="cnt"><span class="k">Bu an keçir</span><b id="live">0</b></div>
+  <div class="cap"><p class="k">İnsan axını</p><h2>Hər xətt bir insandır.<br>Hər parlayan nöqtə bir Mirror panelidir.</h2></div>
+</section>
+
+<!-- 6 -->
+<section id="bb">
+  <div class="cap"><p class="k">Panel</p><h2>Bir tərəfdə siz, o biri tərəfdə Mirror.</h2></div>
+  <div class="stage"><div class="panel" id="panel">
+    <div class="face f1"><strong>Yeni kolleksiya artıq Bakıda</strong><span>SİZİN BREND · 18:00–21:00</span></div>
+    <div class="face f2"><div class="logo"><svg viewBox="0 0 60 60"><use href="#mk"/></svg><b class="wm">MIRROR</b></div></div>
+    <div class="sheen"></div>
+  </div></div>
+</section>
+
+<!-- 7 -->
+<section id="nov">
+  <div class="head"><p class="k">Konstruksiyalar</p><h2>Hər ölçüdə bir güzgü.</h2></div>
+  <div class="track" id="track">
+    <div class="card"><div class="im"><img src="../arasdirma/baki-kuce-fotolari/12_Neftciler-pr-Idman-sarayi.jpg" alt=""></div><div class="t"><h3>LED ekran</h3><p>Saatla satılır, axşam pik saatı ən güclüsüdür.</p></div></div>
+    <div class="card"><div class="im"><img src="../arasdirma/baki-kuce-fotolari/06_Neftciler-pr-Aziz-Aliyev-kesisme.jpg" alt=""></div><div class="t"><h3>Meqabord</h3><p>Böyük yolların üstündə, uzaqdan görünən.</p></div></div>
+    <div class="card"><div class="im"><img src="../arasdirma/baki-kuce-fotolari/03_28-May-kucesi-genis.jpg" alt=""></div><div class="t"><h3>Bilbord</h3><p>3×6 m, şəhərin klassik reklam formatı.</p></div></div>
+    <div class="card"><div class="im"><img src="../arasdirma/baki-kuce-fotolari/02_28-May-kucesi-binalar.jpg" alt=""></div><div class="t"><h3>Prizma</h3><p>Üç reklam bir konstruksiyada, növbə ilə dönür.</p></div></div>
+    <div class="card"><div class="im"><img src="../arasdirma/baki-kuce-fotolari/01_28-May-kucesi-agacli.jpg" alt=""></div><div class="t"><h3>Laytboks</h3><p>Piyada səviyyəsində, gecə işıqlı.</p></div></div>
+    <div class="card"><div class="im"><img src="../arasdirma/baki-kuce-fotolari/08_Neftciler-pr-Qiz-qalasindan.jpg" alt=""></div><div class="t"><h3>Roller</h3><p>Fırlanan posterlər, bir yerdə bir neçə brend.</p></div></div>
+  </div>
+</section>
+
+<!-- 8 -->
+<section id="son">
+  <div>
+    <div class="logo"><svg viewBox="0 0 60 60"><use href="#mk"/></svg><b class="wm">MIRROR</b></div>
+    <h2>Özünüzü şəhərdə görün.</h2>
+    <a class="go" href="../index.html#paket">Öz paketinizi yaradın</a>
+  </div>
+</section>
+
+<footer>Konsept nümunədir, rəqəmlər real deyil. Fotolar Wikimedia Commons: Tərxan Paşazadə (CC BY-SA 4.0), Sefer azeri (CC BY-SA 4.0), Bernard Gagnon (CC BY 4.0), Aykhan Zayedzadeh (CC BY 4.0, CC BY-SA 4.0), Gulustan (CC BY-SA 3.0), Самый древний və Shikhlinski (public domain).</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+gsap.registerPlugin(ScrollTrigger);
+
+/* 1. hero: dalğalı əks, siçana görə xətlər, sürüşdürəndə loqo və əks aralanır */
+const turb=document.getElementById("turb");let ph=0;
+(function wave(){ph+=.006;turb.setAttribute("baseFrequency",(0.012+Math.sin(ph)*.003)+" "+(0.09+Math.cos(ph*1.3)*.02));if(!RM)requestAnimationFrame(wave);})();
+const slats=[...document.querySelectorAll("#mainLogo polygon")];
+addEventListener("pointermove",e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;slats.forEach((p,i)=>p.style.transform="translate("+(x*(i+1)*6)+"px,"+(y*(i+1)*4)+"px)");});
+gsap.from(".lock .logo",{opacity:0,y:30,duration:1.4,ease:"power3.out",stagger:.15});
+gsap.from(".water",{scaleX:0,duration:1.6,ease:"power3.inOut"});
+gsap.timeline({scrollTrigger:{trigger:"#hero",start:"top top",end:"bottom top",scrub:true}})
+  .to("#mainLogo",{y:-120,scale:.8},0).to(".refl",{y:120,scale:.8,opacity:0},0).to("#hero .bg",{scale:1.25,y:80},0).to("#hero .tag",{opacity:0,y:-40},0);
+
+/* 2. güzgü xətti: sürüşdürdükcə sağdan sola keçir və reklam bütün kadrı tutur */
+const st2={p:0};
+gsap.timeline({scrollTrigger:{trigger:"#ayna",start:"top top",end:"+=140%",scrub:.6,pin:true}})
+  .fromTo(st2,{p:88},{p:6,ease:"none",onUpdate(){const v=st2.p;document.querySelector("#ayna .b2").style.clipPath="inset(0 0 0 "+v+"%)";document.querySelector("#ayna .line").style.left=v+"%";}},0)
+  .from("#ayna .ad",{scale:.85,opacity:.6,ease:"none"},0);
+
+/* 3. rəqəmlər sayır */
+document.querySelectorAll("#reqem .n").forEach(n=>{const to=+n.dataset.to,dec=+(n.dataset.dec||0),suf=n.dataset.suf||"",o={v:0};
+  gsap.to(o,{v:to,duration:2,ease:"power2.out",scrollTrigger:{trigger:n,start:"top 85%"},onUpdate(){n.textContent=o.v.toFixed(dec)+suf;}});});
+gsap.from("#reqem .row > div",{y:60,opacity:0,stagger:.12,duration:1,ease:"power3.out",scrollTrigger:{trigger:"#reqem .row",start:"top 85%"}});
+
+/* 4. küçə şəkilləri maska ilə açılır */
+document.querySelectorAll(".it").forEach(it=>{
+  const fr=it.querySelector(".fr"),im=it.querySelector("img");
+  gsap.timeline({scrollTrigger:{trigger:it,start:"top 85%"}})
+    .to(fr,{clipPath:"inset(0% 0 0 0 round 18px)",duration:1.3,ease:"expo.inOut"})
+    .to(im,{scale:1,duration:1.8,ease:"expo.out"},.1)
+    .from(it.querySelector(".meta"),{opacity:0,y:14,duration:.6},.8);
+  gsap.to(im,{yPercent:-6,ease:"none",scrollTrigger:{trigger:it,scrub:true}});
+});
+
+/* 5. insan axını: hissəciklər küçə əyriləri boyunca axır */
+const cv=document.getElementById("flow"),cx=cv.getContext("2d");let W,H,DPR,streets,parts=[],panels;
+function size(){DPR=Math.min(devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*DPR;cv.height=H*DPR;cx.setTransform(DPR,0,0,DPR,0,0);
+  const r=(a,b)=>a+Math.random()*(b-a);streets=[];
+  for(let i=0;i<9;i++){const y0=r(.1,.9)*H,y1=r(.1,.9)*H;streets.push([[-50,y0],[W*.33,r(.1,.9)*H],[W*.66,r(.1,.9)*H],[W+50,y1]]);}
+  for(let i=0;i<4;i++){const x0=r(.15,.85)*W;streets.push([[x0,-50],[r(.1,.9)*W,H*.4],[r(.1,.9)*W,H*.7],[r(.1,.9)*W,H+50]]);}
+  panels=streets.slice(0,9).map(s=>({t:r(.2,.8),s}));
+  parts=[];for(let i=0;i<(W<700?260:620);i++)parts.push({s:streets[i%streets.length],t:Math.random(),v:r(.0006,.0022),c:["#A9ADEA","#8E92E0","#5C60AB"][i%3],o:r(-6,6)});}
+function bz(s,t){const u=1-t;return[u*u*u*s[0][0]+3*u*u*t*s[1][0]+3*u*t*t*s[2][0]+t*t*t*s[3][0],u*u*u*s[0][1]+3*u*u*t*s[1][1]+3*u*t*t*s[2][1]+t*t*t*s[3][1]];}
+let flowOn=false,tm=0;
+function frame(){if(!flowOn)return;tm++;
+  cx.fillStyle="rgba(14,15,36,.16)";cx.fillRect(0,0,W,H);
+  parts.forEach(p=>{const a=bz(p.s,p.t);p.t+=p.v;if(p.t>1)p.t-=1;const b=bz(p.s,p.t);cx.strokeStyle=p.c;cx.lineWidth=1.3;cx.beginPath();cx.moveTo(a[0]+p.o,a[1]+p.o);cx.lineTo(b[0]+p.o,b[1]+p.o);cx.stroke();});
+  panels.forEach((pn,i)=>{const q=bz(pn.s,pn.t),pulse=.5+.5*Math.sin(tm*.05+i);cx.fillStyle="rgba(241,242,253,"+(.25+pulse*.5)+")";cx.beginPath();cx.arc(q[0],q[1],4+pulse*7,0,7);cx.fill();cx.fillStyle="#fff";cx.beginPath();cx.arc(q[0],q[1],3,0,7);cx.fill();});
+  requestAnimationFrame(frame);}
+size();addEventListener("resize",size);
+cx.fillStyle="#0E0F24";cx.fillRect(0,0,W,H);
+ScrollTrigger.create({trigger:"#axin",start:"top bottom",end:"bottom top",onToggle(s){flowOn=s.isActive&&!RM;if(flowOn)frame();}});
+const live=document.getElementById("live"),lo={v:0};
+gsap.to(lo,{v:2430,duration:2.4,ease:"power2.out",scrollTrigger:{trigger:"#axin",start:"top 60%"},onUpdate(){live.textContent=Math.round(lo.v).toLocaleString("az-AZ").replace(/,/g," ")+" nəfər";}});
+gsap.from("#axin .cap",{x:-80,opacity:0,duration:1.2,ease:"power3.out",scrollTrigger:{trigger:"#axin",start:"top 50%"}});
+
+/* 6. billbord sürüşdürdükcə fırlanır, parıltı üzərindən keçir */
+gsap.timeline({scrollTrigger:{trigger:"#bb",start:"top top",end:"+=160%",scrub:.8,pin:true}})
+  .fromTo("#panel",{rotateY:-28,rotateX:8},{rotateY:180,rotateX:0,ease:"power1.inOut"},0)
+  .fromTo(".sheen",{xPercent:-120},{xPercent:120,ease:"none"},0)
+  .from("#bb .cap",{opacity:0,y:30,duration:.15},0);
+
+/* 7. konstruksiya kartları üfüqi sürüşür */
+const track=document.getElementById("track");
+gsap.to(track,{x:()=>-(track.scrollWidth-innerWidth),ease:"none",scrollTrigger:{trigger:"#nov",start:"top top",end:()=>"+="+(track.scrollWidth-innerWidth),scrub:.6,pin:true,invalidateOnRefresh:true}});
+
+/* 8. son */
+gsap.from("#son > div > *",{y:50,opacity:0,stagger:.15,duration:1.1,ease:"power3.out",scrollTrigger:{trigger:"#son",start:"top 60%"}});
+})();
+</script>
+</body>
+</html>

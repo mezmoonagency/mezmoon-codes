@@ -1,0 +1,66 @@
+<!doctype html><html lang="az"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Güzgü motion nümunələri</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--card:#1B1D45;--line:#33367a;--l:#A9ADEA;--m:#8E92E0;--d:#5C60AB;--bg:#0E0F24;--txt:#D9DBF6}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.65 Inter,system-ui,sans-serif}
+.wrap{max-width:1000px;margin:0 auto;padding:56px 20px 90px}
+h1{font-weight:600;font-size:clamp(26px,3.2vw,40px);letter-spacing:-.02em;margin:0 0 10px;color:#fff}
+.lead{color:#AEB1E6;max-width:66ch}
+.c{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 26px;margin-top:22px}
+.c h2{margin:0;font-size:20px;font-weight:600;color:#fff}
+.c .w{font-size:12.5px;color:var(--l);font-weight:600;margin:2px 0 14px}
+.c h4{margin:14px 0 4px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--m)}
+.c p{margin:0}
+.c a{color:var(--l);font-weight:600;text-decoration:none}
+.rate{float:right;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:#2E3175;color:#fff}
+.box{background:linear-gradient(135deg,#2E3175,#1B1D45);border-radius:20px;padding:28px 30px;margin-top:40px}
+.box h2{margin-top:0;color:#fff;font-weight:600}.box li{margin:8px 0}
+</style></head><body><div class="wrap">
+<h1>Güzgü konseptli motion nümunələri: dərin analiz</h1>
+<p class="lead">Burada yalnız güzgü, əks və simmetriya üzərində qurulan saytlar və demolar var. Hər birini Chrome-da açıb hərəkətinə baxmışam. Hər nümunədə üç şey yazılıb: nə baş verir, necə qurulub və Mirror-da necə işlədilə bilər.</p>
+
+<div class="c"><span class="rate">Ən güclü açılış</span><h2>1. UNOXUNO — About səhifəsi</h2><div class="w">Kolumbiya, prodakşn agentliyi · Awwwards-da "About Mirror" adı ilə seçilib</div>
+<h4>Nə baş verir</h4><p>Səhifə tünd ekranla açılır, ortada yalnız bir şaquli qara zolaq var. Zolaq aralanır və ekran iki yarıya bölünür. Hər yarıda eyni foto güzgü kimi simmetrik görünür. Üstündən konturlu iri yazı keçir, mətn isə aşağıda açılır.</p>
+<h4>Necə qurulub</h4><p>Eyni şəkil iki dəfə qoyulub, biri scaleX(-1) ilə çevrilib. Mərkəzdən açılan maska (clip-path) güzgünün açılması effektini verir.</p>
+<h4>Mirror üçün</h4><p>Açılışımızdakı "M" bölünəndə ekran da ortadan iki yarıya açıla bilər. Bir yarıda boş küçə, o biri yarıda reklamlı küçə görünər. Güzgü xətti loqonun ortasından keçir.</p>
+<p style="margin-top:10px"><a href="https://unoxunoagencia.com/about" target="_blank">Saytı aç →</a></p></div>
+
+<div class="c"><span class="rate">Başlıq üçün ideal</span><h2>2. Codrops Mirror Effect — Demo 1 (Simba)</h2><div class="w">Codrops dərsi, 2017</div>
+<h4>Nə baş verir</h4><p>Qartal başının şəkli iki yarıya bölünüb və bir-birinə baxan güzgü kimi qoyulub. Ortada iri serif başlıq var. Slayd dəyişəndə iki yarı əks istiqamətə sürüşüb yeni şəkillə birləşir.</p>
+<h4>Necə qurulub</h4><p>Şəkil bir neçə dar zolağa bölünür. Hər zolaq güzgü cütü ilə birlikdə hərəkət edir, keçid GSAP ilə idarə olunur.</p>
+<h4>Mirror üçün</h4><p>Konstruksiya kartlarının keçidində işlənə bilər: billbord şəkli ortadan güzgü kimi açılır və növbəti konstruksiya gəlir.</p>
+<p style="margin-top:10px"><a href="https://tympanus.net/Development/MirrorEffect/" target="_blank">Demonu aç →</a></p></div>
+
+<div class="c"><span class="rate">Reklamsız və reklamlı müqayisəsi</span><h2>3. Codrops Mirror Effect — Demo 3 (Artichoke)</h2><div class="w">Codrops dərsi, 2017</div>
+<h4>Nə baş verir</h4><p>Ekran ortadan iki yarıya bölünüb. Solda mavi fonda xətt rəsmi, sağda eyni rəsm akvarel fonda görünür. Yazı hər iki yarıdan keçir və ortada rəngi dəyişir.</p>
+<h4>Necə qurulub</h4><p>İki üst-üstə qat və mərkəzi kəsik var. Yazı iki rəngdə iki dəfə yazılıb və hər biri öz yarısına kəsilib.</p>
+<h4>Mirror üçün</h4><p>Konsept səhifədəki "güzgü xətti" fikrinin daha təmiz forması: bir yarı "reklamsız", o biri "Mirror ilə". MIRROR sözü də ortada iki rəngə bölünür.</p>
+<p style="margin-top:10px"><a href="https://tympanus.net/Development/MirrorEffect/index3.html" target="_blank">Demonu aç →</a></p></div>
+
+<div class="c"><span class="rate">Bütün səhifəyə əks</span><h2>4. Codrops Reflection Scroll — Demo 1 (MOSHO) və Demo 2 (ASHA)</h2><div class="w">Codrops dərsi, 2024</div>
+<h4>Nə baş verir</h4><p>Səhifənin yuxarısında tavan var və bütün səhifə orada güzgü kimi əks olunur. Aşağı sürüşdürəndə əks də eyni anda sürüşür, iri brend adı tavanda tərsinə görünür. Effekt otaqda parlaq səth hissi verir.</p>
+<h4>Necə qurulub</h4><p>Səhifənin surəti yuxarı qoyulub, scaleY(-1) və perspektivlə çevrilib. Əks hissənin sürüşməsi əsas səhifənin sürüşməsinə bağlanıb.</p>
+<h4>Mirror üçün</h4><p>Ən çox brendə uyğun ideya budur: Mirror saytının yuxarı və ya aşağı kənarında bütün səhifə zəif əks olunur. Sürüşdürdükcə əks də hərəkət edir, sayt özü güzgüyə çevrilir.</p>
+<p style="margin-top:10px"><a href="https://tympanus.net/Development/ReflectionScroll/" target="_blank">Demo 1 →</a> &nbsp; <a href="https://tympanus.net/Development/ReflectionScroll/index2.html" target="_blank">Demo 2 →</a></p></div>
+
+<div class="c"><span class="rate">Simmetriya ritmi</span><h2>5. Codrops Mirror Effect — Demo 2 (Clouds)</h2><div class="w">Codrops dərsi, 2017</div>
+<h4>Nə baş verir</h4><p>Səs dalğası kimi nöqtəli sütunlar mərkəzdən hər iki tərəfə simmetrik düzülüb. Ortada iri qalın yazı var. Keçiddə sütunlar güzgü kimi açılıb bağlanır.</p>
+<h4>Mirror üçün</h4><p>Saatlıq insan axını qrafiki mərkəzdən güzgü kimi açıla bilər: yuxarıda baxış sayı, aşağıda onun əksi.</p>
+<p style="margin-top:10px"><a href="https://tympanus.net/Development/MirrorEffect/index2.html" target="_blank">Demonu aç →</a></p></div>
+
+<div class="c"><span class="rate">Şüşə və əks</span><h2>6. Fluid Glass</h2><div class="w">Böyük Britaniya, şüşə memarlığı · Awwwards-da intro animasiyası ilə seçilib</div>
+<h4>Nə baş verir</h4><p>Açılışda tam ekran memarlıq fotosu var, böyük şüşə pəncərələrdə ətraf əks olunur. Başlıq ("Exceptional glazing...") hərf sətirləri ilə aşağıdan açılır. Ton sakit və premiumdur.</p>
+<h4>Mirror üçün</h4><p>Hərəkət azdır, lakin tipoqrafiyanın sətir-sətir açılması və sakit premium ton Mirror-un başlıqları üçün nümunədir.</p>
+<p style="margin-top:10px"><a href="https://fluid.glass/" target="_blank">Saytı aç →</a></p></div>
+
+<div class="c"><span class="rate">Yoxlanmayıb</span><h2>7. Hubtown</h2><div class="w">Hindistan, daşınmaz əmlak · Awwwards Site of the Day</div>
+<p>Mənbələrə görə qaranlıq, parlaq səthli mənzərə üzərində işıqlı 3D monolit var. Mənim yoxlamamda yükləmə ekranı 20 saniyədən çox çəkdi və səhnəni görə bilmədim. Safari-də özünüz bir az gözləyib baxın.</p>
+<p style="margin-top:10px"><a href="https://hubtown.co.in/" target="_blank">Saytı aç →</a></p></div>
+
+<div class="box"><h2>Mirror üçün tövsiyə: 3 güzgü hərəkəti</h2><ol>
+<li><b>Açılış:</b> "M" bölünəndə ekran da UNOXUNO kimi ortadan açılsın. Əvvəldən əlavə etdiyimiz su əksi də qalsın.</li>
+<li><b>Bütün sayt:</b> Reflection Scroll kimi səhifənin aşağı kənarında zəif güzgü döşəməsi olsun, sürüşdürdükcə məzmun orada əks olunsun.</li>
+<li><b>Müqayisə:</b> Artichoke demosu kimi bir səhnə: ekranın yarısı reklamsız, yarısı "Mirror ilə". MIRROR sözü ortada iki rəngə bölünür.</li>
+</ol></div>
+</div></body></html>
