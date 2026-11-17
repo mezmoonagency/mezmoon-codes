@@ -503,6 +503,15 @@ header.hero.rv{overflow-x:clip}
 .rvb.R{clip-path:inset(-10% 0 -10% 100%);transform:translateX(70px)}
 .rvb.in{clip-path:inset(-10% 0 -10% 0);transform:none}
 .rvb.done{clip-path:none;transition:none}
+/* ==== Fonda sürüşdürdükcə hərəkət edən Mirror loqoları ==== */
+#bglogos{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+#bglogos svg{position:absolute;left:0;top:0;will-change:transform}
+header.hero,section,footer{position:relative;z-index:1}
+section:nth-of-type(odd){background:color-mix(in srgb,var(--soft) 55%,transparent)}
+section:nth-of-type(even){background:transparent}
+section#intro{background:#0E0F24;z-index:2}
+footer{background:color-mix(in srgb,var(--soft) 55%,transparent)}
+.hero{background:radial-gradient(900px 420px at 88% -10%,color-mix(in srgb,#8E92E0 45%,transparent) 0,transparent 65%),radial-gradient(800px 380px at 5% 0,color-mix(in srgb,#A9ADEA 60%,transparent) 0,transparent 60%)}
 </style>
 </head>
 <body>
@@ -1530,6 +1539,23 @@ if(R)(function L(now){requestAnimationFrame(L);if(!vis)return;
         if(p){p.classList.add("rvb","R");p.style.transitionDelay=".12s";io.observe(p);}
         return;}
       ch.classList.add("rvb",side++%2?"L":"R");io.observe(ch);});});})();
+</script>
+<div id="bglogos" aria-hidden="true"></div>
+<script>
+/* fonda Mirror loqosunun 3 xətti: hər biri öz sürəti ilə sürüşür və yavaş fırlanır */
+(function(){const box=document.getElementById("bglogos");if(!box)return;
+  const P='<polygon points="8,26 20,38 20,56 8,44" fill="#A9ADEA"/><polygon points="24,16 36,28 36,56 24,44" fill="#8E92E0"/><polygon points="40,4 52,16 52,56 40,44" fill="#5C60AB"/>';
+  // x (ekran eninin hissəsi), y (başlanğıc, ekran hündürlüyünün hissəsi), ölçü px, sürət, fırlanma, şəffaflıq
+  const L=[[.06,.15,260,.35,.02,.16],[.80,.05,380,.22,-.012,.12],[.62,.62,170,.55,.03,.18],[.18,.85,320,.28,-.018,.13],[.90,.95,210,.45,.025,.16],[.40,1.35,150,.6,-.03,.15],[.70,1.7,280,.32,.015,.12]];
+  const els=L.map(c=>{const d=document.createElementNS("http://www.w3.org/2000/svg","svg");d.setAttribute("viewBox","0 0 60 60");d.innerHTML=P;d.style.width=d.style.height=c[2]+"px";d.style.opacity=c[5];box.appendChild(d);return d;});
+  const still=matchMedia("(prefers-reduced-motion: reduce)").matches;let tick=false;
+  function draw(){tick=false;const W=innerWidth,H=innerHeight,y=still?0:scrollY;
+    els.forEach((d,i)=>{const c=L[i],sz=c[2]*(W<700?.6:1),span=H+sz*2;
+      let ty=(c[1]*H-y*c[3])%span;if(ty<0)ty+=span;ty-=sz;
+      d.style.width=d.style.height=sz+"px";
+      d.style.transform="translate("+(c[0]*W-sz/2)+"px,"+ty+"px) rotate("+(y*c[4])+"deg)";});}
+  const req=()=>{if(!tick){tick=true;requestAnimationFrame(draw);}};
+  addEventListener("scroll",req,{passive:true});addEventListener("resize",req);draw();})();
 </script>
 </body>
 </html>
