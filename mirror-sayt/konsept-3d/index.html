@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Mirror · 3D küçə konsepti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#D3D5F5;--ink:#1E2156;--mute:#474B8E;--brand:#5C60AB;--lav:#A9ADEA;--mid:#8E92E0;--deep:#2E3175;--night:#0E0F2A}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--night);color:var(--ink);font:400 16px/1.6 Inter,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+#gl{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:0;touch-action:pan-y}
+.top{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(16px,4vw,48px);pointer-events:none}
+.top .brand{display:flex;align-items:center;gap:10px;font:800 16px Inter;letter-spacing:.32em;color:var(--ink);transition:color .4s}
+.top .brand svg{width:30px;height:30px}
+.top .stage{font:600 11px Inter;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);transition:color .4s}
+body.dark .top .brand{color:#EEF0F5}body.dark .top .stage{color:var(--lav)}
+.scroll{position:relative;z-index:2;pointer-events:none}
+.hero{height:100vh;height:100svh;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(84px,12vh,120px) clamp(16px,4vw,48px) clamp(24px,5vh,48px)}
+.hero h1{margin:0;font:800 clamp(38px,7.2vw,104px)/.95 Inter;letter-spacing:-.045em;max-width:11ch;color:var(--ink)}
+.hero h1 em{font-style:normal;color:var(--brand)}
+.hero .eb{font:600 12px Inter;letter-spacing:.2em;text-transform:uppercase;color:var(--brand);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.hero .eb::before{content:"";width:28px;height:2px;background:var(--brand)}
+.hero .bot{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.hero .bot p{margin:0;max-width:36ch;color:var(--mute);font-size:clamp(15px,1.3vw,18px)}
+.hint{display:flex;align-items:center;gap:12px;font:600 12px Inter;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.hint i{width:26px;height:42px;border:2px solid currentColor;border-radius:14px;position:relative}
+.hint i::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:currentColor;animation:wheel 1.6s ease-in-out infinite}
+@keyframes wheel{50%{transform:translateY(10px);opacity:.3}}
+.rest{height:200vh}
+.hud{position:fixed;left:clamp(16px,4vw,48px);bottom:clamp(20px,4vh,40px);z-index:5;font:600 11px Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--lav);opacity:0;transition:opacity .4s}
+body.dark .hud{opacity:1}
+.fade{transition:opacity .2s linear}
+@media (max-width:640px){
+ .hero h1{font-size:clamp(34px,11vw,52px)}
+ .hero .bot p{font-size:14.5px}
+}
+@media (prefers-reduced-motion:reduce){.hint i::after{animation:none}}
+</style>
+</head>
+<body>
+<canvas id="gl" aria-label="Fırlanan 3D reklam paneli"></canvas>
+
+<header class="top">
+ <div class="brand"><svg viewBox="0 0 60 60" aria-hidden="true"><path d="M8 26 20 38v18L8 44z" fill="#A9ADEA"/><path d="M24 16 36 28v28L24 44z" fill="#8E92E0"/><path d="M40 4 52 16v40L40 44z" fill="#5C60AB"/></svg>MIRROR</div>
+ <span class="stage" id="stage">01 · Panel</span>
+</header>
+
+<main class="scroll">
+ <section class="hero" id="hero">
+  <div class="fade" id="heroTop">
+   <div class="eb">Outdoor reklam · Bakı</div>
+   <h1>Reklamınız şəhərin <em>ən sıx</em> küçəsində</h1>
+  </div>
+  <div class="bot fade" id="heroBot">
+   <p>Bilbord və LED ekranlar Bakının hər gün minlərlə maşının keçdiyi küçələrində. Aşağı sürüşdürün, birlikdə küçəyə çıxaq.</p>
+   <div class="hint"><i></i>Sürüşdür</div>
+  </div>
+ </section>
+ <div class="rest"></div>
+</main>
+<div class="hud" id="hud">Mərhələ 2 burada başlayacaq: 28 May küçəsi</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(()=>{
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const cv=document.getElementById('gl');
+const R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:false});
+R.setPixelRatio(Math.min(devicePixelRatio,2));
+R.outputEncoding=THREE.sRGBEncoding;
+R.shadowMap.enabled=true;R.shadowMap.type=THREE.PCFSoftShadowMap;
+const S=new THREE.Scene();
+const cam=new THREE.PerspectiveCamera(32,1,.1,400);
+
+/* ---- sky: vertical gradient lavender (day) -> night ---- */
+const skyCv=document.createElement('canvas');skyCv.width=2;skyCv.height=512;
+const skyTx=new THREE.CanvasTexture(skyCv);skyTx.encoding=THREE.sRGBEncoding;
+function paintSky(t){const g=skyCv.getContext('2d'),gr=g.createLinearGradient(0,0,0,512);
+ const mix=(a,b)=>{const pa=a.match(/\w\w/g).map(h=>parseInt(h,16)),pb=b.match(/\w\w/g).map(h=>parseInt(h,16));return 'rgb('+pa.map((v,i)=>Math.round(v+(pb[i]-v)*t)).join(',')+')'};
+ gr.addColorStop(0,mix('C2C5F0','0E0F2A'));gr.addColorStop(.62,mix('E1E3F9','2E3175'));gr.addColorStop(1,mix('D3D5F5','5C60AB'));
+ g.fillStyle=gr;g.fillRect(0,0,2,512);skyTx.needsUpdate=true}
+paintSky(0);S.background=skyTx;
+
+/* ---- lights ---- */
+const hemi=new THREE.HemisphereLight(0xeef0ff,0x5c60ab,.9);S.add(hemi);
+const key=new THREE.DirectionalLight(0xffffff,.9);key.position.set(6,10,8);key.castShadow=true;
+key.shadow.mapSize.set(1024,1024);Object.assign(key.shadow.camera,{left:-8,right:8,top:8,bottom:-8,near:1,far:40});S.add(key);
+const rim=new THREE.DirectionalLight(0xa9adea,.8);rim.position.set(-8,4,-6);S.add(rim);
+
+/* ---- creative textures ---- */
+const LOGO=[[[8,26],[20,38],[20,56],[8,44],"#A9ADEA"],[[24,16],[36,28],[36,56],[24,44],"#8E92E0"],[[40,4],[52,16],[52,56],[40,44],"#5C60AB"]];
+function logo(x,lx,ly,s){LOGO.forEach(p=>{x.fillStyle=p[4];x.beginPath();p.slice(0,4).forEach((q,i)=>x[i?'lineTo':'moveTo'](lx+q[0]*s,ly+q[1]*s));x.closePath();x.fill()})}
+function face(kind){const c=document.createElement('canvas');c.width=2048;c.height=1024;const x=c.getContext('2d');
+ if(kind===0){const g=x.createLinearGradient(0,0,2048,1024);g.addColorStop(0,'#1E2156');g.addColorStop(1,'#2E3175');x.fillStyle=g;x.fillRect(0,0,2048,1024);
+  x.globalAlpha=.08;for(let i=0;i<14;i++){x.fillStyle='#A9ADEA';x.fillRect(i*160-200,0,60,1024)}x.globalAlpha=1;
+  logo(x,150,250,8.6);
+  x.fillStyle='#EEF0F5';x.font='900 250px Inter, Arial';x.textBaseline='alphabetic';try{x.letterSpacing='40px'}catch(e){}
+  x.fillText('MIRROR',700,620);try{x.letterSpacing='14px'}catch(e){}
+  x.fillStyle='#A9ADEA';x.font='600 64px Inter, Arial';x.fillText('OUTDOOR REKLAM · BAKI',710,760)}
+ else{x.fillStyle='#A9ADEA';x.fillRect(0,0,2048,1024);
+  x.fillStyle='#1E2156';x.font='900 190px Inter, Arial';x.textBaseline='alphabetic';try{x.letterSpacing='0px'}catch(e){}
+  x.fillText('Sizin reklam',130,440);x.fillStyle='#2E3175';x.fillText('burada.',130,640);
+  logo(x,1640,600,5.2);x.fillStyle='#2E3175';x.font='600 54px Inter, Arial';x.fillText('mirror.az',140,880)}
+ const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.anisotropy=R.capabilities.getMaxAnisotropy();return t}
+
+/* ---- billboard (3×6 m face, double-sided) ---- */
+const BB=new THREE.Group();S.add(BB);
+const metal=new THREE.MeshStandardMaterial({color:0x2a2c4a,metalness:.6,roughness:.45});
+const frameM=new THREE.MeshStandardMaterial({color:0x1b1d36,metalness:.5,roughness:.5});
+const W=6,H=3,D=.34;
+const box=new THREE.Mesh(new THREE.BoxGeometry(W+.24,H+.24,D),frameM);box.castShadow=true;BB.add(box);
+let faces=[];
+function addFaces(){faces.forEach(f=>BB.remove(f));
+ faces=[0,1].map(k=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(W,H),new THREE.MeshStandardMaterial({map:face(k),roughness:.55,metalness:0,emissive:0xffffff,emissiveMap:null,emissiveIntensity:0}));
+  m.position.z=k?-(D/2+.002):D/2+.002;if(k)m.rotation.y=Math.PI;BB.add(m);return m})}
+addFaces();if(document.fonts&&document.fonts.load)Promise.all([document.fonts.load('900 100px Inter'),document.fonts.load('600 40px Inter')]).then(addFaces);
+const pole=new THREE.Mesh(new THREE.CylinderGeometry(.22,.3,7,24),metal);pole.position.y=-H/2-3.5;pole.castShadow=true;BB.add(pole);
+const walk=new THREE.Mesh(new THREE.BoxGeometry(W+.4,.08,.7),metal);walk.position.set(0,-H/2-.2,.3);BB.add(walk);
+for(let i=-2;i<=2;i++){const rl=new THREE.Mesh(new THREE.CylinderGeometry(.02,.02,.5,6),metal);rl.position.set(i*1.4,-H/2-.0,.62);BB.add(rl)}
+const rail=new THREE.Mesh(new THREE.BoxGeometry(W+.4,.04,.04),metal);rail.position.set(0,-H/2+.25,.62);BB.add(rail);
+/* lamps on top, front + back */
+[1,-1].forEach(side=>{for(let i=-1;i<=1;i++){const arm=new THREE.Mesh(new THREE.BoxGeometry(.06,.06,.7),metal);arm.position.set(i*2,H/2+.18,side*.45);BB.add(arm);
+ const head=new THREE.Mesh(new THREE.BoxGeometry(.38,.1,.18),new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xfff4d6,emissiveIntensity:.0}));head.position.set(i*2,H/2+.14,side*.82);head.userData.lamp=1;BB.add(head)}});
+/* ground + shadow */
+const ground=new THREE.Mesh(new THREE.CircleGeometry(30,64),new THREE.ShadowMaterial({opacity:.18}));ground.rotation.x=-Math.PI/2;ground.position.y=-H/2-7;ground.receiveShadow=true;S.add(ground);
+BB.position.y=2.2;
+
+/* ---- interaction ---- */
+let drag=false,lx=0,vel=0,spin=0;
+cv.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX});
+addEventListener('pointerup',()=>drag=false);
+addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-lx;lx=e.clientX;vel=dx*.006});
+let mx=0,my=0;addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
+
+/* ---- scroll ---- */
+const heroTop=document.getElementById('heroTop'),heroBot=document.getElementById('heroBot'),stage=document.getElementById('stage');
+let p=0;const onScroll=()=>{p=Math.min(1,scrollY/innerHeight)};addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+function size(){const w=innerWidth,h=innerHeight;R.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}
+addEventListener('resize',size);size();
+
+const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+const clock=new THREE.Clock();let night=-1;
+function frame(){
+ const dt=Math.min(clock.getDelta(),.05),t=clock.elapsedTime;
+ const e=ease(p),mob=innerWidth<640;
+ /* rotation: auto spin, fades out with scroll, settles facing camera */
+ if(!drag)vel*=.94;
+ spin+=(reduce?.08:.45)*dt*(1-e)+vel;
+ const settle=Math.round(spin/(Math.PI*2))*Math.PI*2;
+ BB.rotation.y=spin*(1-e)+settle*e+mx*.25*(1-e);
+ BB.rotation.x=Math.sin(t*.6)*.03*(1-e)+my*.05*(1-e);
+ BB.position.y=2.2+Math.sin(t*.9)*.12*(1-e);
+ /* camera: hero framing -> lowers to street level, looks up at panel */
+ const dist=mob?30:26,half=Math.tan(cam.fov*Math.PI/360)*dist*cam.aspect;
+ cam.position.set(0,1.6+(-.6-1.6)*e,dist-8*e);
+ cam.lookAt(0,1.8+.8*e,0);
+ /* hero offset: panel sits in the right half on desktop, centred on mobile */
+ BB.position.x=(mob?0:Math.min(half*.5,7))*(1-e);
+ if(mob)BB.position.y-=1.4*(1-e);
+ /* dusk with scroll */
+ const n=Math.min(1,Math.max(0,(p-.25)/.75));
+ if(Math.abs(n-night)>.01){night=n;paintSky(n);hemi.intensity=.9-.55*n;key.intensity=.9-.7*n;
+  BB.traverse(o=>{if(o.userData.lamp)o.material.emissiveIntensity=2*n});
+  faces.forEach(f=>{f.material.emissive.setScalar(1);f.material.emissiveMap=f.material.map;f.material.emissiveIntensity=.55*n;f.material.needsUpdate=true});
+  document.body.classList.toggle('dark',n>.5)}
+ heroTop.style.opacity=Math.max(0,1-p*2.2);heroBot.style.opacity=Math.max(0,1-p*3);
+ stage.textContent=p<.5?'01 · Panel':'02 · Küçəyə enirik';
+ R.render(S,cam);requestAnimationFrame(frame)}
+frame();
+})();
+</script>
+</body>
+</html>
