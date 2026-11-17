@@ -760,10 +760,10 @@ let cars=[],peds=[],tick=0,adT=0;const PEAK=Math.max(...CONS[0].hours);
 const want=()=>{const k=clamp(at(CONS[0],S.h)/PEAK,0,1);return {c:Math.round(2+18*k),p:Math.round(3+34*k)};};
 const CARCOL=["#D9DCE4","#24273E","#7A1F2B","#3E6A9A","#B9B2A4","#141414","#F2F2F2","#5C60AB"];
 function newCar(px){const lane=rnd()<.5?0:1;return {lane,x:px!=null?px:(lane?1.08:-.08),v:(.0014+rnd()*.0012)*(lane?-1:1),c:CARCOL[Math.floor(rnd()*CARCOL.length)],l:.042+rnd()*.016};}
-function newPed(px){return {x:px!=null?px:(rnd()<.5?-.01:1.01),v:(.00018+rnd()*.0002)*(rnd()<.5?-1:1),y:rnd(),c:rnd()};}
-function syncCrowd(){const w=want();while(cars.length<w.c)cars.push(newCar(rnd()*1.1-.05));while(cars.length>w.c)cars.splice(Math.floor(rnd()*cars.length),1);
-  while(peds.length<w.p)peds.push(newPed(rnd()));while(peds.length>w.p)peds.splice(Math.floor(rnd()*peds.length),1);}
-function seedCars(){cars=[];peds=[];syncCrowd();}
+function newPed(px){const d=rnd()<.5?-1:1;return {x:px!=null?px:(d>0?-.02:1.02),v:(.00018+rnd()*.0002)*d,y:rnd(),c:rnd()};}
+// yalnız səhifə açılanda kadr doludur; sonra maşınlar və insanlar həmişə kənardan girir, artıqları kadrdan çıxıb qayıtmır
+function seedCars(){cars=[];peds=[];const w=want();for(let i=0;i<w.c;i++)cars.push(newCar(rnd()*1.1-.05));for(let i=0;i<w.p;i++)peds.push(newPed(rnd()));}
+const laneFree=l=>!cars.some(c=>c.lane===l&&(l?c.x>.95:c.x<.03));
 function drawCar(c,n,rd0,rd1){const len=c.l*W,ch=len*.32,x=c.x*W,y=c.lane?rd0+(rd1-rd0)*.78:rd0+(rd1-rd0)*.36,dir=c.v>0?1:-1;
   g.fillStyle="rgba(0,0,0,.35)";g.beginPath();g.ellipse(x+len/2,y+ch*.5,len*.55,ch*.18,0,0,7);g.fill();
   g.fillStyle=n>.5?mh(c.c,"#000000",.55):c.c;g.beginPath();
@@ -792,14 +792,16 @@ function drawScene(){if(!W)return;const h=S.h,n=night(h),{HZ,rd0,rd1,bw,bh,bx,by
   const vg=g.createRadialGradient(W/2,H*.55,H*.3,W/2,H*.55,W*.75);vg.addColorStop(0,"rgba(0,0,0,0)");vg.addColorStop(1,"rgba(0,0,10,"+(.28+.2*n)+")");g.fillStyle=vg;g.fillRect(0,0,W,H);
   g.drawImage(fx,0,0,W,H);}
 function stepScene(){tick++;adT++;const w=want();
-  cars.forEach(c=>c.x+=c.v);cars=cars.filter(c=>c.x>-.12&&c.x<1.12);if(cars.length<w.c&&rnd()<.25)cars.push(newCar());
-  peds.forEach(p=>p.x+=p.v);peds=peds.filter(p=>p.x>-.02&&p.x<1.02);if(peds.length<w.p&&rnd()<.25)peds.push(newPed());}
+  cars.forEach(c=>c.x+=c.v);cars=cars.filter(c=>c.x>-.12&&c.x<1.12);
+  const dc=w.c-cars.length;if(dc>0&&rnd()<Math.min(.5,.03+.04*dc)){const c=newCar();if(laneFree(c.lane))cars.push(c);}
+  peds.forEach(p=>p.x+=p.v);peds=peds.filter(p=>p.x>-.03&&p.x<1.03);
+  const dp=w.p-peds.length;if(dp>0&&rnd()<Math.min(.6,.03+.03*dp))peds.push(newPed());}
 let sceneOn=true,raf=0;
 function loop(){raf=requestAnimationFrame(loop);if(!sceneOn)return;if(play)playStep();stepScene();drawScene();}
 function resizeScene(){fitScene();drawScene();}
 addEventListener("resize",resizeScene);fitScene();seedCars();
 if("IntersectionObserver" in window)new IntersectionObserver(es=>{sceneOn=es[0].isIntersecting;}).observe($("scene"));
-listeners.push(()=>{syncCrowd();if(REDUCE||!raf)drawScene();});
+listeners.push(()=>{if(REDUCE||!raf){seedCars();drawScene();}});
 /* bir günü oynat: 06:00-dan 18:00-a qədər, sonra dayanır */
 let play=null;
 function playStep(){const t=(performance.now()-play.t0)/play.dur;if(t>=1){setHour(play.to);play=null;$("playDay").textContent="Bir günü oynat";return;}const k=t<.5?4*t*t*t:1-((-2*t+2)**3)/2;setHour(lerp(play.from,play.to,k));}
