@@ -4,251 +4,290 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<title>Hollywood Group · Təkliflər</title>
+<meta name="theme-color" content="#08080A">
+<title>Hollywood Group · MezMoon</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#0B0B10;--panel:#121219;--panel2:#191921;--line:#26262F;--paper:#ECEAE6;--soft:#D3D1CC;--muted:#8E8C96;
---gold:#D2AE6A;--gold-lo:#3A2F1C;--red:#E0474C;--ok:#3FB37F}
+:root{
+ --ink:#08080A;--ink-2:#0C0C10;--panel:#111118;--panel-2:#16161F;
+ --paper:#EAEAEA;--soft:#CFCFD6;--muted:#8E8E9A;
+ --lav:#9794E5;--lav-lo:#6C67CE;--lav-hi:#BFBCF7;--lav-bg:rgba(151,148,229,.12);
+ --red:#CA2126;--red-hi:#E8474C;--ok:#4CC38A;
+ --line:rgba(234,234,234,.10);--line-2:rgba(234,234,234,.20);
+ --display:"Outfit",system-ui,sans-serif;--body:"Instrument Sans",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
+ --ease:cubic-bezier(.23,1,.32,1);--pad:clamp(16px,4.4vw,64px);--nav-h:68px;
+}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:70px}
-body{margin:0;background:var(--ink);color:var(--paper);font:400 17px/1.6 "Instrument Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-h1,h2,h3{font-family:Outfit,system-ui,sans-serif;margin:0;line-height:1.15;text-wrap:balance}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 12px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--paper);font:400 16.5px/1.65 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.08;text-wrap:balance}
 p{margin:0}
-.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
-.mono{font:500 12px/1 "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-mark{background:var(--gold-lo);color:var(--gold);border-radius:5px;padding:0 5px;font-weight:600}
+::selection{background:var(--lav);color:var(--ink)}
+:focus-visible{outline:2px solid var(--lav);outline-offset:3px;border-radius:6px}
+.wrap{width:100%;max-width:1200px;margin-inline:auto;padding-inline:var(--pad)}
+.eyebrow{font:500 11px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--lav);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--lav);opacity:.6}
+mark{background:var(--lav-bg);color:var(--lav-hi);border-radius:5px;padding:0 5px;font-weight:600}
 
-nav{position:sticky;top:0;z-index:20;background:rgba(11,11,16,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;gap:4px;height:56px;overflow-x:auto;scrollbar-width:none}
-nav .wrap::-webkit-scrollbar{display:none}
-nav b{font:700 15px Outfit;letter-spacing:.16em;margin-right:auto;padding-right:16px;white-space:nowrap}
-nav b i{color:var(--gold);font-style:normal}
-nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;padding:8px 12px;border-radius:8px;white-space:nowrap}
-nav a:hover{color:var(--paper);background:var(--panel2)}
+/* progress + nav */
+.prog{position:fixed;top:0;left:0;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--lav-lo),var(--lav),var(--red-hi));z-index:120}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;border-bottom:1px solid transparent;transition:background .4s ease,border-color .4s ease}
+.nav.stuck{background:rgba(8,8,10,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom-color:var(--line)}
+.nav-in{display:flex;align-items:center;gap:8px;width:100%}
+.nav-logo img{width:86px}
+.nav-links{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{font:500 14px var(--display);color:var(--muted);padding:12px 14px;border-radius:999px;white-space:nowrap;transition:color .2s,background-color .2s}
+.nav-links a:hover,.nav-links a.on{color:var(--paper);background:var(--panel-2)}
 
-/* cover */
-.cover{position:relative;padding:96px 0 64px;border-bottom:1px solid var(--line);overflow:hidden}
-.cover .bg{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr);opacity:.22;pointer-events:none}
-.cover .bg div{background-size:cover;background-position:center;animation:drift 24s ease-in-out infinite alternate}
-.cover .bg div:nth-child(2){animation-delay:-8s}.cover .bg div:nth-child(3){animation-delay:-16s}
-.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,16,.55),var(--ink) 92%);pointer-events:none}
-.cover .wrap{position:relative;z-index:1}
-@keyframes drift{from{transform:scale(1.05) translateY(0)}to{transform:scale(1.18) translateY(-3%)}}
-.cover h1{font-size:clamp(40px,6.6vw,80px);font-weight:700;letter-spacing:-.02em;margin:18px 0 22px}
-.cover h1 em{font-style:normal;color:var(--gold)}
-.cover .lead{max-width:740px;font-size:19px;color:var(--soft)}
-.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:28px;font-size:14px;color:var(--muted)}
+/* hero */
+.hero{position:relative;padding:calc(var(--nav-h) + clamp(44px,8vh,96px)) 0 clamp(40px,6vw,72px);overflow:hidden;border-bottom:1px solid var(--line)}
+.glowA,.glowB{position:absolute;border-radius:50%;pointer-events:none;filter:blur(2px)}
+.glowA{width:min(860px,120vw);aspect-ratio:1;top:-48%;right:-16%;background:radial-gradient(circle,rgba(123,75,240,.32),transparent 62%);animation:float 14s ease-in-out infinite alternate}
+.glowB{width:min(640px,92vw);aspect-ratio:1;top:-14%;left:-18%;background:radial-gradient(circle,rgba(202,33,38,.20),transparent 64%);animation:float 18s ease-in-out infinite alternate-reverse}
+@keyframes float{to{transform:translate(4%,6%) scale(1.06)}}
+.lockup{position:relative;display:flex;align-items:center;gap:clamp(14px,2.6vw,28px);margin:26px 0 clamp(26px,4vw,40px);flex-wrap:wrap}
+.lockup img{width:clamp(120px,14vw,170px)}
+.lockup .x{font:300 clamp(20px,2.4vw,30px) var(--display);color:var(--muted)}
+.lockup .hw{font:600 clamp(18px,2.2vw,26px)/1 var(--display);letter-spacing:.22em;text-transform:uppercase;border:1px solid var(--line-2);border-radius:14px;padding:14px 20px}
+.hero h1{position:relative;font-weight:600;text-transform:uppercase;font-size:clamp(32px,5.6vw,76px);line-height:1.02;letter-spacing:-.035em;max-width:16ch}
+.hero h1 .a{color:var(--lav)}
+.dek{position:relative;margin-top:24px;max-width:58ch;color:var(--soft);font-size:clamp(15.5px,1.3vw,18px);line-height:1.7}
+.legend{position:relative;display:flex;gap:20px;flex-wrap:wrap;margin-top:26px;font-size:14px;color:var(--muted)}
 .legend span{display:flex;align-items:center;gap:8px}
 .legend i{width:22px;height:3px;border-radius:2px;display:block}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:44px}
-.stat{background:rgba(18,18,25,.82);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
-.stat strong{display:block;font:700 40px/1 Outfit;font-variant-numeric:tabular-nums;color:var(--gold)}
-.stat span{display:block;margin-top:8px;font-size:14px;color:var(--muted)}
+.stats{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:clamp(30px,4vw,48px);background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.stat{background:var(--ink-2);padding:22px 22px 20px}
+.stat strong{display:block;font:600 clamp(34px,4vw,46px)/1 var(--display);font-variant-numeric:tabular-nums;color:var(--paper)}
+.stat strong small{font-size:.5em;color:var(--lav);margin-left:2px}
+.stat span{display:block;margin-top:10px;font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 
-section{padding:72px 0;border-bottom:1px solid var(--line)}
-.head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:10px}
-.head .num{font:500 14px "JetBrains Mono",monospace;color:var(--gold)}
-.head h2{font-size:clamp(28px,4vw,46px);font-weight:600;letter-spacing:-.01em}
-.sub{color:var(--muted);max-width:740px;margin-bottom:28px}
+/* sections */
+section{padding:clamp(56px,8vw,96px) 0;border-bottom:1px solid var(--line)}
+.sh{display:grid;grid-template-columns:auto 1fr;gap:6px 20px;align-items:end;margin-bottom:clamp(22px,3vw,34px)}
+.sh .num{font:500 13px var(--mono);color:var(--lav);grid-row:span 2;align-self:start;padding-top:10px}
+.sh h2{font-weight:600;text-transform:uppercase;letter-spacing:-.03em;font-size:clamp(28px,4vw,48px)}
+.sh p{color:var(--muted);max-width:64ch}
 
-/* filters */
+/* chips */
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
-.chips button{font:500 14px "Instrument Sans";color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer;transition:.2s}
-.chips button:hover{color:var(--paper)}
-.chips button[aria-pressed=true]{color:var(--ink);background:var(--gold);border-color:var(--gold)}
-button:focus-visible,nav a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.chips button{font:500 14px var(--display);color:var(--muted);border:1px solid var(--line-2);border-radius:999px;padding:10px 16px;min-height:44px;transition:color .2s,background-color .2s,border-color .2s}
+.chips button:hover{color:var(--paper);border-color:var(--lav-lo)}
+.chips button[aria-pressed=true]{color:var(--ink);background:var(--lav);border-color:var(--lav)}
 
-/* venue cards */
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px 26px;opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease,border-color .25s}
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:26px 26px 22px;overflow:hidden;opacity:0;transform:translateY(16px);transition:opacity .55s var(--ease),transform .55s var(--ease),border-color .25s}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:1px;background:linear-gradient(90deg,transparent,var(--lav),transparent);opacity:0;transition:opacity .3s}
+.card:hover{border-color:var(--line-2)}
+.card:hover::before{opacity:.7}
 .card.in{opacity:1;transform:none}
-.card:hover{border-color:#3a3a46}
 .card[hidden]{display:none}
-.card.wide{grid-column:1/-1}
-.card header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
-.card h3{font-size:25px;font-weight:600}
+.card header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}
+.card h3{font-size:24px;font-weight:600;letter-spacing:-.01em}
 .tags{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
-.tag{font:500 11px/1 "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(210,174,106,.45);border-radius:999px;padding:6px 10px;white-space:nowrap}
-.ask{position:relative;background:var(--panel2);border-radius:10px;padding:12px 14px 12px 16px;color:var(--soft);font-size:15.5px;border-left:3px solid var(--muted)}
-.ask .mono{display:block;margin-bottom:6px;font-size:10.5px}
-.edit{margin-top:16px}
-.edit .mono{color:var(--gold);font-size:10.5px}
+.tag{font:500 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--lav-hi);background:var(--lav-bg);border-radius:999px;padding:7px 10px;white-space:nowrap}
+.ask{background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:var(--soft);font-size:15.5px}
+.ask .k{display:block;font:500 10.5px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.edit{margin-top:18px}
+.edit .k{font:500 10.5px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--lav)}
 .edit ul{margin:8px 0 0;padding:0;list-style:none}
-.edit li{position:relative;padding-left:20px;margin-top:9px;color:var(--soft);font-size:16px}
-.edit li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border-radius:2px;background:var(--gold);transform:rotate(45deg)}
+.edit li{position:relative;padding-left:22px;margin-top:10px;color:var(--soft)}
+.edit li::before{content:"";position:absolute;left:3px;top:.6em;width:7px;height:7px;border-radius:50%;border:1.5px solid var(--lav)}
 .edit li b{color:var(--paper);font-weight:600}
-.kpi{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);font-size:14.5px;color:var(--muted)}
+.kpi{margin-top:18px;padding-top:14px;border-top:1px dashed var(--line-2);font-size:14.5px;color:var(--muted)}
 .kpi b{color:var(--ok);font-weight:600}
-.go{display:inline-flex;margin-top:14px;font:600 14px Outfit;color:var(--gold);text-decoration:none;gap:8px;align-items:center}
-.go:hover{text-decoration:underline}
+.go{display:inline-flex;align-items:center;gap:8px;margin-top:14px;min-height:44px;font:600 14px var(--display);color:var(--lav)}
+.go:hover{color:var(--lav-hi)}
 
-/* scenarios */
-.tabs{display:flex;gap:8px;margin-bottom:26px;flex-wrap:wrap}
-.tabs button{font:600 16px Outfit;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 18px;cursor:pointer;text-align:left;transition:.2s}
-.tabs button small{display:block;font:400 13px "Instrument Sans";color:var(--muted);margin-top:2px}
-.tabs button[aria-selected=true]{color:var(--paper);border-color:var(--gold);background:linear-gradient(180deg,#1d1a14,var(--panel))}
-.tabs button[aria-selected=true] small{color:var(--gold)}
-.studio{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:34px;align-items:start}
-.player{position:sticky;top:76px}
-.screen{position:relative;aspect-ratio:9/16;max-height:calc(100vh - 170px);margin:0 auto;border-radius:22px;overflow:hidden;background:#000;box-shadow:0 30px 80px -30px rgba(210,174,106,.35),0 0 0 1px #2c2c36}
-.screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 1.1s ease}
-.screen img.on{opacity:1;animation:kb 9s ease-out forwards}
-.screen img.on.alt{animation-name:kb2}
-@keyframes kb{from{transform:scale(1.04) translate(0,0)}to{transform:scale(1.2) translate(-2.5%,-2%)}}
-@keyframes kb2{from{transform:scale(1.2) translate(2%,1%)}to{transform:scale(1.05) translate(0,0)}}
-.screen .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45) 0,transparent 22%,transparent 55%,rgba(0,0,0,.82) 100%)}
-.screen .rec{position:absolute;top:16px;left:16px;right:16px;display:flex;justify-content:space-between;font:500 11px "JetBrains Mono",monospace;letter-spacing:.1em;color:#fff}
-.screen .rec span:first-child::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--red);margin-right:7px;animation:blink 1.2s steps(2) infinite}
+/* actors */
+.cast{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:26px}
+.actor{position:relative;text-align:left;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:var(--panel);aspect-ratio:4/5;isolation:isolate;transition:border-color .25s,transform .35s var(--ease)}
+.actor img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;filter:grayscale(.55) brightness(.75);transform:scale(1.02);transition:filter .5s ease,transform .8s var(--ease);z-index:-1}
+.actor::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(8,8,10,.92));z-index:-1}
+.actor .info{position:absolute;left:18px;right:18px;bottom:16px}
+.actor .v{font:500 11px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--lav)}
+.actor b{display:block;font:600 clamp(18px,2vw,24px)/1.15 var(--display);margin-top:6px}
+.actor small{display:block;color:var(--soft);font-size:13.5px;margin-top:4px}
+.actor:hover img{filter:grayscale(.2) brightness(.85)}
+.actor[aria-selected=true]{border-color:var(--lav);box-shadow:0 0 0 1px var(--lav),0 24px 60px -30px rgba(151,148,229,.6)}
+.actor[aria-selected=true] img{filter:none;transform:scale(1.06)}
+.actor .live{position:absolute;top:14px;left:14px;font:500 10px var(--mono);letter-spacing:.14em;color:#fff;background:var(--red);border-radius:999px;padding:6px 10px;opacity:0;transition:opacity .3s}
+.actor[aria-selected=true] .live{opacity:1}
+
+.studio{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:start}
+.tp{position:sticky;top:calc(var(--nav-h) + 14px);background:radial-gradient(120% 80% at 50% 0%,rgba(123,75,240,.18),transparent 60%),var(--panel);border:1px solid var(--line);border-radius:24px;padding:20px;overflow:hidden}
+.tp-head{display:flex;align-items:center;gap:12px}
+.tp-head img{width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:50% 25%;border:1px solid var(--line-2)}
+.tp-head b{display:block;font:600 16px var(--display)}
+.tp-head span{display:block;font-size:13px;color:var(--muted)}
+.rec{margin-left:auto;font:500 11px var(--mono);letter-spacing:.1em;color:var(--soft);display:flex;align-items:center;gap:7px;font-variant-numeric:tabular-nums}
+.rec::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red-hi);animation:blink 1.2s steps(2) infinite}
+.tp.paused .rec::before{animation:none;opacity:.35}
 @keyframes blink{50%{opacity:0}}
-.screen .who{position:absolute;left:18px;bottom:128px;font:600 12px Outfit;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
-.screen .subt{position:absolute;left:16px;right:16px;bottom:44px;min-height:74px;display:flex;align-items:flex-end;font:600 17px/1.35 "Instrument Sans";color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.8)}
-.screen .subt span{opacity:0;transform:translateY(8px);transition:opacity .35s,transform .35s}
-.screen .subt span.on{opacity:1;transform:none}
-.screen .subt mark{background:rgba(210,174,106,.3);color:#fff}
-.screen .subt.dir{font:italic 500 15px/1.4 "Instrument Sans";color:var(--gold)}
-.screen .bar{position:absolute;left:16px;right:16px;bottom:22px;height:3px;background:rgba(255,255,255,.2);border-radius:2px;overflow:hidden}
-.screen .bar i{display:block;height:100%;width:0;background:var(--gold)}
-.screen .flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
-.screen .flash.go{animation:flash .7s ease-out}
-@keyframes flash{0%{opacity:0}8%{opacity:.95}100%{opacity:0}}
-.screen .end{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(8,8,10,.72);opacity:0;transition:opacity .8s;pointer-events:none;text-align:center;padding:24px}
-.screen .end.on{opacity:1}
-.screen .end b{font:700 46px/1 Outfit;letter-spacing:.2em;color:#fff}
-.screen .end span{font:500 15px "Instrument Sans";color:var(--gold)}
-.ctrl{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:14px}
-.ctrl button{font:600 14px Outfit;color:var(--ink);background:var(--gold);border:0;border-radius:999px;padding:10px 20px;cursor:pointer}
-.ctrl button.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
-.ctrl .t{font:500 13px "JetBrains Mono",monospace;color:var(--muted);font-variant-numeric:tabular-nums}
+.tp-body{position:relative;height:300px;margin-top:18px;display:flex;flex-direction:column;justify-content:center;gap:14px;overflow:hidden;
+ -webkit-mask-image:linear-gradient(180deg,transparent,#000 18%,#000 82%,transparent);mask-image:linear-gradient(180deg,transparent,#000 18%,#000 82%,transparent)}
+.tp-body p{transition:opacity .45s ease,transform .45s var(--ease)}
+.tp-body .pv,.tp-body .nx{font-size:14.5px;color:var(--muted);opacity:.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tp-body .cur{font:500 clamp(18px,1.7vw,21px)/1.45 var(--display);color:rgba(234,234,234,.35)}
+.tp-body .cur .w{transition:color .25s ease}
+.tp-body .cur .w.on{color:var(--paper)}
+.tp-body .cur.dir{font:italic 500 16px/1.5 var(--body);color:var(--lav-hi)}
+.tp-body .cur mark{background:var(--lav-bg)}
+.tp-body.swap .cur{animation:rise .5s var(--ease)}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}}
+.flash{position:absolute;inset:0;background:radial-gradient(circle,#fff,rgba(191,188,247,.6) 40%,transparent 75%);opacity:0;pointer-events:none}
+.flash.go{animation:flash .8s ease-out}
+@keyframes flash{0%{opacity:0}10%{opacity:.9}100%{opacity:0}}
+.endc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;background:rgba(8,8,10,.86);opacity:0;pointer-events:none;transition:opacity .6s ease;padding:24px}
+.endc.on{opacity:1}
+.endc b{font:600 44px/1 var(--display);letter-spacing:.24em;text-transform:uppercase}
+.endc span{color:var(--lav);font:500 15px var(--display)}
+.bar{height:3px;background:var(--line);border-radius:2px;overflow:hidden;margin-top:16px}
+.bar i{display:block;height:100%;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--lav-lo),var(--lav))}
+.ctrl{display:flex;align-items:center;gap:10px;margin-top:14px}
+.btn{font:600 14px var(--display);min-height:44px;padding:0 20px;border-radius:999px;background:var(--lav);color:var(--ink);transition:background-color .2s,transform .15s var(--ease)}
+.btn:hover{background:var(--lav-hi)}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:transparent;color:var(--soft);border:1px solid var(--line-2)}
+.btn.ghost:hover{border-color:var(--lav-lo);color:var(--paper)}
+.ctrl .t{margin-left:auto;font:500 12px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
 
-.script .meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
-.script .meta span{font-size:14px;color:var(--soft);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
-.script .meta b{color:var(--gold);font-weight:600}
-.scene{display:grid;grid-template-columns:92px 1fr;gap:16px;margin-top:18px}
-.scene .thumb{border-radius:10px;overflow:hidden;aspect-ratio:3/4;position:relative;border:1px solid var(--line)}
-.scene .thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.scene .thumb span{position:absolute;left:6px;top:6px;font:500 10px "JetBrains Mono",monospace;color:#fff;background:rgba(0,0,0,.6);border-radius:4px;padding:3px 5px}
-.lines p{padding:9px 12px;border-radius:10px;color:var(--soft);cursor:pointer;transition:background .25s,color .25s;border-left:2px solid transparent}
-.lines p:hover{background:var(--panel)}
-.lines p.now{background:var(--panel2);color:var(--paper);border-left-color:var(--gold)}
-.lines p.dir{font-style:italic;color:var(--gold)}
-.lines p.add{border:1px dashed rgba(63,179,127,.55);color:#BFE6D2}
-.lines p.add::before{content:"Təklif olunan əlavə · ";font:500 11px "JetBrains Mono",monospace;letter-spacing:.06em;color:var(--ok);text-transform:uppercase}
-.lines p.end{font-weight:600;color:var(--paper)}
-.notes{margin-top:26px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
-.notes h3{font-size:17px;margin-bottom:8px}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.meta span{font-size:14px;color:var(--soft);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+.meta b{color:var(--lav-hi);font-weight:600}
+.lines{counter-reset:l;border-left:1px solid var(--line);margin-left:6px}
+.lines button{display:grid;grid-template-columns:52px 1fr;gap:8px;width:100%;text-align:left;padding:12px 14px 12px 0;color:var(--soft);border-radius:0 12px 12px 0;position:relative;transition:background-color .25s,color .25s}
+.lines button::before{content:"";position:absolute;left:-1px;top:0;bottom:0;width:2px;background:var(--lav);transform:scaleY(0);transition:transform .3s var(--ease)}
+.lines button .tc{font:500 11px var(--mono);color:var(--muted);padding:5px 0 0 14px;font-variant-numeric:tabular-nums}
+.lines button:hover{background:var(--panel)}
+.lines button.now{background:var(--panel-2);color:var(--paper)}
+.lines button.now::before{transform:none}
+.lines button.dir span{font-style:italic;color:var(--lav-hi)}
+.lines button.add span{color:#C6EBD8}
+.lines button.add span::before{content:"Təklif olunan əlavə";display:block;font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ok);margin-bottom:4px}
+.lines button.end span{font-weight:600;color:var(--paper)}
+.notes{margin-top:22px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.notes h3{font-size:16px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;color:var(--lav)}
 .notes ul{margin:0;padding-left:20px;color:var(--soft);font-size:15.5px}
-.notes li{margin-top:5px}
+.notes li{margin-top:6px}
 
-.prod{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px}
-.prod div{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
-.prod b{display:block;font:600 13px "JetBrains Mono",monospace;color:var(--gold);margin-bottom:8px}
+.prod{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.prod div{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}
+.prod b{display:block;font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--lav);margin-bottom:10px}
 .prod p{color:var(--soft);font-size:15px}
 
-footer{padding:36px 0 60px;color:var(--muted);font-size:14px}
+footer{padding:36px 0 64px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+footer img{width:72px;opacity:.7}
 
-@media (max-width:900px){
- .grid{grid-template-columns:1fr}
- .stats{grid-template-columns:repeat(2,1fr)}
+@media (max-width:960px){
  .studio{grid-template-columns:1fr}
- .player{position:relative;top:0}
- .screen{max-width:330px;max-height:none}
+ .tp{position:relative;top:0}
  .prod{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+ .grid{grid-template-columns:1fr}
+ .stats{grid-template-columns:1fr 1fr}
+ .cast{gap:8px}
+ .actor{aspect-ratio:3/4;border-radius:14px}
+ .actor .info{left:10px;right:10px;bottom:10px}
+ .actor small{display:none}
+ .actor .v{font-size:9.5px;letter-spacing:.1em}
+ .actor b{font-size:14.5px}
+ .nav-logo img{width:70px}
 }
 @media (max-width:520px){
  .card{padding:20px}
  .card header{flex-direction:column}
  .tags{justify-content:flex-start}
- .scene{grid-template-columns:64px 1fr;gap:10px}
  .prod{grid-template-columns:1fr}
- .cover{padding-top:64px}
+ .tp-body{height:330px}
+ .lines button{grid-template-columns:44px 1fr}
 }
 @media (prefers-reduced-motion:reduce){
- *{animation:none!important;transition:none!important}
+ *,*::before,*::after{animation:none!important;transition:none!important}
  .card{opacity:1;transform:none}
 }
 </style>
 </head>
 <body>
+<div class="prog" id="prog" aria-hidden="true"></div>
 
-<nav><div class="wrap">
- <b>HOLLYWOOD <i>·</i> MEZMOON</b>
- <a href="#mekanlar">Məkanlar</a>
- <a href="#umumi">Ümumi</a>
- <a href="#ssenari">Ruin ssenariləri</a>
- <a href="#cekilis">Çəkiliş</a>
+<nav class="nav" id="nav"><div class="wrap nav-in">
+ <a class="nav-logo" href="#top" aria-label="MezMoon"><img src="hw-mezmoon-logo.png" alt="MezMoon"></a>
+ <div class="nav-links">
+  <a href="#mekanlar">Məkanlar</a>
+  <a href="#umumi">Ümumi</a>
+  <a href="#ssenari">Ssenarilər</a>
+  <a href="#cekilis">Çəkiliş</a>
+ </div>
 </div></nav>
 
-<header class="cover">
- <div class="bg" aria-hidden="true">
-  <div style="background-image:url(hw-kadr-r3-1.jpg)"></div>
-  <div style="background-image:url(hw-kadr-r2-2.jpg)"></div>
-  <div style="background-image:url(hw-kadr-r1-1.jpg)"></div>
- </div>
+<header class="hero" id="top">
+ <div class="glowA"></div><div class="glowB"></div>
  <div class="wrap">
-  <span class="mono">Hollywood Group · Əliyar Qasımovun təklif siyahısı · 17.11.2026</span>
-  <h1>Hər məkan üçün <em>tələb</em> və <em>icra planı</em></h1>
-  <p class="lead">Siyahıdakı hər bənd olduğu kimi saxlanılıb. Altında bizim düzəlişimiz var: necə edəcəyik və nəticəni nə ilə ölçəcəyik. Ruin 1, 2 və 3 üçün təqdimat videolarının ssenariləri kadrlarla birlikdə ayrıca bölmədədir.</p>
+  <p class="eyebrow">Əliyar Qasımovun təklif siyahısı · 17.11.2026</p>
+  <div class="lockup"><img src="hw-mezmoon-logo.png" alt="MezMoon"><span class="x">×</span><span class="hw">Hollywood Group</span></div>
+  <h1>Hər məkan üçün <span class="a">tələb</span> və <span class="a">icra planı</span></h1>
+  <p class="dek">Siyahıdakı hər bənd olduğu kimi saxlanılıb. Altında bizim düzəlişimiz var: necə edəcəyik və nəticəni nə ilə ölçəcəyik. Ruin 1, 2 və 3 üçün təqdimat videolarının ssenariləri aparıcılarla birlikdə ayrıca bölmədədir.</p>
   <div class="legend">
    <span><i style="background:var(--muted)"></i>Tələb (siyahıdan)</span>
-   <span><i style="background:var(--gold)"></i>Bizim düzəlişimiz</span>
+   <span><i style="background:var(--lav)"></i>Bizim düzəlişimiz</span>
    <span><i style="background:var(--ok)"></i>Ölçü</span>
   </div>
   <div class="stats">
-   <div class="stat"><strong data-n="19">0</strong><span>məkan</span></div>
-   <div class="stat"><strong data-n="2">0</strong><span>ümumi təklif</span></div>
-   <div class="stat"><strong data-n="3">0</strong><span>təqdimat ssenarisi</span></div>
-   <div class="stat"><strong data-n="9">0</strong><span>ssenari kadrı</span></div>
+   <div class="stat"><strong data-n="19">0</strong><span>Məkan</span></div>
+   <div class="stat"><strong data-n="2">0</strong><span>Ümumi təklif</span></div>
+   <div class="stat"><strong data-n="3">0</strong><span>Təqdimat videosu</span></div>
+   <div class="stat"><strong data-n="3">0</strong><span>Tanınmış aparıcı</span></div>
   </div>
  </div>
 </header>
 
+<main>
 <section id="mekanlar"><div class="wrap">
- <div class="head"><span class="num">01</span><h2>Məkanlar üzrə</h2></div>
- <p class="sub">Mövzuya görə süzün. Hər kartda yuxarıda siyahıdakı tələb, altında bizim düzəlişimiz və ölçü göstəricisi var.</p>
- <div class="chips" id="chips"></div>
+ <div class="sh"><span class="num">01</span><h2>Məkanlar üzrə</h2><p>Mövzuya görə süzün. Hər kartda yuxarıda siyahıdakı tələb, altında bizim düzəlişimiz və ölçü göstəricisi var.</p></div>
+ <div class="chips" id="chips" role="group" aria-label="Mövzu filtri"></div>
  <div class="grid" id="grid"></div>
 </div></section>
 
 <section id="umumi"><div class="wrap">
- <div class="head"><span class="num">02</span><h2>Ümumi təkliflər</h2></div>
- <p class="sub">Bütün şəbəkəyə aid iki bənd.</p>
+ <div class="sh"><span class="num">02</span><h2>Ümumi təkliflər</h2><p>Bütün şəbəkəyə aid iki bənd.</p></div>
  <div class="grid" id="grid2"></div>
 </div></section>
 
 <section id="ssenari"><div class="wrap">
- <div class="head"><span class="num">03</span><h2>Ruin 1 · 2 · 3: təqdimat videoları</h2></div>
- <p class="sub">Ssenarilər kontent planımızdakı "Ruin 1, 2, 3 təqdimatlar" bölməsindən götürülüb. Soldakı ekran videonun necə axacağını göstərir: kadr, mətn və tempi. Sətrə klikləsəniz, ekran həmin yerə keçir. Kadrlar süni intellektlə hazırlanmış nümunədir, çəkiliş məkanın özündə olacaq.</p>
- <div class="tabs" role="tablist" id="tabs"></div>
+ <div class="sh"><span class="num">03</span><h2><span lang="en">Ruin 1 · 2 · 3</span> təqdimatları</h2><p>Aparıcını seçin. Soldakı ekran mətnin videoda necə axacağını göstərir: hər sətir oxunma tempi ilə irəliləyir. Sağdakı sətrə klikləsəniz, ekran həmin yerə keçir.</p></div>
+ <div class="cast" id="cast" role="tablist" aria-label="Aparıcılar"></div>
  <div class="studio">
-  <div class="player">
-   <div class="screen" id="screen">
-    <div class="shade"></div>
-    <div class="rec"><span>REC</span><span id="tc">00:00</span></div>
-    <div class="who" id="who"></div>
-    <div class="subt" id="subt"><span></span></div>
-    <div class="bar"><i id="bar"></i></div>
-    <div class="flash" id="flash"></div>
-    <div class="end" id="end"><b id="endName"></b><span id="endLine"></span></div>
-   </div>
+  <div class="tp" id="tp">
+   <div class="tp-head"><img id="tpImg" alt=""><div><b id="tpName"></b><span id="tpVenue"></span></div><span class="rec" id="tc">00:00</span></div>
+   <div class="tp-body" id="tpBody" aria-live="polite"><p class="pv" id="pv"></p><p class="cur" id="cur"></p><p class="nx" id="nx"></p></div>
+   <div class="bar"><i id="bar"></i></div>
    <div class="ctrl">
-    <button id="play">Durdur</button>
-    <button class="ghost" id="restart">Başdan</button>
+    <button class="btn" id="play">Durdur</button>
+    <button class="btn ghost" id="restart">Başdan</button>
     <span class="t" id="dur"></span>
    </div>
+   <div class="flash" id="flash"></div>
+   <div class="endc" id="endc"><b id="endName" lang="en"></b><span id="endLine"></span></div>
   </div>
-  <div class="script" id="script"></div>
+  <div id="script"></div>
  </div>
 </div></section>
 
 <section id="cekilis"><div class="wrap">
- <div class="head"><span class="num">04</span><h2>Çəkiliş günü</h2></div>
- <p class="sub">Hər üç video üçün eyni qayda. Məkandan gözlədiyimiz yalnız dörd şeydir.</p>
+ <div class="sh"><span class="num">04</span><h2>Çəkiliş günü</h2><p>Hər üç video üçün eyni qayda. Məkandan gözlədiyimiz dörd şey:</p></div>
  <div class="prod">
   <div><b>01 · Rəqəmlər</b><p>Kabinet sayı və hər kabinetin tutumu. Ssenaridə <mark>[say]</mark> yazılan yerlər bu rəqəmlərlə dolacaq.</p></div>
   <div><b>02 · Zal</b><p>Çəkiliş üçün 3 saatlıq boş zal və ən azı 2 hazır kabinet. Ən yaxşı vaxt günortadır.</p></div>
-  <div><b>03 · Süfrə</b><p>İmza yeməklər, çay dəstgahı və içkilər çəkiliş başlayanda masada olsun. Yemək gecikməsi bütün günü uzadır.</p></div>
+  <div><b>03 · Süfrə</b><p>İmza yeməklər və içkilər çəkiliş başlayanda masada olsun. Yemək gecikməsi bütün günü uzadır.</p></div>
   <div><b>04 · Komanda</b><p>Formada 2 ofisiant və 1 hostess. Ruin 2 üçün fotozonada iştirak edəcək 2–3 qonaq.</p></div>
  </div>
  <div class="notes" style="margin-top:14px">
@@ -260,8 +299,9 @@ footer{padding:36px 0 60px;color:var(--muted);font-size:14px}
   </ul>
  </div>
 </div></section>
+</main>
 
-<footer><div class="wrap">MezMoon Agency · Hollywood Group üçün hazırlanıb · paylaşmaq üçün nəzərdə tutulmayıb</div></footer>
+<footer><div class="wrap"><img src="hw-mezmoon-logo.png" alt="MezMoon"><span>Hollywood Group üçün hazırlanıb · paylaşmaq üçün nəzərdə tutulmayıb</span></div></footer>
 
 <script>
 const V=[
@@ -302,14 +342,14 @@ const V=[
   e:["Bizim tək əlavəmiz: <b>gələn zənglərin qeydiyyatı</b>. Reklamdan gələn zəngləri saymadan nəticəni ölçmək olmur."],
   k:"Ayda reklamdan gələn zəng sayı."},
  {n:"Ruin 1",c:["Video"],ask:"Məşhur sima ilə təqdimat videosu. Ssenari kontent bölməsində yerləşdirilib.",
-  e:["Ssenari hazırdır: aparıcı qonağı qarşılayır, çay süfrəsi, sonra kabinetlər.","<mark>[say]</mark> yerinə kabinetlərin tutumu yazılmalıdır, bu rəqəmi məkandan gözləyirik."],
-  k:"Videodan sonra kabinet rezervləri.",go:1},
+  e:["Aparıcı: <b>Əlixan Rəcəbov</b>. Ssenari görüşün kiminlə və harada keçməsi fikri ilə açılır, sonra interyer və kabinetlər.","<mark>[say]</mark> yerinə kabinetlərin tutumu yazılmalıdır, bu rəqəmi məkandan gözləyirik."],
+  k:"Videodan sonra kabinet rezervləri.",go:0},
  {n:"Ruin 2",c:["Video"],ask:"Məşhur sima ilə təqdimat videosunun çəkilməsi (korporativ tədbirlər və digər imkanların vurğulanması). Təqdimat kontent bölməsində yerləşdirilib, Elvin Mərdanovla.",
-  e:["Ssenaridə korporativ tədbirlər yox idi. Sona <b>iki cümləlik əlavə</b> təklif etdik (aşağıda yaşıl çərçivədədir).","Fotozona səhnəsi videonun ən paylaşılan hissəsi olacaq, onu ayrıca Reels kimi də kəsəcəyik.","<mark>[say]</mark> yerinə kabinet sayı və tutumu yazılmalıdır."],
-  k:"Kabinet və korporativ rezervlər, video yayımdan sonrakı 30 gün.",go:2},
+  e:["Aparıcı: <b>Elvin Mərdanov</b>. Ssenaridə korporativ tədbirlər yox idi, sona <b>iki cümləlik əlavə</b> təklif etdik (ssenaridə yaşıl rənglə).","Fotozona səhnəsi videonun ən paylaşılan hissəsi olacaq, onu ayrıca Reels kimi də kəsəcəyik.","<mark>[say]</mark> yerinə kabinet sayı və tutumu yazılmalıdır."],
+  k:"Kabinet və korporativ rezervlər, video yayımdan sonrakı 30 gün.",go:1},
  {n:"Ruin 3",c:["Video"],ask:"Məşhur sima ilə təqdimat videosu. Ssenari kontent bölməsində yerləşdirilib.",
-  e:["Ssenari premium tondadır: interyer, özəl kabinetlər, xidmət detalları.","Video ən çox bu məkan üçün vacibdir: qarşılanma çəkiliş günü də yoxlanılacaq, kadrda qapıda hostess olmalıdır.","<mark>[say]</mark> yerinə kabinetlərin tutumu yazılmalıdır."],
-  k:"Kabinet rezervləri və rezervin orta məbləği.",go:0},
+  e:["Aparıcı: <b>Azər Aydəmir</b>. Ssenari premium tondadır: dizayn, qonaqların yerləşdirilməsi, özəl kabinetlər, ayrıca ofisiant xidməti.","Video ən çox bu məkan üçün vacibdir: çəkiliş günü qarşılanma da kadrda olacaq, qapıda hostess olmalıdır.","<mark>[say]</mark> yerinə kabinetlərin tutumu yazılmalıdır."],
+  k:"Kabinet rezervləri və rezervin orta məbləği.",go:2},
  {n:"Badam 1",c:["Tədbir"],ask:"Nərd çempionatının keçirilməsi. Xüsusi aparıcı ilə.",
   e:["Format: hər həftə seçmə oyunlar, ayın sonunda final. Badam 1 və Badam 2 arasında <b>ortaq liqa</b>, final növbə ilə keçirilir.","Qeydiyyat formu ilə ad, nömrə və ad günü bazaya düşür. Bu, CRM üçün ilk data olacaq.","Aparıcı finalı canlı şərh edir, story-də yayım, finaldan qısa video.","Çay dəstgahının çərəzləri düzəlsin: turnirdə qonaq saatlarla oturur, süfrə kadrda görünür."],
   k:"Qeydiyyat sayı və turnir günlərinin satışı."},
@@ -332,15 +372,15 @@ const G=[
   k:"Ayda toplanan nömrə, geri qayıdan qonaq faizi."}
 ];
 
-const cardHTML=(v,wide)=>`<article class="card${wide?' wide':''}" data-c="${v.c.join('|')}">
+const cardHTML=v=>`<article class="card" data-c="${v.c.join('|')}">
  <header><h3>${v.n}</h3><div class="tags">${v.c.map(t=>`<span class="tag">${t}</span>`).join('')}</div></header>
- <div class="ask"><span class="mono">Tələb</span>${v.ask}</div>
- <div class="edit"><span class="mono">Bizim düzəlişimiz</span><ul>${v.e.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+ <div class="ask"><span class="k">Tələb</span>${v.ask}</div>
+ <div class="edit"><span class="k">Bizim düzəlişimiz</span><ul>${v.e.map(x=>`<li>${x}</li>`).join('')}</ul></div>
  <div class="kpi"><b>Ölçü:</b> ${v.k}</div>
  ${v.go!=null?`<a class="go" href="#ssenari" data-go="${v.go}">Ssenariyə bax →</a>`:''}
 </article>`;
-document.getElementById('grid').innerHTML=V.map(v=>cardHTML(v)).join('');
-document.getElementById('grid2').innerHTML=G.map(v=>cardHTML(v)).join('');
+document.getElementById('grid').innerHTML=V.map(cardHTML).join('');
+document.getElementById('grid2').innerHTML=G.map(cardHTML).join('');
 
 const cats=["Hamısı",...new Set(V.flatMap(v=>v.c))];
 const chips=document.getElementById('chips');
@@ -351,126 +391,132 @@ chips.onclick=e=>{const b=e.target.closest('button');if(!b)return;
  cards.forEach(c=>{c.hidden=!(b.dataset.f==='Hamısı'||c.dataset.c.split('|').includes(b.dataset.f));if(!c.hidden)c.classList.add('in')});
 };
 
-/* reveal */
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.card').forEach((c,i)=>{c.style.transitionDelay=(i%2)*90+'ms';io.observe(c)});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.card').forEach((c,i)=>{c.style.transitionDelay=(i%2)*80+'ms';io.observe(c)});
 
-/* counters */
 const so=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;so.unobserve(e.target);
  const el=e.target,n=+el.dataset.n,t0=performance.now();
  const step=t=>{const p=Math.min(1,(t-t0)/900);el.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step);
 }));
 document.querySelectorAll('[data-n]').forEach(el=>so.observe(el));
 
-/* scenarios: f = kadr (0,1,2), t = tip */
+/* nav + progress */
+const nav=document.getElementById('nav'),prog=document.getElementById('prog');
+const links=[...document.querySelectorAll('.nav-links a')];
+const onScroll=()=>{const h=document.documentElement;nav.classList.toggle('stuck',h.scrollTop>20);
+ prog.style.transform=`scaleX(${h.scrollTop/Math.max(1,h.scrollHeight-h.clientHeight)})`;
+ let id='';document.querySelectorAll('main section').forEach(s=>{if(s.getBoundingClientRect().top<innerHeight*.4)id=s.id});
+ links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+id));};
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* scenarios */
 const S=[
- {id:"r1",n:"Ruin 1",who:"Elxan Rəcəbov",tone:"Səmimi, dost kimi",img:["r1-1","r1-2","r1-3"],cap:["Giriş və zal","Çay süfrəsi","Kabinet"],end:"Kabinetinizi rezerv edin",
+ {n:"Ruin 1",who:"Əlixan Rəcəbov",img:"hw-akt-elixan.jpg",tone:"Səmimi, dost kimi",end:"Sizi gözləyirik!",
   L:[
-   [0,"Gözəl bir axşam keçirmək istəyirsiniz? O zaman sizi doğru yerə gətirmişəm. Xoş gəlmisiniz, Ruin 1!"],
-   [0,"İlk baxışdan diqqətinizi nə çəkəcək, bilmirəm, amma məncə, burada hər şeyin öz yeri var. İnteryer, işıqlandırma, rahat atmosfer..."],
-   [1,"Hətta çay içmək üçün belə ayrıca bir həvəs yaranır."],
-   [2,"Amma gəlin, sizi ən maraqlı hissə ilə tanış edim: kabinetlərimizlə."],
-   [2,"Ruin 1-də [say] nəfərə qədər qonaq qəbul edə bilən özəl kabinetlərimiz var. Yəni dostlarla görüşmək, ailəvi yemək təşkil etmək, ad günü keçirmək və ya sadəcə rahat-rahat söhbət etmək istəyirsinizsə, seçim sizin."],
-   [2,"Üstəlik, burada nə səs-küyə görə narahat olacaqsınız, nə də söhbətinizin kiməsə çatacağından. Qapını bağlayırsınız və axşam yalnız sizə aid olur."],
-   [1,"Xidmət, rahatlıq, gözəl atmosfer... Bir axşamdan gözlədiyiniz nə varsa, hamısı burada."],
-   [0,"İndi sizə bir məsləhət: belə bir axşamı son dəqiqəyə saxlamayın. Bizə zəng edin, kabinetinizi rezerv edin, qalanını isə Ruin 1-ə buraxın."],
-   [0,"Görüşənədək!","end"]
+   ["Bəzən bir axşamı gözəl edən şey nə planlaşdırdığınız, nə də hara getdiyinizdir. Əsas məsələ kiminlə və hansı məkanda vaxt keçirdiyinizdir."],
+   ["Bu gün sizi Ruin 1-lə tanış etmək istəyirəm."],
+   ["Burada ilk diqqət çəkən məqamlardan biri məkanın interyeridir. Rahat oturma zonaları, zövqlü dizayn və fərqli görüşlər üçün düşünülmüş kabinetlər."],
+   ["Xüsusilə kabinetlərimiz haqqında danışmaq istəyirəm. Çünki hər görüşün öz formatı var. Bəzən dostlarınızla bir araya gəlmək, bəzən ailənizlə rahat bir şam yeməyi təşkil etmək, bəzən də özəl bir günü qeyd etmək istəyirsiniz."],
+   ["Ruin 1-də [say] nəfərə qədər qonaq qəbul edə bilən kabinetlərimiz bu görüşlər üçün ideal seçimdir."],
+   ["Üstəlik, kabinetlərdə şəxsi məkanınız və rahatlığınız qorunur. Sifarişiniz, xidmətiniz və digər detallarla komandamız məşğul olur."],
+   ["Siz isə sadəcə görüşünüzə vaxt ayırırsınız."],
+   ["Növbəti dəfə harada görüşəcəyinizi düşünəndə Ruin 1-i də nəzərdən keçirin."],
+   ["Kabinetinizi əvvəlcədən rezerv edin. Sizi gözləyirik!","end"]
   ],
-  notes:["Aparıcı girişdən zala doğru yeriyir, kamera arxadan izləyir (bir planlı kadr).","Çay sətrində kamera süfrəyə enir: armudu stəkan, buxar, limon.","\"Qapını bağlayırsınız\" sözündə kabinet qapısı kadrda bağlanır, səs kəsilir."]},
- {id:"r2",n:"Ruin 2",who:"Elvin Mərdanov",tone:"Zarafatlı, enerjili",img:["r2-1","r2-2","r2-3"],cap:["Fotozona","İnteryer","Kabinet və ofisiant"],end:"Yaxşı yerlərin öz qonaqları olur",
+  notes:["Açılış: Əlixan kadra salonun girişindən daxil olur, kamera onu arxadan izləyir.","İnteryer sətrində kamera oturma zonalarını yavaş panoramla göstərir.","\"Hər görüşün öz formatı var\" hissəsində 3 qısa kadr: dostlar, ailə, ad günü süfrəsi.","Sonda Əlixan kabinetdə əyləşir və birbaşa kameraya baxaraq dəvət edir."]},
+ {n:"Ruin 2",who:"Elvin Mərdanov",img:"hw-akt-elvin.jpg",tone:"Zarafatlı, enerjili",end:"Yaxşı yerlərin öz qonaqları olur",
   L:[
-   [1,"Deyirlər, bəzi yerlərə bir dəfə gedirsən, amma fikrin həmişə orada qalır. Ruin 2 də elə məkanlardandır. Gəlin, sizə niyə belə olduğunu göstərim."],
-   [1,"Ruin 2-yə xoş gəlmisiniz!"],
-   [0,"Bura gələndə ilk dayanacağımız, əlbəttə ki, fotozonadır. Burada bir qayda var: şəkil çəkdirmədən getmək olmaz. Yoxsa sonra heç kim inanmayacaq ki, Ruin 2-də olmusunuz."],
-   [0,"Elvin xanımlarla şəkil çəkdirir, kamera flaş effekti verir.","dir"],
-   [0,"Bağışlayın, bu da işimizin bir hissəsidir. Davam edək!"],
-   [1,"İndi isə bir az da məkanın özündən danışaq. Ruin 2-də interyerin hər detalı xüsusi seçilib. İşıqlandırmadan mebellərə, masaların düzülüşündən ümumi atmosferə qədər hər şey bir-birinə uyğun gəlir."],
-   [1,"Nəticədə həm göz oxşayan, həm də rahat bir mühit yaranır."],
-   [2,"Amma bilirəm, indi ən çox maraqlandığınız hissəyə gəldik: kabinetlərə!"],
-   [2,"Ruin 2-də ümumilikdə [say] kabinetimiz var və hər biri [say] nəfərə qədər qonaq qəbul edə bilir. Hər kabinetin özünəməxsus dizaynı, işıqlandırması və sizə xüsusi xidmət göstərən ofisiantı var."],
-   [2,"Yəni dostlarınızla rahat söhbət etmək, ailənizlə vaxt keçirmək və ya xüsusi bir günü qeyd etmək istəyirsinizsə, burada özünüzə uyğun kabinet mütləq tapacaqsınız."],
-   [2,"Qapını bağlayın, rahat əyləşin. Sifarişinizdən tutmuş xidmətə qədər hər şeylə komandamız maraqlanacaq."],
-   [1,"Şirkətinizin korporativ axşamını, təqdimatını və ya komanda görüşünü də burada keçirə bilərsiniz. Menyunu tədbirinizə uyğun birlikdə hazırlayırıq.","add"],
-   [1,"Bir məsləhət də verim: bəyəndiyiniz kabineti seçmisinizsə, son dəqiqəyə saxlamayın. Çünki yaxşı yerlərin öz daimi qonaqları olur.","end"]
+   ["Deyirlər, bəzi yerlərə bir dəfə gedirsən, amma fikrin həmişə orada qalır. Ruin 2 də elə məkanlardandır. Gəlin, sizə niyə belə olduğunu göstərim."],
+   ["Ruin 2-yə xoş gəlmisiniz!"],
+   ["Bura gələndə ilk dayanacağımız, əlbəttə ki, fotozonadır. Burada bir qayda var: şəkil çəkdirmədən getmək olmaz. Yoxsa sonra heç kim inanmayacaq ki, Ruin 2-də olmusunuz."],
+   ["Elvin xanımlarla şəkil çəkdirir, kamera flaş effekti verir.","dir"],
+   ["Bağışlayın, bu da işimizin bir hissəsidir. Davam edək!"],
+   ["İndi isə bir az da məkanın özündən danışaq. Ruin 2-də interyerin hər detalı xüsusi seçilib. İşıqlandırmadan mebellərə, masaların düzülüşündən ümumi atmosferə qədər hər şey bir-birinə uyğun gəlir."],
+   ["Nəticədə həm göz oxşayan, həm də rahat bir mühit yaranır."],
+   ["Amma bilirəm, indi ən çox maraqlandığınız hissəyə gəldik: kabinetlərə!"],
+   ["Ruin 2-də ümumilikdə [say] kabinetimiz var və hər biri [say] nəfərə qədər qonaq qəbul edə bilir. Hər kabinetin özünəməxsus dizaynı, işıqlandırması və sizə xüsusi xidmət göstərən ofisiantı var."],
+   ["Yəni dostlarınızla rahat söhbət etmək, ailənizlə vaxt keçirmək və ya xüsusi bir günü qeyd etmək istəyirsinizsə, burada özünüzə uyğun kabinet mütləq tapacaqsınız."],
+   ["Qapını bağlayın, rahat əyləşin. Sifarişinizdən tutmuş xidmətə qədər hər şeylə komandamız maraqlanacaq."],
+   ["Şirkətinizin korporativ axşamını, təqdimatını və ya komanda görüşünü də burada keçirə bilərsiniz. Menyunu tədbirinizə uyğun birlikdə hazırlayırıq.","add"],
+   ["Bir məsləhət də verim: bəyəndiyiniz kabineti seçmisinizsə, son dəqiqəyə saxlamayın. Çünki yaxşı yerlərin öz daimi qonaqları olur.","end"]
   ],
   notes:["Fotozona səhnəsi ayrıca 15 saniyəlik Reels kimi də kəsiləcək.","Flaş anında 2–3 kadrlıq ağ keçid və fotoaparat səsi.","Korporativ əlavəsi Əliyar bəyin tələbinə görədir. Məkanda zal birləşdirmə və ya ekran imkanı varsa, cümləyə əlavə edərik."]},
- {id:"r3",n:"Ruin 3",who:"Azər Aydəmir",tone:"Sakit, premium",img:["r3-1","r3-2","r3-3"],cap:["Zal","Özəl kabinet","Xidmət detalı"],end:"Özəl anlar üçün seçilən məkan",
+ {n:"Ruin 3",who:"Azər Aydəmir",img:"hw-akt-azer.jpg",tone:"Sakit, premium",end:"Sizi məmnuniyyətlə qarşılayacağıq",
   L:[
-   [0,"Bəzi məkanlar var ki, ora sadəcə vaxt keçirmək üçün deyil, özünüzə xüsusi bir an ayırmaq üçün gəlirsiniz."],
-   [0,"Ruin 3 də məhz belə məkanlardandır."],
-   [0,"Zövqlə düşünülmüş interyer, incə dizayn detalları, rahat atmosfer və yüksək xidmət standartları... Burada hər şey bir-birini tamamlayaraq fərqli bir mühit yaradır."],
-   [1,"Məkanımızın ən seçilən xüsusiyyətlərindən biri isə özəl kabinetlərimizdir. Hər biri [say] nəfərə qədər qonaq üçün nəzərdə tutulub. Tam məxfi mühit, fərdi xidmət və rahatlığınız üçün düşünülmüş şərait."],
-   [1,"İstər özəl bir şam yeməyi, istər ailəvi görüş, istər dostlarınızla xüsusi bir gecə, istərsə də mühüm iş görüşü... Ruin 3 hər anınıza uyğun atmosfer təqdim edir."],
-   [2,"Burada diqqət yalnız təqdim olunan yeməklərdə deyil, qonağın özünü necə hiss etməsindədir. Çünki keyfiyyət bəzən ən kiçik detallarda özünü göstərir."],
-   [2,"Siz sadəcə anın dadını çıxarın. Biz isə bu anın yadda qalan olması üçün çalışaq."],
-   [2,"Ruin 3. Özəl anlar üçün seçilən məkan. Kabinetinizi əvvəlcədən rezerv edin.","end"]
+   ["Restoran seçərkən hər kəsin öz meyarları var. Kimi menyuya, kimi interyerə, kimi də xidmətə xüsusi diqqət yetirir."],
+   ["Ruin 3-də isə bütün bu məqamları bir arada düşünmüşük."],
+   ["Məkanın ümumi dizaynından tutmuş qonaqların yerləşdirilməsinə qədər hər şey rahat və xoş bir görüş üçün təşkil olunub."],
+   ["Ruin 3-ün xüsusi üstünlüklərindən biri də özəl kabinetləridir."],
+   ["Kabinetlərimiz [say] nəfərə qədər qonağın rahat şəkildə qəbul edilməsi üçün nəzərdə tutulub. Burada şəxsi görüşlərinizi keçirə, ailənizlə vaxt ayıra və ya dostlarınızla özəl bir axşam təşkil edə bilərsiniz."],
+   ["Kabinetlərdə məxfilik, ayrıca ofisiant xidməti və fərdi yanaşma təmin olunur."],
+   ["Məncə, belə məkanların ən gözəl tərəfi odur ki, görüşünüzün təşkilati detalları haqqında düşünməyə ehtiyac qalmır. Siz qonaqlarınızla vaxt keçirirsiniz, biz isə xidmətin qalan hissəsini öz üzərimizə götürürük."],
+   ["Ruin 3-də hər qonağın özünə uyğun bir görüş formatı tapa biləcəyinə inanırıq."],
+   ["Siz də növbəti özəl görüşünüz üçün kabinetlərimizdən birini seçə bilərsiniz."],
+   ["Ruin 3. Sizi məmnuniyyətlə qarşılayacağıq.","end"]
   ],
-  notes:["Tempo yavaşdır: uzun, hamar kamera hərəkəti, az kəsmə.","Girişdə qapıda hostess qarşılayır: bu kadr qarşılanma standartını da göstərir.","\"Ən kiçik detallar\" sətrində yaxın planlar: əlcək, boşqab, şam."]}
+  notes:["Tempo yavaşdır: uzun, hamar kamera hərəkəti, az kəsmə.","Girişdə qapıda hostess qarşılayır: qarşılanma standartı kadrda görünsün.","\"Ayrıca ofisiant xidməti\" sətrində ofisiant kabinetə daxil olur, xidmət detalları yaxın planda."]}
 ];
-const words=t=>t.split(/\s+/).length;
-const durOf=([,t,k])=>k==="dir"?2.4:Math.max(2.6,words(t)*0.42);
-const fmt=s=>{s=Math.round(s);return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
-const mk=t=>t.replace(/\[say\]/g,'<mark>[say]</mark>');
+const words=t=>t.trim().split(/\s+/).length;
+const durOf=l=>l[1]==="dir"?2.6:Math.max(2.6,words(l[0])*0.42);
+const fmt=s=>{s=Math.max(0,Math.round(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
+const esc=t=>t.replace(/\[say\]/g,'<mark>[say]</mark>');
+const wordsHTML=t=>t.split(/(\s+)/).map(w=>/^\s+$/.test(w)?w:(w==='[say]'||w.startsWith('[say]')?`<span class="w"><mark>${w}</mark></span>`:`<span class="w">${w}</span>`)).join('');
 
-const scr=document.getElementById('screen'),subt=document.getElementById('subt'),bar=document.getElementById('bar'),
- tc=document.getElementById('tc'),who=document.getElementById('who'),flash=document.getElementById('flash'),
- endEl=document.getElementById('end'),playBtn=document.getElementById('play'),durEl=document.getElementById('dur'),
- tabs=document.getElementById('tabs'),script=document.getElementById('script');
-let cur=0,idx=0,timer=null,playing=true,inView=false,tStart=0,elapsedBefore=0,imgs=[];
+const $=id=>document.getElementById(id);
+const cast=$('cast'),tp=$('tp'),tpBody=$('tpBody'),cur=$('cur'),pv=$('pv'),nx=$('nx'),bar=$('bar'),tc=$('tc'),flash=$('flash'),endc=$('endc'),playBtn=$('play'),script=$('script');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let si=0,idx=0,timer=null,playing=!reduce,inView=false,tStart=0,before=[],total=0,wTimer=null;
 
-tabs.innerHTML=S.map((s,i)=>`<button role="tab" aria-selected="${i===0}" data-i="${i}">${s.n}<small>${s.who}</small></button>`).join('');
-tabs.onclick=e=>{const b=e.target.closest('button');if(b)load(+b.dataset.i)};
+cast.innerHTML=S.map((s,i)=>`<button class="actor" role="tab" aria-selected="${i===0}" data-i="${i}">
+ <img src="${s.img}" alt="${s.who}" loading="lazy"><span class="live">REC</span>
+ <span class="info"><span class="v" lang="en">${s.n}</span><b>${s.who}</b><small>${s.tone} · ≈ ${fmt(s.L.reduce((a,l)=>a+durOf(l),0))}</small></span></button>`).join('');
+cast.onclick=e=>{const b=e.target.closest('.actor');if(b)load(+b.dataset.i)};
 document.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',()=>load(+a.dataset.go)));
 
 function load(i){
- cur=i;const s=S[i];
- tabs.querySelectorAll('button').forEach((b,j)=>b.setAttribute('aria-selected',j===i));
- scr.querySelectorAll('img').forEach(x=>x.remove());
- imgs=s.img.map((f,j)=>{const im=new Image();im.src=`hw-kadr-${f}.jpg`;im.alt=s.cap[j];scr.insertBefore(im,scr.querySelector('.shade'));return im});
- who.textContent=s.who;
- document.getElementById('endName').textContent=s.n.toUpperCase();
- document.getElementById('endLine').textContent=s.end;
- const total=s.L.reduce((a,l)=>a+durOf(l),0);
- durEl.textContent="≈ "+fmt(total)+" · "+s.L.reduce((a,l)=>a+(l[2]==="dir"?0:words(l[1])),0)+" söz";
- let html=`<div class="meta"><span>Aparıcı: <b>${s.who}</b></span><span>Ton: <b>${s.tone}</b></span><span>Uzunluq: <b>≈ ${fmt(total)}</b></span></div>`;
- let lastF=-1,open=false;
- s.L.forEach((l,j)=>{
-  if(l[0]!==lastF){if(open)html+=`</div></div>`;html+=`<div class="scene"><div class="thumb"><img src="hw-kadr-${s.img[l[0]]}.jpg" alt="${s.cap[l[0]]}" loading="lazy"><span>${s.cap[l[0]]}</span></div><div class="lines">`;lastF=l[0];open=true}
-  html+=`<p data-j="${j}" class="${l[2]||''}">${l[2]==='dir'?'('+l[1]+')':mk(l[1])}</p>`;
- });
- html+=`</div></div><div class="notes"><h3>Rejissor qeydləri</h3><ul>${s.notes.map(n=>`<li>${n}</li>`).join('')}</ul></div>`;
- script.innerHTML=html;
- script.querySelectorAll('p[data-j]').forEach(p=>p.onclick=()=>{go(+p.dataset.j);if(!playing)toggle(true)});
+ si=i;const s=S[i];
+ cast.querySelectorAll('.actor').forEach((b,j)=>b.setAttribute('aria-selected',j===i));
+ $('tpImg').src=s.img;$('tpImg').alt=s.who;$('tpName').textContent=s.who;$('tpVenue').textContent=s.n+' · '+s.tone;
+ $('endName').textContent=s.n;$('endLine').textContent=s.end;
+ before=[];total=0;s.L.forEach(l=>{before.push(total);total+=durOf(l)});
+ $('dur').textContent="≈ "+fmt(total)+" · "+s.L.reduce((a,l)=>a+(l[1]==="dir"?0:words(l[0])),0)+" söz";
+ script.innerHTML=`<div class="meta"><span>Aparıcı: <b>${s.who}</b></span><span>Ton: <b>${s.tone}</b></span><span>Uzunluq: <b>≈ ${fmt(total)}</b></span></div>
+  <div class="lines">${s.L.map((l,j)=>`<button data-j="${j}" class="${l[1]||''}"><span class="tc">${fmt(before[j])}</span><span>${l[1]==='dir'?'('+l[0]+')':esc(l[0])}</span></button>`).join('')}</div>
+  <div class="notes"><h3>Rejissor qeydləri</h3><ul>${s.notes.map(n=>`<li>${n}</li>`).join('')}</ul></div>`;
+ script.querySelectorAll('[data-j]').forEach(b=>b.onclick=()=>{if(!playing)setPlay(true);go(+b.dataset.j)});
  go(0);
 }
 function go(j){
- clearTimeout(timer);const s=S[cur];idx=j;const l=s.L[j];
- imgs.forEach((im,k)=>{const on=k===l[0];if(on&&!im.classList.contains('on')){im.classList.toggle('alt',(j%2)===1);im.classList.add('on')}else if(!on)im.classList.remove('on')});
- subt.className='subt'+(l[2]==='dir'?' dir':'');
- subt.innerHTML=`<span>${l[2]==='dir'?l[1]:mk(l[1])}</span>`;
- requestAnimationFrame(()=>requestAnimationFrame(()=>subt.firstChild.classList.add('on')));
- if(l[2]==='dir'){flash.classList.remove('go');void flash.offsetWidth;flash.classList.add('go')}
- endEl.classList.toggle('on',l[2]==='end');
- script.querySelectorAll('p[data-j]').forEach(p=>p.classList.toggle('now',+p.dataset.j===j));
- const before=s.L.slice(0,j).reduce((a,x)=>a+durOf(x),0),total=s.L.reduce((a,x)=>a+durOf(x),0);
- elapsedBefore=before;tStart=performance.now();
- if(playing&&inView)timer=setTimeout(()=>go(j+1<s.L.length?j+1:0),durOf(l)*1000+(j+1<s.L.length?0:1800));
- tick.total=total;
+ clearTimeout(timer);clearInterval(wTimer);
+ const s=S[si],l=s.L[j];idx=j;
+ const p=s.L[j-1],n=s.L[j+1];
+ pv.textContent=p?(p[1]==='dir'?'('+p[0]+')':p[0]):'';
+ nx.textContent=n?(n[1]==='dir'?'('+n[0]+')':n[0]):'';
+ cur.className='cur'+(l[1]==='dir'?' dir':'');
+ cur.innerHTML=l[1]==='dir'?l[0]:wordsHTML(l[0]);
+ tpBody.classList.remove('swap');void tpBody.offsetWidth;tpBody.classList.add('swap');
+ if(l[1]==='dir'){flash.classList.remove('go');void flash.offsetWidth;flash.classList.add('go')}
+ endc.classList.toggle('on',l[1]==='end'&&playing&&inView);
+ script.querySelectorAll('[data-j]').forEach(b=>b.classList.toggle('now',+b.dataset.j===j));
+ tStart=performance.now();
+ const ws=[...cur.querySelectorAll('.w')],d=durOf(l)*1000;
+ if(!playing||!inView||reduce){ws.forEach(w=>w.classList.add('on'));return}
+ let k=0;wTimer=setInterval(()=>{if(k<ws.length)ws[k++].classList.add('on');else clearInterval(wTimer)},d*0.9/Math.max(1,ws.length));
+ const last=j+1>=s.L.length;
+ timer=setTimeout(()=>go(last?0:j+1),d+(last?2200:0));
 }
 function tick(){
- const s=S[cur];const run=playing&&inView?(performance.now()-tStart)/1000:0;
- const d=durOf(s.L[idx]);const t=elapsedBefore+Math.min(run,d);
- bar.style.width=(t/tick.total*100)+'%';tc.textContent=fmt(t);
+ const run=playing&&inView?(performance.now()-tStart)/1000:0;
+ const t=(before[idx]||0)+Math.min(run,durOf(S[si].L[idx]));
+ bar.style.transform=`scaleX(${total?t/total:0})`;tc.textContent=fmt(t);
  requestAnimationFrame(tick);
 }
-function toggle(force){
- playing=force!=null?force:!playing;playBtn.textContent=playing?'Durdur':'Oynat';
- if(playing)go(idx);else clearTimeout(timer);
-}
-playBtn.onclick=()=>toggle();
-document.getElementById('restart').onclick=()=>{toggle(true);go(0)};
-new IntersectionObserver(es=>{inView=es[0].isIntersecting;if(inView&&playing)go(idx);else clearTimeout(timer)},{threshold:.35}).observe(scr);
-if(matchMedia('(prefers-reduced-motion: reduce)').matches)playing=false,playBtn.textContent='Oynat';
+function setPlay(v){playing=v;playBtn.textContent=v?'Durdur':'Oynat';tp.classList.toggle('paused',!v);
+ if(v)go(idx);else{clearTimeout(timer);clearInterval(wTimer);cur.querySelectorAll('.w').forEach(w=>w.classList.add('on'));endc.classList.remove('on')}}
+playBtn.onclick=()=>setPlay(!playing);
+$('restart').onclick=()=>{setPlay(true);go(0)};
+new IntersectionObserver(es=>{inView=es[0].isIntersecting;if(inView&&playing)go(idx);else{clearTimeout(timer);clearInterval(wTimer)}},{threshold:.3}).observe(tp);
+if(!playing){playBtn.textContent='Oynat';tp.classList.add('paused')}
 load(0);requestAnimationFrame(tick);
 </script>
 </body>

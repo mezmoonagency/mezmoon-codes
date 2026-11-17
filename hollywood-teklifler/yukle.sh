@@ -1,5 +1,5 @@
 #!/bin/bash
-# Hollywood Group gizli təklif səhifəsi: mezmoonagency.az/hw-teklif-r8n3v6p2.html + 9 kadr şəkli.
+# Hollywood Group gizli təklif səhifəsi: mezmoonagency.az/hw-teklif-r8n3v6p2.html + 3 aparıcı fotosu və MezMoon loqosu.
 # Yeni fayllardır, canlıda heç nəyi əvəz etmir. Sonda səhifə canlıdan endirilib müqayisə olunur.
 set -e
 cd "$(dirname "$0")"
@@ -13,7 +13,7 @@ up(){ N=$1; L=$(stat -f%z "$N")
   P=$(curl -s -o /dev/null -w "%{http_code}" -X POST "$U/$N?override=true" -H "X-Auth: $A" -H "X-Auth-Rest: $RA" -H "Tus-Resumable: 1.0.0" -H "Upload-Length: $L" -H "Content-Length: 0")
   Q=$(curl -s -o /dev/null -w "%{http_code}" -X PATCH "$U/$N?override=true" -H "X-Auth: $A" -H "X-Auth-Rest: $RA" -H "Tus-Resumable: 1.0.0" -H "Upload-Offset: 0" -H "Content-Type: application/offset+octet-stream" --data-binary @"$N")
   echo "$N: POST $P, PATCH $Q"; case "$P$Q" in 2*2*) ;; *) echo "Yükləmə alınmadı, dayandırıldı."; exit 1;; esac; }
-for f in hw-kadr-*.jpg; do up "$f"; done
+for f in hw-akt-*.jpg hw-mezmoon-logo.png; do up "$f"; done
 up hw-teklif-r8n3v6p2.html
 sleep 2
 curl -s "https://mezmoonagency.az/hw-teklif-r8n3v6p2.html?nc=$RANDOM$RANDOM" -o /tmp/hw-live-check.html
