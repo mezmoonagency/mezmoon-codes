@@ -182,6 +182,132 @@ section{padding:clamp(56px,8vw,96px) 0;border-bottom:1px solid var(--line)}
 .prod b{display:block;font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--lav);margin-bottom:10px}
 .prod p{color:var(--soft);font-size:15px}
 
+/* ===== CRM ===== */
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:clamp(28px,4vw,44px);counter-reset:f}
+.flow div{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px 16px 18px}
+.flow div::before{counter-increment:f;content:"0" counter(f);display:block;font:500 11px var(--mono);letter-spacing:.14em;color:var(--lav);margin-bottom:10px}
+.flow div:not(:last-child)::after{content:"";position:absolute;right:-8px;top:50%;width:6px;height:6px;border-top:1.5px solid var(--lav);border-right:1.5px solid var(--lav);transform:translateY(-50%) rotate(45deg);z-index:1}
+.flow b{display:block;font:600 16px var(--display)}
+.flow span{display:block;font-size:14px;color:var(--muted);margin-top:4px}
+.flow div.on{border-color:var(--lav);background:linear-gradient(180deg,rgba(123,75,240,.16),var(--panel))}
+.crm-demo{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:start}
+.phone{width:300px;aspect-ratio:9/19;border-radius:44px;padding:10px;background:#1b1b24;box-shadow:0 0 0 1px #2a2a36,0 40px 90px -40px rgba(151,148,229,.55);position:sticky;top:calc(var(--nav-h) + 14px)}
+.ph-scr{position:relative;width:100%;height:100%;border-radius:34px;overflow:hidden;background:#0d0d13}
+.ph-notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:86px;height:22px;border-radius:12px;background:#000;z-index:5}
+.ph-v{position:absolute;inset:0;padding:42px 16px 16px;display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateX(24px);pointer-events:none;transition:opacity .4s ease,transform .45s var(--ease),visibility 0s .45s}
+.ph-v.on{opacity:1;visibility:visible;transform:none;pointer-events:auto;transition-delay:0s}
+.ph-v.out{transform:translateX(-24px)}
+.ph-top{display:flex;align-items:center;justify-content:space-between;font:600 15px var(--display);margin-bottom:12px}
+.ph-top small{font:500 10px var(--mono);letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.promo{position:relative;border-radius:18px;padding:16px;background:linear-gradient(135deg,#6C67CE,#3b2a8f 60%,#CA2126);overflow:hidden;cursor:pointer;text-align:left;width:100%}
+.promo b{display:block;font:700 19px/1.15 var(--display);text-transform:uppercase;max-width:9ch}
+.promo span{display:block;font-size:12.5px;opacity:.85;margin-top:6px;max-width:15ch}
+.promo .mini{position:absolute;right:-18px;top:50%;width:110px;height:110px;margin-top:-55px;border-radius:50%;background:conic-gradient(#BFBCF7 0 45deg,#2a2a70 0 90deg,#E8474C 0 135deg,#2a2a70 0 180deg,#BFBCF7 0 225deg,#2a2a70 0 270deg,#E8474C 0 315deg,#2a2a70 0);animation:spin 6s linear infinite;box-shadow:0 0 0 4px rgba(255,255,255,.18)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.promo .cta{display:inline-block;margin-top:12px;font:600 12px var(--display);background:#fff;color:#2a2a70;border-radius:999px;padding:7px 12px}
+.menu-l{margin-top:14px;display:grid;gap:8px}
+.menu-l div{display:flex;justify-content:space-between;font-size:13px;color:var(--soft);padding:10px 12px;background:var(--panel);border-radius:12px}
+.menu-l div i{font-style:normal;color:var(--muted)}
+.fm{display:grid;gap:9px}
+.fm label{display:block;font:500 11.5px var(--display);color:var(--soft)}
+.fm label i{color:var(--red-hi);font-style:normal}
+.fm input{width:100%;margin-top:4px;font:500 14px var(--body);color:var(--paper);background:var(--panel);border:1px solid var(--line-2);border-radius:10px;padding:9px 10px;min-height:40px;color-scheme:dark}
+.fm input:focus{outline:none;border-color:var(--lav)}
+.fm input.bad{border-color:var(--red-hi)}
+.fm .err{display:block;font-size:11px;color:var(--red-hi);min-height:0;margin-top:2px}
+.fm .ck{display:flex;gap:8px;align-items:flex-start;font-size:11.5px;color:var(--soft);line-height:1.4}
+.fm .ck input{width:18px;height:18px;min-height:0;margin:1px 0 0;accent-color:var(--lav);flex:none}
+.ph-btn{margin-top:auto;width:100%;min-height:46px;border-radius:999px;background:var(--lav);color:var(--ink);font:600 15px var(--display);transition:opacity .2s,background-color .2s}
+.ph-btn:disabled{opacity:.35;cursor:not-allowed}
+.ph-btn.alt{background:transparent;color:var(--soft);border:1px solid var(--line-2);min-height:40px;font-size:13px;margin-top:8px}
+.ph-note{font-size:11.5px;color:var(--muted);text-align:center;margin-top:8px}
+.otp{display:flex;gap:10px;justify-content:center;margin:22px 0 10px}
+.otp span{width:46px;height:56px;border-radius:12px;border:1px solid var(--line-2);display:grid;place-items:center;font:600 24px var(--display);background:var(--panel);transition:border-color .2s}
+.otp span.f{border-color:var(--lav)}
+.wheel-w{position:relative;width:236px;height:236px;margin:14px auto 0}
+.wheel{width:100%;height:100%;border-radius:50%;position:relative;transition:transform 4.2s cubic-bezier(.12,.8,.12,1);box-shadow:0 0 0 6px #1d1d28,0 0 0 7px var(--lav-lo),0 20px 50px -20px rgba(151,148,229,.7)}
+.wheel span{position:absolute;left:50%;top:50%;width:50%;transform-origin:0 50%;font:600 9.5px/1.1 var(--display);text-transform:uppercase;letter-spacing:.02em;padding-left:30px;color:#fff;text-align:center}
+.wheel-w .pin{position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:11px solid transparent;border-right:11px solid transparent;border-top:20px solid #fff;z-index:2;filter:drop-shadow(0 2px 4px rgba(0,0,0,.6))}
+.wheel-w .hub{position:absolute;inset:50%;width:46px;height:46px;margin:-23px;border-radius:50%;background:#0d0d13;border:3px solid var(--lav);display:grid;place-items:center}
+.wheel-w .hub img{width:30px}
+.win{text-align:center;margin-top:8px}
+.win .big{font:700 26px/1.1 var(--display);text-transform:uppercase;color:var(--lav-hi);margin:10px 0 6px}
+.win .code{display:inline-block;font:600 18px var(--mono);letter-spacing:.12em;padding:10px 16px;border:1px dashed var(--lav);border-radius:12px;margin-top:10px}
+.conf{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.conf i{position:absolute;top:-10px;width:7px;height:12px;border-radius:2px;animation:fall 2.2s ease-in forwards}
+@keyframes fall{to{transform:translateY(560px) rotate(540deg);opacity:0}}
+.okrow{display:flex;gap:10px;align-items:center;background:rgba(76,195,138,.1);border:1px solid rgba(76,195,138,.35);border-radius:12px;padding:10px 12px;font-size:12.5px;color:#C6EBD8;margin-top:16px;text-align:left}
+.okrow::before{content:"";width:18px;height:18px;flex:none;border-radius:50%;background:var(--ok) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2308080A' stroke-width='3'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/12px no-repeat}
+.dash{background:var(--panel);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.dash-h{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.dash-h b{font:600 16px var(--display)}
+.dash-h .sel{margin-left:auto;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.dash-k{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border-bottom:1px solid var(--line)}
+.dash-k div{background:var(--panel);padding:14px 18px}
+.dash-k strong{display:block;font:600 24px var(--display);font-variant-numeric:tabular-nums}
+.dash-k span{font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tbl{width:100%;overflow-x:auto}
+.tbl table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:560px}
+.tbl th{font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl td{padding:11px 14px;border-bottom:1px solid var(--line);color:var(--soft);white-space:nowrap;font-variant-numeric:tabular-nums}
+.tbl tr.new td{animation:newrow 2.4s ease}
+@keyframes newrow{0%{background:rgba(151,148,229,.35)}100%{background:transparent}}
+.st{font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:5px 9px}
+.st.a{color:#9BE3BF;background:rgba(76,195,138,.12)}.st.r{color:#F2C46B;background:rgba(242,196,107,.12)}.st.l{color:#F49A9D;background:rgba(232,71,76,.14)}.st.n{color:var(--lav-hi);background:var(--lav-bg)}
+.dash-f{padding:12px 20px;font-size:12.5px;color:var(--muted)}
+.rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:clamp(28px,4vw,44px)}
+.rule{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:22px}
+.rule .when{display:flex;align-items:center;gap:10px;font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--lav)}
+.rule .when i{width:30px;height:30px;border-radius:10px;background:var(--lav-bg);display:grid;place-items:center;font-style:normal}
+.rule .when i svg{width:16px;height:16px;stroke:var(--lav-hi)}
+.rule h3{font-size:22px;font-weight:600;margin:12px 0 6px}
+.rule>p{color:var(--soft);font-size:15px}
+.knobs{display:grid;gap:12px;margin:16px 0}
+.knob label{display:flex;justify-content:space-between;font-size:13.5px;color:var(--soft)}
+.knob label b{color:var(--lav-hi);font:600 14px var(--display);font-variant-numeric:tabular-nums}
+.knob input[type=range]{width:100%;accent-color:var(--lav);height:28px}
+.seg{display:inline-flex;border:1px solid var(--line-2);border-radius:999px;padding:3px;gap:2px}
+.seg button{font:500 13px var(--display);color:var(--muted);border-radius:999px;padding:8px 14px;min-height:36px}
+.seg button[aria-pressed=true]{background:var(--lav);color:var(--ink)}
+.sms{position:relative;background:#1E1E28;border-radius:18px 18px 18px 6px;padding:14px 16px;font-size:14.5px;line-height:1.5;color:var(--paper);margin-top:6px}
+.sms-h{display:flex;justify-content:space-between;font:500 11px var(--mono);color:var(--muted);margin-top:16px}
+.rule .sms-m{font:500 11px/1.5 var(--mono);color:var(--muted);margin-top:8px}
+.rule .sms-m b{color:var(--lav-hi);font-weight:500}
+.tl{position:relative;margin-top:clamp(28px,4vw,44px);background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:22px 22px 26px}
+.tl h3{font-size:20px;font-weight:600;margin-bottom:4px}
+.tl>p{color:var(--muted);font-size:14.5px}
+.tl-track{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:26px}
+.tl-track::before{content:"";position:absolute;left:8px;right:8px;top:8px;height:2px;background:var(--line-2)}
+.tl-fill{position:absolute;left:8px;top:8px;height:2px;width:0;background:linear-gradient(90deg,var(--lav-lo),var(--lav));transition:width 1s var(--ease)}
+.tl-n{position:relative;padding-top:28px}
+.tl-n::before{content:"";position:absolute;left:0;top:0;width:18px;height:18px;border-radius:50%;background:var(--ink);border:2px solid var(--line-2);transition:border-color .4s,background-color .4s,box-shadow .4s}
+.tl-n.on::before{border-color:var(--lav);background:var(--lav);box-shadow:0 0 0 5px var(--lav-bg)}
+.tl-n small{font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tl-n b{display:block;font:600 15px var(--display);margin-top:4px}
+.tl-n span{display:block;font-size:13px;color:var(--muted);margin-top:4px}
+.tl-n.on b{color:var(--paper)}
+.tl .btn{margin-top:20px}
+.why{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
+.why div{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px 20px}
+.why b{display:block;font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--lav);margin-bottom:8px}
+.why p{color:var(--soft);font-size:15px}
+@media (max-width:960px){
+ .crm-demo{grid-template-columns:1fr}
+ .phone{position:relative;top:0;margin:0 auto}
+ .flow{grid-template-columns:1fr 1fr}
+ .flow div::after{display:none}
+ .rules{grid-template-columns:1fr}
+ .why{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+ .dash-k{grid-template-columns:1fr 1fr}
+ .tl-track{grid-template-columns:1fr;gap:16px}
+ .tl-track::before{left:8px;right:auto;top:8px;bottom:8px;width:2px;height:auto}
+ .tl-fill{display:none}
+ .tl-n{padding:0 0 0 30px}
+ .phone{width:min(300px,88vw)}
+}
+
 footer{padding:36px 0 64px;color:var(--muted);font-size:14px}
 footer .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 footer img{width:72px;opacity:.7}
@@ -224,6 +350,7 @@ footer img{width:72px;opacity:.7}
  <div class="nav-links">
   <a href="#mekanlar">Məkanlar</a>
   <a href="#umumi">Ümumi</a>
+  <a href="#crm">CRM</a>
   <a href="#ssenari">Ssenarilər</a>
   <a href="#cekilis">Çəkiliş</a>
  </div>
@@ -262,8 +389,132 @@ footer img{width:72px;opacity:.7}
  <div class="grid" id="grid2"></div>
 </div></section>
 
+<section id="crm"><div class="wrap">
+ <div class="sh"><span class="num">03</span><h2>CRM sistemi: necə işləyir</h2><p>Qonaq menyunu açır, çarxı çevirmək üçün ad, soyad, ad günü və nömrəsini yazır. Bu məlumatlarla sistem ad günündə və qonaq uzun müddət gəlmədikdə özü SMS göndərir. Aşağıdakı telefonda axını özünüz sınaya bilərsiniz.</p></div>
+
+ <div class="flow" id="flow">
+  <div data-f="0"><b>Menyu</b><span>Masadakı QR ilə menyu açılır, "Çarxı fırlat" banneri görünür</span></div>
+  <div data-f="1"><b>Qeydiyyat</b><span>Ad, soyad, ad günü, nömrə: dördü də məcburidir</span></div>
+  <div data-f="2"><b>Təsdiq</b><span>Nömrəyə SMS kod gəlir: saxta nömrə bazaya düşmür</span></div>
+  <div data-f="3"><b>Çarx</b><span>Qonaq çarxı çevirir, hədiyyə kodu ekranda çıxır</span></div>
+  <div data-f="4"><b>Baza</b><span>Qonaq CRM-ə düşür, avtomatik SMS-lər işə başlayır</span></div>
+ </div>
+
+ <div class="crm-demo">
+  <div class="phone" aria-label="Qonaq telefonu nümunəsi">
+   <div class="ph-scr" id="ph">
+    <div class="ph-notch"></div>
+    <div class="ph-v on" data-v="0">
+     <div class="ph-top"><span lang="en">Ruin 1</span><small>Menyu</small></div>
+     <button class="promo" id="pMenu"><div class="mini"></div><b>Çarxı fırlat və qazan</b><span>Hər gəlişdə bir şans: desert, çay, endirim</span><span class="cta">Fırlat →</span></button>
+     <div class="menu-l"><div>Salatlar<i>12 təam</i></div><div>İsti yeməklər<i>18 təam</i></div><div>Kabab və qril<i>9 təam</i></div><div>Çay dəstgahı<i>6 set</i></div><div>Desertlər<i>8 təam</i></div></div>
+    </div>
+    <div class="ph-v" data-v="1">
+     <div class="ph-top"><span>Qeydiyyat</span><small>1 / 2</small></div>
+     <form class="fm" id="fm" novalidate>
+      <label>Ad <i>*</i><input id="fAd" autocomplete="given-name" required><span class="err"></span></label>
+      <label>Soyad <i>*</i><input id="fSoyad" autocomplete="family-name" required><span class="err"></span></label>
+      <label>Ad günü <i>*</i><input id="fDog" type="date" required><span class="err"></span></label>
+      <label>Mobil nömrə <i>*</i><input id="fTel" inputmode="tel" autocomplete="tel" placeholder="+994 50 123 45 67" required><span class="err"></span></label>
+      <label class="ck"><input type="checkbox" id="fOk"><span>Ad günü təbriki və xüsusi təkliflər üçün SMS almağa razıyam <i>*</i></span></label>
+     </form>
+     <button class="ph-btn" id="fGo" disabled>Kodu göndər</button>
+     <button class="ph-btn alt" id="fDemo" type="button">Nümunə ilə doldur</button>
+    </div>
+    <div class="ph-v" data-v="2">
+     <div class="ph-top"><span>Təsdiq</span><small>2 / 2</small></div>
+     <p style="font-size:14px;color:var(--soft)"><b id="oTel" style="color:var(--paper)"></b> nömrəsinə 4 rəqəmli kod göndərildi.</p>
+     <div class="otp" id="otp"><span></span><span></span><span></span><span></span></div>
+     <p class="ph-note">Kod avtomatik oxunur…</p>
+    </div>
+    <div class="ph-v" data-v="3">
+     <div class="ph-top"><span id="wHi">Uğurlar!</span><small>Çarx</small></div>
+     <div class="wheel-w"><div class="pin"></div><div class="wheel" id="wheel"></div><div class="hub"><img src="hw-mezmoon-logo.png" alt=""></div></div>
+     <button class="ph-btn" id="wGo" style="margin-top:auto">Çarxı fırlat</button>
+     <p class="ph-note">Hər nömrə gündə 1 dəfə çevirə bilər</p>
+    </div>
+    <div class="ph-v" data-v="4">
+     <div class="conf" id="conf"></div>
+     <div class="ph-top"><span>Təbriklər!</span><small>Hədiyyə</small></div>
+     <div class="win"><p style="color:var(--soft);font-size:14px">Sizin hədiyyəniz</p><div class="big" id="wPrize"></div><p style="font-size:13px;color:var(--muted)">Kodu ofisianta göstərin</p><div class="code" id="wCode"></div>
+      <div class="okrow">Məlumatlarınız qeyd olundu. Ad gününüzdə sizi sürpriz gözləyir.</div></div>
+     <button class="ph-btn alt" id="wAgain" style="margin-top:auto">Başdan sına</button>
+    </div>
+   </div>
+  </div>
+
+  <div>
+   <div class="dash">
+    <div class="dash-h"><b>Qonaq bazası</b><span class="tag">Canlı nümunə</span><span class="sel" lang="en">Ruin 1</span></div>
+    <div class="dash-k">
+     <div><strong id="kAll">1 248</strong><span>Qonaq</span></div>
+     <div><strong>86</strong><span>Bu ay ad günü</span></div>
+     <div><strong>214</strong><span>30+ gün gəlməyən</span></div>
+     <div><strong>18%</strong><span>SMS-dən qayıdan</span></div>
+    </div>
+    <div class="tbl"><table>
+     <thead><tr><th>Qonaq</th><th>Nömrə</th><th>Ad günü</th><th>Son gəliş</th><th>Gəliş</th><th>Status</th></tr></thead>
+     <tbody id="rows">
+      <tr><td>Leyla M.</td><td>+994 50 *** ** 41</td><td>03.12</td><td>2 gün əvvəl</td><td>14</td><td><span class="st a">Aktiv</span></td></tr>
+      <tr><td>Rəşad Q.</td><td>+994 55 *** ** 07</td><td>17.11</td><td>11 gün əvvəl</td><td>6</td><td><span class="st n">Bu gün ad günü</span></td></tr>
+      <tr><td>Nigar Ə.</td><td>+994 70 *** ** 92</td><td>22.04</td><td>34 gün əvvəl</td><td>3</td><td><span class="st r">Risk · SMS getdi</span></td></tr>
+      <tr><td>Tural H.</td><td>+994 51 *** ** 18</td><td>09.08</td><td>71 gün əvvəl</td><td>2</td><td><span class="st l">İtirilmiş</span></td></tr>
+     </tbody>
+    </table></div>
+    <p class="dash-f">Adlar və rəqəmlər nümunədir. Telefonda qeydiyyat edəndə yeni qonaq cədvələ düşür.</p>
+   </div>
+
+   <div class="rules">
+    <div class="rule" id="rB">
+     <div class="when"><i><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 21h16M5 21v-7h14v7M8 14V9h8v5M12 9V6M12 4v.01"/></svg></i>Avtomatik · ad günü</div>
+     <h3>Ad günü təbriki</h3>
+     <p>Qonağın ad günü səhəri saat 10:00-da SMS gedir. Endirim kodu ad günündən sonra bir neçə gün keçərlidir.</p>
+     <div class="knobs">
+      <div class="knob"><label>Endirim <b id="bPctV">20%</b></label><input type="range" id="bPct" min="10" max="30" step="5" value="20"></div>
+      <div class="knob"><label>Kodun müddəti <b id="bDayV">7 gün</b></label><input type="range" id="bDay" min="1" max="14" value="7"></div>
+     </div>
+     <div class="sms-h"><span>SMS · <span lang="en">RUIN 1</span></span><span>10:00</span></div>
+     <div class="sms" id="bSms"></div>
+     <p class="sms-m" id="bMeta"></p>
+    </div>
+    <div class="rule" id="rW">
+     <div class="when"><i><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></i>Avtomatik · uzun müddət gəlməyən</div>
+     <h3>"Sizi çoxdandır görmürük"</h3>
+     <p>Qonaq seçilən müddət ərzində gəlməyibsə, sistem ona yalnız 5 gün keçərli olan təklif göndərir. Qısa müddət qərarı tezləşdirir.</p>
+     <div class="knobs">
+      <div class="knob"><label>Neçə gün gəlməyəndə <b id="wDaysV">30 gün</b></label><input type="range" id="wDays" min="14" max="90" step="1" value="30"></div>
+      <div class="knob"><label>Təklif <span class="seg" id="wType"><button aria-pressed="true" data-t="pct">15% endirim</button><button aria-pressed="false" data-t="gift">Hədiyyə desert</button></span></label></div>
+     </div>
+     <div class="sms-h"><span>SMS · <span lang="en">RUIN 1</span></span><span>12:30</span></div>
+     <div class="sms" id="wSms"></div>
+     <p class="sms-m" id="wMeta"></p>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <div class="tl" id="tl">
+  <h3>Bir qonağın yolu</h3>
+  <p>Leyla xanım misalında: qeydiyyatdan geri qayıdışa qədər sistem nə edir.</p>
+  <div class="tl-track"><div class="tl-fill" id="tlFill"></div>
+   <div class="tl-n"><small>Gün 0</small><b>Qeydiyyat</b><span>Çarxdan pulsuz desert qazandı, bazaya düşdü</span></div>
+   <div class="tl-n"><small>Gün 30</small><b>Gəlmədi</b><span>Status "Risk" oldu, sistem SMS göndərdi</span></div>
+   <div class="tl-n"><small>Gün 33</small><b>Qayıtdı</b><span>5 günlük kodla gəldi, kassada kod qeyd olundu</span></div>
+   <div class="tl-n"><small>Ad günü</small><b>Təbrik</b><span>20% endirimli SMS, rezerv kabinetə</span></div>
+   <div class="tl-n"><small>Ayın sonu</small><b>Hesabat</b><span>Hansı SMS neçə qonaq qaytardı, məkana görə</span></div>
+  </div>
+  <button class="btn ghost" id="tlGo">Yenidən oynat</button>
+ </div>
+
+ <div class="why">
+  <div><b>Niyə məcburi sahələr</b><p>Ad günü olmadan təbrik getmir, nömrə olmadan heç bir mesaj getmir. Çarx bu məlumatların qarşılığıdır, ona görə dördü də məcburidir.</p></div>
+  <div><b>Ölçü</b><p>Hər SMS-in öz kodu var. Kassada kod qeyd olunanda hansı mesajın neçə qonaq və nə qədər çek gətirdiyi görünür.</p></div>
+  <div><b>Qanun və etibar</b><p>Qonaq SMS almağa razılığını özü verir, istənilən vaxt "STOP" yazıb çıxa bilir. Məlumatlar yalnız Hollywood Group məkanları üçün istifadə olunur.</p></div>
+ </div>
+</div></section>
+
 <section id="ssenari"><div class="wrap">
- <div class="sh"><span class="num">03</span><h2><span lang="en">Ruin 1 · 2 · 3</span> təqdimatları</h2><p>Aparıcını seçin. Soldakı ekran mətnin videoda necə axacağını göstərir: hər sətir oxunma tempi ilə irəliləyir. Sağdakı sətrə klikləsəniz, ekran həmin yerə keçir.</p></div>
+ <div class="sh"><span class="num">04</span><h2><span lang="en">Ruin 1 · 2 · 3</span> təqdimatları</h2><p>Aparıcını seçin. Soldakı ekran mətnin videoda necə axacağını göstərir: hər sətir oxunma tempi ilə irəliləyir. Sağdakı sətrə klikləsəniz, ekran həmin yerə keçir.</p></div>
  <div class="cast" id="cast" role="tablist" aria-label="Aparıcılar"></div>
  <div class="studio">
   <div class="tp" id="tp">
@@ -283,7 +534,7 @@ footer img{width:72px;opacity:.7}
 </div></section>
 
 <section id="cekilis"><div class="wrap">
- <div class="sh"><span class="num">04</span><h2>Çəkiliş günü</h2><p>Hər üç video üçün eyni qayda. Məkandan gözlədiyimiz dörd şey:</p></div>
+ <div class="sh"><span class="num">05</span><h2>Çəkiliş günü</h2><p>Hər üç video üçün eyni qayda. Məkandan gözlədiyimiz dörd şey:</p></div>
  <div class="prod">
   <div><b>01 · Rəqəmlər</b><p>Kabinet sayı və hər kabinetin tutumu. Ssenaridə <mark>[say]</mark> yazılan yerlər bu rəqəmlərlə dolacaq.</p></div>
   <div><b>02 · Zal</b><p>Çəkiliş üçün 3 saatlıq boş zal və ən azı 2 hazır kabinet. Ən yaxşı vaxt günortadır.</p></div>
@@ -368,8 +619,8 @@ const G=[
   e:["Hər menyuda <b>3–5 imza yemək</b> ön planda və şəkilli olsun. Son 3 ayın satış datası ilə satılmayan yeməklər çıxarılsın.","Hər yeni təam üçün çəkiliş və 1 həftəlik reklam.","QR menyu CRM ilə birləşsin (aşağıdakı bənd)."],
   k:"Yeni təamların ilk ay satışı."},
  {n:"CRM sistemi",c:["Bütün məkanlar"],ask:"CRM sistem (qonaq datalarının əldə edilməsi, ad günlərində və ya qonaqlar uzun müddət gəlmədikdə xüsusi cəlbedici mesajların göndərilməsi).",
-  e:["<b>Data yığımı</b>: QR menyu açılanda \"Çarxı fırlat və qazan\". Qonaq ad, nömrə və ad günü tarixini yazır, çarxı çevirir: 20% ehtimalla kiçik hədiyyə.","<b>Avtomatik mesajlar</b>: ad günündən 7 gün əvvəl xüsusi təklif. 30 gün gəlməyən qonağa xatırlatma, 60 gün gəlməyənə daha güclü təklif.","<b>Hesabat</b>: hər məkan üzrə yeni qonaq, geri qayıdan qonaq və mesajdan gələn rezerv sayı.","Badam nərd liqasının qeydiyyatı ilk datanı verəcək."],
-  k:"Ayda toplanan nömrə, geri qayıdan qonaq faizi."}
+  e:["<b>Data yığımı</b>: menyuda \"Çarxı fırlat və qazan\". Çevirmək üçün ad, soyad, ad günü və nömrə <b>məcburidir</b>, nömrə SMS kodla təsdiqlənir.","<b>Ad günü</b>: ad günü səhəri avtomatik SMS, <b>20% endirim</b> kodu ilə.","<b>Uzun müddət gəlməyən</b>: məs. 30 gün gəlməyən qonağa \"sizi çoxdandır görmürük\" SMS-i, <b>5 gün</b> keçərli endirim və ya aksiya.","<b>Hesabat</b>: hər SMS-in öz kodu var, neçə qonağın qayıtdığı məkana görə görünür."],
+  crm:1,k:"Ayda toplanan nömrə, geri qayıdan qonaq faizi."}
 ];
 
 const cardHTML=v=>`<article class="card" data-c="${v.c.join('|')}">
@@ -377,7 +628,7 @@ const cardHTML=v=>`<article class="card" data-c="${v.c.join('|')}">
  <div class="ask"><span class="k">Tələb</span>${v.ask}</div>
  <div class="edit"><span class="k">Bizim düzəlişimiz</span><ul>${v.e.map(x=>`<li>${x}</li>`).join('')}</ul></div>
  <div class="kpi"><b>Ölçü:</b> ${v.k}</div>
- ${v.go!=null?`<a class="go" href="#ssenari" data-go="${v.go}">Ssenariyə bax →</a>`:''}
+ ${v.go!=null?`<a class="go" href="#ssenari" data-go="${v.go}">Ssenariyə bax →</a>`:''}${v.crm?`<a class="go" href="#crm">Necə işlədiyinə bax →</a>`:''}
 </article>`;
 document.getElementById('grid').innerHTML=V.map(cardHTML).join('');
 document.getElementById('grid2').innerHTML=G.map(cardHTML).join('');
@@ -518,6 +769,92 @@ $('restart').onclick=()=>{setPlay(true);go(0)};
 new IntersectionObserver(es=>{inView=es[0].isIntersecting;if(inView&&playing)go(idx);else{clearTimeout(timer);clearInterval(wTimer)}},{threshold:.3}).observe(tp);
 if(!playing){playBtn.textContent='Oynat';tp.classList.add('paused')}
 load(0);requestAnimationFrame(tick);
+/* ===== CRM demo ===== */
+(()=>{
+const $=id=>document.getElementById(id);
+const views=[...document.querySelectorAll('#ph .ph-v')],flowEls=[...document.querySelectorAll('#flow div')];
+let view=0;
+const show=v=>{views.forEach((el,i)=>{el.classList.toggle('on',i===v);el.classList.toggle('out',i<v)});flowEls.forEach((f,i)=>f.classList.toggle('on',i===v));view=v};
+show(0);
+$('pMenu').onclick=()=>show(1);
+
+/* form */
+const f={ad:$('fAd'),soyad:$('fSoyad'),dog:$('fDog'),tel:$('fTel'),ok:$('fOk')};
+const today=new Date().toISOString().slice(0,10);f.dog.max=today;
+const digits=v=>v.replace(/\D/g,'').replace(/^994/,'').replace(/^0/,'');
+const fmtTel=d=>'+994 '+[d.slice(0,2),d.slice(2,5),d.slice(5,7),d.slice(7,9)].filter(Boolean).join(' ');
+const rules={
+ ad:()=>f.ad.value.trim().length>=2||'Adınızı yazın',
+ soyad:()=>f.soyad.value.trim().length>=2||'Soyadınızı yazın',
+ dog:()=>(f.dog.value&&f.dog.value<=today)||'Ad günü tarixini seçin',
+ tel:()=>/^(50|51|55|60|70|77|99|10)\d{7}$/.test(digits(f.tel.value))||'Nömrə 9 rəqəm olmalıdır, məs. 50 123 45 67'
+};
+const touched={};
+const check=(show)=>{let all=true;
+ for(const k in rules){const r=rules[k](),bad=r!==true;if(bad)all=false;
+  const el=f[k],err=el.parentElement.querySelector('.err');
+  if(show||touched[k]){el.classList.toggle('bad',bad);err.textContent=bad?r:''}}
+ if(!f.ok.checked)all=false;$('fGo').disabled=!all;return all};
+['ad','soyad','dog','tel'].forEach(k=>{f[k].addEventListener('input',()=>check());f[k].addEventListener('blur',()=>{touched[k]=true;check()})});
+f.tel.addEventListener('input',()=>{const d=digits(f.tel.value).slice(0,9);if(d)f.tel.value=fmtTel(d)});
+f.ok.addEventListener('change',()=>check());
+$('fDemo').onclick=()=>{f.ad.value='Aysel';f.soyad.value='Məmmədova';f.dog.value='1996-11-24';f.tel.value=fmtTel('501234567');f.ok.checked=true;Object.keys(rules).forEach(k=>touched[k]=true);check(true)};
+$('fGo').onclick=()=>{if(!check(true))return;
+ const d=digits(f.tel.value);$('oTel').textContent='+994 '+d.slice(0,2)+' *** ** '+d.slice(7);
+ show(2);const cells=[...document.querySelectorAll('#otp span')];cells.forEach(c=>{c.textContent='';c.classList.remove('f')});
+ const code=String(1000+Math.floor(Math.random()*9000));
+ cells.forEach((c,i)=>setTimeout(()=>{c.textContent=code[i];c.classList.add('f')},700+i*320));
+ setTimeout(()=>{$('wHi').textContent='Uğurlar, '+f.ad.value.trim()+'!';show(3)},700+4*320+600)};
+
+/* wheel */
+const P=[["Pulsuz desert",1],["Növbəti dəfə",0],["10% endirim",1],["Növbəti dəfə",0],["Pulsuz çay",1],["Növbəti dəfə",0],["Kokteyl hədiyyə",1],["Növbəti dəfə",0]];
+const C=["#6C67CE","#24244a","#CA2126","#2d2d5c","#9794E5","#24244a","#7B4BF0","#2d2d5c"];
+const wheel=$('wheel');
+wheel.style.background='conic-gradient('+P.map((p,i)=>`${C[i]} ${i*45}deg ${(i+1)*45}deg`).join(',')+')';
+wheel.innerHTML=P.map((p,i)=>`<span style="transform:rotate(${i*45+22.5-90}deg)">${p[0]}</span>`).join('');
+let rot=0,spun=false;
+$('wGo').onclick=()=>{if(spun)return;spun=true;$('wGo').disabled=true;
+ const wins=P.map((p,i)=>p[1]?i:-1).filter(i=>i>=0);const k=wins[Math.floor(Math.random()*wins.length)];
+ const c=k*45+22.5;rot=rot-(rot%360)+360*6+(360-c)+(Math.random()*16-8);
+ wheel.style.transform=`rotate(${rot}deg)`;
+ setTimeout(()=>{$('wPrize').textContent=P[k][0];$('wCode').textContent='HD-'+(1000+Math.floor(Math.random()*9000));
+  show(4);confetti();addRow()},reduce?300:4400)};
+$('wAgain').onclick=()=>{spun=false;$('wGo').disabled=false;document.getElementById('fm').reset();
+ Object.keys(touched).forEach(k=>delete touched[k]);document.querySelectorAll('#fm .err').forEach(e=>e.textContent='');document.querySelectorAll('#fm input').forEach(e=>e.classList.remove('bad'));$('fGo').disabled=true;show(0)};
+function confetti(){const box=$('conf');box.innerHTML='';if(reduce)return;
+ const cols=['#9794E5','#BFBCF7','#E8474C','#fff','#4CC38A'];
+ for(let i=0;i<40;i++){const e=document.createElement('i');e.style.left=Math.random()*100+'%';e.style.background=cols[i%5];e.style.animationDelay=Math.random()*.5+'s';e.style.transform=`rotate(${Math.random()*180}deg)`;box.appendChild(e)}}
+let all=1248;
+function addRow(){const d=digits(f.tel.value),dob=f.dog.value.split('-');
+ const tr=document.createElement('tr');tr.className='new';
+ tr.innerHTML=`<td></td><td>+994 ${d.slice(0,2)} *** ** ${d.slice(7)}</td><td>${dob[2]}.${dob[1]}</td><td>İndi</td><td>1</td><td><span class="st n">Yeni · ${$('wPrize').textContent}</span></td>`;
+ tr.firstChild.textContent=f.ad.value.trim()+' '+f.soyad.value.trim().charAt(0)+'.';
+ $('rows').prepend(tr);all++;$('kAll').textContent=all.toLocaleString('az').replace(/,/g,' ');}
+
+/* SMS rules */
+const segs=t=>{const u=/[^\x00-\x7F]/.test(t),n=[...t].length,one=u?70:160,many=u?67:153;return {n,u,c:n<=one?1:Math.ceil(n/many)}};
+const meta=(el,t)=>{const s=segs(t);el.innerHTML=`${s.n} simvol · <b>${s.c} SMS</b>${s.u?' · Azərbaycan hərfləri SMS-i 70 simvola bölür':''}`};
+const dd=n=>{const d=new Date();d.setDate(d.getDate()+n);return String(d.getDate()).padStart(2,'0')+'.'+String(d.getMonth()+1).padStart(2,'0')};
+function upB(){const p=$('bPct').value,d=+$('bDay').value;$('bPctV').textContent=p+'%';$('bDayV').textContent=d+' gün';
+ const t=`Aysel xanım, ad gününüz mübarək! Ruin 1-də sizə özəl ${p}% endirim: kod AD${p}-4821, ${dd(d)}-dək keçərlidir. Rezerv: 012 000 00 00`;
+ $('bSms').textContent=t;meta($('bMeta'),t)}
+let wt='pct';
+function upW(){const d=$('wDays').value;$('wDaysV').textContent=d+' gün';
+ const offer=wt==='pct'?'15% endirim':'hədiyyə desert';
+ const t=`Aysel xanım, sizi çoxdandır görmürük! Növbəti 5 gün ərzində Ruin 1-də sizə ${offer}: kod GEL-7310, ${dd(5)}-dək. Rezerv: 012 000 00 00`;
+ $('wSms').textContent=t;meta($('wMeta'),t)}
+$('bPct').oninput=upB;$('bDay').oninput=upB;$('wDays').oninput=upW;
+$('wType').onclick=e=>{const b=e.target.closest('button');if(!b)return;wt=b.dataset.t;$('wType').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));upW()};
+upB();upW();
+
+/* timeline */
+const nodes=[...document.querySelectorAll('.tl-n')];let tlT=[];
+function playTl(){tlT.forEach(clearTimeout);tlT=[];nodes.forEach(n=>n.classList.remove('on'));$('tlFill').style.width='0';
+ nodes.forEach((n,i)=>tlT.push(setTimeout(()=>{n.classList.add('on');$('tlFill').style.width=`calc(${i/(nodes.length-1)*100}% - ${i/(nodes.length-1)*16}px)`},reduce?0:300+i*800)))}
+new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){playTl();o.disconnect()}},{threshold:.4}).observe($('tl'));
+$('tlGo').onclick=playTl;
+})();
+
 </script>
 </body>
 </html>
