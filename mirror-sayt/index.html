@@ -400,22 +400,22 @@ h2{font-size:clamp(28px,3.4vw,46px);line-height:1.12;font-weight:700;letter-spac
 h3{font-size:18px;font-weight:650;letter-spacing:-.01em}
 .brand b,#ilogo b{font-family:"Archivo","Helvetica Neue",Arial,sans-serif;font-stretch:125%}
 /* menyu */
-.nav{background:rgba(255,255,255,.92);border-bottom:1px solid var(--line)}
+.nav{background:color-mix(in srgb,var(--paper) 88%,transparent);border-bottom:1px solid var(--line)}
 .nav .wrap{height:64px;gap:26px}
 .nav .l{font-size:15px;font-weight:500;color:#374151}
 .nav .l:hover{color:var(--brand)}
-.nav .cta{background:#fff;color:var(--brand);border:1.5px solid color-mix(in srgb,var(--brand) 35%,#fff);border-radius:999px;padding:8px 18px;font-weight:600}
+.nav .cta{background:var(--card);color:var(--brand);border:1.5px solid color-mix(in srgb,var(--brand) 45%,var(--lav));border-radius:999px;padding:8px 18px;font-weight:600}
 .nav .cta:hover{background:color-mix(in srgb,var(--lav) 18%,#fff)}
 /* hero */
-.hero{padding-top:76px;background:radial-gradient(900px 420px at 88% -10%,#E3EAFF 0,transparent 65%),radial-gradient(800px 380px at 5% 0,#EFEAFF 0,transparent 60%),#F8FAFF}
+.hero{padding-top:76px;background:radial-gradient(900px 420px at 88% -10%,color-mix(in srgb,#8E92E0 55%,transparent) 0,transparent 65%),radial-gradient(800px 380px at 5% 0,color-mix(in srgb,#A9ADEA 70%,transparent) 0,transparent 60%),var(--paper)}
 .hero-top{align-items:center}
 .hero h1{color:var(--ink)}
 .hero-side p{font-size:18px;color:var(--mute)}
 .live{border-bottom-color:color-mix(in srgb,var(--brand) 45%,transparent)}
-.demo{display:inline-flex;align-items:center;background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 12px 5px 10px;box-shadow:0 1px 2px rgba(16,24,40,.05)}
+.demo{display:inline-flex;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 12px 5px 10px;box-shadow:0 1px 2px rgba(16,24,40,.05)}
 .btn{border-radius:999px;padding:12px 22px;background:var(--brand);border-color:var(--brand);font-weight:600;box-shadow:0 6px 16px color-mix(in srgb,var(--brand) 28%,transparent)}
 .btn:hover{filter:brightness(1.07)}
-.btn.ghost{background:#fff;color:var(--ink);border-color:var(--line);box-shadow:0 1px 2px rgba(16,24,40,.05)}
+.btn.ghost{background:var(--card);color:var(--ink);border-color:var(--line);box-shadow:0 1px 2px rgba(16,24,40,.05)}
 .scene{margin-top:56px;border-top:1px solid var(--line)}
 /* bölmələr: ağ / açıq boz növbə ilə, ortalanmış başlıq */
 section{padding:104px 0 104px;border-top:1px solid var(--line)}
@@ -426,24 +426,42 @@ section#intro{padding:0;border:0;background:#0E0F24}
 .note{margin-left:auto;margin-right:auto;text-align:center}
 /* kartlar */
 .map-grid,.rows,.tiles,.m3stage,.pk-sum{border-radius:var(--r);box-shadow:var(--sh)}
-.map-grid{background:#fff;border:1px solid var(--line);overflow:hidden}
-.rows{border:1px solid var(--line);background:#fff;overflow:hidden}
+.map-grid{background:var(--card);border:1px solid var(--line);overflow:hidden}
+.rows{border:1px solid var(--line);background:var(--card);overflow:hidden}
 .m3tabs,.flow,.feats,.pk-step,.stages{border-top-width:1px;border-top-color:var(--line)}
 .stages{gap:20px;border-top:0}
-.need{border-radius:var(--r);background:#111827}
-.m3tabs{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.need{border-radius:var(--r);background:var(--deep)}
+.m3tabs{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .feats{gap:20px;border-top:0}
-.feat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
-.stagecol{background:#fff;border:1px solid var(--line)!important;border-radius:16px;padding:24px!important;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.feat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.stagecol{background:var(--card);border:1px solid var(--line)!important;border-radius:16px;padding:24px!important;box-shadow:0 1px 2px rgba(16,24,40,.04)}
 .pkb{border-radius:14px;border-width:1px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
 .pkb:hover{box-shadow:var(--sh)}
-.pk-step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px 22px;margin-bottom:16px}
-.pk-sum{background:#111827;border-radius:20px}
+.pk-step{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px 22px;margin-bottom:16px}
+.pk-sum{background:var(--deep);border-radius:20px}
 .chip{border-width:1px}
 .chip[aria-pressed="true"]{background:var(--brand);border-color:var(--brand)}
 .tg{border-width:1px}
-.clock{background:#111827}
+.clock{background:var(--deep)}
 footer{background:var(--soft);border-top:1px solid var(--line)}
+/* ==== Rəng palitrası: yalnız Mirror loqosunun 3 tonu (#A9ADEA açıq, #8E92E0 orta, #5C60AB tünd) və onların çalarları; ağ rəng işlədilmir ==== */
+:root{--paper:#D3D5F5;--soft:#C2C5F0;--card:#E1E3F9;--surface:#E1E3F9;--line:#A9ADEA;--ink:#1E2156;--mute:#474B8E;
+  --brand:#5C60AB;--lav:#A9ADEA;--mid:#8E92E0;--deep:#2E3175;--amber:#8E92E0;
+  --sh:0 1px 2px rgba(46,49,117,.08),0 14px 34px rgba(46,49,117,.16)}
+body{background:var(--paper);color:var(--mute)}
+section:nth-of-type(odd){background:var(--soft)}
+section:nth-of-type(even){background:var(--paper)}
+.btn{color:#E1E3F9}
+.nav .cta:hover,.chip:hover{background:color-mix(in srgb,var(--lav) 45%,var(--card))}
+.pk-go{background:var(--lav);color:var(--deep)}
+.pk-kv .big b{color:var(--lav)}
+.pk-chart i.on{background:var(--lav)}
+.pk-chart i{background:#4A4E98}
+.dual .fill{background:var(--brand)}
+.demo i{background:var(--brand)}
+.live{border-bottom-color:var(--mid)}
+.clock button{border-color:var(--mid)}
+:focus-visible{outline-color:var(--brand)}
 </style>
 </head>
 <body>
