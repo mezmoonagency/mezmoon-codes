@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Hollywood Group · Təkliflər</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0B0B10;--panel:#121219;--panel2:#191921;--line:#26262F;--paper:#ECEAE6;--soft:#D3D1CC;--muted:#8E8C96;
+--gold:#D2AE6A;--gold-lo:#3A2F1C;--red:#E0474C;--ok:#3FB37F}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--ink);color:var(--paper);font:400 17px/1.6 "Instrument Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:Outfit,system-ui,sans-serif;margin:0;line-height:1.15;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+.mono{font:500 12px/1 "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+mark{background:var(--gold-lo);color:var(--gold);border-radius:5px;padding:0 5px;font-weight:600}
+
+nav{position:sticky;top:0;z-index:20;background:rgba(11,11,16,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:4px;height:56px;overflow-x:auto;scrollbar-width:none}
+nav .wrap::-webkit-scrollbar{display:none}
+nav b{font:700 15px Outfit;letter-spacing:.16em;margin-right:auto;padding-right:16px;white-space:nowrap}
+nav b i{color:var(--gold);font-style:normal}
+nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;padding:8px 12px;border-radius:8px;white-space:nowrap}
+nav a:hover{color:var(--paper);background:var(--panel2)}
+
+/* cover */
+.cover{position:relative;padding:96px 0 64px;border-bottom:1px solid var(--line);overflow:hidden}
+.cover .bg{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr);opacity:.22;pointer-events:none}
+.cover .bg div{background-size:cover;background-position:center;animation:drift 24s ease-in-out infinite alternate}
+.cover .bg div:nth-child(2){animation-delay:-8s}.cover .bg div:nth-child(3){animation-delay:-16s}
+.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,16,.55),var(--ink) 92%);pointer-events:none}
+.cover .wrap{position:relative;z-index:1}
+@keyframes drift{from{transform:scale(1.05) translateY(0)}to{transform:scale(1.18) translateY(-3%)}}
+.cover h1{font-size:clamp(40px,6.6vw,80px);font-weight:700;letter-spacing:-.02em;margin:18px 0 22px}
+.cover h1 em{font-style:normal;color:var(--gold)}
+.cover .lead{max-width:740px;font-size:19px;color:var(--soft)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:28px;font-size:14px;color:var(--muted)}
+.legend span{display:flex;align-items:center;gap:8px}
+.legend i{width:22px;height:3px;border-radius:2px;display:block}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:44px}
+.stat{background:rgba(18,18,25,.82);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.stat strong{display:block;font:700 40px/1 Outfit;font-variant-numeric:tabular-nums;color:var(--gold)}
+.stat span{display:block;margin-top:8px;font-size:14px;color:var(--muted)}
+
+section{padding:72px 0;border-bottom:1px solid var(--line)}
+.head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:10px}
+.head .num{font:500 14px "JetBrains Mono",monospace;color:var(--gold)}
+.head h2{font-size:clamp(28px,4vw,46px);font-weight:600;letter-spacing:-.01em}
+.sub{color:var(--muted);max-width:740px;margin-bottom:28px}
+
+/* filters */
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.chips button{font:500 14px "Instrument Sans";color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer;transition:.2s}
+.chips button:hover{color:var(--paper)}
+.chips button[aria-pressed=true]{color:var(--ink);background:var(--gold);border-color:var(--gold)}
+button:focus-visible,nav a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* venue cards */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px 26px;opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease,border-color .25s}
+.card.in{opacity:1;transform:none}
+.card:hover{border-color:#3a3a46}
+.card[hidden]{display:none}
+.card.wide{grid-column:1/-1}
+.card header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
+.card h3{font-size:25px;font-weight:600}
+.tags{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.tag{font:500 11px/1 "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(210,174,106,.45);border-radius:999px;padding:6px 10px;white-space:nowrap}
+.ask{position:relative;background:var(--panel2);border-radius:10px;padding:12px 14px 12px 16px;color:var(--soft);font-size:15.5px;border-left:3px solid var(--muted)}
+.ask .mono{display:block;margin-bottom:6px;font-size:10.5px}
+.edit{margin-top:16px}
+.edit .mono{color:var(--gold);font-size:10.5px}
+.edit ul{margin:8px 0 0;padding:0;list-style:none}
+.edit li{position:relative;padding-left:20px;margin-top:9px;color:var(--soft);font-size:16px}
+.edit li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border-radius:2px;background:var(--gold);transform:rotate(45deg)}
+.edit li b{color:var(--paper);font-weight:600}
+.kpi{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);font-size:14.5px;color:var(--muted)}
+.kpi b{color:var(--ok);font-weight:600}
+.go{display:inline-flex;margin-top:14px;font:600 14px Outfit;color:var(--gold);text-decoration:none;gap:8px;align-items:center}
+.go:hover{text-decoration:underline}
+
+/* scenarios */
+.tabs{display:flex;gap:8px;margin-bottom:26px;flex-wrap:wrap}
+.tabs button{font:600 16px Outfit;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 18px;cursor:pointer;text-align:left;transition:.2s}
+.tabs button small{display:block;font:400 13px "Instrument Sans";color:var(--muted);margin-top:2px}
+.tabs button[aria-selected=true]{color:var(--paper);border-color:var(--gold);background:linear-gradient(180deg,#1d1a14,var(--panel))}
+.tabs button[aria-selected=true] small{color:var(--gold)}
+.studio{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:34px;align-items:start}
+.player{position:sticky;top:76px}
+.screen{position:relative;aspect-ratio:9/16;max-height:calc(100vh - 170px);margin:0 auto;border-radius:22px;overflow:hidden;background:#000;box-shadow:0 30px 80px -30px rgba(210,174,106,.35),0 0 0 1px #2c2c36}
+.screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 1.1s ease}
+.screen img.on{opacity:1;animation:kb 9s ease-out forwards}
+.screen img.on.alt{animation-name:kb2}
+@keyframes kb{from{transform:scale(1.04) translate(0,0)}to{transform:scale(1.2) translate(-2.5%,-2%)}}
+@keyframes kb2{from{transform:scale(1.2) translate(2%,1%)}to{transform:scale(1.05) translate(0,0)}}
+.screen .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45) 0,transparent 22%,transparent 55%,rgba(0,0,0,.82) 100%)}
+.screen .rec{position:absolute;top:16px;left:16px;right:16px;display:flex;justify-content:space-between;font:500 11px "JetBrains Mono",monospace;letter-spacing:.1em;color:#fff}
+.screen .rec span:first-child::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--red);margin-right:7px;animation:blink 1.2s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.screen .who{position:absolute;left:18px;bottom:128px;font:600 12px Outfit;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.screen .subt{position:absolute;left:16px;right:16px;bottom:44px;min-height:74px;display:flex;align-items:flex-end;font:600 17px/1.35 "Instrument Sans";color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.8)}
+.screen .subt span{opacity:0;transform:translateY(8px);transition:opacity .35s,transform .35s}
+.screen .subt span.on{opacity:1;transform:none}
+.screen .subt mark{background:rgba(210,174,106,.3);color:#fff}
+.screen .subt.dir{font:italic 500 15px/1.4 "Instrument Sans";color:var(--gold)}
+.screen .bar{position:absolute;left:16px;right:16px;bottom:22px;height:3px;background:rgba(255,255,255,.2);border-radius:2px;overflow:hidden}
+.screen .bar i{display:block;height:100%;width:0;background:var(--gold)}
+.screen .flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+.screen .flash.go{animation:flash .7s ease-out}
+@keyframes flash{0%{opacity:0}8%{opacity:.95}100%{opacity:0}}
+.screen .end{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(8,8,10,.72);opacity:0;transition:opacity .8s;pointer-events:none;text-align:center;padding:24px}
+.screen .end.on{opacity:1}
+.screen .end b{font:700 46px/1 Outfit;letter-spacing:.2em;color:#fff}
+.screen .end span{font:500 15px "Instrument Sans";color:var(--gold)}
+.ctrl{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:14px}
+.ctrl button{font:600 14px Outfit;color:var(--ink);background:var(--gold);border:0;border-radius:999px;padding:10px 20px;cursor:pointer}
+.ctrl button.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.ctrl .t{font:500 13px "JetBrains Mono",monospace;color:var(--muted);font-variant-numeric:tabular-nums}
+
+.script .meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.script .meta span{font-size:14px;color:var(--soft);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+.script .meta b{color:var(--gold);font-weight:600}
+.scene{display:grid;grid-template-columns:92px 1fr;gap:16px;margin-top:18px}
+.scene .thumb{border-radius:10px;overflow:hidden;aspect-ratio:3/4;position:relative;border:1px solid var(--line)}
+.scene .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.scene .thumb span{position:absolute;left:6px;top:6px;font:500 10px "JetBrains Mono",monospace;color:#fff;background:rgba(0,0,0,.6);border-radius:4px;padding:3px 5px}
+.lines p{padding:9px 12px;border-radius:10px;color:var(--soft);cursor:pointer;transition:background .25s,color .25s;border-left:2px solid transparent}
+.lines p:hover{background:var(--panel)}
+.lines p.now{background:var(--panel2);color:var(--paper);border-left-color:var(--gold)}
+.lines p.dir{font-style:italic;color:var(--gold)}
+.lines p.add{border:1px dashed rgba(63,179,127,.55);color:#BFE6D2}
+.lines p.add::before{content:"Təklif olunan əlavə · ";font:500 11px "JetBrains Mono",monospace;letter-spacing:.06em;color:var(--ok);text-transform:uppercase}
+.lines p.end{font-weight:600;color:var(--paper)}
+.notes{margin-top:26px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.notes h3{font-size:17px;margin-bottom:8px}
+.notes ul{margin:0;padding-left:20px;color:var(--soft);font-size:15.5px}
+.notes li{margin-top:5px}
+
+.prod{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px}
+.prod div{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
+.prod b{display:block;font:600 13px "JetBrains Mono",monospace;color:var(--gold);margin-bottom:8px}
+.prod p{color:var(--soft);font-size:15px}
+
+footer{padding:36px 0 60px;color:var(--muted);font-size:14px}
+
+@media (max-width:900px){
+ .grid{grid-template-columns:1fr}
+ .stats{grid-template-columns:repeat(2,1fr)}
+ .studio{grid-template-columns:1fr}
+ .player{position:relative;top:0}
+ .screen{max-width:330px;max-height:none}
+ .prod{grid-template-columns:1fr 1fr}
+}
+@media (max-width:520px){
+ .card{padding:20px}
+ .card header{flex-direction:column}
+ .tags{justify-content:flex-start}
+ .scene{grid-template-columns:64px 1fr;gap:10px}
+ .prod{grid-template-columns:1fr}
+ .cover{padding-top:64px}
+}
+@media (prefers-reduced-motion:reduce){
+ *{animation:none!important;transition:none!important}
+ .card{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+ <b>HOLLYWOOD <i>·</i> MEZMOON</b>
+ <a href="#mekanlar">Məkanlar</a>
+ <a href="#umumi">Ümumi</a>
+ <a href="#ssenari">Ruin ssenariləri</a>
+ <a href="#cekilis">Çəkiliş</a>
+</div></nav>
+
+<header class="cover">
+ <div class="bg" aria-hidden="true">
+  <div style="background-image:url(hw-kadr-r3-1.jpg)"></div>
+  <div style="background-image:url(hw-kadr-r2-2.jpg)"></div>
+  <div style="background-image:url(hw-kadr-r1-1.jpg)"></div>
+ </div>
+ <div class="wrap">
+  <span class="mono">Hollywood Group · Əliyar Qasımovun təklif siyahısı · 17.11.2026</span>
+  <h1>Hər məkan üçün <em>tələb</em> və <em>icra planı</em></h1>
+  <p class="lead">Siyahıdakı hər bənd olduğu kimi saxlanılıb. Altında bizim düzəlişimiz var: necə edəcəyik və nəticəni nə ilə ölçəcəyik. Ruin 1, 2 və 3 üçün təqdimat videolarının ssenariləri kadrlarla birlikdə ayrıca bölmədədir.</p>
+  <div class="legend">
+   <span><i style="background:var(--muted)"></i>Tələb (siyahıdan)</span>
+   <span><i style="background:var(--gold)"></i>Bizim düzəlişimiz</span>
+   <span><i style="background:var(--ok)"></i>Ölçü</span>
+  </div>
+  <div class="stats">
+   <div class="stat"><strong data-n="19">0</strong><span>məkan</span></div>
+   <div class="stat"><strong data-n="2">0</strong><span>ümumi təklif</span></div>
+   <div class="stat"><strong data-n="3">0</strong><span>təqdimat ssenarisi</span></div>
+   <div class="stat"><strong data-n="9">0</strong><span>ssenari kadrı</span></div>
+  </div>
+ </div>
+</header>
+
+<section id="mekanlar"><div class="wrap">
+ <div class="head"><span class="num">01</span><h2>Məkanlar üzrə</h2></div>
+ <p class="sub">Mövzuya görə süzün. Hər kartda yuxarıda siyahıdakı tələb, altında bizim düzəlişimiz və ölçü göstəricisi var.</p>
+ <div class="chips" id="chips"></div>
+ <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="umumi"><div class="wrap">
+ <div class="head"><span class="num">02</span><h2>Ümumi təkliflər</h2></div>
+ <p class="sub">Bütün şəbəkəyə aid iki bənd.</p>
+ <div class="grid" id="grid2"></div>
+</div></section>
+
+<section id="ssenari"><div class="wrap">
+ <div class="head"><span class="num">03</span><h2>Ruin 1 · 2 · 3: təqdimat videoları</h2></div>
+ <p class="sub">Ssenarilər kontent planımızdakı "Ruin 1, 2, 3 təqdimatlar" bölməsindən götürülüb. Soldakı ekran videonun necə axacağını göstərir: kadr, mətn və tempi. Sətrə klikləsəniz, ekran həmin yerə keçir. Kadrlar süni intellektlə hazırlanmış nümunədir, çəkiliş məkanın özündə olacaq.</p>
+ <div class="tabs" role="tablist" id="tabs"></div>
+ <div class="studio">
+  <div class="player">
+   <div class="screen" id="screen">
+    <div class="shade"></div>
+    <div class="rec"><span>REC</span><span id="tc">00:00</span></div>
+    <div class="who" id="who"></div>
+    <div class="subt" id="subt"><span></span></div>
+    <div class="bar"><i id="bar"></i></div>
+    <div class="flash" id="flash"></div>
+    <div class="end" id="end"><b id="endName"></b><span id="endLine"></span></div>
+   </div>
+   <div class="ctrl">
+    <button id="play">Durdur</button>
+    <button class="ghost" id="restart">Başdan</button>
+    <span class="t" id="dur"></span>
+   </div>
+  </div>
+  <div class="script" id="script"></div>
+ </div>
+</div></section>
+
+<section id="cekilis"><div class="wrap">
+ <div class="head"><span class="num">04</span><h2>Çəkiliş günü</h2></div>
+ <p class="sub">Hər üç video üçün eyni qayda. Məkandan gözlədiyimiz yalnız dörd şeydir.</p>
+ <div class="prod">
+  <div><b>01 · Rəqəmlər</b><p>Kabinet sayı və hər kabinetin tutumu. Ssenaridə <mark>[say]</mark> yazılan yerlər bu rəqəmlərlə dolacaq.</p></div>
+  <div><b>02 · Zal</b><p>Çəkiliş üçün 3 saatlıq boş zal və ən azı 2 hazır kabinet. Ən yaxşı vaxt günortadır.</p></div>
+  <div><b>03 · Süfrə</b><p>İmza yeməklər, çay dəstgahı və içkilər çəkiliş başlayanda masada olsun. Yemək gecikməsi bütün günü uzadır.</p></div>
+  <div><b>04 · Komanda</b><p>Formada 2 ofisiant və 1 hostess. Ruin 2 üçün fotozonada iştirak edəcək 2–3 qonaq.</p></div>
+ </div>
+ <div class="notes" style="margin-top:14px">
+  <h3>Videodan sonra</h3>
+  <ul>
+   <li>Hər videodan 3 versiya: tam (60–90 san), Reels (30 san), story (15 san).</li>
+   <li>Videolar daimi reklamda qalır. 3–6 aydan bir yeni tanınmış sima ilə yenilənir.</li>
+   <li>Rezerv zənglərini saymaq üçün reklamda ayrıca nömrə və ya kod söz istifadə edirik.</li>
+  </ul>
+ </div>
+</div></section>
+
+<footer><div class="wrap">MezMoon Agency · Hollywood Group üçün hazırlanıb · paylaşmaq üçün nəzərdə tutulmayıb</div></footer>
+
+<script>
+const V=[
+ {n:"İstanbul",c:["Konsept","Menyu"],ask:"Konsept dəyişikliyi (milli mətbəxə keçid). Qazan yeməkləri, xəngəl setləri və bunun kimi iştahaçan yeməklərlə Nərimanov park ərazisində səs salmaq.",
+  e:["Menyunu <b>10–12 imza yeməyə</b> endirək: qazan kababı, xəngəl setləri, dolma, plov çeşidləri. Uzun menyu yeni konsepti bulandırır.","Qazanın açıldığı an kontentin əsas kadrı olsun: buxar, səs, yaxın plan. Hər həftə bir <b>\"qazan günü\"</b> videosu.","Reklam Nərimanov parkının <b>3 km radiusuna</b> yönəlsin. Günorta üçün yaxın ofislərə \"nahar qazanı\" seti.","İnteryerə kiçik milli toxunuşlar: mis qablar, tekstil, işıq. Dəyişiklik yalnız menyuda qalsa, qonaq onu hiss etməyəcək."],
+  k:"İlk 30 gündə yeni setlərin sifarişlərdəki payı və 3 km radiusdan gələn rezervlər."},
+ {n:"Evolution",c:["Menyu"],ask:"Mətbəx probleminin aradan qaldırılması.",
+  e:["Əvvəl problemi dəqiqləşdirək: dad, porsiya, yoxsa gecikmə. Komandamız <b>gizli qonaq</b> kimi 2 dəfə sifariş verib yazılı hesabat versin.","Hər yemək üçün <b>texnoloji kart</b>: tərkib, çəki, təqdimat şəkli. Aşpaz dəyişsə də dad dəyişməsin.","Deaktiv edilən setlər yenidən aktiv olsun: satış həmin gündən düşmüşdü.","Reklam büdcəsi mətbəx yoxlamasından sonra artırılsın. Zəif mətbəxə qonaq çağırmaq büdcəni yandırır."],
+  k:"Mənfi rəylərin sayı və setlərin həftəlik satışı."},
+ {n:"Gold",c:["Aksiya"],ask:"Axşam 18:00-dək kabinetlər depozitsizdir! Aksiyası yaradılmalıdır.",
+  e:["Aksiyaya ad və bir cümləlik şərt: <b>\"Gündüz kabineti: 18:00-dək depozit yoxdur\"</b>. Hansı günlər və neçə nəfərə qədər olduğu açıq yazılsın.","Hədəf: yaxın ofislər, tələbələr, gündüz görüşən qadın auditoriyası. Reklam <b>10:00–16:00</b> arası göstərilsin, qərar o saatlarda verilir.","Rezervdə <b>\"Gündüz\" kod sözü</b>: aksiyadan gələn qonaq ayrıca sayılsın.","Kreativ: saat əqrəbi 18:00-a çatır, kabinetin qapısı açılır."],
+  k:"Həftəlik gündüz kabinet rezervləri, aksiyadan əvvəlki 4 həftə ilə müqayisədə."},
+ {n:"Okean",c:["Blogger"],ask:"Blogger dəstəyi (daimi).",
+  e:["Ayda <b>2 mikro</b> (10–50 min) və <b>1 orta</b> (50–200 min) blogger. Seçimdə izləyicinin Bakıdan olması və real şərh aktivliyi əsasdır.","Hər blogger üçün ayrıca kod söz: kimin neçə qonaq gətirdiyi görünsün.","Axşam 20:00-dan sonra mesajlar cavabsız qalır. Blogger paylaşımı əsasən axşam baxılır, bu saatlarda cavablanma hostessə verilsin."],
+  k:"Kod sözlə gələn rezervlər və paylaşımdan sonrakı 3 gündə gələn mesajlar."},
+ {n:"Planet",c:["Blogger"],ask:"Blogger dəstəyi olsa daha yaxşı olar (daimi).",
+  e:["<b>1 aylıq sınaq</b>: 2 blogger. Nəticə olsa daimi plana keçirik.","Blogger kontenti bürc endirimi ilə birləşsin: \"bu ayın bürcü\" vizitləri. Bürc endirimi satışa artıq müsbət təsir edib.","Yolların bağlanması məsələsi üçün paylaşımlarda giriş və parkinq yolu göstərilsin."],
+  k:"Sınaq ayında kod sözlə gələn qonaq sayı."},
+ {n:"Irish",c:["Art"],ask:"Art dəstəyi (yeni şoular və xüsusi günlərlə bağlı).",
+  e:["<b>Art-direktor</b>: bir nəfər Irish, Finnegans və The Gallery-yə birlikdə baxa bilər.","Xüsusi günlər təqvimi: St. Patrick's Day, Halloween, Yeni il, Novruz, böyük futbol oyunları. Hər tədbirin dekoru, musiqisi, menyusu və kontenti <b>14 gün əvvəl</b> hazır olsun.","Tədbir günü çeklisti: dekor, playlist, fotozona, heyətin geyimi. Halloween-də dekor zəif idi, DJ eyni mahnıları səsləndirirdi.","Auditoriya əsasən xaricidir: elanlar ingiliscə də olsun."],
+  k:"Tədbir gecələrində doluluq və həmin həftənin satışı."},
+ {n:"Khan",c:["Menyu","Art"],ask:"Səhər yeməyinin dəyişdirilməsi. Art dəstəyi.",
+  e:["Araşdırmamız səhər yeməyinin Targovı ərazisindəki rəqiblərdən xeyli baha olduğunu göstərdi. Yeni menyu <b>3 qiymət pilləsi</b> ilə: sadə səhər seti, ailə seti, premium.","Yeni setlər üçün çəkiliş: süfrənin qurulması, buxar, çay. Reklam yeni qiymətlə başlasın.","Art: həftəsonu səhərləri akustik musiqi."],
+  k:"Səhər saatlarında çek sayı, ilk 4 həftə."},
+ {n:"Finnegans",c:["Art"],ask:"Art dəstəyi.",
+  e:["Irish ilə eyni art-direktor modeli.","Lineup hər həftə <b>çərşənbə 18:00</b>-a qədər bizə çatsın. Gec lineup həftəsonu dizaynını və reklamı gecikdirir.","Təmir, bağlanma və qrafik dəyişikliyi barədə ən azı 3 gün əvvəl xəbər verilsin ki, qonaqlara elan edək."],
+  k:"Lineup-ın vaxtında gəlmə faizi və həftəsonu doluluğu."},
+ {n:"The Gallery",c:["Art"],ask:"Art dəstəyi.",
+  e:["İfaçılar üçün <b>aylıq plan</b> əvvəlcədən hazır olsun, zəif çıxışlar dəyişdirilsin.","Ayda bir tematik gecə: retro, caz və ya akustik.","Son vaxtlar satış düzəlir. Art dəstəyi bu artımı möhkəmləndirsin."],
+  k:"Tematik gecələrin doluluğu, adi gecələrlə müqayisədə."},
+ {n:"Diamond",c:["Konsept","Menyu"],ask:"Menyu və qiymətlərin mütləq şəkildə dəyişikliyi. Fast food combo setləri və PlayStation üstünlüklü konsept.",
+  e:["<b>3 combo</b>: solo, dostlar (2–3 nəfər), komanda (4–6 nəfər). Qiymət şəhərdəki PS klubları ilə müqayisədə qurulsun.","Kabinet, PS saatı və combo bir paketdə: <b>\"Oyun gecəsi\"</b>.","Həftəlik FIFA turniri, hədiyyə pulsuz kabinet saatı.","Konseptdən əvvəl kabinetdəki texniki problemlər (boru səsi, qoxu) həll olunsun. Gənc auditoriya belə şeyləri dərhal paylaşır."],
+  k:"Combo satışı və həftəiçi kabinet doluluğu."},
+ {n:"Platinium",c:["Blogger"],ask:"Blogger dəstəyi.",
+  e:["Blogger vizitləri <b>cümə və şənbə</b> gecələrinə yönəlsin: əsas çətinlik həftəsonu doluluğudur.","Kod söz qaydası Okean ilə eynidir.","Daimi qonaqlar üçün kiçik jest (ayda bir dəfə desert, xüsusi masa) bloggerlə gələn yeni qonaqları da saxlamağa kömək edir."],
+  k:"Həftəsonu doluluğu və kod sözlə gələn rezervlər."},
+ {n:"Papa Cinema",c:["Digər"],ask:"Siyahıda bu məkan üçün tələb yoxdur.",
+  e:["Bizim tək əlavəmiz: <b>gələn zənglərin qeydiyyatı</b>. Reklamdan gələn zəngləri saymadan nəticəni ölçmək olmur."],
+  k:"Ayda reklamdan gələn zəng sayı."},
+ {n:"Ruin 1",c:["Video"],ask:"Məşhur sima ilə təqdimat videosu. Ssenari kontent bölməsində yerləşdirilib.",
+  e:["Ssenari hazırdır: aparıcı qonağı qarşılayır, çay süfrəsi, sonra kabinetlər.","<mark>[say]</mark> yerinə kabinetlərin tutumu yazılmalıdır, bu rəqəmi məkandan gözləyirik."],
+  k:"Videodan sonra kabinet rezervləri.",go:1},
+ {n:"Ruin 2",c:["Video"],ask:"Məşhur sima ilə təqdimat videosunun çəkilməsi (korporativ tədbirlər və digər imkanların vurğulanması). Təqdimat kontent bölməsində yerləşdirilib, Elvin Mərdanovla.",
+  e:["Ssenaridə korporativ tədbirlər yox idi. Sona <b>iki cümləlik əlavə</b> təklif etdik (aşağıda yaşıl çərçivədədir).","Fotozona səhnəsi videonun ən paylaşılan hissəsi olacaq, onu ayrıca Reels kimi də kəsəcəyik.","<mark>[say]</mark> yerinə kabinet sayı və tutumu yazılmalıdır."],
+  k:"Kabinet və korporativ rezervlər, video yayımdan sonrakı 30 gün.",go:2},
+ {n:"Ruin 3",c:["Video"],ask:"Məşhur sima ilə təqdimat videosu. Ssenari kontent bölməsində yerləşdirilib.",
+  e:["Ssenari premium tondadır: interyer, özəl kabinetlər, xidmət detalları.","Video ən çox bu məkan üçün vacibdir: qarşılanma çəkiliş günü də yoxlanılacaq, kadrda qapıda hostess olmalıdır.","<mark>[say]</mark> yerinə kabinetlərin tutumu yazılmalıdır."],
+  k:"Kabinet rezervləri və rezervin orta məbləği.",go:0},
+ {n:"Badam 1",c:["Tədbir"],ask:"Nərd çempionatının keçirilməsi. Xüsusi aparıcı ilə.",
+  e:["Format: hər həftə seçmə oyunlar, ayın sonunda final. Badam 1 və Badam 2 arasında <b>ortaq liqa</b>, final növbə ilə keçirilir.","Qeydiyyat formu ilə ad, nömrə və ad günü bazaya düşür. Bu, CRM üçün ilk data olacaq.","Aparıcı finalı canlı şərh edir, story-də yayım, finaldan qısa video.","Çay dəstgahının çərəzləri düzəlsin: turnirdə qonaq saatlarla oturur, süfrə kadrda görünür."],
+  k:"Qeydiyyat sayı və turnir günlərinin satışı."},
+ {n:"Badam 2",c:["Tədbir"],ask:"Nərd çempionatının keçirilməsi. Xüsusi aparıcı ilə. Zalların birləşdirilməsi (?)",
+  e:["Reklam analizimiz 2-ci zalın qonaqlara, xüsusən xanımlara maraqlı gəlmədiyini göstərdi. Çempionat 2-ci zalda keçirilsə, zal yeni funksiya qazanır: <b>turnir zalı</b>.","Zalların birləşdirilməsi barədə təklifimiz: əvvəl 1 ay turnir sınağı, sonra doluluğa baxıb qərar verək.","Liqa qaydaları Badam 1 ilə eynidir."],
+  k:"2-ci zalın turnirdən əvvəl və sonra doluluğu."},
+ {n:"Deluxe",c:["Blogger"],ask:"Blogger dəstəyi (daimi).",
+  e:["Ayda 2 mikro və 1 orta blogger, kod söz qaydası ilə.","Format: dostlarla kabinetdə axşam, real qonaq kimi. Studiya görüntüsü yox."],
+  k:"Kod sözlə gələn rezervlər."},
+ {n:"Nar Cafe",c:["Aksiya","Menyu"],ask:"Axşam 18:00-dək kabinetlər depozitsizdir. Setlərin düzgün tərtibatı (mütləq şəkildə).",
+  e:["Aksiya Gold ilə eyni şablonda olsun: ortaq kreativ xərci azaldır.","Reklamda yalnız pivə seti nəticə verdi, çay və Gürcü setləri qeyri-peşəkar tərtib olunmuşdu. Hər set üçün <b>tərkib, qab və təqdimat standartı</b> və foto nümunə.","Çəkiliş üçün uyğun qab və içki əvvəlcədən hazır olsun."],
+  k:"Setlərin satışı və gündüz kabinet rezervləri."}
+];
+const G=[
+ {n:"Menyu tərtibatı",c:["Bütün məkanlar"],ask:"Menyu tərtibatının dəyişdirilməsi, yeni xüsusi təamların əlavə olunması.",
+  e:["Hər menyuda <b>3–5 imza yemək</b> ön planda və şəkilli olsun. Son 3 ayın satış datası ilə satılmayan yeməklər çıxarılsın.","Hər yeni təam üçün çəkiliş və 1 həftəlik reklam.","QR menyu CRM ilə birləşsin (aşağıdakı bənd)."],
+  k:"Yeni təamların ilk ay satışı."},
+ {n:"CRM sistemi",c:["Bütün məkanlar"],ask:"CRM sistem (qonaq datalarının əldə edilməsi, ad günlərində və ya qonaqlar uzun müddət gəlmədikdə xüsusi cəlbedici mesajların göndərilməsi).",
+  e:["<b>Data yığımı</b>: QR menyu açılanda \"Çarxı fırlat və qazan\". Qonaq ad, nömrə və ad günü tarixini yazır, çarxı çevirir: 20% ehtimalla kiçik hədiyyə.","<b>Avtomatik mesajlar</b>: ad günündən 7 gün əvvəl xüsusi təklif. 30 gün gəlməyən qonağa xatırlatma, 60 gün gəlməyənə daha güclü təklif.","<b>Hesabat</b>: hər məkan üzrə yeni qonaq, geri qayıdan qonaq və mesajdan gələn rezerv sayı.","Badam nərd liqasının qeydiyyatı ilk datanı verəcək."],
+  k:"Ayda toplanan nömrə, geri qayıdan qonaq faizi."}
+];
+
+const cardHTML=(v,wide)=>`<article class="card${wide?' wide':''}" data-c="${v.c.join('|')}">
+ <header><h3>${v.n}</h3><div class="tags">${v.c.map(t=>`<span class="tag">${t}</span>`).join('')}</div></header>
+ <div class="ask"><span class="mono">Tələb</span>${v.ask}</div>
+ <div class="edit"><span class="mono">Bizim düzəlişimiz</span><ul>${v.e.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+ <div class="kpi"><b>Ölçü:</b> ${v.k}</div>
+ ${v.go!=null?`<a class="go" href="#ssenari" data-go="${v.go}">Ssenariyə bax →</a>`:''}
+</article>`;
+document.getElementById('grid').innerHTML=V.map(v=>cardHTML(v)).join('');
+document.getElementById('grid2').innerHTML=G.map(v=>cardHTML(v)).join('');
+
+const cats=["Hamısı",...new Set(V.flatMap(v=>v.c))];
+const chips=document.getElementById('chips');
+chips.innerHTML=cats.map((c,i)=>`<button aria-pressed="${i===0}" data-f="${c}">${c} · ${i===0?V.length:V.filter(v=>v.c.includes(c)).length}</button>`).join('');
+const cards=[...document.querySelectorAll('#grid .card')];
+chips.onclick=e=>{const b=e.target.closest('button');if(!b)return;
+ chips.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+ cards.forEach(c=>{c.hidden=!(b.dataset.f==='Hamısı'||c.dataset.c.split('|').includes(b.dataset.f));if(!c.hidden)c.classList.add('in')});
+};
+
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.card').forEach((c,i)=>{c.style.transitionDelay=(i%2)*90+'ms';io.observe(c)});
+
+/* counters */
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;so.unobserve(e.target);
+ const el=e.target,n=+el.dataset.n,t0=performance.now();
+ const step=t=>{const p=Math.min(1,(t-t0)/900);el.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step);
+}));
+document.querySelectorAll('[data-n]').forEach(el=>so.observe(el));
+
+/* scenarios: f = kadr (0,1,2), t = tip */
+const S=[
+ {id:"r1",n:"Ruin 1",who:"Elxan Rəcəbov",tone:"Səmimi, dost kimi",img:["r1-1","r1-2","r1-3"],cap:["Giriş və zal","Çay süfrəsi","Kabinet"],end:"Kabinetinizi rezerv edin",
+  L:[
+   [0,"Gözəl bir axşam keçirmək istəyirsiniz? O zaman sizi doğru yerə gətirmişəm. Xoş gəlmisiniz, Ruin 1!"],
+   [0,"İlk baxışdan diqqətinizi nə çəkəcək, bilmirəm, amma məncə, burada hər şeyin öz yeri var. İnteryer, işıqlandırma, rahat atmosfer..."],
+   [1,"Hətta çay içmək üçün belə ayrıca bir həvəs yaranır."],
+   [2,"Amma gəlin, sizi ən maraqlı hissə ilə tanış edim: kabinetlərimizlə."],
+   [2,"Ruin 1-də [say] nəfərə qədər qonaq qəbul edə bilən özəl kabinetlərimiz var. Yəni dostlarla görüşmək, ailəvi yemək təşkil etmək, ad günü keçirmək və ya sadəcə rahat-rahat söhbət etmək istəyirsinizsə, seçim sizin."],
+   [2,"Üstəlik, burada nə səs-küyə görə narahat olacaqsınız, nə də söhbətinizin kiməsə çatacağından. Qapını bağlayırsınız və axşam yalnız sizə aid olur."],
+   [1,"Xidmət, rahatlıq, gözəl atmosfer... Bir axşamdan gözlədiyiniz nə varsa, hamısı burada."],
+   [0,"İndi sizə bir məsləhət: belə bir axşamı son dəqiqəyə saxlamayın. Bizə zəng edin, kabinetinizi rezerv edin, qalanını isə Ruin 1-ə buraxın."],
+   [0,"Görüşənədək!","end"]
+  ],
+  notes:["Aparıcı girişdən zala doğru yeriyir, kamera arxadan izləyir (bir planlı kadr).","Çay sətrində kamera süfrəyə enir: armudu stəkan, buxar, limon.","\"Qapını bağlayırsınız\" sözündə kabinet qapısı kadrda bağlanır, səs kəsilir."]},
+ {id:"r2",n:"Ruin 2",who:"Elvin Mərdanov",tone:"Zarafatlı, enerjili",img:["r2-1","r2-2","r2-3"],cap:["Fotozona","İnteryer","Kabinet və ofisiant"],end:"Yaxşı yerlərin öz qonaqları olur",
+  L:[
+   [1,"Deyirlər, bəzi yerlərə bir dəfə gedirsən, amma fikrin həmişə orada qalır. Ruin 2 də elə məkanlardandır. Gəlin, sizə niyə belə olduğunu göstərim."],
+   [1,"Ruin 2-yə xoş gəlmisiniz!"],
+   [0,"Bura gələndə ilk dayanacağımız, əlbəttə ki, fotozonadır. Burada bir qayda var: şəkil çəkdirmədən getmək olmaz. Yoxsa sonra heç kim inanmayacaq ki, Ruin 2-də olmusunuz."],
+   [0,"Elvin xanımlarla şəkil çəkdirir, kamera flaş effekti verir.","dir"],
+   [0,"Bağışlayın, bu da işimizin bir hissəsidir. Davam edək!"],
+   [1,"İndi isə bir az da məkanın özündən danışaq. Ruin 2-də interyerin hər detalı xüsusi seçilib. İşıqlandırmadan mebellərə, masaların düzülüşündən ümumi atmosferə qədər hər şey bir-birinə uyğun gəlir."],
+   [1,"Nəticədə həm göz oxşayan, həm də rahat bir mühit yaranır."],
+   [2,"Amma bilirəm, indi ən çox maraqlandığınız hissəyə gəldik: kabinetlərə!"],
+   [2,"Ruin 2-də ümumilikdə [say] kabinetimiz var və hər biri [say] nəfərə qədər qonaq qəbul edə bilir. Hər kabinetin özünəməxsus dizaynı, işıqlandırması və sizə xüsusi xidmət göstərən ofisiantı var."],
+   [2,"Yəni dostlarınızla rahat söhbət etmək, ailənizlə vaxt keçirmək və ya xüsusi bir günü qeyd etmək istəyirsinizsə, burada özünüzə uyğun kabinet mütləq tapacaqsınız."],
+   [2,"Qapını bağlayın, rahat əyləşin. Sifarişinizdən tutmuş xidmətə qədər hər şeylə komandamız maraqlanacaq."],
+   [1,"Şirkətinizin korporativ axşamını, təqdimatını və ya komanda görüşünü də burada keçirə bilərsiniz. Menyunu tədbirinizə uyğun birlikdə hazırlayırıq.","add"],
+   [1,"Bir məsləhət də verim: bəyəndiyiniz kabineti seçmisinizsə, son dəqiqəyə saxlamayın. Çünki yaxşı yerlərin öz daimi qonaqları olur.","end"]
+  ],
+  notes:["Fotozona səhnəsi ayrıca 15 saniyəlik Reels kimi də kəsiləcək.","Flaş anında 2–3 kadrlıq ağ keçid və fotoaparat səsi.","Korporativ əlavəsi Əliyar bəyin tələbinə görədir. Məkanda zal birləşdirmə və ya ekran imkanı varsa, cümləyə əlavə edərik."]},
+ {id:"r3",n:"Ruin 3",who:"Azər Aydəmir",tone:"Sakit, premium",img:["r3-1","r3-2","r3-3"],cap:["Zal","Özəl kabinet","Xidmət detalı"],end:"Özəl anlar üçün seçilən məkan",
+  L:[
+   [0,"Bəzi məkanlar var ki, ora sadəcə vaxt keçirmək üçün deyil, özünüzə xüsusi bir an ayırmaq üçün gəlirsiniz."],
+   [0,"Ruin 3 də məhz belə məkanlardandır."],
+   [0,"Zövqlə düşünülmüş interyer, incə dizayn detalları, rahat atmosfer və yüksək xidmət standartları... Burada hər şey bir-birini tamamlayaraq fərqli bir mühit yaradır."],
+   [1,"Məkanımızın ən seçilən xüsusiyyətlərindən biri isə özəl kabinetlərimizdir. Hər biri [say] nəfərə qədər qonaq üçün nəzərdə tutulub. Tam məxfi mühit, fərdi xidmət və rahatlığınız üçün düşünülmüş şərait."],
+   [1,"İstər özəl bir şam yeməyi, istər ailəvi görüş, istər dostlarınızla xüsusi bir gecə, istərsə də mühüm iş görüşü... Ruin 3 hər anınıza uyğun atmosfer təqdim edir."],
+   [2,"Burada diqqət yalnız təqdim olunan yeməklərdə deyil, qonağın özünü necə hiss etməsindədir. Çünki keyfiyyət bəzən ən kiçik detallarda özünü göstərir."],
+   [2,"Siz sadəcə anın dadını çıxarın. Biz isə bu anın yadda qalan olması üçün çalışaq."],
+   [2,"Ruin 3. Özəl anlar üçün seçilən məkan. Kabinetinizi əvvəlcədən rezerv edin.","end"]
+  ],
+  notes:["Tempo yavaşdır: uzun, hamar kamera hərəkəti, az kəsmə.","Girişdə qapıda hostess qarşılayır: bu kadr qarşılanma standartını da göstərir.","\"Ən kiçik detallar\" sətrində yaxın planlar: əlcək, boşqab, şam."]}
+];
+const words=t=>t.split(/\s+/).length;
+const durOf=([,t,k])=>k==="dir"?2.4:Math.max(2.6,words(t)*0.42);
+const fmt=s=>{s=Math.round(s);return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
+const mk=t=>t.replace(/\[say\]/g,'<mark>[say]</mark>');
+
+const scr=document.getElementById('screen'),subt=document.getElementById('subt'),bar=document.getElementById('bar'),
+ tc=document.getElementById('tc'),who=document.getElementById('who'),flash=document.getElementById('flash'),
+ endEl=document.getElementById('end'),playBtn=document.getElementById('play'),durEl=document.getElementById('dur'),
+ tabs=document.getElementById('tabs'),script=document.getElementById('script');
+let cur=0,idx=0,timer=null,playing=true,inView=false,tStart=0,elapsedBefore=0,imgs=[];
+
+tabs.innerHTML=S.map((s,i)=>`<button role="tab" aria-selected="${i===0}" data-i="${i}">${s.n}<small>${s.who}</small></button>`).join('');
+tabs.onclick=e=>{const b=e.target.closest('button');if(b)load(+b.dataset.i)};
+document.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',()=>load(+a.dataset.go)));
+
+function load(i){
+ cur=i;const s=S[i];
+ tabs.querySelectorAll('button').forEach((b,j)=>b.setAttribute('aria-selected',j===i));
+ scr.querySelectorAll('img').forEach(x=>x.remove());
+ imgs=s.img.map((f,j)=>{const im=new Image();im.src=`hw-kadr-${f}.jpg`;im.alt=s.cap[j];scr.insertBefore(im,scr.querySelector('.shade'));return im});
+ who.textContent=s.who;
+ document.getElementById('endName').textContent=s.n.toUpperCase();
+ document.getElementById('endLine').textContent=s.end;
+ const total=s.L.reduce((a,l)=>a+durOf(l),0);
+ durEl.textContent="≈ "+fmt(total)+" · "+s.L.reduce((a,l)=>a+(l[2]==="dir"?0:words(l[1])),0)+" söz";
+ let html=`<div class="meta"><span>Aparıcı: <b>${s.who}</b></span><span>Ton: <b>${s.tone}</b></span><span>Uzunluq: <b>≈ ${fmt(total)}</b></span></div>`;
+ let lastF=-1,open=false;
+ s.L.forEach((l,j)=>{
+  if(l[0]!==lastF){if(open)html+=`</div></div>`;html+=`<div class="scene"><div class="thumb"><img src="hw-kadr-${s.img[l[0]]}.jpg" alt="${s.cap[l[0]]}" loading="lazy"><span>${s.cap[l[0]]}</span></div><div class="lines">`;lastF=l[0];open=true}
+  html+=`<p data-j="${j}" class="${l[2]||''}">${l[2]==='dir'?'('+l[1]+')':mk(l[1])}</p>`;
+ });
+ html+=`</div></div><div class="notes"><h3>Rejissor qeydləri</h3><ul>${s.notes.map(n=>`<li>${n}</li>`).join('')}</ul></div>`;
+ script.innerHTML=html;
+ script.querySelectorAll('p[data-j]').forEach(p=>p.onclick=()=>{go(+p.dataset.j);if(!playing)toggle(true)});
+ go(0);
+}
+function go(j){
+ clearTimeout(timer);const s=S[cur];idx=j;const l=s.L[j];
+ imgs.forEach((im,k)=>{const on=k===l[0];if(on&&!im.classList.contains('on')){im.classList.toggle('alt',(j%2)===1);im.classList.add('on')}else if(!on)im.classList.remove('on')});
+ subt.className='subt'+(l[2]==='dir'?' dir':'');
+ subt.innerHTML=`<span>${l[2]==='dir'?l[1]:mk(l[1])}</span>`;
+ requestAnimationFrame(()=>requestAnimationFrame(()=>subt.firstChild.classList.add('on')));
+ if(l[2]==='dir'){flash.classList.remove('go');void flash.offsetWidth;flash.classList.add('go')}
+ endEl.classList.toggle('on',l[2]==='end');
+ script.querySelectorAll('p[data-j]').forEach(p=>p.classList.toggle('now',+p.dataset.j===j));
+ const before=s.L.slice(0,j).reduce((a,x)=>a+durOf(x),0),total=s.L.reduce((a,x)=>a+durOf(x),0);
+ elapsedBefore=before;tStart=performance.now();
+ if(playing&&inView)timer=setTimeout(()=>go(j+1<s.L.length?j+1:0),durOf(l)*1000+(j+1<s.L.length?0:1800));
+ tick.total=total;
+}
+function tick(){
+ const s=S[cur];const run=playing&&inView?(performance.now()-tStart)/1000:0;
+ const d=durOf(s.L[idx]);const t=elapsedBefore+Math.min(run,d);
+ bar.style.width=(t/tick.total*100)+'%';tc.textContent=fmt(t);
+ requestAnimationFrame(tick);
+}
+function toggle(force){
+ playing=force!=null?force:!playing;playBtn.textContent=playing?'Durdur':'Oynat';
+ if(playing)go(idx);else clearTimeout(timer);
+}
+playBtn.onclick=()=>toggle();
+document.getElementById('restart').onclick=()=>{toggle(true);go(0)};
+new IntersectionObserver(es=>{inView=es[0].isIntersecting;if(inView&&playing)go(idx);else clearTimeout(timer)},{threshold:.35}).observe(scr);
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)playing=false,playBtn.textContent='Oynat';
+load(0);requestAnimationFrame(tick);
+</script>
+</body>
+</html>
