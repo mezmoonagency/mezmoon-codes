@@ -195,6 +195,7 @@ section{padding:clamp(56px,8vw,96px) 0;border-bottom:1px solid var(--line)}
 .ph-scr{position:relative;width:100%;height:100%;border-radius:34px;overflow:hidden;background:#0d0d13}
 .ph-notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:86px;height:22px;border-radius:12px;background:#000;z-index:5}
 .ph-v{position:absolute;inset:0;padding:42px 16px 16px;display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateX(24px);pointer-events:none;transition:opacity .4s ease,transform .45s var(--ease),visibility 0s .45s}
+.ph-v[data-v="1"]{overflow-y:auto}
 .ph-v.on{opacity:1;visibility:visible;transform:none;pointer-events:auto;transition-delay:0s}
 .ph-v.out{transform:translateX(-24px)}
 .ph-top{display:flex;align-items:center;justify-content:space-between;font:600 15px var(--display);margin-bottom:12px}
@@ -219,13 +220,14 @@ section{padding:clamp(56px,8vw,96px) 0;border-bottom:1px solid var(--line)}
 .fm .ck input{width:18px;height:18px;min-height:0;margin:1px 0 0;accent-color:var(--lav);flex:none}
 .ph-btn{margin-top:auto;width:100%;min-height:46px;border-radius:999px;background:var(--lav);color:var(--ink);font:600 15px var(--display);transition:opacity .2s,background-color .2s}
 .ph-btn:disabled{opacity:.35;cursor:not-allowed}
+.ph-btn.dim{opacity:.55}
 .ph-btn.alt{background:transparent;color:var(--soft);border:1px solid var(--line-2);min-height:40px;font-size:13px;margin-top:8px}
 .ph-note{font-size:11.5px;color:var(--muted);text-align:center;margin-top:8px}
 .otp{display:flex;gap:10px;justify-content:center;margin:22px 0 10px}
 .otp span{width:46px;height:56px;border-radius:12px;border:1px solid var(--line-2);display:grid;place-items:center;font:600 24px var(--display);background:var(--panel);transition:border-color .2s}
 .otp span.f{border-color:var(--lav)}
 .wheel-w{position:relative;width:236px;height:236px;margin:14px auto 0}
-.wheel{width:100%;height:100%;border-radius:50%;position:relative;transition:transform 4.2s cubic-bezier(.12,.8,.12,1);box-shadow:0 0 0 6px #1d1d28,0 0 0 7px var(--lav-lo),0 20px 50px -20px rgba(151,148,229,.7)}
+.wheel{width:100%;height:100%;border-radius:50%;position:relative;will-change:transform;box-shadow:0 0 0 6px #1d1d28,0 0 0 7px var(--lav-lo),0 20px 50px -20px rgba(151,148,229,.7)}
 .wheel span{position:absolute;left:50%;top:50%;width:50%;transform-origin:0 50%;font:600 9.5px/1.1 var(--display);text-transform:uppercase;letter-spacing:.02em;padding-left:30px;color:#fff;text-align:center}
 .wheel-w .pin{position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:11px solid transparent;border-right:11px solid transparent;border-top:20px solid #fff;z-index:2;filter:drop-shadow(0 2px 4px rgba(0,0,0,.6))}
 .wheel-w .hub{position:absolute;inset:50%;width:46px;height:46px;margin:-23px;border-radius:50%;background:#0d0d13;border:3px solid var(--lav);display:grid;place-items:center}
@@ -519,9 +521,9 @@ footer img{width:72px;opacity:.7}
       <label>Soyad <i>*</i><input id="fSoyad" autocomplete="family-name" required><span class="err"></span></label>
       <label>Ad günü <i>*</i><input id="fDog" type="date" required><span class="err"></span></label>
       <label>Mobil nömrə <i>*</i><input id="fTel" inputmode="tel" autocomplete="tel" placeholder="+994 50 123 45 67" required><span class="err"></span></label>
-      <label class="ck"><input type="checkbox" id="fOk"><span>Ad günü təbriki və xüsusi təkliflər üçün SMS almağa razıyam <i>*</i></span></label>
+      <label class="ck"><input type="checkbox" id="fOk"><span>Ad günü təbriki və xüsusi təkliflər üçün SMS almağa razıyam <i>*</i></span></label><span class="err" id="okErr"></span>
      </form>
-     <button class="ph-btn" id="fGo" disabled>Kodu göndər</button>
+     <button class="ph-btn dim" id="fGo" type="button">Kodu göndər</button>
      <button class="ph-btn alt" id="fDemo" type="button">Nümunə ilə doldur</button>
     </div>
     <div class="ph-v" data-v="2">
@@ -974,8 +976,8 @@ const check=(show)=>{let all=true;
  for(const k in rules){const r=rules[k](),bad=r!==true;if(bad)all=false;
   const el=f[k],err=el.parentElement.querySelector('.err');
   if(show||touched[k]){el.classList.toggle('bad',bad);err.textContent=bad?r:''}}
- if(!f.ok.checked)all=false;$('fGo').disabled=!all;return all};
-['ad','soyad','dog','tel'].forEach(k=>{f[k].addEventListener('input',()=>check());f[k].addEventListener('blur',()=>{touched[k]=true;check()})});
+ const okErr=document.getElementById('okErr');if(!f.ok.checked){all=false;if(show)okErr.textContent='Davam etmək üçün razılığı işarələyin'}else okErr.textContent='';$('fGo').classList.toggle('dim',!all);return all};
+['ad','soyad','dog','tel'].forEach(k=>{['input','change'].forEach(ev=>f[k].addEventListener(ev,()=>{if(ev==='change')touched[k]=true;check()}));f[k].addEventListener('blur',()=>{touched[k]=true;check()})});
 f.tel.addEventListener('input',()=>{const d=digits(f.tel.value).slice(0,9);if(d)f.tel.value=fmtTel(d)});
 f.ok.addEventListener('change',()=>check());
 $('fDemo').onclick=()=>{f.ad.value='Aysel';f.soyad.value='Məmmədova';f.dog.value='1996-11-24';f.tel.value=fmtTel('501234567');f.ok.checked=true;Object.keys(rules).forEach(k=>touched[k]=true);check(true)};
@@ -995,12 +997,15 @@ wheel.innerHTML=P.map((p,i)=>`<span style="transform:rotate(${i*45+22.5-90}deg)"
 let rot=0,spun=false;
 $('wGo').onclick=()=>{if(spun)return;spun=true;$('wGo').disabled=true;
  const wins=P.map((p,i)=>p[1]?i:-1).filter(i=>i>=0);const k=wins[Math.floor(Math.random()*wins.length)];
- const c=k*45+22.5;rot=rot-(rot%360)+360*6+(360-c)+(Math.random()*16-8);
- wheel.style.transform=`rotate(${rot}deg)`;
+ const c=k*45+22.5,from=rot%360,to=360*6+(360-c)+(Math.random()*16-8),dur=reduce?2400:4200,t0=performance.now();
+ const ease=t=>1-Math.pow(1-t,4);
+ let done=false;
+ const step=()=>{if(done)return;const q=Math.min(1,Math.max(0,(performance.now()-t0)/dur));rot=from+(to-from)*ease(q);wheel.style.transform=`rotate(${rot}deg)`;if(q<1)requestAnimationFrame(step)};
+ requestAnimationFrame(step);
  setTimeout(()=>{$('wPrize').textContent=P[k][0];$('wCode').textContent='HD-'+(1000+Math.floor(Math.random()*9000));
-  show(4);confetti();addRow()},reduce?300:4400)};
+  done=true;rot=to;wheel.style.transform=`rotate(${rot}deg)`;show(4);confetti();addRow()},(reduce?2400:4200)+250)};
 $('wAgain').onclick=()=>{spun=false;$('wGo').disabled=false;document.getElementById('fm').reset();
- Object.keys(touched).forEach(k=>delete touched[k]);document.querySelectorAll('#fm .err').forEach(e=>e.textContent='');document.querySelectorAll('#fm input').forEach(e=>e.classList.remove('bad'));$('fGo').disabled=true;show(0)};
+ Object.keys(touched).forEach(k=>delete touched[k]);document.querySelectorAll('#fm .err').forEach(e=>e.textContent='');document.querySelectorAll('#fm input').forEach(e=>e.classList.remove('bad'));$('fGo').classList.add('dim');document.getElementById('okErr').textContent='';show(0)};
 function confetti(){const box=$('conf');box.innerHTML='';if(reduce)return;
  const cols=['#9794E5','#BFBCF7','#E8474C','#fff','#4CC38A'];
  for(let i=0;i<40;i++){const e=document.createElement('i');e.style.left=Math.random()*100+'%';e.style.background=cols[i%5];e.style.animationDelay=Math.random()*.5+'s';e.style.transform=`rotate(${Math.random()*180}deg)`;box.appendChild(e)}}
