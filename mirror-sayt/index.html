@@ -1480,7 +1480,10 @@ if(R)(function L(now){requestAnimationFrame(L);if(!vis)return;
     L.style.transform="translate("+(dx*e)+"px,"+(dy*e)+"px) scale("+(ph?s:1)+")";
     const c=[238,240,245].map((v,i)=>Math.round(lerp(v,[23,24,58][i],cl((p-.86)/.12))));W.style.color="rgb("+c+")";
     sec.querySelector(".ihint").style.opacity=played&&p<.05?1:0;
-    const end=p>=.999;L.style.visibility=end?"hidden":"visible";document.documentElement.classList.toggle("intro-on",!end);}
+    const end=p>=.999;L.style.visibility=end?"hidden":"visible";document.documentElement.classList.toggle("intro-on",!end);
+    // loqo menyuya çatdısa açılış birdəfəlik silinir: yuxarı qalxanda böyük loqo bir daha görünmür
+    if(end&&played){const y=scrollY-H;removeEventListener("scroll",onScroll);sec.remove();L.remove();
+      document.documentElement.classList.remove("intro-on");scrollTo({top:Math.max(0,y),behavior:"instant"});}}
   const timers=[],at=(ms,f)=>timers.push(setTimeout(f,ms));
   function anim(dur,f,done){const t0=performance.now();(function st(){const q=cl((performance.now()-t0)/dur);f(q);if(q<1&&!played)requestAnimationFrame(st);else if(done)done();})();}
   function wordIn(){ph=1;L.style.transition="none";const before=L.getBoundingClientRect();
