@@ -332,11 +332,6 @@ footer{padding:70px 0 50px;font-size:13px;color:var(--mute)}
 #intro .cnt{position:absolute;right:6vw;bottom:7vh;font-stretch:125%;font-weight:800;font-size:clamp(56px,11vw,170px);line-height:.8;font-variant-numeric:tabular-nums;color:#A9ADEA}
 #intro .cnt small{font-size:.28em;vertical-align:top;margin-left:.08em}
 #intro .lbl{position:absolute;left:8vw;bottom:7vh;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#8E92E0}
-#intro .fr{position:absolute;left:50%;top:50%;width:min(46vw,680px);aspect-ratio:16/9;transform:translate(-50%,-50%);opacity:0}
-#intro .fr canvas{width:100%;height:100%;display:block}
-#intro .fr .tint{position:absolute;inset:0;mix-blend-mode:multiply;transition:opacity .25s}
-#intro .fr .rf{position:absolute;left:0;top:100%;width:100%;height:100%;transform:scaleY(-1);opacity:.28;-webkit-mask:linear-gradient(to top,#000 0,transparent 45%);mask:linear-gradient(to top,#000 0,transparent 45%);filter:blur(1px)}
-#intro .fr .tag{position:absolute;left:0;top:-30px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#A9ADEA}
 #intro .lg{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);display:flex;align-items:flex-end;gap:clamp(14px,2vw,28px);opacity:0}
 #intro .lg svg{width:clamp(70px,9vw,128px);height:auto;overflow:visible}
 #intro .lg polygon{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);transition:transform .7s cubic-bezier(.2,1.3,.4,1)}
@@ -362,7 +357,6 @@ footer{padding:70px 0 50px;font-size:13px;color:var(--mute)}
   <div class="ih t"></div><div class="ih b"></div>
   <div class="il">
     <div class="scr"><div id="sc1"></div><div id="sc2"></div><div id="sc3"></div><div class="r"><div id="sc4"></div><div id="sc5"></div></div></div>
-    <div class="fr" id="ifr"><div class="tag" id="itag"></div><canvas id="icv" width="640" height="360"></canvas><div class="tint" id="itint"></div><canvas class="rf" id="irf" width="640" height="360"></canvas></div>
     <div class="bgM" id="ibgM"></div>
     <div class="lg" id="ilg">
       <svg viewBox="0 0 60 60"><polygon points="8,26 20,38 20,56 8,44" fill="#A9ADEA"/><polygon points="24,16 36,28 36,56 24,44" fill="#8E92E0"/><polygon points="40,4 52,16 52,56 40,44" fill="#5C60AB"/></svg>
@@ -1145,7 +1139,7 @@ if(R)(function L(now){requestAnimationFrame(L);if(!vis)return;
 })();
 </script>
 <script>
-/* ---- Açılış animasiyası: Locomotive üslubunda deşifrə + piksel kadrlar, sonda güzgü əksli Mirror loqosu ---- */
+/* ---- Açılış animasiyası: Locomotive üslubunda deşifrə, sonda M hərfindən yaranan güzgü əksli Mirror loqosu ---- */
 (function(){
   const I=document.getElementById("intro");if(!I)return;
   if(matchMedia("(prefers-reduced-motion: reduce)").matches||/[?&]intro=0/.test(location.search)){I.remove();return;}
@@ -1159,16 +1153,9 @@ if(R)(function L(now){requestAnimationFrame(L);if(!vis)return;
   at(420,()=>scramble($("sc3"),"Bakı, Azərbaycan",600));
   at(300,()=>scramble($("sc4"),"24 konstruksiya",600));
   at(480,()=>scramble($("sc5"),"Gündə 1.2M+ baxış",650));
-  // 2) piksel mozaikadan aydınlaşan kadrlar + güzgü əksi
-  const SH=[["bilbord","Bilbord","#5C60AB"],["led","LED ekran","#D9482B"],["prizma","Prizma","#E8962E"],["meqabord","Meqabord","#A9ADEA"],["laytboks","Laytboks","#1F8A62"],["roller","Roller","#5C60AB"]];
-  const imgs=SH.map(s=>{const im=new Image();im.src="brendler/fon/"+s[0]+".jpg";return im;});
-  const cv=$("icv"),cx=cv.getContext("2d"),rf=$("irf"),rx=rf.getContext("2d"),off=document.createElement("canvas"),ox=off.getContext("2d");
-  function draw(im,px){const W=cv.width,H=cv.height;if(!im.complete||!im.naturalWidth){cx.fillStyle="#1d1f45";cx.fillRect(0,0,W,H);}else{const r=Math.max(W/im.naturalWidth,H/im.naturalHeight),w=im.naturalWidth*r,h=im.naturalHeight*r;const sw=Math.max(2,Math.round(W/px)),sh=Math.max(2,Math.round(H/px));off.width=sw;off.height=sh;ox.drawImage(im,(W-w)/2/W*sw,(H-h)/2/H*sh,w/W*sw,h/H*sh);cx.imageSmoothingEnabled=px<=1.5;cx.drawImage(off,0,0,sw,sh,0,0,W,H);}rx.clearRect(0,0,W,H);rx.drawImage(cv,0,0);}
-  const F0=1000,FD=330;
-  SH.forEach((s,i)=>at(F0+i*FD,()=>{const fr=$("ifr");fr.style.opacity=1;$("itag").textContent=String(i+1).padStart(2,"0")+" / "+s[1];const tn=$("itint");tn.style.transition="none";tn.style.background=s[2];tn.style.opacity=.85;requestAnimationFrame(()=>{tn.style.transition="opacity .28s";tn.style.opacity=i===SH.length-1?0:.35;});const t0=performance.now();(function f(){const p=Math.min(1,(performance.now()-t0)/230);draw(imgs[i],Math.max(1,48*Math.pow(1-p,2.2)));if(p<1&&!done)requestAnimationFrame(f);})();}));
-  // 3) kadr yığılır, loqo pillələri qalxır, söz deşifrə olunur, əks görünür
-  const L=F0+SH.length*FD+120;
-  at(L,()=>{const fr=$("ifr");fr.style.transition="transform .45s cubic-bezier(.7,0,.3,1),opacity .35s";fr.style.transform="translate(-50%,-50%) scale(.2,.02)";fr.style.opacity=0;document.querySelector("#intro .scr").style.cssText+="transition:opacity .4s;opacity:0";});
+  // 2) yazılar sönür, loqo M hərfindən yaranır
+  const L=1350;
+  at(L,()=>{document.querySelector("#intro .scr").style.cssText+="transition:opacity .4s;opacity:0";});
   // M: ekranın ortasında nəhəng kontur M "pano kimi" aşağıdan qalxır, dolur, sonra sözün ilk hərfi olmaq üçün yerinə uçur
   at(L+250,()=>{const lg=$("ilg"),m=$("iM");lg.style.opacity=1;
     const r=m.getBoundingClientRect(),k=Math.min(innerHeight*.62/r.height,innerWidth*.5/r.width);
