@@ -1576,9 +1576,8 @@ if(R)(function L(now){requestAnimationFrame(L);if(!vis)return;
     sec.querySelector(".ihint").style.opacity=played&&p<.05?1:0;
     rfade=1-cl(p/.22);
     const end=p>=.999;L.style.visibility=end?"hidden":"visible";document.documentElement.classList.toggle("intro-on",!end);
-    // loqo menyuya çatdısa açılış birdəfəlik silinir: yuxarı qalxanda böyük loqo bir daha görünmür
-    if(end&&played){const y=scrollY-H;removeEventListener("scroll",onScroll);sec.remove();L.remove();
-      document.documentElement.classList.remove("intro-on");scrollTo(0,Math.max(0,y));}}
+    // açılış bölməsi silinmir: silinəndə sürüşdürmə yeri sıçrayırdı (Safari-də planet birdən yaxınlaşıb geri qayıdırdı). Yuxarı qalxanda loqo yenidən böyüyür
+  }
   const timers=[],at=(ms,f)=>timers.push(setTimeout(f,ms));
   function anim(dur,f,done){const t0=performance.now();(function st(){const q=cl((performance.now()-t0)/dur);f(q);if(q<1&&!played)requestAnimationFrame(st);else if(done)done();})();}
   function wordIn(){ph=1;L.style.transition="none";const before=L.getBoundingClientRect();
