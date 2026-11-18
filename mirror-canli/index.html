@@ -1712,10 +1712,10 @@ if(R)(function L(now){requestAnimationFrame(L);if(!vis)return;
   /* Bakını kameraya çevirən bucaqlar */
   const PHI=(LON+180)*Math.PI/180,RY=-Math.atan2(-Math.cos(PHI),Math.sin(PHI)),RX=LAT*Math.PI/180;
   /* ---------- peyk plitələri (2D) ---------- */
-  const cache=new Map();let dpr=1,W=1,H=1;
+  const cache=new Map();let dpr=1,W=1,H=1,panX=0,panY=0;const CX0=lon2x(LON),CY0=lat2y(LAT);
   function img(z,x,y){const n=1<<z;x=((x%n)+n)%n;if(y<0||y>=n)return null;const k=z+"/"+x+"/"+y;let o=cache.get(k);if(!o){o=new Image();o.crossOrigin="anonymous";o.onload=()=>{o.ok=1;dirty=true};o.src=TILE(z,x,y);cache.set(k,o)}return o}
   function have(z,x,y){const n=1<<z;x=((x%n)+n)%n;const o=cache.get(z+"/"+x+"/"+y);return o&&o.ok?o:null}
-  function drawLevel(Z,l,fetch){const ts=256*Math.pow(2,Z-l),cx=lon2x(LON)*(1<<l),cy=lat2y(LAT)*(1<<l);
+  function drawLevel(Z,l,fetch){const ts=256*Math.pow(2,Z-l),cx=(CX0+panX)*(1<<l),cy=(CY0+panY)*(1<<l);
     const x0=Math.floor(cx-W/2/ts),x1=Math.floor(cx+W/2/ts),y0=Math.floor(cy-H/2/ts),y1=Math.floor(cy+H/2/ts);
     for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++){const o=fetch?img(l,x,y):have(l,x,y);if(o&&o.ok)tx.drawImage(o,W/2+(x-cx)*ts,H/2+(y-cy)*ts,ts+.6,ts+.6)}}
   let dirty=true,lastZ=-1;
@@ -1724,7 +1724,7 @@ if(R)(function L(now){requestAnimationFrame(L);if(!vis)return;
   /* reklam panellərinin nöqtələri (yerləri təxminidir): şəhər miqyasına yaxınlaşanda görünür */
   const SPC={led:"#A9ADEA",meqa:"#8E92E0",bilbord:"#C9CBF6",prizma:"#8E92E0",lightbox:"#E8E9FB",roller:"#A9ADEA"};
   function drawSpots(Z){const L=window.MIRROR_SPOTS;if(!L)return;const a=cl((Z-9.6)/1.6);if(a<=0)return;
-    const sc=256*Math.pow(2,Z),cx=lon2x(LON),cy=lat2y(LAT),r=cl(3+(Z-10)*.9,3,9),lab=cl((Z-12.6)/1);
+    const sc=256*Math.pow(2,Z),cx=CX0+panX,cy=CY0+panY,r=cl(3+(Z-10)*.9,3,9),lab=cl((Z-12.6)/1);
     tx.save();tx.globalAlpha=a;tx.font="600 12px Inter,system-ui,sans-serif";tx.textBaseline="middle";
     L.forEach(sp=>{if(sp.length<7)return;const x=W/2+(lon2x(sp[6])-cx)*sc,y=H/2+(lat2y(sp[5])-cy)*sc;if(x<-40||y<-40||x>W+40||y>H+40)return;
       const g=tx.createRadialGradient(x,y,0,x,y,r*3.2);g.addColorStop(0,"rgba(169,173,234,.75)");g.addColorStop(1,"rgba(169,173,234,0)");
@@ -1733,10 +1733,18 @@ if(R)(function L(now){requestAnimationFrame(L);if(!vis)return;
       tx.fillStyle=SPC[sp[4]]||"#5C60AB";tx.beginPath();tx.arc(x,y,r*.55,0,7);tx.fill();
       if(lab>0){tx.globalAlpha=a*lab;tx.shadowColor="rgba(0,0,0,.85)";tx.shadowBlur=6;tx.fillStyle="#fff";tx.fillText(sp[0],x+r+7,y);tx.shadowBlur=0;tx.globalAlpha=a;}
     });tx.restore();}
-  function prefetch(z0){for(let z=Math.floor(z0);z<=Math.ceil(ZMAX);z++){const cx=Math.floor(lon2x(LON)*(1<<z)),cy=Math.floor(lat2y(LAT)*(1<<z));for(let dy=-1;dy<=1;dy++)for(let dx=-2;dx<=2;dx++)img(z,cx+dx,cy+dy)}}
+  function prefetch(z0){for(let z=Math.floor(z0);z<=Math.ceil(ZMAX);z++){const cx=Math.floor((CX0+panX)*(1<<z)),cy=Math.floor((CY0+panY)*(1<<z));for(let dy=-1;dy<=1;dy++)for(let dx=-2;dx<=2;dx++)img(z,cx+dx,cy+dy)}}
   /* ---------- ölçü ---------- */
   function size(){W=innerWidth;H=innerHeight;dpr=Math.min(devicePixelRatio,2);R.setSize(W,H,false);cam.aspect=W/H;cam.updateProjectionMatrix();tc.width=W*dpr;tc.height=H*dpr;dirty=true}
   addEventListener("resize",size);size();
+  /* xəritəyə yaxınlaşandan sonra siçanla sürükləyib gəzmək; planetə qayıdanda yavaş-yavaş mərkəzə qayıdır */
+  let drag=null,curZ=1,mapOn=false;const stick=sec.querySelector(".pl-stick")||tc.parentElement;
+  stick.addEventListener("pointerdown",e=>{if(!mapOn||e.pointerType==="touch"||e.button!==0)return;drag={x:e.clientX,y:e.clientY};stick.setPointerCapture(e.pointerId);stick.style.cursor="grabbing";e.preventDefault();});
+  stick.addEventListener("pointermove",e=>{if(!drag)return;const sc=256*Math.pow(2,curZ);
+    panX-=(e.clientX-drag.x)/sc;panY-=(e.clientY-drag.y)/sc;const lim=.0009;panX=cl(panX,-lim,lim);panY=cl(panY,-lim,lim);
+    drag={x:e.clientX,y:e.clientY};dirty=true;prefetch(curZ);});
+  const endDrag=()=>{drag=null;stick.style.cursor=mapOn?"grab":"";};stick.addEventListener("pointerup",endDrag);stick.addEventListener("pointercancel",endDrag);
+  stick.addEventListener("dblclick",()=>{panX=panY=0;dirty=true;});
   /* planetin müəyyən məsafədə ekranda göstərdiyi səth eni (km) -> uyğun xəritə zoom-u */
   const tanH=()=>Math.tan(cam.fov*Math.PI/360)*cam.aspect;
   const widthKm=d=>2*(d-1)*tanH()*R_KM;
@@ -1757,7 +1765,10 @@ if(R)(function L(now){requestAnimationFrame(L);if(!vis)return;
     const k=cl((q-(PG-XF))/XF);tc.style.opacity=k;gc.style.visibility=k>=1?"hidden":"visible";
     const Zs=zoomFor(widthKm(D1)),m=cl((q-PG)/(.97-PG)),Z=Zs+(ZMAX-Zs)*ease(m);
     if(k<1)R.render(S,cam);
+    curZ=Z;mapOn=k>=1;if(!drag)stick.style.cursor=mapOn?"grab":"";
+    if(!mapOn&&(panX||panY)){panX*=.85;panY*=.85;if(Math.abs(panX)+Math.abs(panY)<1e-7)panX=panY=0;dirty=true}
     if(k>0&&(dirty||Math.abs(Z-lastZ)>.0005)){drawTiles(Z);lastZ=Z;dirty=false}
+    {const sc=256*Math.pow(2,Z);pin.style.transform="translate("+(-panX*sc)+"px,"+(-panY*sc)+"px)"}
     /* HUD */
     const km=q<PG?(d-1)*R_KM:W*40075*Math.cos(LAT*Math.PI/180)/(256*Math.pow(2,Z))/(2*tanH())*1;
     alt.textContent=km>=1?Math.round(km).toLocaleString("az").replace(/,/g," ")+" km":Math.round(km*1000)+" m";
