@@ -925,7 +925,7 @@ const SPOTS=[
   ["Xətai m.","Xətai",.6,.62,"bilbord",40.3833,49.8721],["Qara Qarayev pr.","Nizami",.8,.5,"meqa",40.4035,49.9483],["İnşaatçılar m.","Yasamal",.28,.55,"bilbord",40.3891,49.8024],
   ["Badamdar şossesi","Səbail",.24,.78,"bilbord",40.342,49.8103],["Ağ şəhər","Xətai",.7,.68,"led",40.384,49.8881],["Mərdəkan yolu","Xəzər",.9,.24,"meqa",40.4862,50.1312],
   ["20 Yanvar","Binəqədi",.3,.47,"prizma",40.4041,49.8077],["Sahil m.","Səbail",.5,.66,"lightbox",40.3718,49.8446],["Nəriman Nərimanov m.","Nərimanov",.6,.4,"roller",40.4028,49.8706],
-  ["Hava limanı yolu","Xəzər",.86,.34,"meqa",40.445,49.995],["Ağ Şəhər bulvarı","Xətai",.66,.74,"lightbox",40.3768,49.8673],["Moskva pr.","Nəsimi",.58,.5,"bilbord",40.4127,49.8028]];
+  ["Hava limanı yolu","Xəzər",.86,.34,"meqa",40.445,49.995],["Ağ Şəhər bulvarı","Xətai",.66,.74,"lightbox",40.3768,49.8673],["Moskva pr.","Nəsimi",.58,.5,"bilbord",40.4127,49.8028]];window.MIRROR_SPOTS=SPOTS;
 const CONS=SPOTS.map((s,i)=>{const base=.35+rnd()*.65;const type=TYPES.find(t=>t.k===s[4]);
   const hours=[...Array(24)].map((_,h)=>Math.round(base*traffic(h)*4200*(.85+rnd()*.3)));
   return {id:i+1,name:s[0],district:s[1],x:s[2],y:s[3],lat:s[5],lon:s[6],type,free:rnd()>.55,hours,daily:hours.reduce((a,b)=>a+b,0)};});
@@ -1668,7 +1668,19 @@ if(R)(function L(now){requestAnimationFrame(L);if(!vis)return;
     for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++){const o=fetch?img(l,x,y):have(l,x,y);if(o&&o.ok)tx.drawImage(o,W/2+(x-cx)*ts,H/2+(y-cy)*ts,ts+.6,ts+.6)}}
   let dirty=true,lastZ=-1;
   function drawTiles(Z){const zi=Math.max(1,Math.min(18,Math.floor(Z)));tx.setTransform(dpr,0,0,dpr,0,0);tx.fillStyle="#0b2240";tx.fillRect(0,0,W,H);
-    for(let l=Math.max(1,zi-4);l<zi;l++)drawLevel(Z,l,false);drawLevel(Z,zi,true);if(Z-zi>.55&&zi<18)drawLevel(Z,zi+1,true)}
+    for(let l=Math.max(1,zi-4);l<zi;l++)drawLevel(Z,l,false);drawLevel(Z,zi,true);if(Z-zi>.55&&zi<18)drawLevel(Z,zi+1,true);drawSpots(Z)}
+  /* reklam panellərinin nöqtələri (yerləri təxminidir): şəhər miqyasına yaxınlaşanda görünür */
+  const SPC={led:"#A9ADEA",meqa:"#8E92E0",bilbord:"#C9CBF6",prizma:"#8E92E0",lightbox:"#E8E9FB",roller:"#A9ADEA"};
+  function drawSpots(Z){const L=window.MIRROR_SPOTS;if(!L)return;const a=cl((Z-9.6)/1.6);if(a<=0)return;
+    const sc=256*Math.pow(2,Z),cx=lon2x(LON),cy=lat2y(LAT),r=cl(3+(Z-10)*.9,3,9),lab=cl((Z-12.6)/1);
+    tx.save();tx.globalAlpha=a;tx.font="600 12px Inter,system-ui,sans-serif";tx.textBaseline="middle";
+    L.forEach(sp=>{if(sp.length<7)return;const x=W/2+(lon2x(sp[6])-cx)*sc,y=H/2+(lat2y(sp[5])-cy)*sc;if(x<-40||y<-40||x>W+40||y>H+40)return;
+      const g=tx.createRadialGradient(x,y,0,x,y,r*3.2);g.addColorStop(0,"rgba(169,173,234,.75)");g.addColorStop(1,"rgba(169,173,234,0)");
+      tx.fillStyle=g;tx.beginPath();tx.arc(x,y,r*3.2,0,7);tx.fill();
+      tx.fillStyle="#fff";tx.beginPath();tx.arc(x,y,r,0,7);tx.fill();
+      tx.fillStyle=SPC[sp[4]]||"#5C60AB";tx.beginPath();tx.arc(x,y,r*.55,0,7);tx.fill();
+      if(lab>0){tx.globalAlpha=a*lab;tx.shadowColor="rgba(0,0,0,.85)";tx.shadowBlur=6;tx.fillStyle="#fff";tx.fillText(sp[0],x+r+7,y);tx.shadowBlur=0;tx.globalAlpha=a;}
+    });tx.restore();}
   function prefetch(z0){for(let z=Math.floor(z0);z<=Math.ceil(ZMAX);z++){const cx=Math.floor(lon2x(LON)*(1<<z)),cy=Math.floor(lat2y(LAT)*(1<<z));for(let dy=-1;dy<=1;dy++)for(let dx=-2;dx<=2;dx++)img(z,cx+dx,cy+dy)}}
   /* ---------- ölçü ---------- */
   function size(){W=innerWidth;H=innerHeight;dpr=Math.min(devicePixelRatio,2);R.setSize(W,H,false);cam.aspect=W/H;cam.updateProjectionMatrix();tc.width=W*dpr;tc.height=H*dpr;dirty=true}
