@@ -608,7 +608,7 @@ section#xerite{display:none!important}
 /* xəritədən küçəyə keçid: kamera aşağı əyilir, küçə səhnəsi açılır (real foto gələnə qədər nümunə səhnə) */
 #planet #plTiles{transform-origin:50% 62%;will-change:transform,opacity}
 #planet .pl-street{position:absolute;inset:0;margin:0;height:auto;border:0;background:#0A0F2C;opacity:0;pointer-events:none;will-change:transform,opacity;transform-origin:50% 40%}
-#planet .pl-street canvas{clip-path:none!important;transform:none!important}
+#planet .pl-street img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%;display:block}
 </style>
 </head>
 <body>
@@ -1769,8 +1769,8 @@ if(R)(function L(now){requestAnimationFrame(L);if(!vis)return;
   const widthKm=d=>2*(d-1)*tanH()*R_KM;
   const zoomFor=km=>Math.log2(W*40075*Math.cos(LAT*Math.PI/180)/(256*km));
   const D0=4.6,D1=1.9,PG=.34,XF=.035,ME=.8,ST0=.83,ST1=.95;     /* xəritə ME-də bitir, ST0..ST1 küçəyə keçid */
-  const street=document.getElementById("scene");if(street){street.classList.add("pl-street");stick.insertBefore(street,sec.querySelector(".pl-vig"));dispatchEvent(new Event("resize"));}                         /* planet mərhələsi 0..PG, keçid PG-XF..PG */
-  const LABELS=[[0,"MIRROR · BAKI","Yer"],[.16,"QAFQAZ","Xəzər dənizi"],[.42,"CƏNUBİ QAFQAZ","Azərbaycan"],[.62,"XƏZƏRİN SAHİLİ","Abşeron"],[.7,"PAYTAXT","Bakı"],[.77,"MƏRKƏZ","Bulvar və 28 May"],[.88,"KÜÇƏ SƏVİYYƏSİ · NÜMUNƏ","Neftçilər pr., LED ekran"]];
+  const street=document.createElement("div");street.className="pl-street";street.setAttribute("aria-hidden","true");street.innerHTML='<img src="brendler/led.jpg" alt="" decoding="async">';stick.insertBefore(street,sec.querySelector(".pl-vig")); /* küçə: real foto (sonra hər konstruksiyanın öz fotosu) */                         /* planet mərhələsi 0..PG, keçid PG-XF..PG */
+  const LABELS=[[0,"MIRROR · BAKI","Yer"],[.16,"QAFQAZ","Xəzər dənizi"],[.42,"CƏNUBİ QAFQAZ","Azərbaycan"],[.62,"XƏZƏRİN SAHİLİ","Abşeron"],[.7,"PAYTAXT","Bakı"],[.77,"MƏRKƏZ","Bulvar və 28 May"],[.88,"KÜÇƏ SƏVİYYƏSİ","Neftçilər pr., LED ekran"]];
   let started=false,on=false,p=0,q=0;
   new IntersectionObserver(es=>{on=es[0].isIntersecting;if(!started&&es[0].isIntersecting){started=true;loadGlobe();prefetch(zoomFor(widthKm(D1))-1)}},{rootMargin:"300% 0px"}).observe(sec);
   const clock=new THREE.Clock();
