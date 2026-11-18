@@ -1580,6 +1580,9 @@ if(R)(function L(now){requestAnimationFrame(L);if(!vis)return;
   if(!sec||!L||!brand)return;
   if(matchMedia("(prefers-reduced-motion: reduce)").matches||/[?&]intro=0/.test(location.search)){sec.remove();L.remove();return;}
   document.documentElement.classList.add("intro-on");
+  // Safari yeniləyəndə köhnə sürüşdürmə yerini bərpa edib açılışı pozur: həmişə yuxarıdan başla
+  try{if("scrollRestoration" in history)history.scrollRestoration="manual";}catch(e){}
+  if(!location.hash)scrollTo(0,0);
   const svg=L.querySelector("svg"),P=[...svg.querySelectorAll("polygon")],W=L.querySelector("b");
   W.innerHTML=[..."MIRROR"].map((c,i)=>'<span style="transition-delay:'+(i*55)+'ms">'+c+'</span>').join("");
   // güzgü əksi: loqonun canlı surəti, çevrilmiş və dalğalanan
