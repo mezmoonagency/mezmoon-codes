@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Mirror · Müştəri paneli</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#EEF0FA;--card:#FFFFFF;--ink:#1E2156;--mute:#5B5E8E;--line:#D8DAF3;--brand:#5C60AB;--lav:#A9ADEA;--mid:#8E92E0;--deep:#2E3175;--ok:#1F8A62;--warn:#B46A10}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.55 Inter,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;line-height:1.15}p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 18px}
+header{background:linear-gradient(135deg,#1E2156,#2E3175 60%,#5C60AB);color:#fff;padding:22px 0 64px}
+header .top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font:800 15px Inter;letter-spacing:.3em}
+.brand svg{width:28px;height:28px}
+header .upd{font-size:12.5px;color:#C9CBF3}
+header h1{font:800 clamp(26px,4vw,40px)/1.1 Inter;letter-spacing:-.02em;margin-top:26px}
+header p{color:#D3D5F5;margin-top:6px}
+main{margin-top:-44px;padding-bottom:60px}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.kpi{background:var(--card);border-radius:16px;padding:16px 18px;box-shadow:0 10px 30px -18px rgba(46,49,117,.35)}
+.kpi span{display:block;font:600 11px Inter;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.kpi strong{display:block;font:800 28px/1.1 Inter;margin-top:8px;font-variant-numeric:tabular-nums}
+.kpi small{display:block;color:var(--mute);font-size:12.5px;margin-top:4px}
+.card{background:var(--card);border-radius:18px;padding:20px;margin-top:14px;box-shadow:0 10px 30px -20px rgba(46,49,117,.35)}
+.card h2{font:800 18px Inter;margin-bottom:4px}
+.card .sub{color:var(--mute);font-size:13.5px;margin-bottom:14px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.tabs button{font:600 13.5px Inter;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:9px 14px;cursor:pointer;min-height:40px}
+.tabs button[aria-pressed=true]{background:var(--deep);color:#fff;border-color:var(--deep)}
+.camp{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center}
+.camp .ico{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#5C60AB,#A9ADEA);display:grid;place-items:center;color:#fff;font:800 12px Inter;text-align:center;line-height:1.1}
+.camp b{font:800 17px Inter}
+.camp .meta{color:var(--mute);font-size:13.5px}
+.st{font:700 12px Inter;border-radius:999px;padding:6px 12px;white-space:nowrap}
+.st.on{background:#E3F4EC;color:var(--ok)}.st.done{background:#EDEEF6;color:var(--mute)}.st.soon{background:#FCF0DF;color:var(--warn)}
+.prog{height:6px;background:#EDEEF8;border-radius:3px;margin-top:12px;overflow:hidden}.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--lav))}
+.chart{position:relative;height:240px;display:flex;align-items:flex-end;gap:3px;padding:10px 0 22px;border-bottom:1px solid var(--line)}
+.chart .b{flex:1;min-width:3px;background:linear-gradient(180deg,#8E92E0,#5C60AB);border-radius:4px 4px 0 0;position:relative;transition:opacity .2s}
+.chart .b.z{background:#E4E6F7}
+.chart .b:hover{opacity:.75}
+.chart .lbl{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);font-size:10.5px;color:var(--mute);white-space:nowrap}
+.tip{position:fixed;z-index:20;background:var(--deep);color:#fff;font-size:12.5px;padding:7px 10px;border-radius:8px;pointer-events:none;opacity:0;transition:opacity .15s;white-space:nowrap}
+.heat{display:grid;grid-template-columns:repeat(24,minmax(0,1fr));gap:3px}
+.heat div{height:120px;border-radius:5px;background:#EDEEF8;position:relative}
+.heat-ax{display:grid;grid-template-columns:repeat(24,minmax(0,1fr));gap:3px;font-size:10px;color:var(--mute);margin-top:4px;text-align:center}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{font:600 11px Inter;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+td{padding:9px 10px;border-bottom:1px solid #F0F1FA;font-variant-numeric:tabular-nums}
+td.n,th.n{text-align:right}
+.tblwrap{max-height:420px;overflow:auto}
+.row2{display:grid;grid-template-columns:1.4fr 1fr;gap:14px}
+.btn{font:700 13px Inter;border:0;border-radius:999px;background:var(--brand);color:#fff;padding:9px 16px;cursor:pointer;min-height:40px}
+.note{font-size:13px;color:var(--mute);margin-top:12px}
+.empty{text-align:center;padding:60px 20px;color:var(--mute)}
+.empty b{display:block;font:800 22px Inter;color:var(--ink);margin-bottom:8px}
+.range{display:flex;gap:6px;flex-wrap:wrap}
+.range button{font:600 12.5px Inter;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;cursor:pointer}
+.range button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+@media (max-width:820px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.row2{grid-template-columns:1fr}.camp{grid-template-columns:auto 1fr}.camp .st{grid-column:1/-1;justify-self:start}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+ <div class="top"><div class="brand"><svg viewBox="0 0 60 60" aria-hidden="true"><path d="M8 26 20 38v18L8 44z" fill="#A9ADEA"/><path d="M24 16 36 28v28L24 44z" fill="#8E92E0"/><path d="M40 4 52 16v40L40 44z" fill="#D3D5F5"/></svg>MIRROR</div><span class="upd" id="upd"></span></div>
+ <h1 id="cname">Müştəri paneli</h1><p id="csub">Reklamınızın panellərdə neçə dəfə göstərildiyi</p>
+</div></header>
+<main class="wrap" id="app"><div class="card empty"><b>Yüklənir…</b></div></main>
+<div class="tip" id="tip"></div>
+<script>
+(()=>{
+const API="https://tcdfhbtlqxcpwlycqhfv.supabase.co/functions/v1/mirror-api";
+const $=id=>document.getElementById(id),app=$("app"),tip=$("tip");
+const TYPE={bilbord:"Bilbord",meqa:"Meqabord",led:"LED ekran",prizma:"Prizma",lightbox:"Laytboks",roller:"Roller"};
+const fmt=n=>Math.round(n).toLocaleString("az").replace(/,/g," ");
+const AY=["yan","fev","mar","apr","may","iyn","iyl","avq","sen","okt","noy","dek"];
+const dstr=d=>{const x=new Date(d+"T00:00:00");return x.getDate()+" "+AY[x.getMonth()]};
+const iso=x=>x.getFullYear()+"-"+String(x.getMonth()+1).padStart(2,"0")+"-"+String(x.getDate()).padStart(2,"0");
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const k=new URLSearchParams(location.search).get("k")||"";
+function fail(t,m){app.innerHTML=`<div class="card empty"><b>${esc(t)}</b>${esc(m)}</div>`}
+if(!k){fail("Link natamamdır","Mirror-un sizə göndərdiyi linki tam açın.");return}
+fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({action:"client",k})})
+ .then(r=>r.json().then(j=>({ok:r.ok,j}))).then(({ok,j})=>{if(!ok){fail("Link etibarsızdır",j.error||"Mirror ilə əlaqə saxlayın.");return}render(j)})
+ .catch(()=>fail("Bağlantı alınmadı","İnternet bağlantınızı yoxlayıb səhifəni yeniləyin."));
+
+function render(D){
+ $("cname").textContent=D.client.name;document.title="Mirror · "+D.client.name;
+ if(D.updated_at){const u=new Date(D.updated_at);$("upd").textContent="Məlumat yeniləndi: "+u.getDate()+" "+AY[u.getMonth()]+", "+String(u.getHours()).padStart(2,"0")+":"+String(u.getMinutes()).padStart(2,"0")}
+ if(!D.campaigns.length){fail("Hələ kampaniya yoxdur","Kampaniyanız başlayanda burada görünəcək.");return}
+ const B=Object.fromEntries(D.boards.map(b=>[b.id,b]));const today=iso(new Date());
+ let sel="all",range=30;
+ function rowsFor(){return D.plays.filter(p=>sel==="all"||p.campaign_id===sel)}
+ function draw(){
+  const R=rowsFor(),byDay={};R.forEach(p=>{byDay[p.day]=(byDay[p.day]||0)+p.plays});
+  const C=sel==="all"?D.campaigns:D.campaigns.filter(c=>c.id===sel);
+  const total=R.reduce((s,p)=>s+p.plays,0),days=Object.keys(byDay).sort();
+  const yest=iso(new Date(Date.now()-864e5)),last7=days.filter(d=>d>iso(new Date(Date.now()-7*864e5)));
+  const avg=days.length?total/days.length:0;
+  /* chart range */
+  const endD=new Date(),N=range;const span=[...Array(N)].map((_,i)=>{const x=new Date(endD);x.setDate(x.getDate()-(N-1-i));return iso(x)});
+  const mx=Math.max(1,...span.map(d=>byDay[d]||0));
+  /* hours */
+  const H=Array(24).fill(0);let hasH=false;R.forEach(p=>{if(p.hours){hasH=true;p.hours.forEach((v,i)=>H[i]+=v)}});const hm=Math.max(1,...H);
+  /* table */
+  const tbl=[...R].sort((a,b)=>b.day.localeCompare(a.day)||a.board_id-b.board_id);
+  app.innerHTML=`
+  <div class="kpis">
+   <div class="kpi"><span>Dünən</span><strong>${fmt(byDay[yest]||0)}</strong><small>göstərilmə</small></div>
+   <div class="kpi"><span>Son 7 gün</span><strong>${fmt(last7.reduce((s,d)=>s+byDay[d],0))}</strong><small>göstərilmə</small></div>
+   <div class="kpi"><span>Orta gündəlik</span><strong>${fmt(avg)}</strong><small>${days.length} gün üzrə</small></div>
+   <div class="kpi"><span>Cəmi</span><strong>${fmt(total)}</strong><small>${C.length} kampaniya</small></div>
+  </div>
+  <div class="tabs" id="tabs">${D.campaigns.length>1?`<button aria-pressed="${sel==="all"}" data-c="all">Hamısı</button>`:""}${D.campaigns.map(c=>`<button aria-pressed="${sel===c.id}" data-c="${c.id}">${esc((B[c.board_id]||{}).name||"Panel")}</button>`).join("")}</div>
+  ${C.map(c=>{const b=B[c.board_id]||{},st=today<c.start_date?"soon":today>c.end_date?"done":"on",
+    tot=(new Date(c.end_date)-new Date(c.start_date))/864e5+1,gone=Math.max(0,Math.min(tot,(new Date(today)-new Date(c.start_date))/864e5+1));
+    return `<div class="card"><div class="camp"><div class="ico">${esc((TYPE[b.type]||"Panel").split(" ")[0])}</div>
+     <div><b>${esc(b.name||"Panel")}</b><div class="meta">${esc(TYPE[b.type]||"")}${b.size?" · "+esc(b.size):""}${b.district?" · "+esc(b.district):""} · ${dstr(c.start_date)} – ${dstr(c.end_date)}${c.creative?" · reklam: "+esc(c.creative):""}</div></div>
+     <span class="st ${st}">${st==="on"?"Aktiv":st==="done"?"Bitib":"Başlayacaq"}</span></div>
+     <div class="prog"><i style="width:${(gone/tot*100).toFixed(1)}%"></i></div>${b.daily_traffic?`<p class="note">Bu panelin qarşısından gündə təxminən ${fmt(b.daily_traffic)} nəfər keçir (Mirror-un ölçüsü).</p>`:""}</div>`}).join("")}
+  <div class="row2">
+   <div class="card"><div class="chead"><div><h2>Gündəlik göstərilmə</h2><div class="sub">Reklamınız ekranda neçə dəfə oynadı</div></div>
+    <div class="range" id="range">${[14,30,90].map(n=>`<button aria-pressed="${range===n}" data-n="${n}">${n} gün</button>`).join("")}</div></div>
+    <div class="chart" id="chart">${span.map((d,i)=>{const v=byDay[d]||0;return `<div class="b${v?"":" z"}" style="height:${v?Math.max(3,v/mx*100):2}%" data-t="${dstr(d)}: ${fmt(v)} göstərilmə">${(i%Math.ceil(N/7)===0||i===N-1)?`<span class="lbl">${dstr(d)}</span>`:""}</div>`}).join("")}</div></div>
+   <div class="card"><h2>Saatlar üzrə</h2><div class="sub">${hasH?"Göstərilmələrin günün saatlarına bölgüsü":"Saatlıq məlumat yalnız LED ekran loqunda olur"}</div>
+    ${hasH?`<div class="heat">${H.map((v,i)=>`<div style="background:rgba(92,96,171,${(.08+v/hm*.92).toFixed(2)})" data-t="${String(i).padStart(2,"0")}:00 – ${fmt(v)}"></div>`).join("")}</div><div class="heat-ax">${H.map((_,i)=>`<span>${i%3===0?String(i).padStart(2,"0"):""}</span>`).join("")}</div>`:`<p class="note">Bilbord və digər statik panellər üçün göstərilmə Mirror komandasının günlük hesabatından gəlir.</p>`}</div>
+  </div>
+  <div class="card"><div class="chead"><div><h2>Günlər üzrə cədvəl</h2><div class="sub">${tbl.length} sətir</div></div><button class="btn" id="csv">CSV yüklə</button></div>
+   <div class="tblwrap"><table><thead><tr><th>Tarix</th><th>Panel</th><th class="n">Göstərilmə</th></tr></thead><tbody>${tbl.map(p=>`<tr><td>${dstr(p.day)} ${p.day.slice(0,4)}</td><td>${esc((B[p.board_id]||{}).name||p.board_id)}</td><td class="n">${fmt(p.plays)}</td></tr>`).join("")||`<tr><td colspan="3" style="color:var(--mute)">Hələ məlumat yüklənməyib</td></tr>`}</tbody></table></div>
+   <p class="note">Göstərilmə: reklamınızın ekranda bir dəfə tam oynaması (LED ekranın öz loqundan). Statik panellərdə bir gün = görünmə günü kimi hesablanır.</p></div>`;
+  app.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{sel=b.dataset.c;draw()});
+  app.querySelectorAll("#range button").forEach(b=>b.onclick=()=>{range=+b.dataset.n;draw()});
+  app.querySelectorAll("[data-t]").forEach(el=>{el.onmousemove=e=>{tip.textContent=el.dataset.t;tip.style.left=(e.clientX+12)+"px";tip.style.top=(e.clientY-34)+"px";tip.style.opacity=1};el.onmouseleave=()=>tip.style.opacity=0});
+  $("csv").onclick=()=>{const lines=["Tarix,Panel,Göstərilmə",...tbl.map(p=>[p.day,'"'+String((B[p.board_id]||{}).name||p.board_id).replace(/"/g,'""')+'"',p.plays].join(","))];
+   const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["﻿"+lines.join("\n")],{type:"text/csv"}));a.download="mirror-gosterilme.csv";a.click()};
+ }
+ draw();
+}
+})();
+</script>
+</body>
+</html>

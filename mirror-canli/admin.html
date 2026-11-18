@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Mirror · Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#EEF0FA;--card:#fff;--ink:#1E2156;--mute:#5B5E8E;--line:#D8DAF3;--brand:#5C60AB;--lav:#A9ADEA;--deep:#2E3175;--ok:#1F8A62;--bad:#C0392B}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 14.5px/1.5 Inter,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0}p{margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 18px}
+.bar{background:var(--deep);color:#fff}
+.bar .wrap{display:flex;align-items:center;gap:14px;height:58px}
+.brand{display:flex;align-items:center;gap:9px;font:800 14px Inter;letter-spacing:.28em;margin-right:auto}
+.brand svg{width:24px;height:24px}
+.bar small{color:#C9CBF3}
+.bar button{font:600 13px Inter;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:7px 14px;cursor:pointer}
+nav.tabs{display:flex;gap:4px;margin:18px 0 14px;flex-wrap:wrap}
+nav.tabs button{font:600 13.5px Inter;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:9px 15px;cursor:pointer;min-height:40px}
+nav.tabs button[aria-pressed=true]{background:var(--brand);border-color:var(--brand);color:#fff}
+nav.tabs button i{font-style:normal;background:#E04A4A;color:#fff;border-radius:999px;padding:1px 7px;font-size:11px;margin-left:6px}
+.card{background:var(--card);border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:0 8px 24px -18px rgba(46,49,117,.35)}
+.card h2{font:800 17px Inter;margin-bottom:4px}.card .sub{color:var(--mute);font-size:13px;margin-bottom:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{font:600 10.5px Inter;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);text-align:left;padding:8px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:8px;border-bottom:1px solid #F0F1FA;vertical-align:top}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.tw{overflow:auto}
+input,select,textarea{font:inherit;color:inherit;border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:#fff;min-height:38px}
+input:focus,select:focus{outline:2px solid var(--lav);border-color:var(--brand)}
+label{display:grid;gap:4px;font:600 12px Inter;color:var(--mute)}
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;align-items:end}
+.btn{font:700 13px Inter;border:0;border-radius:999px;background:var(--brand);color:#fff;padding:9px 16px;cursor:pointer;min-height:38px;white-space:nowrap}
+.btn.ghost{background:#fff;color:var(--brand);border:1px solid var(--line)}
+.btn.red{background:#fff;color:var(--bad);border:1px solid #F0C9C4}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.tag{display:inline-block;font:700 11px Inter;border-radius:999px;padding:3px 9px;background:#EDEEF8;color:var(--mute)}
+.tag.d{background:#E3F4EC;color:var(--ok)}
+.tag.s{background:#FCF0DF;color:#B46A10}
+.msg{margin-top:10px;font-size:13px}.msg.ok{color:var(--ok)}.msg.err{color:var(--bad)}
+.login{max-width:380px;margin:12vh auto;background:#fff;border-radius:18px;padding:26px;box-shadow:0 18px 50px -24px rgba(46,49,117,.5)}
+.login h1{font:800 22px Inter;margin-bottom:6px}.login p{color:var(--mute);margin-bottom:16px;font-size:13.5px}
+.login form{display:grid;gap:10px}
+.drop{border:2px dashed var(--lav);border-radius:14px;padding:22px;text-align:center;color:var(--mute);cursor:pointer;background:#F7F8FE}
+.drop.on{background:#ECEEFC}
+.map{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:12px}
+.kv{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px}
+.kv div{background:#F4F5FC;border-radius:12px;padding:10px 14px}.kv b{display:block;font:800 18px Inter}.kv span{font-size:12px;color:var(--mute)}
+.link{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--mute);word-break:break-all}
+.hidden{display:none!important}
+.mini{font-size:12px;color:var(--mute)}
+</style>
+</head>
+<body>
+<div id="loginView" class="login hidden">
+ <h1>Mirror admin</h1><p>MezMoon panelinin hesabı ilə daxil olun (CEO, PM və ya account).</p>
+ <form id="lf"><label>E-poçt<input type="email" id="le" autocomplete="username" required></label><label>Parol<input type="password" id="lp" autocomplete="current-password" required></label><button class="btn" type="submit">Daxil ol</button><div class="msg err" id="lmsg"></div></form>
+</div>
+<div id="appView" class="hidden">
+ <div class="bar"><div class="wrap"><div class="brand"><svg viewBox="0 0 60 60" aria-hidden="true"><path d="M8 26 20 38v18L8 44z" fill="#A9ADEA"/><path d="M24 16 36 28v28L24 44z" fill="#8E92E0"/><path d="M40 4 52 16v40L40 44z" fill="#D3D5F5"/></svg>MIRROR · ADMIN</div><small id="who"></small><button id="out">Çıxış</button></div></div>
+ <div class="wrap">
+  <nav class="tabs" id="tabs">
+   <button data-t="leads" aria-pressed="true">Sorğular<i id="nNew" class="hidden"></i></button>
+   <button data-t="clients">Müştərilər</button><button data-t="camps">Kampaniyalar</button><button data-t="upload">Log yüklə</button><button data-t="uploads">Yükləmələr</button><button data-t="boards">Panellər</button>
+  </nav>
+  <section id="t-leads"></section><section id="t-clients" class="hidden"></section><section id="t-camps" class="hidden"></section>
+  <section id="t-upload" class="hidden"></section><section id="t-uploads" class="hidden"></section><section id="t-boards" class="hidden"></section>
+ </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+(()=>{
+const SB_URL="https://tcdfhbtlqxcpwlycqhfv.supabase.co",SB_KEY="sb_publishable_niJ4BSB_V1LC1kKf5Fomqg_mJnvIY7E",API=SB_URL+"/functions/v1/mirror-api";
+const sb=supabase.createClient(SB_URL,SB_KEY);
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=n=>Math.round(+n||0).toLocaleString("az").replace(/,/g," ");
+const TYPE={bilbord:"Bilbord",meqa:"Meqabord",led:"LED ekran",prizma:"Prizma",lightbox:"Laytboks",roller:"Roller"};
+const PANEL_URL=new URL("panel.html",location.href).href.split("?")[0];
+let D=null,TOKEN="";
+async function api(action,body={}){const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+TOKEN},body:JSON.stringify({action,...body})});
+ const j=await r.json().catch(()=>({error:"Cavab oxunmadı"}));if(!r.ok)throw new Error(j.error||("Xəta "+r.status));return j}
+const flash=(el,t,ok=true)=>{el.className="msg "+(ok?"ok":"err");el.textContent=t};
+
+/* ---------- giriş ---------- */
+async function boot(){const {data}=await sb.auth.getSession();if(!data.session){show(false);return}TOKEN=data.session.access_token;
+ try{const me=await api("a_me");$("who").textContent=(me.user.name||"")+" · "+me.user.role;show(true);await load()}catch(e){await sb.auth.signOut();show(false);$("lmsg").textContent=e.message}}
+function show(on){$("loginView").classList.toggle("hidden",on);$("appView").classList.toggle("hidden",!on)}
+$("lf").onsubmit=async e=>{e.preventDefault();$("lmsg").textContent="";const {error}=await sb.auth.signInWithPassword({email:$("le").value.trim(),password:$("lp").value});if(error){$("lmsg").textContent="E-poçt və ya parol səhvdir";return}boot()};
+$("out").onclick=async()=>{await sb.auth.signOut();location.reload()};
+sb.auth.onAuthStateChange((_e,s)=>{if(s)TOKEN=s.access_token});
+$("tabs").onclick=e=>{const b=e.target.closest("button");if(!b)return;$("tabs").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+ document.querySelectorAll("section[id^=t-]").forEach(s=>s.classList.toggle("hidden",s.id!=="t-"+b.dataset.t))};
+
+async function load(){D=await api("a_list");drawLeads();drawClients();drawCamps();drawUpload();drawUploads();drawBoards()}
+const bname=id=>(D.boards.find(b=>b.id===id)||{}).name||("#"+id);
+const cname=id=>(D.clients.find(c=>c.id===id)||{}).name||"—";
+const day=s=>s?new Date(s).toLocaleString("az",{day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"}):"";
+
+/* ---------- sorğular ---------- */
+function drawLeads(){const L=D.leads||[],nw=L.filter(l=>l.status==="yeni").length;$("nNew").textContent=nw;$("nNew").classList.toggle("hidden",!nw);
+ $("t-leads").innerHTML=`<div class="card"><h2>Sorğular</h2><div class="sub">Saytdakı "Paketi göndər" formundan gəlir. Endirimli sorğularda kod serverdə yoxlanılıb. Verilən endirim kodları: ${fmt(D.codes_issued)}</div>
+ <div class="tw"><table><thead><tr><th>Tarix</th><th>Müştəri</th><th>Panellər</th><th class="n">Təxmini</th><th>Endirim</th><th class="n">Yekun</th><th>Status</th></tr></thead><tbody>
+ ${L.map(l=>{const p=l.package||{};return `<tr><td>${day(l.created_at)}</td><td><b>${esc(l.name)}</b><br><a href="tel:${esc(l.phone)}">${esc(l.phone)}</a>${l.company?"<br>"+esc(l.company):""}${l.email?"<br>"+esc(l.email):""}</td>
+  <td>${esc((p.boards||[]).map(b=>b.name).join(", "))}<div class="mini">${p.start?esc(p.start)+" · ":""}${p.days?esc(p.days)+" gün":""}${p.hours?" · "+esc(p.hours):""}</div></td>
+  <td class="n">${fmt(l.est_price)} ₼</td><td>${l.discount_pct?`<span class="tag d">${l.discount_pct}% · ${esc(l.discount_code)}</span>`:"—"}</td><td class="n"><b>${fmt(l.final_price)} ₼</b></td>
+  <td><select data-id="${l.id}">${["yeni","əlaqə saxlanıldı","razılaşdı","imtina"].map(s=>`<option${s===l.status?" selected":""}>${s}</option>`).join("")}</select></td></tr>`}).join("")||`<tr><td colspan="7" class="mini">Hələ sorğu yoxdur</td></tr>`}
+ </tbody></table></div></div>`;
+ $("t-leads").querySelectorAll("select").forEach(s=>s.onchange=async()=>{try{await api("a_lead_status",{id:s.dataset.id,status:s.value});const l=D.leads.find(x=>x.id===s.dataset.id);l.status=s.value;drawLeads()}catch(e){alert(e.message)}})}
+
+/* ---------- müştərilər ---------- */
+function drawClients(){const C=D.clients||[];
+ $("t-clients").innerHTML=`<div class="card"><h2>Yeni müştəri</h2><div class="sub">Yaradılandan sonra müştəriyə gizli panel linki göndərilir. Parol yoxdur, linki olan paneli görür.</div>
+ <div class="form"><label>Ad<input id="cN" placeholder="Brend adı"></label><label>Əlaqə<input id="cC" placeholder="Ad, telefon"></label><button class="btn" id="cAdd">Yarat</button></div><div class="msg" id="cMsg"></div></div>
+ <div class="card"><h2>Müştərilər</h2><div class="tw"><table><thead><tr><th>Ad</th><th>Panel linki</th><th>Kampaniya</th><th>Status</th><th></th></tr></thead><tbody>
+ ${C.map(c=>{const url=PANEL_URL+"?k="+c.token,n=D.campaigns.filter(x=>x.client_id===c.id).length;return `<tr><td><b>${esc(c.name)}</b><div class="mini">${esc(c.contact||"")}</div></td>
+  <td><div class="link">${esc(url)}</div><button class="btn ghost" data-copy="${esc(url)}" style="margin-top:6px">Linki kopyala</button> <button class="btn ghost" data-rot="${c.id}" style="margin-top:6px">Yeni link</button></td>
+  <td>${n}</td><td>${c.active?'<span class="tag d">aktiv</span>':'<span class="tag">deaktiv</span>'}<div><button class="btn ghost" data-tog="${c.id}" style="margin-top:6px">${c.active?"Deaktiv et":"Aktiv et"}</button></div></td>
+  <td><button class="btn red" data-del="${c.id}">Sil</button></td></tr>`}).join("")||`<tr><td colspan="5" class="mini">Hələ müştəri yoxdur</td></tr>`}</tbody></table></div></div>`;
+ $("cAdd").onclick=async()=>{try{await api("a_client_save",{name:$("cN").value,contact:$("cC").value});await load();flash($("cMsg"),"Müştəri yaradıldı, linki aşağıdan kopyalayın")}catch(e){flash($("cMsg"),e.message,false)}};
+ const T=$("t-clients");
+ T.querySelectorAll("[data-copy]").forEach(b=>b.onclick=()=>{navigator.clipboard.writeText(b.dataset.copy).then(()=>{b.textContent="Kopyalandı ✓"})});
+ T.querySelectorAll("[data-rot]").forEach(b=>b.onclick=async()=>{if(!confirm("Köhnə link işləməyəcək. Yeni link yaradılsın?"))return;await api("a_client_rotate",{id:b.dataset.rot});load()});
+ T.querySelectorAll("[data-tog]").forEach(b=>b.onclick=async()=>{const c=D.clients.find(x=>x.id===b.dataset.tog);await api("a_client_save",{id:c.id,name:c.name,contact:c.contact,active:!c.active});load()});
+ T.querySelectorAll("[data-del]").forEach(b=>b.onclick=async()=>{if(!confirm("Müştəri və onun kampaniyaları silinsin? Bu geri qaytarılmır."))return;await api("a_client_del",{id:b.dataset.del});load()})}
+
+/* ---------- kampaniyalar ---------- */
+function drawCamps(){const C=D.campaigns||[],nd=new Date(),t=nd.getFullYear()+"-"+String(nd.getMonth()+1).padStart(2,"0")+"-"+String(nd.getDate()).padStart(2,"0");
+ const bo=D.boards.map(b=>`<option value="${b.id}">${b.id} · ${esc(b.name)} (${TYPE[b.type]||b.type})</option>`).join("");
+ $("t-camps").innerHTML=`<div class="card"><h2>Kampaniya təyin et</h2><div class="sub">Müştəri hansı paneldə, hansı tarixlərdə görünür. "Reklam adı" loqdakı faylın adıdır (bir hissəsi kifayətdir): boş qalsa, həmin paneldəki bütün göstərilmələr sayılır.</div>
+ <div class="form"><label>Müştəri<select id="kC">${D.clients.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join("")}</select></label><label>Panel<select id="kB">${bo}</select></label>
+ <label>Reklam adı (loqda)<input id="kR" placeholder="məs. highlevel_promo"></label><label>Başlama<input type="date" id="kS" value="${t}"></label><label>Bitmə<input type="date" id="kE"></label><label>Qeyd<input id="kN"></label><button class="btn" id="kAdd"${D.clients.length?"":" disabled"}>Əlavə et</button></div><div class="msg" id="kMsg">${D.clients.length?"":"Əvvəl müştəri yaradın"}</div></div>
+ <div class="card"><h2>Kampaniyalar</h2><div class="tw"><table><thead><tr><th>Müştəri</th><th>Panel</th><th>Reklam adı</th><th>Tarixlər</th><th></th></tr></thead><tbody>
+ ${C.map(c=>`<tr><td>${esc(cname(c.client_id))}</td><td>${esc(bname(c.board_id))}</td><td>${esc(c.creative||"— hamısı")}</td><td>${c.start_date} → ${c.end_date}${c.end_date<t?' <span class="tag">bitib</span>':c.start_date>t?' <span class="tag s">gələcək</span>':' <span class="tag d">aktiv</span>'}</td><td><button class="btn red" data-del="${c.id}">Sil</button></td></tr>`).join("")||`<tr><td colspan="5" class="mini">Hələ kampaniya yoxdur</td></tr>`}</tbody></table></div></div>`;
+ $("kAdd").onclick=async()=>{try{if(!$("kE").value)throw new Error("Bitmə tarixini seçin");await api("a_campaign_save",{client_id:$("kC").value,board_id:$("kB").value,creative:$("kR").value,start_date:$("kS").value,end_date:$("kE").value,note:$("kN").value});await load();flash($("kMsg"),"Kampaniya əlavə olundu")}catch(e){flash($("kMsg"),e.message,false)}};
+ $("t-camps").querySelectorAll("[data-del]").forEach(b=>b.onclick=async()=>{if(!confirm("Kampaniya silinsin?"))return;await api("a_campaign_del",{id:b.dataset.del});load()})}
+
+/* ---------- log yüklə ---------- */
+let RAW=null,FNAME="";
+function drawUpload(){
+ $("t-upload").innerHTML=`<div class="card"><h2>Log yüklə</h2><div class="sub">LED ekran proqramının loqu (CSV və ya Excel: hər oynatma bir sətir) və ya bilbordlar üçün Mirror şablonu (gün, panel, say). Fayl brauzerdə oxunur, serverə yalnız gün üzrə cəmlər gedir. Eyni gün yenidən yüklənsə, köhnə rəqəm əvəz olunur.</div>
+ <div class="form" style="margin-bottom:12px"><label>Növ<select id="uK"><option value="led">LED ekran loqu</option><option value="template">Mirror şablonu</option></select></label><div><button class="btn ghost" id="uT">Şablonu yüklə (.xlsx)</button></div></div>
+ <div class="drop" id="uD">Faylı bura atın və ya seçmək üçün basın<br><small>.csv, .xlsx, .xls</small><input type="file" id="uF" accept=".csv,.xlsx,.xls,.txt" class="hidden"></div>
+ <div id="uMap"></div><div class="msg" id="uMsg"></div></div>`;
+ const dz=$("uD"),fi=$("uF");dz.onclick=()=>fi.click();
+ dz.ondragover=e=>{e.preventDefault();dz.classList.add("on")};dz.ondragleave=()=>dz.classList.remove("on");dz.ondrop=e=>{e.preventDefault();dz.classList.remove("on");if(e.dataTransfer.files[0])readFile(e.dataTransfer.files[0])};
+ fi.onchange=()=>fi.files[0]&&readFile(fi.files[0]);
+ $("uT").onclick=()=>{const nd=new Date(),t=nd.getFullYear()+"-"+String(nd.getMonth()+1).padStart(2,"0")+"-"+String(nd.getDate()).padStart(2,"0");const ws=XLSX.utils.aoa_to_sheet([["Tarix","Panel ID","Panel","Reklam","Göstərilmə sayı"],[t,D.boards[0]?.id||1,D.boards[0]?.name||"",'məs. brend_kampaniya',1]]);
+  ws["!cols"]=[{wch:12},{wch:9},{wch:28},{wch:24},{wch:16}];const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"Göstərilmə");
+  const ws2=XLSX.utils.aoa_to_sheet([["Panel ID","Panel","Növ"],...D.boards.map(b=>[b.id,b.name,TYPE[b.type]||b.type])]);XLSX.utils.book_append_sheet(wb,ws2,"Panellər");XLSX.writeFile(wb,"mirror-sablon.xlsx")};
+}
+function readFile(f){FNAME=f.name;const csv=/\.(csv|txt)$/i.test(f.name);const r=new FileReader();r.onload=()=>{try{const wb=csv?XLSX.read(new TextDecoder("utf-8").decode(r.result),{type:"string",raw:true}):XLSX.read(new Uint8Array(r.result),{type:"array",cellDates:true});const ws=wb.Sheets[wb.SheetNames[0]];
+  RAW=XLSX.utils.sheet_to_json(ws,{header:1,raw:true,defval:""}).filter(r=>r.some(v=>v!==""));if(RAW.length<2)throw new Error("Faylda sətir yoxdur");mapUI()}catch(e){flash($("uMsg"),"Fayl oxunmadı: "+e.message,false)}};r.readAsArrayBuffer(f)}
+const guess=(H,re,not=[])=>{for(const x of [].concat(re)){const i=H.findIndex((h,k)=>!not.includes(k)&&x.test(String(h).toLowerCase()));if(i>=0)return i}return -1};
+function mapUI(){const H=RAW[0].map((h,i)=>String(h||("Sütun "+(i+1))));
+ const g={dt:guess(H,[/date|tarix|datetime/,/time|vaxt|start|begin|played/]),tm:-1,bd:-1,cr:-1,ct:-1};g.tm=guess(H,[/^(saat|time|vaxt)$|hour/],[g.dt]);g.bd=guess(H,[/panel id/,/board|screen|ekran|player|device|terminal|panel/],[g.dt]);g.cr=guess(H,[/creative|reklam|media|fayl|file|content|clip|program/,/name|ad$/],[g.dt,g.bd]);g.ct=guess(H,[/count|göstərilmə|plays|times|qty|^say|sayı/],[g.dt,g.bd,g.cr]);
+ if(g.tm===g.dt)g.tm=-1;
+ const opt=(sel,none)=>`${none?`<option value="-1">${none}</option>`:""}${H.map((h,i)=>`<option value="${i}"${i===sel?" selected":""}>${esc(h)}</option>`).join("")}`;
+ $("uMap").innerHTML=`<p class="mini" style="margin-top:14px"><b>${esc(FNAME)}</b> · ${RAW.length-1} sətir. Sütunları yoxlayın:</p>
+ <div class="map"><label>Tarix (və ya tarix + saat)<select id="mDt">${opt(g.dt)}</select></label><label>Saat (ayrıca sütundursa)<select id="mTm">${opt(g.tm,"— yoxdur")}</select></label>
+ <label>Panel sütunu<select id="mBd">${opt(g.bd,"— bütün fayl bir paneldir")}</select></label><label>Və ya panel<select id="mBf"><option value="">—</option>${D.boards.map(b=>`<option value="${b.id}">${b.id} · ${esc(b.name)}</option>`).join("")}</select></label>
+ <label>Reklam adı<select id="mCr">${opt(g.cr,"— yoxdur")}</select></label><label>Say sütunu<select id="mCt">${opt(g.ct,"— hər sətir = 1 göstərilmə")}</select></label></div>
+ <div id="uPrev"></div>`;
+ ["mDt","mTm","mBd","mBf","mCr","mCt"].forEach(id=>$(id).onchange=preview);preview()}
+function parseDT(v,t){let d=null,h=null;
+ if(v instanceof Date&&!isNaN(v)){d=v}else if(typeof v==="number"&&v>20000&&v<80000){d=new Date(Math.round((v-25569)*864e5));d=new Date(d.getTime()+d.getTimezoneOffset()*6e4)}
+ else if(typeof v==="string"&&v.trim()){const s=v.trim();let m;
+  if(m=s.match(/^(\d{4})[-./](\d{1,2})[-./](\d{1,2})(?:[ T](\d{1,2}):(\d{2}))?/))d=new Date(+m[1],+m[2]-1,+m[3],+(m[4]||0),+(m[5]||0));
+  else if(m=s.match(/^(\d{1,2})[./-](\d{1,2})[./-](\d{4})(?:[ T,]+(\d{1,2}):(\d{2}))?/)){let a=+m[1],b=+m[2];if(b>12&&a<=12){[a,b]=[b,a]}d=new Date(+m[3],b-1,a,+(m[4]||0),+(m[5]||0))}}
+ if(!d||isNaN(d))return null;
+ const hasTime=typeof v==="string"?/\d:\d{2}/.test(v):(v instanceof Date||typeof v==="number")?(d.getHours()+d.getMinutes()>0):false;if(hasTime)h=d.getHours();
+ if(t!==undefined&&t!==""){if(t instanceof Date)h=t.getHours();else if(typeof t==="number"&&t<1)h=Math.floor(t*24);else{const m=String(t).match(/(\d{1,2}):\d{2}/);if(m)h=+m[1]}}
+ const day=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");return {day,h}}
+let AGG=[],BAD=0;
+function preview(){const ix={dt:+$("mDt").value,tm:+$("mTm").value,bd:+$("mBd").value,cr:+$("mCr").value,ct:+$("mCt").value},fixed=$("mBf").value;
+ const byName=Object.fromEntries(D.boards.map(b=>[b.name.toLowerCase(),b.id]));const M=new Map();BAD=0;const unk=new Set();
+ for(const r of RAW.slice(1)){const p=parseDT(r[ix.dt],ix.tm>=0?r[ix.tm]:undefined);if(!p){BAD++;continue}
+  let bid=fixed?+fixed:null;if(!bid&&ix.bd>=0){const v=r[ix.bd];bid=typeof v==="number"?v:(/^\d+$/.test(String(v).trim())?+String(v).trim():byName[String(v).trim().toLowerCase()]);if(!bid){unk.add(String(v));BAD++;continue}}
+  if(!bid){BAD++;continue}
+  const cr=ix.cr>=0?String(r[ix.cr]).trim():"",n=ix.ct>=0?Math.max(0,+r[ix.ct]||0):1,key=bid+"|"+cr+"|"+p.day;
+  let o=M.get(key);if(!o){o={board_id:bid,creative:cr,day:p.day,plays:0,hours:Array(24).fill(0),hh:false};M.set(key,o)}o.plays+=n;if(p.h!==null){o.hours[p.h]+=n;o.hh=true}}
+ AGG=[...M.values()].map(o=>({board_id:o.board_id,creative:o.creative,day:o.day,plays:o.plays,hours:o.hh?o.hours:null}));
+ const days=[...new Set(AGG.map(a=>a.day))].sort(),tot=AGG.reduce((s,a)=>s+a.plays,0),bset=[...new Set(AGG.map(a=>a.board_id))],known=new Set(D.boards.map(b=>b.id)),miss=bset.filter(b=>!known.has(b));
+ $("uPrev").innerHTML=`<div class="kv"><div><b>${fmt(tot)}</b><span>göstərilmə</span></div><div><b>${days.length}</b><span>gün${days.length?": "+days[0]+" → "+days[days.length-1]:""}</span></div><div><b>${bset.length}</b><span>panel</span></div><div><b>${AGG.length}</b><span>gün × panel × reklam</span></div><div><b>${BAD}</b><span>oxunmayan sətir</span></div></div>
+ ${unk.size?`<p class="msg err">Tanınmayan panel adları: ${esc([...unk].slice(0,6).join(", "))}. Panel sütunu yerinə yuxarıdan paneli seçin və ya adları "Panellər" bölməsindəki adlarla eyniləşdirin.</p>`:""}
+ ${miss.length?`<p class="msg err">Bazada olmayan panel ID: ${miss.join(", ")}</p>`:""}
+ <div class="tw" style="margin-top:12px;max-height:240px"><table><thead><tr><th>Gün</th><th>Panel</th><th>Reklam</th><th class="n">Say</th></tr></thead><tbody>${AGG.slice(0,40).map(a=>`<tr><td>${a.day}</td><td>${esc(bname(a.board_id))}</td><td>${esc(a.creative||"—")}</td><td class="n">${fmt(a.plays)}</td></tr>`).join("")}</tbody></table></div>
+ <button class="btn" id="uGo" style="margin-top:12px"${AGG.length&&!miss.length?"":" disabled"}>Bazaya yüklə</button>`;
+ if($("uGo"))$("uGo").onclick=async()=>{$("uGo").disabled=true;try{const r=await api("a_upload",{filename:FNAME,kind:$("uK").value,raw_rows:RAW.length-1,rows:AGG});flash($("uMsg"),"Yükləndi: "+r.rows+" sətir. Müştəri panelləri yeniləndi.");RAW=null;$("uMap").innerHTML="";load()}catch(e){flash($("uMsg"),e.message,false);$("uGo").disabled=false}}}
+
+/* ---------- yükləmələr ---------- */
+function drawUploads(){const U=D.uploads||[];
+ $("t-uploads").innerHTML=`<div class="card"><h2>Yükləmələr</h2><div class="sub">Səhv fayl yüklənibsə silin: həmin yükləmənin yazdığı günlər də silinir.</div><div class="tw"><table><thead><tr><th>Tarix</th><th>Fayl</th><th>Növ</th><th>Dövr</th><th class="n">Sətir</th><th class="n">Göstərilmə</th><th></th></tr></thead><tbody>
+ ${U.map(u=>`<tr><td>${day(u.created_at)}</td><td>${esc(u.filename)}</td><td>${u.kind==="led"?"LED loqu":"Şablon"}</td><td>${u.day_from||""} → ${u.day_to||""}</td><td class="n">${fmt(u.rows)}</td><td class="n">${fmt(u.plays)}</td><td><button class="btn red" data-del="${u.id}">Sil</button></td></tr>`).join("")||`<tr><td colspan="7" class="mini">Hələ yükləmə yoxdur</td></tr>`}</tbody></table></div></div>`;
+ $("t-uploads").querySelectorAll("[data-del]").forEach(b=>b.onclick=async()=>{if(!confirm("Yükləmə və onun günlük rəqəmləri silinsin? Geri qaytarılmır."))return;await api("a_upload_del",{id:b.dataset.del});load()})}
+
+/* ---------- panellər ---------- */
+function drawBoards(){const B=D.boards||[];const nx=Math.max(0,...B.map(b=>b.id))+1;
+ const row=b=>`<tr data-id="${b.id}"><td>${b.id}</td><td><input data-k="name" value="${esc(b.name)}"></td><td><select data-k="type">${Object.entries(TYPE).map(([k,v])=>`<option value="${k}"${k===b.type?" selected":""}>${v}</option>`).join("")}</select></td>
+  <td><input data-k="district" value="${esc(b.district||"")}" size="10"></td><td><input data-k="size" value="${esc(b.size||"")}" size="8"></td><td><input data-k="lat" value="${b.lat??""}" size="8"></td><td><input data-k="lon" value="${b.lon??""}" size="8"></td>
+  <td><input data-k="daily_traffic" value="${b.daily_traffic??""}" size="8" placeholder="—"></td><td><input type="checkbox" data-k="is_sample"${b.is_sample?" checked":""}></td><td><button class="btn ghost" data-save>Saxla</button></td></tr>`;
+ $("t-boards").innerHTML=`<div class="card"><h2>Panellər</h2><div class="sub">Hazırda saytdakı 24 nümunə panel yüklənib ("nümunə" işarəli). Real siyahını buradan dəyişin. "Gündəlik axın" doldurulsa, müştəri panelində təxmini görən sayı da göstərilir.</div>
+ <div class="tw"><table><thead><tr><th>ID</th><th>Ad</th><th>Növ</th><th>Rayon</th><th>Ölçü</th><th>Lat</th><th>Lon</th><th>Gündəlik axın</th><th>Nümunə</th><th></th></tr></thead><tbody>${B.map(row).join("")}${row({id:nx,name:"",type:"bilbord",is_sample:false})}</tbody></table></div><div class="msg" id="bMsg"></div></div>`;
+ $("t-boards").querySelectorAll("[data-save]").forEach(b=>b.onclick=async()=>{const tr=b.closest("tr"),o={id:+tr.dataset.id};tr.querySelectorAll("[data-k]").forEach(i=>o[i.dataset.k]=i.type==="checkbox"?i.checked:i.value);
+  try{await api("a_board_save",o);flash($("bMsg"),"Saxlanıldı: #"+o.id);load()}catch(e){flash($("bMsg"),e.message,false)}})}
+
+boot();
+})();
+</script>
+</body>
+</html>
