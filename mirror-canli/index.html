@@ -530,28 +530,23 @@ footer{background:color-mix(in srgb,var(--soft) 55%,transparent)}
 .nav .wrap{position:relative;z-index:1}
 @media (prefers-reduced-motion:reduce){.nav::after{animation:none;opacity:0}}
 /* ===== Planetdən Bakıya (real peyk görüntüsü) ===== */
-.pl-zone{position:relative;background:#05061a}
-.pl-zone>.pl-stick{margin-bottom:-100vh;margin-bottom:-100svh;z-index:0}
-#planet{position:relative;z-index:1;height:640vh;background:transparent;padding:0;border:0;pointer-events:none}
-/* "Filtrlə, müqayisə et": arxa fonda kosmosda uzaqlaşan Yer */
-#katalog{position:relative;z-index:1;padding:12vh 0 22vh;color:#fff;--ink:#fff;--paper:#17183A;--mute:#B9BCE0;--line:rgba(255,255,255,.16);--surface:rgba(255,255,255,.08)}
-#katalog .wrap{background:rgba(8,10,34,.58);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:clamp(20px,3vw,36px)}
-.pl-zone .pl-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#05061a}
-.pl-stick canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+#planet{position:relative;height:640vh;background:#05061a;padding:0;border:0}
+#planet .pl-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#05061a}
+#planet canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 #plTiles{opacity:0}
-.pl-zone .pl-vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,transparent 55%,rgba(5,6,26,.55) 100%)}
-.pl-zone .pl-cap{opacity:var(--cap,1);position:absolute;left:50%;bottom:clamp(70px,14vh,130px);transform:translateX(-50%);text-align:center;color:#fff;pointer-events:none;width:min(720px,calc(100% - 32px))}
-.pl-zone .pl-cap small{display:block;font:600 11px/1 var(--display);letter-spacing:.3em;color:#A9ADEA;margin-bottom:10px;text-shadow:0 1px 8px rgba(0,0,0,.6)}
-.pl-zone .pl-cap b{display:block;font:800 clamp(30px,5.4vw,68px)/1 var(--display);letter-spacing:-.03em;text-shadow:0 4px 30px rgba(0,0,0,.65);transition:opacity .35s}
-.pl-zone .pl-hud{position:absolute;left:clamp(16px,4vw,40px);top:calc(50% - 40px);display:grid;gap:10px;color:#fff;font:600 11px/1.2 var(--display);letter-spacing:.14em;text-transform:uppercase;pointer-events:none;text-shadow:0 1px 8px rgba(0,0,0,.7)}
-.pl-zone .pl-hud span{display:block;color:#A9ADEA;font-size:10px;margin-bottom:3px}
-.pl-zone .pl-hud em{font-style:normal;font-variant-numeric:tabular-nums;font-size:15px;letter-spacing:.04em}
-.pl-zone .pl-pin{position:absolute;left:50%;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(169,173,234,.55);pointer-events:none;opacity:0;transition:opacity .4s}
-.pl-zone .pl-pin::after{content:"";position:absolute;inset:-14px;border-radius:50%;border:2px solid #A9ADEA;animation:plp 1.6s ease-out infinite}
+#planet .pl-vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,transparent 55%,rgba(5,6,26,.55) 100%)}
+#planet .pl-cap{opacity:var(--cap,1);position:absolute;left:50%;bottom:clamp(70px,14vh,130px);transform:translateX(-50%);text-align:center;color:#fff;pointer-events:none;width:min(720px,calc(100% - 32px))}
+#planet .pl-cap small{display:block;font:600 11px/1 var(--display);letter-spacing:.3em;color:#A9ADEA;margin-bottom:10px;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+#planet .pl-cap b{display:block;font:800 clamp(30px,5.4vw,68px)/1 var(--display);letter-spacing:-.03em;text-shadow:0 4px 30px rgba(0,0,0,.65);transition:opacity .35s}
+#planet .pl-hud{position:absolute;left:clamp(16px,4vw,40px);top:calc(50% - 40px);display:grid;gap:10px;color:#fff;font:600 11px/1.2 var(--display);letter-spacing:.14em;text-transform:uppercase;pointer-events:none;text-shadow:0 1px 8px rgba(0,0,0,.7)}
+#planet .pl-hud span{display:block;color:#A9ADEA;font-size:10px;margin-bottom:3px}
+#planet .pl-hud em{font-style:normal;font-variant-numeric:tabular-nums;font-size:15px;letter-spacing:.04em}
+#planet .pl-pin{position:absolute;left:50%;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(169,173,234,.55);pointer-events:none;opacity:0;transition:opacity .4s}
+#planet .pl-pin::after{content:"";position:absolute;inset:-14px;border-radius:50%;border:2px solid #A9ADEA;animation:plp 1.6s ease-out infinite}
 @keyframes plp{from{transform:scale(.4);opacity:1}to{transform:scale(1.6);opacity:0}}
-.pl-zone .pl-attr{position:absolute;right:10px;bottom:8px;font:500 10px/1.2 var(--body);color:rgba(255,255,255,.7);text-shadow:0 1px 4px rgba(0,0,0,.8);pointer-events:none}
-.pl-zone .pl-load{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:600 11px var(--display);letter-spacing:.2em;text-transform:uppercase;color:#A9ADEA;transition:opacity .5s}
-@media (max-width:700px){.pl-zone .pl-hud{top:auto;bottom:clamp(170px,28vh,240px)}}
+#planet .pl-attr{position:absolute;right:10px;bottom:8px;font:500 10px/1.2 var(--body);color:rgba(255,255,255,.7);text-shadow:0 1px 4px rgba(0,0,0,.8);pointer-events:none}
+#planet .pl-load{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:600 11px var(--display);letter-spacing:.2em;text-transform:uppercase;color:#A9ADEA;transition:opacity .5s}
+@media (max-width:700px){#planet .pl-hud{top:auto;bottom:clamp(170px,28vh,240px)}}
 
 /* ===== real: paket formu və 2 dəqiqəlik endirim ===== */
 .pk-form{display:grid;gap:8px;margin-top:14px}
@@ -609,7 +604,7 @@ header.hero{display:none!important}
 /* "hansı konstruksiyanın qarşısında nə qədər insan var" xəritə bölməsi ləğv edildi (sonra planetin Azərbaycana yaxınlaşan hissəsinə əlavə olunacaq). Skriptlər pozulmasın deyə HTML-də qalır */
 section#xerite{display:none!important}
 /* hündürlük və koordinat yazısı göstərilmir */
-.pl-zone .pl-hud{display:none!important}
+#planet .pl-hud{display:none!important}
 </style>
 </head>
 <body>
@@ -634,8 +629,8 @@ section#xerite{display:none!important}
   </div>
 </nav>
 
-<div class="pl-zone">
-<div class="pl-stick">
+<section id="planet" aria-label="Planetdən Bakıya: real peyk görüntüsü">
+  <div class="pl-stick">
     <canvas id="plGlobe" aria-hidden="true"></canvas>
     <canvas id="plTiles" aria-hidden="true"></canvas>
     <div class="pl-vig"></div>
@@ -645,7 +640,7 @@ section#xerite{display:none!important}
     <div class="pl-load" id="plLoad">Peyk görüntüsü yüklənir…</div>
     <div class="pl-attr">Peyk görüntüsü: Esri, Maxar, Earthstar Geographics</div>
   </div>
-<section id="planet" aria-label="Planetdən Bakıya: real peyk görüntüsü"></section>
+</section>
 
 
 <header class="hero" id="top">
@@ -703,7 +698,6 @@ section#xerite{display:none!important}
     <button class="linkbtn" id="more" style="margin-top:14px">Hamısını göstər</button>
   </div>
 </section>
-</div><!-- /pl-zone -->
 
 <section id="paket">
   <div class="wrap">
@@ -1773,7 +1767,7 @@ if(R)(function L(now){requestAnimationFrame(L);if(!vis)return;
   const D0=4.6,D1=1.9,PG=.34,XF=.035,QIN=.667,QH=.7;  /* QIN: yaxınlaşma bitir, QH..1: geri uzaqlaşma */                         /* planet mərhələsi 0..PG, keçid PG-XF..PG */
   const LABELS=[[0,"MIRROR · BAKI","Yer"],[.16,"QAFQAZ","Xəzər dənizi"],[.42,"CƏNUBİ QAFQAZ","Azərbaycan"],[.62,"XƏZƏRİN SAHİLİ","Abşeron"],[.73,"PAYTAXT","Bakı"],[.86,"MƏRKƏZ","Bulvar və 28 May"]];
   let started=false,on=false,p=0,q=0,pe=0;
-  new IntersectionObserver(es=>{on=es[0].isIntersecting;if(!started&&es[0].isIntersecting){started=true;loadGlobe();prefetch(zoomFor(widthKm(D1))-1)}},{rootMargin:"300% 0px"}).observe(sec.parentElement);
+  new IntersectionObserver(es=>{on=es[0].isIntersecting;if(!started&&es[0].isIntersecting){started=true;loadGlobe();prefetch(zoomFor(widthKm(D1))-1)}},{rootMargin:"300% 0px"}).observe(sec);
   const clock=new THREE.Clock();
   (function frame(){requestAnimationFrame(frame);if(!on)return;const dt=Math.min(clock.getDelta(),.05);
     const r=sec.getBoundingClientRect(),span=sec.offsetHeight-innerHeight;p=cl(-r.top/span);q+=(p-q)*Math.min(1,dt*8);
