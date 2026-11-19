@@ -530,12 +530,12 @@ footer{background:color-mix(in srgb,var(--soft) 55%,transparent)}
 .nav .wrap{position:relative;z-index:1}
 @media (prefers-reduced-motion:reduce){.nav::after{animation:none;opacity:0}}
 /* ===== Planetdən Bakıya (real peyk görüntüsü) ===== */
-#planet{position:relative;height:460vh;background:#05061a;padding:0;border:0}
+#planet{position:relative;height:640vh;background:#05061a;padding:0;border:0}
 #planet .pl-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#05061a}
 #planet canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 #plTiles{opacity:0}
 #planet .pl-vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,transparent 55%,rgba(5,6,26,.55) 100%)}
-#planet .pl-cap{position:absolute;left:50%;bottom:clamp(70px,14vh,130px);transform:translateX(-50%);text-align:center;color:#fff;pointer-events:none;width:min(720px,calc(100% - 32px))}
+#planet .pl-cap{opacity:var(--cap,1);position:absolute;left:50%;bottom:clamp(70px,14vh,130px);transform:translateX(-50%);text-align:center;color:#fff;pointer-events:none;width:min(720px,calc(100% - 32px))}
 #planet .pl-cap small{display:block;font:600 11px/1 var(--display);letter-spacing:.3em;color:#A9ADEA;margin-bottom:10px;text-shadow:0 1px 8px rgba(0,0,0,.6)}
 #planet .pl-cap b{display:block;font:800 clamp(30px,5.4vw,68px)/1 var(--display);letter-spacing:-.03em;text-shadow:0 4px 30px rgba(0,0,0,.65);transition:opacity .35s}
 #planet .pl-hud{position:absolute;left:clamp(16px,4vw,40px);top:calc(50% - 40px);display:grid;gap:10px;color:#fff;font:600 11px/1.2 var(--display);letter-spacing:.14em;text-transform:uppercase;pointer-events:none;text-shadow:0 1px 8px rgba(0,0,0,.7)}
@@ -1714,31 +1714,35 @@ if(R)(function L(now){requestAnimationFrame(L);if(!vis)return;
   const tanH=()=>Math.tan(cam.fov*Math.PI/360)*cam.aspect;
   const widthKm=d=>2*(d-1)*tanH()*R_KM;
   const zoomFor=km=>Math.log2(W*40075*Math.cos(LAT*Math.PI/180)/(256*km));
-  const D0=4.6,D1=1.9,PG=.34,XF=.035;                         /* planet mərhələsi 0..PG, keçid PG-XF..PG */
+  const D0=4.6,D1=1.9,PG=.34,XF=.035,QIN=.667,QH=.7;  /* QIN: yaxınlaşma bitir, QH..1: geri uzaqlaşma */                         /* planet mərhələsi 0..PG, keçid PG-XF..PG */
   const LABELS=[[0,"MIRROR · BAKI","Yer"],[.16,"QAFQAZ","Xəzər dənizi"],[.42,"CƏNUBİ QAFQAZ","Azərbaycan"],[.62,"XƏZƏRİN SAHİLİ","Abşeron"],[.73,"PAYTAXT","Bakı"],[.86,"MƏRKƏZ","Bulvar və 28 May"]];
-  let started=false,on=false,p=0,q=0;
+  let started=false,on=false,p=0,q=0,pe=0;
   new IntersectionObserver(es=>{on=es[0].isIntersecting;if(!started&&es[0].isIntersecting){started=true;loadGlobe();prefetch(zoomFor(widthKm(D1))-1)}},{rootMargin:"300% 0px"}).observe(sec);
   const clock=new THREE.Clock();
   (function frame(){requestAnimationFrame(frame);if(!on)return;const dt=Math.min(clock.getDelta(),.05);
     const r=sec.getBoundingClientRect(),span=sec.offsetHeight-innerHeight;p=cl(-r.top/span);q+=(p-q)*Math.min(1,dt*8);
+    /* bölmə bitib növbəti bölmə gələrkən (səhnə yuxarı sürüşür) Yer kosmosda uzaqlaşmağa davam edir */
+    const pt=cl((innerHeight-r.bottom)/innerHeight);pe+=(pt-pe)*Math.min(1,dt*8);
+    const qe=q<QH?cl(q/QIN):1-ease(cl((q-QH)/(1-QH)));
     /* planet */
-    const g=cl(q/PG),eg=ease(g);
-    const d=D1*Math.pow(D0/D1,1-eg);                                  /* eksponensial yaxınlaşma */
-    const rp=ease(cl(q/.24));earth.rotation.y=RY+(1-rp)*1.25;tilt.rotation.x=RX*rp+.2*(1-rp);
+    const g=cl(qe/PG),eg=ease(g);
+    const d=D1*Math.pow(D0/D1,1-eg)*(1+2.2*ease(pe));                                  /* eksponensial yaxınlaşma */
+    const rp=ease(cl(qe/.24));earth.rotation.y=RY+(1-rp)*1.25;tilt.rotation.x=RX*rp+.2*(1-rp);
     cam.position.set(0,0,d);cam.lookAt(0,0,0);sec._atm.material.opacity=cl((d-1.15)/.6);
     /* xəritə */
-    const k=cl((q-(PG-XF))/XF);tc.style.opacity=k;gc.style.visibility=k>=1?"hidden":"visible";
-    const Zs=zoomFor(widthKm(D1)),m=cl((q-PG)/(.97-PG)),Z=Zs+(ZMAX-Zs)*ease(m);
+    const k=cl((qe-(PG-XF))/XF);tc.style.opacity=k;gc.style.visibility=k>=1?"hidden":"visible";
+    const Zs=zoomFor(widthKm(D1)),m=cl((qe-PG)/(.97-PG)),Z=Zs+(ZMAX-Zs)*ease(m);
     if(k<1)R.render(S,cam);
     curZ=Z;mapOn=k>=1;if(!drag)stick.style.cursor=mapOn?"grab":"";
     if(!mapOn&&(panX||panY)){panX*=.85;panY*=.85;if(Math.abs(panX)+Math.abs(panY)<1e-7)panX=panY=0;dirty=true}
     if(k>0&&(dirty||Math.abs(Z-lastZ)>.0005)){drawTiles(Z);lastZ=Z;dirty=false}
     {const sc=256*Math.pow(2,Z);pin.style.transform="translate("+(-panX*sc)+"px,"+(-panY*sc)+"px)"}
     /* HUD */
-    const km=q<PG?(d-1)*R_KM:W*40075*Math.cos(LAT*Math.PI/180)/(256*Math.pow(2,Z))/(2*tanH())*1;
+    const km=qe<PG?(d-1)*R_KM:W*40075*Math.cos(LAT*Math.PI/180)/(256*Math.pow(2,Z))/(2*tanH())*1;
     alt.textContent=km>=1?Math.round(km).toLocaleString("az").replace(/,/g," ")+" km":Math.round(km*1000)+" m";
-    let L=LABELS[0];LABELS.forEach(x=>{if(q>=x[0])L=x});if(big.textContent!==L[2]){big.style.opacity=0;setTimeout(()=>{big.textContent=L[2];small.textContent=L[1];big.style.opacity=1},180)}
-    pin.style.opacity=q>.8?1:0;
+    let L=LABELS[0];LABELS.forEach(x=>{if(qe>=x[0])L=x});if(big.textContent!==L[2]){big.style.opacity=0;setTimeout(()=>{big.textContent=L[2];small.textContent=L[1];big.style.opacity=1},180)}
+    pin.style.opacity=qe>.8?1:0;
+    stick.style.setProperty("--cap",1-cl(pe*2.5));
   })();
 })();
 </script>
