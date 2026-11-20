@@ -1688,14 +1688,14 @@ if(R)(function L(now){requestAnimationFrame(L);if(!vis)return;
     for(let l=Math.max(1,zi-4);l<zi;l++)drawLevel(Z,l,false);drawLevel(Z,zi,true);if(Z-zi>.55&&zi<18)drawLevel(Z,zi+1,true);drawSpots(Z)}
   /* reklam panellərinin nöqtələri (yerləri təxminidir): şəhər miqyasına yaxınlaşanda görünür */
   const SPC={led:"#A9ADEA",meqa:"#8E92E0",bilbord:"#C9CBF6",prizma:"#8E92E0",lightbox:"#E8E9FB",roller:"#A9ADEA"};
-  /* 3D çəhrayı xəritə pini: yerdə kölgə, damcı formalı gövdə, işıq parıltısı və ortada ağ dəlik */
+  /* 3D xəritə pini (açılış ekranının rəngi #0E0F24): yerdə kölgə, damcı formalı gövdə, işıq parıltısı və ortada ağ dəlik */
   function spot3d(x,y,s){const c=tx,R=s*.62,cy=y-s*1.25;
     c.save();c.fillStyle="rgba(5,6,26,.5)";c.filter="blur("+(s*.1).toFixed(1)+"px)";c.beginPath();c.ellipse(x,y+1,s*.5,s*.17,0,0,7);c.fill();c.restore();
     const body=()=>{c.beginPath();c.moveTo(x,y);c.bezierCurveTo(x-R*.35,cy+R*1.05,x-R,cy+R*.55,x-R,cy);c.arc(x,cy,R,Math.PI,0);c.bezierCurveTo(x+R,cy+R*.55,x+R*.35,cy+R*1.05,x,y);c.closePath();};
-    body();const g=c.createRadialGradient(x-R*.4,cy-R*.45,R*.1,x,cy,R*1.7);g.addColorStop(0,"#FFB3D9");g.addColorStop(.45,"#FF4FA3");g.addColorStop(1,"#B0186A");c.fillStyle=g;c.fill();
-    c.lineWidth=Math.max(.8,s*.04);c.strokeStyle="rgba(120,10,70,.55)";c.stroke();
+    body();const g=c.createRadialGradient(x-R*.4,cy-R*.45,R*.1,x,cy,R*1.7);g.addColorStop(0,"#4A4E92");g.addColorStop(.45,"#1A1C44");g.addColorStop(1,"#0E0F24");c.fillStyle=g;c.fill();
+    c.lineWidth=Math.max(.8,s*.04);c.strokeStyle="rgba(169,173,234,.85)";c.stroke();
     c.fillStyle="#fff";c.beginPath();c.arc(x,cy,R*.38,0,7);c.fill();
-    c.fillStyle="rgba(176,24,106,.35)";c.beginPath();c.arc(x+R*.06,cy+R*.08,R*.38,0,Math.PI);c.fill();
+    c.fillStyle="rgba(14,15,36,.35)";c.beginPath();c.arc(x+R*.06,cy+R*.08,R*.38,0,Math.PI);c.fill();
     c.fillStyle="rgba(255,255,255,.55)";c.beginPath();c.ellipse(x-R*.45,cy-R*.5,R*.22,R*.12,-.7,0,7);c.fill();}
   function drawSpots(Z){const L=window.MIRROR_SPOTS;if(!L)return;const a=cl((Z-9.6)/1.6);if(a<=0)return;
     const sc=256*Math.pow(2,Z),cx=CX0+panX,cy=CY0+panY,r=cl(3+(Z-10)*.9,3,9),lab=cl((Z-12.6)/1);
