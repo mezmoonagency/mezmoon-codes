@@ -1738,25 +1738,20 @@ if(R)(function L(now){requestAnimationFrame(L);if(!vis)return;
     for(let l=Math.max(1,zi-4);l<zi;l++)drawLevel(Z,l,false);drawLevel(Z,zi,true);if(Z-zi>.55&&zi<18)drawLevel(Z,zi+1,true);drawSpots(Z)}
   /* reklam panellərinin nöqtələri (yerləri təxminidir): şəhər miqyasına yaxınlaşanda görünür */
   const SPC={led:"#A9ADEA",meqa:"#8E92E0",bilbord:"#C9CBF6",prizma:"#8E92E0",lightbox:"#E8E9FB",roller:"#A9ADEA"};
-  /* 3D çıxıntılı nişan: yerdə kölgə, nazik ayaq, qalınlığı görünən kart və üstündə Mirror loqosunun 3 zolağı */
-  const MLOGO=[[[8,26],[20,38],[20,56],[8,44],"#A9ADEA"],[[24,16],[36,28],[36,56],[24,44],"#8E92E0"],[[40,4],[52,16],[52,56],[40,44],"#5C60AB"]];
-  function rr(c,x,y,w,h,k){c.beginPath();c.moveTo(x+k,y);c.arcTo(x+w,y,x+w,y+h,k);c.arcTo(x+w,y+h,x,y+h,k);c.arcTo(x,y+h,x,y,k);c.arcTo(x,y,x+w,y,k);c.closePath()}
-  function spot3d(x,y,s,rim){const c=tx,h=s*1.05,d=Math.max(2,s*.26),w=s*1.25,bx=x-w/2,by=y-h-w/2,k=s*.28;
-    c.save();c.fillStyle="rgba(5,6,26,.5)";c.filter="blur("+(s*.12).toFixed(1)+"px)";c.beginPath();c.ellipse(x,y+1,s*.75,s*.26,0,0,7);c.fill();c.restore();
-    const st=c.createLinearGradient(x-1,0,x+1,0);st.addColorStop(0,"#5C60AB");st.addColorStop(1,"#2E3175");c.fillStyle=st;c.fillRect(x-Math.max(1,s*.06),by+w,Math.max(2,s*.12),y-(by+w));
-    c.fillStyle="#2E3175";rr(c,bx,by+d,w,w,k);c.fill();
-    c.fillStyle="#1C1E52";rr(c,bx,by+d*.5,w,w,k);c.fill();
-    const tg=c.createLinearGradient(bx,by,bx+w,by+w);tg.addColorStop(0,"#FFFFFF");tg.addColorStop(1,"#DCDEF8");c.fillStyle=tg;rr(c,bx,by,w,w,k);c.fill();
-    c.lineWidth=Math.max(1,s*.07);c.strokeStyle=rim;c.stroke();
-    const u=w*.72/60,ox=bx+w*.14,oy=by+w*.12;
-    MLOGO.forEach(p=>{c.beginPath();for(let i=0;i<4;i++)c[i?"lineTo":"moveTo"](ox+p[i][0]*u,oy+p[i][1]*u+u*2.2);c.closePath();c.fillStyle="rgba(46,49,117,.55)";c.fill();
-      c.beginPath();for(let i=0;i<4;i++)c[i?"lineTo":"moveTo"](ox+p[i][0]*u,oy+p[i][1]*u);c.closePath();c.fillStyle=p[4];c.fill();});
-    c.globalCompositeOperation="lighter";const hg=c.createLinearGradient(0,by,0,by+w*.5);hg.addColorStop(0,"rgba(255,255,255,.35)");hg.addColorStop(1,"rgba(255,255,255,0)");c.fillStyle=hg;rr(c,bx+1,by+1,w-2,w*.45,k*.8);c.fill();c.globalCompositeOperation="source-over";}
+  /* 3D çəhrayı xəritə pini: yerdə kölgə, damcı formalı gövdə, işıq parıltısı və ortada ağ dəlik */
+  function spot3d(x,y,s){const c=tx,R=s*.62,cy=y-s*1.25;
+    c.save();c.fillStyle="rgba(5,6,26,.5)";c.filter="blur("+(s*.1).toFixed(1)+"px)";c.beginPath();c.ellipse(x,y+1,s*.5,s*.17,0,0,7);c.fill();c.restore();
+    const body=()=>{c.beginPath();c.moveTo(x,y);c.bezierCurveTo(x-R*.35,cy+R*1.05,x-R,cy+R*.55,x-R,cy);c.arc(x,cy,R,Math.PI,0);c.bezierCurveTo(x+R,cy+R*.55,x+R*.35,cy+R*1.05,x,y);c.closePath();};
+    body();const g=c.createRadialGradient(x-R*.4,cy-R*.45,R*.1,x,cy,R*1.7);g.addColorStop(0,"#FFB3D9");g.addColorStop(.45,"#FF4FA3");g.addColorStop(1,"#B0186A");c.fillStyle=g;c.fill();
+    c.lineWidth=Math.max(.8,s*.04);c.strokeStyle="rgba(120,10,70,.55)";c.stroke();
+    c.fillStyle="#fff";c.beginPath();c.arc(x,cy,R*.38,0,7);c.fill();
+    c.fillStyle="rgba(176,24,106,.35)";c.beginPath();c.arc(x+R*.06,cy+R*.08,R*.38,0,Math.PI);c.fill();
+    c.fillStyle="rgba(255,255,255,.55)";c.beginPath();c.ellipse(x-R*.45,cy-R*.5,R*.22,R*.12,-.7,0,7);c.fill();}
   function drawSpots(Z){const L=window.MIRROR_SPOTS;if(!L)return;const a=cl((Z-9.6)/1.6);if(a<=0)return;
     const sc=256*Math.pow(2,Z),cx=CX0+panX,cy=CY0+panY,r=cl(3+(Z-10)*.9,3,9),lab=cl((Z-12.6)/1);
     tx.save();tx.globalAlpha=a;tx.font="600 12px Inter,system-ui,sans-serif";tx.textBaseline="middle";
     L.forEach(sp=>{if(sp.length<7)return;const x=W/2+(lon2x(sp[6])-cx)*sc,y=H/2+(lat2y(sp[5])-cy)*sc;if(x<-40||y<-40||x>W+40||y>H+40)return;
-      spot3d(x,y,r*2.3,SPC[sp[4]]||"#A9ADEA");
+      spot3d(x,y,r*2.3);
       if(lab>0){tx.globalAlpha=a*lab;tx.shadowColor="rgba(0,0,0,.85)";tx.shadowBlur=6;tx.fillStyle="#fff";tx.fillText(sp[0],x+r*1.6+8,y-r*2.6);tx.shadowBlur=0;tx.globalAlpha=a;}
     });tx.restore();}
   function prefetch(z0){for(let z=Math.floor(z0);z<=Math.ceil(ZMAX);z++){const cx=Math.floor((CX0+panX)*(1<<z)),cy=Math.floor((CY0+panY)*(1<<z));for(let dy=-1;dy<=1;dy++)for(let dx=-2;dx<=2;dx++)img(z,cx+dx,cy+dy)}}
